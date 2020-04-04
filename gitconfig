@@ -1,0 +1,29 @@
+[user]
+	email = bparonto@gmail.com
+	name = Bryan Paronto
+[push]
+	default = simple
+[core]
+	excludesfile = /Users/bryan/.gitignore
+	editor = code
+[merge]
+    tool = vscode
+[mergetool "vscode"]
+    cmd = code --wait $MERGED
+[diff]
+    tool = vscode
+[difftool "vscode"]
+    cmd = code --wait --diff $LOCAL $REMOTE
+[http]
+	sslVerify = false
+[alias]
+	assume = update-index --assume-unchanged
+	unassume = update-index --no-assume-unchanged
+	assumed = "!git ls-files -v | grep ^h | cut -c 3-"
+[pull]
+	rebase = true
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
