@@ -15,7 +15,6 @@ echo "Finished linking config files!";
 
 echo "Linking scripts directory...";
 
-# [ ! -d "~/bin" ] && mkdir ~/scripts;
 ln -svi  "$PWD/scripts" ~/;
 
-echo "Finished scripts directory!";
+echo "Finished linking scripts directory!";

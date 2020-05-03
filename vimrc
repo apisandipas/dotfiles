@@ -12,7 +12,6 @@
 let &shell='/bin/zsh -i'
 
 """ Load plugins
-
 call plug#begin('~/.vim/plugged/')
   Plug 'tpope/vim-sensible'
   Plug 'ctrlpvim/ctrlp.vim'
@@ -25,6 +24,7 @@ call plug#begin('~/.vim/plugged/')
   Plug 'mattn/emmet-vim'
   Plug 'mhinz/vim-startify'
   Plug 'chriskempson/base16-vim'
+  Plug 'jiangmiao/auto-pairs'
   "Keep this one last as per project readme
   Plug 'ryanoasis/vim-devicons'
 call plug#end()
@@ -32,7 +32,7 @@ call plug#end()
 """ Appearance
 
 colorscheme base16-ocean  " Set colorscheme on Linux
-
+" let base16colorspace=256
 syntax enable		            " Enable syntax hightlighting
 filetype plugin indent on   " Enable filtype detection and indent plugin
 
