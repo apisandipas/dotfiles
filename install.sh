@@ -3,13 +3,16 @@
 echo "Linking config files...";
 
 echo "Linking $PWD/zshrc";
-ln -svi "$PWD/zshrc" ~/.zshrc
+ln -svi "$PWD/zshrc" ~/.zshrc;
 
 echo "Linking $PWD/vimrc";
-ln -svi "$PWD/vimrc" ~/.vimrc
+ln -svi "$PWD/vimrc" ~/.vimrc;
 
 echo "Linking $PWD/gitconfig";
-ln -svi "$PWD/gitconfig" ~/.gitconfig
+ln -svi "$PWD/gitconfig" ~/.gitconfig;
+
+echo "Linking $PWD/i3config";
+ln -svi "$PWD/i3config" ~/.i3/config;
 
 echo "Finished linking config files!";
 
