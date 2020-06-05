@@ -65,7 +65,7 @@ bindsym $mod+F3 exec pcmanfm
 # bindsym $mod+F3 exec ranger
 bindsym $mod+Shift+F3 exec pcmanfm_pkexec
 bindsym $mod+F5 exec terminal -e 'mocp'
-bindsym $mod+t exec --no-startup-id pkill compton
+bindsym $mod+t exec --no-startup-id pkill comptoni
 bindsym $mod+Ctrl+t exec --no-startup-id compton -b
 bindsym Print exec --no-startup-id i3-scrot
 bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
@@ -301,7 +301,7 @@ exec --no-startup-id code
 exec --no-startup-id google-chrome-stable
 exec --no-startup-id spotify
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-# exec --no-startup-id compton -b
+exec --no-startup-id picom  -b
 exec --no-startup-id nm-applet
 # exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pamac-tray

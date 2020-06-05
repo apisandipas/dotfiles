@@ -23,7 +23,7 @@ call plug#begin('~/.vim/plugged/')
   Plug 'MaxMEllon/vim-jsx-pretty'
   Plug 'mattn/emmet-vim'
   Plug 'mhinz/vim-startify'
-  Plug 'chriskempson/base16-vim'
+  Plug 'arcticicestudio/nord-vim'
   Plug 'jiangmiao/auto-pairs'
   "Keep this one last as per project readme
   Plug 'ryanoasis/vim-devicons'
@@ -31,7 +31,8 @@ call plug#end()
 
 """ Appearance
 
-colorscheme base16-ocean  " Set colorscheme on Linux
+colorscheme nord  " Set colorscheme on Linux
+
 " let base16colorspace=256
 syntax enable		            " Enable syntax hightlighting
 filetype plugin indent on   " Enable filtype detection and indent plugin
@@ -83,7 +84,7 @@ nnoremap <CR> :nohlsearch<CR><CR>
 let NERDTreeShowHidden=1  		             " Show hidden files in NERDTree
 let g:airline_powerline_fonts=1 	         " Enable powerline fonts
 
-let g:airline_theme='base16'  		         " enable airline theme
+let g:airline_theme='nord'  		         " enable airline theme
 
 let g:airline#extensions#tabline#enabled=1 " enable airline tabline extention
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
@@ -92,18 +93,32 @@ let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 
 " Map F5 to list buffers. Just enter buffer # and hit enter
 map <F5> :buffers<CR>:buffer<Space>
+
 " Map F6 to Spellcheck
 map <F6> :setlocal spell! spelllang=en_us<CR>
+
+" Switch to Previous Buffer
+nmap <F7> :bp<CR>
+vmap <F7> <Esc>:bp<CR>i
+imap <F7> <Esc>:bp<CR>i
+
+"Switch to Next Buffer
+nmap <F8> :bn<CR>
+vmap <F8> <Esc>:bn<CR>i
+imap <F8> <Esc>:bn<CR>i
+
 " Ctrl+N to toggle file view
 map <C-n> :NERDTreeToggle<CR>
+
 " move vertically by visual line (dont skip wrapped lines)
 nmap j gj
 nmap k gk
+
 " Easier navigation between splits
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-
+"Toggle Nerdtree File explorer
 inoremap <C-.> :NERDCommentToggle<CR>
