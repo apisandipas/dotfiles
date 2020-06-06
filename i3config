@@ -35,8 +35,8 @@ bindsym $mod+Return exec gnome-terminal
 bindsym $mod+Shift+q kill
 
 # start program launcher
-bindsym $mod+d exec rofi -show run -theme base16-ocean
-bindsym $mod+Shift+Return exec rofimoji --skin-tone="medium-light" --rofi-args="-theme base16-ocean"
+bindsym $mod+d exec rofi -show run -theme nord
+bindsym $mod+Shift+Return exec rofimoji --skin-tone="medium-light" --rofi-args="-theme nord"
 
 # launch categorized menu
 bindsym $mod+z exec --no-startup-id morc_menu
