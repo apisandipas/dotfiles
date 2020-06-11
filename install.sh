@@ -14,6 +14,9 @@ ln -svi "$PWD/gitconfig" ~/.gitconfig;
 echo "Linking $PWD/i3config";
 ln -svi "$PWD/i3config" ~/.i3/config;
 
+echo "Linking $PWD/alacritty.yml";
+ln -svi "$PWD/alacritty.yml" ~/.alacritty.yml;
+
 echo "Linking $PWD/Xresources";
 ln -svi "$PWD/Xresources" ~/.Xresources;
 

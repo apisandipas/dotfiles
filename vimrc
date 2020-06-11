@@ -14,13 +14,16 @@ let &shell='/bin/zsh -i'
 """ Load plugins
 call plug#begin('~/.vim/plugged/')
   Plug 'tpope/vim-sensible'
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'ctrlpvim/ctrlp.vim'
+  Plug 'alvan/vim-closetag'
   Plug 'scrooloose/nerdtree'
   Plug 'scrooloose/nerdcommenter'
   Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
   Plug 'MaxMEllon/vim-jsx-pretty'
+  Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
   Plug 'mattn/emmet-vim'
   Plug 'mhinz/vim-startify'
   Plug 'arcticicestudio/nord-vim'
@@ -44,6 +47,8 @@ highlight clear cursorline
 highlight StatusLine ctermbg=black
 highlight LineNr ctermfg=blue ctermbg=black
 highlight CursorLineNr ctermfg=red ctermbg=black
+highlight Comment gui=italic cterm=italic
+highlight htmlArg gui=italic cterm=italic
 
 """ Basic Behavior
 
@@ -80,15 +85,24 @@ set hlsearch        " Hightlight matches
 nnoremap <CR> :nohlsearch<CR><CR>
 
 """ Plugin Specific settings
-
+let g:closetag_filenames = '*.html,*.js,*.jsx,*.ts,*.tsx'
 let NERDTreeShowHidden=1  		             " Show hidden files in NERDTree
 let g:airline_powerline_fonts=1 	         " Enable powerline fonts
+let g:prettier#autoformat_require_pragma = 0 " Enable autoformatter
 
 let g:airline_theme='nord'  		         " enable airline theme
 
 let g:airline#extensions#tabline#enabled=1 " enable airline tabline extention
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 
+" coc config
+let g:coc_global_extensions = [
+  \ 'coc-snippets',
+  \ 'coc-pairs',
+  \ 'coc-tsserver',
+  \ 'coc-eslint',  
+  \ 'coc-json', 
+  \ ]
 """ Keybindings
 
 " Map F5 to list buffers. Just enter buffer # and hit enter
@@ -120,5 +134,46 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-"Toggle Nerdtree File explorer
-inoremap <C-.> :NERDCommentToggle<CR>
+" Autoformat on save
+let g:prettier#autoformat = 0
+autocmd BufWritePre *.ts,*.tsx,*.jsx,*.js,*.css,*.scss,*.less,*.graphql Prettier
+
+" COC Related keybindings 
+" Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
