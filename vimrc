@@ -15,6 +15,7 @@ let &shell='/bin/zsh -i'
 call plug#begin('~/.vim/plugged/')
   Plug 'tpope/vim-sensible'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'unkiwii/vim-nerdtree-sync'
   Plug 'ctrlpvim/ctrlp.vim'
   Plug 'alvan/vim-closetag'
   Plug 'scrooloose/nerdtree'
@@ -40,14 +41,10 @@ colorscheme nord  " Set colorscheme on Linux
 syntax enable		            " Enable syntax hightlighting
 filetype plugin indent on   " Enable filtype detection and indent plugin
 
-" set cursorline              " Highlight currentline
+set cursorline              " Highlight currentline
 set autoread                " Autoreload this file in vim if it was changed outof vim
 
-highlight clear cursorline
-highlight StatusLine ctermbg=black
-highlight LineNr ctermfg=blue ctermbg=black
-highlight CursorLineNr ctermfg=red ctermbg=black
-highlight Comment gui=italic cterm=italic
+highlight Comment ctermfg=green gui=italic cterm=italic
 highlight htmlArg gui=italic cterm=italic
 
 """ Basic Behavior
@@ -66,6 +63,8 @@ set noswapfile		  " disable swap-files
 set noerrorbells	  " disable the goddamn bell
 set visualbell		  " blink the curror instead of beeping
 set hidden		      " allow buffers to be switched w/o saving first
+" set autochdir       " Set pwd to the current buffers directory
+
 
 """ Tab Settings
 
@@ -94,8 +93,9 @@ let g:airline_theme='nord'  		         " enable airline theme
 
 let g:airline#extensions#tabline#enabled=1 " enable airline tabline extention
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+let g:nerdtree_sync_cursorline=1 " Highlight current file in NERDTree
 
-" coc config
+"coc config
 let g:coc_global_extensions = [
   \ 'coc-snippets',
   \ 'coc-pairs',

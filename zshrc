@@ -45,8 +45,8 @@ alias polyc="vim ~/.config/polybar/config"
 alias zshrc="vim ~/.zshrc"
 alias services-enabled="systemctl list-unit-files | grep enabled"
 alias services-running="systemctl list-units --type=service --state=active" 
-alias :e="echo 'nerd...'; sleep 1; exit;"
-alias :wq=":e"
+alias :x="echo 'nerd...'; sleep 1; exit;"
+alias :wq=":x"
 
 # Functions
 mkcd() { mkdir -p "$@" && cd $_; }
