@@ -1,0 +1,238 @@
+;==========================================================
+;
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;
+;
+;   To learn more about how to configure Polybar
+;   go to https://github.com/polybar/polybar
+;
+;   The README contains a lot of information
+;
+;==========================================================
+
+[colors]
+  background = ${xrdb:background}
+  foreground = ${xrdb:color7:#222}
+  primary = #ffb52a
+  secondary = #e60053
+  alert = #bd2c40
+  transparent = #000f0f0f
+
+[bar/example]
+  monitor = ${env:MONITOR:}
+  width    = 100%
+  height   = 35
+  offset-x = 0
+  offset-y = 0
+  bottom = true
+
+  background = #000f0f0f
+  foreground = ${xrdb:color7}
+
+  border-bottom-size  = 16
+  border-top-size     = 0
+
+  border-left-size  = 16
+  border-right-size = 0
+
+  border-bottom-color = #000f0f0f
+  border-top-color    = ${xrdb:color0}
+
+  border-left-color = #000f0f0f
+  border-right-color = ${xrdb:color0}
+
+  spacing            = 0
+  padding-left       = 2
+  padding-right      = 4
+  module-margin-left = 0
+
+  font-0 = OperatorMono Nerd Font:style=Medium,Regular
+  font-1 = siji:pixelsize=10;1
+  font-2 = FontAwesome:style=Regular
+  font-3 = IcoFont:style=Regular
+
+  modules-left  = workspaces
+  modules-center =
+  modules-right = currentsong previous playpause next paddinglite battery date
+
+  fixed-center = true
+
+;--------------------------------------------
+; modules                                   ;
+;--------------------------------------------
+
+[module/network]
+	type          = internal/network
+	interface     = wlp1s0
+	ping-interval =music p3
+
+[module/xwindow]
+	y-offset      = 10
+	type          = internal/xwindow
+	format        = <label>
+	label         = %title:0:50:%
+	label-padding = 1
+
+[module/date]
+	type     = internal/date
+	interval = 1.0
+	time     = " %I:%M %p"
+	label    = "%time%"
+
+	format         = <label>
+	format-padding = 0
+
+	label-background = ${xrdb:color4}
+	label-foreground = ${xrdb:color0}
+	label-padding    = 3
+
+[module/currentsong]
+  type = custom/script
+	interval = 1.0
+	label = %output%
+	exec = sh ~/.config/polybar/currentsong.sh
+  label-background = ${xrdb:color0}
+  label-foreground = ${xrdb:color7}
+  label-padding = 2
+
+[module/previous]
+	type = custom/text
+	content = " "
+	content-background = ${xrdb:color2}
+	content-foreground = ${xrdb:color0}
+	content-padding = 1
+	click-left = "playerctl --player=spotify previous"
+
+[module/playpause]
+	type = custom/script
+	exec = sh ~/.config/polybar/playpause.sh
+	interval = 1
+	label = %output%
+	label-background = ${xrdb:color2}
+	label-foreground = ${xrdb:color0}
+	label-padding = 1
+	click-left = "playerctl  --player=spotify play-pause"
+
+[module/next]
+	type = custom/text
+	content = " "
+	content-background = ${xrdb:color2}
+	content-foreground = ${xrdb:color0}
+	content-padding = 1
+	click-left = "playerctl --player=spotify next"
+
+
+[module/battery]
+	type          = internal/battery
+	full-at       = 98
+	battery       = BAT0
+	adapter       = AC0
+	poll-interval = 5
+
+  format-charging = <label-charging>
+
+	format-charging-prefix = "    "
+	format-charging-foreground = ${xrdb:color4}
+	format-charging-background = ${xrdb:color0}
+
+	label-charging            = "%percentage%%   "
+	label-charging-background = ${xrdb:color0}
+	label-charging-foreground = ${xrdb:color7}
+	label-charging-padding    = 1
+
+	format-discharging = <label-discharging>
+
+	format-discharging-prefix = "    "
+	format-discharging-prefix-foreground = ${xrdb:color4}
+	format-discharging-prefix-background =${xrdb:color0}
+
+	label-discharging            = "%percentage%%   "
+	label-discharging-background = ${xrdb:color0}
+	label-discharging-foreground = ${xrdb:color7}
+	label-discharging-padding    = 1
+
+	format-full = <label-full>
+
+	format-full-prefix = "   "
+  format-full-prefix-foreground = ${xrdb:color4}
+	format-full-prefix-background = ${xrdb:color0}
+
+	label-full            = "%percentage%%   "
+	label-full-background = ${xrdb:color0}
+	label-full-foreground = ${xrdb:color7}
+	label-full-padding    = 1
+
+[module/volume]
+	type          = internal/volume
+	format-volume = <label-volume>
+
+	mapped = true
+
+	label-volume            = " %percentage%"
+	label-volume-background = ${xrdb:color0}
+	label-volume-foreground = ${xrdb:color3}
+	label-volume-padding    = 1
+
+	format-muted = <label-muted>
+
+	label-muted            = " 0"
+	label-muted-background = ${xrdb:color0}
+	label-muted-foreground = ${xrdb:color3}
+	label-muted-padding    = 3
+
+	format-volume-padding = 0
+	format-muted-padding  = 0
+
+	ramp-headphones-0 = 
+
+[module/padding]
+	type               = custom/text
+	content            = |
+	content-foreground = ${colors.bg}
+	content-background = ${colors.bg}
+
+[module/paddinglite]
+	type               = custom/text
+	content            = ||
+	content-foreground = #000f0f0f
+	content-background = #000f0f0f
+
+[module/workspaces]
+
+	type            = internal/i3
+	format          = <label-state> <label-mode>
+	index-sort      = true
+	wrapping-scroll = false
+	strip-wsnumbers = true
+  pin-workspaces  = true
+
+	label-mode-background = ${xrdb:color0}
+	label-mode-foreground = ${xrdb:color7}
+	label-mode-padding    = 3
+
+	label-focused            = %name%
+	label-focused-background = ${xrdb:color3}
+	label-focused-foreground = ${xrdb:color0}
+	label-focused-padding    = 3
+
+	label-unfocused            = %name%
+	label-unfocused-background = ${xrdb:color0}
+	label-unfocused-foreground = ${xrdb:color7}
+	label-unfocused-padding    = 3
+
+	label-visible            = %name%
+	label-visible-background = ${xrdb:color0}
+	label-visible-foreground = ${xrdb:color7}
+	label-visible-padding    = 3
+
+	label-urgent            = %name%
+	label-urgent-background = ${xrdb:color0}
+	label-urgent-foreground = ${xrdb:color7}
+	label-urgent-padding    = 3
+ 

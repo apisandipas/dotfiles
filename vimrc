@@ -17,14 +17,17 @@ call plug#begin('~/.vim/plugged/')
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'unkiwii/vim-nerdtree-sync'
   Plug 'ctrlpvim/ctrlp.vim'
+  Plug 'tpope/vim-fugitive'
   Plug 'alvan/vim-closetag'
   Plug 'scrooloose/nerdtree'
   Plug 'scrooloose/nerdcommenter'
+  Plug 'chrisbra/Colorizer'
   Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
   Plug 'MaxMEllon/vim-jsx-pretty'
   Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+  Plug 'jparise/vim-graphql'
   Plug 'mattn/emmet-vim'
   Plug 'mhinz/vim-startify'
   Plug 'arcticicestudio/nord-vim'
@@ -44,7 +47,7 @@ filetype plugin indent on   " Enable filtype detection and indent plugin
 set cursorline              " Highlight currentline
 set autoread                " Autoreload this file in vim if it was changed outof vim
 
-highlight Comment ctermfg=green gui=italic cterm=italic
+highlight Comment ctermfg=cyan gui=italic cterm=italic
 highlight htmlArg gui=italic cterm=italic
 
 """ Basic Behavior
@@ -95,6 +98,8 @@ let g:airline#extensions#tabline#enabled=1 " enable airline tabline extention
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 let g:nerdtree_sync_cursorline=1 " Highlight current file in NERDTree
 
+let g:colorizer_auto_filetype='css,html,scss,javascript,typescript'
+
 "coc config
 let g:coc_global_extensions = [
   \ 'coc-snippets',
@@ -134,6 +139,9 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+" leader q to close buffer and nerdtreee together 
+nnoremap <leader>q :bp<cr>:bd #<cr>
+
 " Autoformat on save
 let g:prettier#autoformat = 0
 autocmd BufWritePre *.ts,*.tsx,*.jsx,*.js,*.css,*.scss,*.less,*.graphql Prettier
@@ -148,6 +156,10 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+
+" Map ESC ESC to save
+map <Esc><Esc> :w<CR> 
+map <leader>s :w<CR> 
 
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
@@ -177,3 +189,21 @@ function! s:show_documentation()
   endif
 endfunction
 
+" Use tab for coc completion 
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+let g:coc_snippet_next = '<tab>'
+
+" Sweet Sweet FuGITive
+nmap <leader>gj :diffget //3<CR>
+nmap <leader>gf :diffget //2<CR>
+nmap <leader>gs :G<CR>
