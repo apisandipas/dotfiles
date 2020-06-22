@@ -20,6 +20,9 @@ ln -svi "$PWD/alacritty.yml" ~/.alacritty.yml;
 echo "Linking $PWD/Xresources";
 ln -svi "$PWD/Xresources" ~/.Xresources;
 
+echo "Linking $PWD/polybar/";
+ln -svi "$PWD/polybar" ~/.config/ ;
+
 echo "Finished linking config files!";
 
 echo "Linking scripts directory...";
