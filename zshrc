@@ -31,9 +31,9 @@ source $ZSH/oh-my-zsh.sh
 #Aliases
 alias vim="nvim"
 alias cat="bat"
-alias ls="exa"
-alias ll="exa -alh"
-alias lt="exa -T"
+alias ls="exa --icons"
+alias ll="exa -alh --icons"
+alias lt="exa -T --icons"
 alias dennis="curl -L http://git.io/unix"
 alias open="xdg-open"
 alias gcan="git commit --amend --no-edit"
