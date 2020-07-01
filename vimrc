@@ -16,7 +16,8 @@ call plug#begin('~/.vim/plugged/')
   Plug 'tpope/vim-sensible'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'unkiwii/vim-nerdtree-sync'
-  Plug 'ctrlpvim/ctrlp.vim'
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  Plug 'junegunn/fzf.vim'
   Plug 'tpope/vim-fugitive'
   Plug 'alvan/vim-closetag'
   Plug 'scrooloose/nerdtree'
@@ -100,6 +101,14 @@ let g:nerdtree_sync_cursorline=1 " Highlight current file in NERDTree
 
 let g:colorizer_auto_filetype='css,html,scss,javascript,typescript'
 
+" Fuzzy Finder settings.
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9 } }
+let $FZF_DEFAULT_COMMAND = 'rg --files --ignore-case --hidden -g "!{.git,node_modules,vendor}/*"'
+command! -bang -nargs=? -complete=dir Files
+     \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+let $FZF_DEFAULT_OPTS="--ansi --preview-window 'right:60%' --layout reverse --margin=1,4 --preview 'bat --color=always --style=header,grid --line-range :300 {}'"
+
+
 "coc config
 let g:coc_global_extensions = [
   \ 'coc-snippets',
@@ -156,6 +165,11 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+
+" Fuzzy Finder commands
+nnoremap <Leader>ps :Rg<SPACE>
+nnoremap <C-p> :GFiles<CR>
+nnoremap <Leader>pf :Files<CR>
 
 " Map ESC ESC to save
 map <Esc><Esc> :w<CR> 
