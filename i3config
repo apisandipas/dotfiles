@@ -317,7 +317,7 @@ exec --no-startup-id pamac-tray
 exec --no-startup-id clipit
 exec --no-startup-id blueman-applet
 # exec --no-startup-id start_conky_maia
-exec --no-startup-id xautolock -time 20 -locker 'betterlockscreen -l dim'
+exec --no-startup-id xautolock -time 120 -locker 'betterlockscreen -l dim'
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec_always --no-startup-id fix_xcursor

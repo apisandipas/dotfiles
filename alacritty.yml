@@ -8,6 +8,8 @@
 # References:
 #   https://github.com/jwilm/alacritty
 
+# alt_send_escape: false
+
 colors:
   primary:
     background: '0x2E3440'
