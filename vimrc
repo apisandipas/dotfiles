@@ -33,13 +33,14 @@ call plug#begin('~/.vim/plugged/')
   Plug 'mhinz/vim-startify'
   Plug 'arcticicestudio/nord-vim'
   Plug 'jiangmiao/auto-pairs'
+  Plug 'vim-scripts/loremipsum'
   "Keep this one last as per project readme
   Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
 """ Appearance
 
-colorscheme nord  " Set colorscheme on Linux
+colorscheme nord  " Set colorscheme 
 
 " let base16colorspace=256
 syntax enable		            " Enable syntax hightlighting
@@ -106,7 +107,7 @@ let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9 } }
 let $FZF_DEFAULT_COMMAND = 'rg --files --ignore-case --hidden -g "!{.git,node_modules,vendor}/*"'
 command! -bang -nargs=? -complete=dir Files
      \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
-let $FZF_DEFAULT_OPTS="--ansi --preview-window 'right:60%' --layout reverse --margin=1,4 --preview 'bat --color=always --style=header,grid --line-range :300 {}'"
+let $FZF_DEFAULT_OPTS="--ansi --preview-window 'right:60%' --layout reverse --margin=1,4 --preview 'bat --theme=Nord --color=always --style=header,grid --line-range :300 {}'"
 
 
 "coc config
@@ -151,6 +152,9 @@ nnoremap <C-H> <C-W><C-H>
 " leader q to close buffer and nerdtreee together 
 nnoremap <leader>q :bp<cr>:bd #<cr>
 
+" Use Ctrl+C to copy to global clipboard
+map <C-c> "+y<CR>
+
 " Autoformat on save
 let g:prettier#autoformat = 0
 autocmd BufWritePre *.ts,*.tsx,*.jsx,*.js,*.css,*.scss,*.less,*.graphql Prettier
@@ -159,6 +163,8 @@ autocmd BufWritePre *.ts,*.tsx,*.jsx,*.js,*.css,*.scss,*.less,*.graphql Prettier
 " Use `[g` and `]g` to navigate diagnostics
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nmap <leader>rr <Plug>(coc-rename)
+nmap <leader>prw :CocSearch <C-R>=expand("<cword>")<CR><CR>
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)

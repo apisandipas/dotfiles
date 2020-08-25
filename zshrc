@@ -11,6 +11,7 @@ export PATH="$DENO_INSTALL/bin:$PATH"
 export TERM="xterm-256color"
 EDITOR=$(which nvim)
 BROWSER=$(which google-chrome-stable)
+export BAT_THEME="Nord"
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="agnoster"  #"powerlevel10k/powerlevel10k"
 DEFAULT_USER="bryan"
@@ -23,6 +24,7 @@ export PATH=$PATH:$HOME/.rvm/bin
 export PATH=/usr/local/sbin:$PATH
 export PATH=$HOME/.yarn/bin:$PATH
 export PATH=$PATH:~/Library/Python/3.7/bin
+export PATH=$PATH:$HOME/.cargo/bin
 export PATH=$PATH:$HOME/scripts
 export PATH=$HOME/.symfony/bin:$PATH 
 
@@ -53,6 +55,7 @@ alias :wq=":x"
 # Functions
 mkcd() { mkdir -p "$@" && cd $_; }
 gi() { echo "fetching $@ gitignore"; curl -sLw "\n" https://www.gitignore.io/api/$@ >> .gitignore;}
+killport() { echo "Killing port $1"; sudo kill -9 $(sudo lsof -t -i:$1) }
 
 flip() {
     echo;
