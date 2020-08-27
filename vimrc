@@ -11,6 +11,9 @@
 " zsh
 let &shell='/bin/zsh -i'
 
+" load zshrc
+set shellcmdflag=-ic  
+
 """ Load plugins
 call plug#begin('~/.vim/plugged/')
   Plug 'tpope/vim-sensible'
