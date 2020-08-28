@@ -32,6 +32,12 @@
   offset-y = 0
   bottom = true
 
+tray-position = left 
+ tray-padding = 2
+ tray-offset-x = 20
+ tray-transparent = true
+ tray-background = ${xrdb:color0}
+
   background = #000f0f0f
   foreground = ${xrdb:color7}
 
@@ -57,7 +63,7 @@
   font-2 = FontAwesome:style=Regular
   font-3 = IcoFont:style=Regular
 
-  modules-left  = workspaces
+  modules-left  = paddinglite workspaces
   modules-center =
   modules-right = currentsong previous playpause next paddinglite battery date
 

@@ -15,24 +15,20 @@ export BAT_THEME="Nord"
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="agnoster"  
 DEFAULT_USER="bryan"
+DOTS_DIR="~/dotfiles-loki"
 
 # Path Config,
-export PATH=$PATH:~/.composer/vendor/bin/
-export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.3/bin
-export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
-export PATH=$PATH:$HOME/.rvm/bin
-export PATH=/usr/local/sbin:$PATH
 export PATH=$HOME/.yarn/bin:$PATH
-export PATH=$PATH:~/Library/Python/3.7/bin
-export PATH=$PATH:$HOME/.cargo/bin
 export PATH=$PATH:$HOME/scripts
-export PATH=$HOME/.symfony/bin:$PATH 
 
+# Load oh-my--zsh plugins
 plugins=(git z zsh-autosuggestions zsh-syntax-highlighting)
 
+# External scripts
 source $ZSH/oh-my-zsh.sh
+source ~/.nvm/nvm.sh
 
-#Aliases
+# Aliases
 alias vim="nvim"
 alias cat="bat"
 alias ls="exa --icons"
@@ -40,22 +36,20 @@ alias ll="exa -alh --icons"
 alias lt="exa -T --icons"
 alias dennis="curl -L http://git.io/unix"
 alias open="xdg-open"
-alias gcan="git commit --amend --no-edit"
-alias gfp="git push -f"
-alias spi="sudo pacman -S"
-alias i3c="vim ~/.i3/config"
-alias vimrc="vim ~/.vimrc"
-alias polyc="vim ~/.config/polybar/config"
-alias zshrc="vim ~/.zshrc"
+alias dots="vim $DOTS_DIR"
+alias i3c="vim $DOTS_DIR/i3config"
+alias vimrc="vim $DOTS_DIR/vimrc"
+alias polyc="vim $DOTS_DIR/polybar/config"
+alias zshrc="vim $DOTS_DIR/zshrc"
 alias services-enabled="systemctl list-unit-files | grep enabled"
 alias services-running="systemctl list-units --type=service --state=active" 
-alias :x="echo 'nerd...'; sleep 1; exit;"
-alias :wq=":x"
+alias yolo="echo 'YOLO INCOMING!'; sleep .5; git add -A; git commit --amend --no-edit; git push -f; echo 'YOLO COMPLETE'; sleep .5;";
 
 # Functions
 mkcd() { mkdir -p "$@" && cd $_; }
 gi() { echo "fetching $@ gitignore"; curl -sLw "\n" https://www.gitignore.io/api/$@ >> .gitignore;}
 killport() { echo "Killing port $1"; sudo kill -9 $(sudo lsof -t -i:$1) }
+path() { echo $PATH | tr ":" "\n" | nl; }
 
 flip() {
     echo;
@@ -67,5 +61,4 @@ flip() {
     echo     "  (╯°□°）╯︵ ┻━┻"; sleep .5;
 }
 
-source ~/.nvm/nvm.sh
 

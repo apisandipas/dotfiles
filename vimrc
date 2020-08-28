@@ -49,7 +49,7 @@ filetype plugin indent on   " Enable filtype detection and indent plugin
 set cursorline              " Highlight currentline
 set autoread                " Autoreload this file in vim if it was changed outof vim
 
-highlight Comment ctermfg=cyan gui=italic cterm=italic
+highlight Comment gui=italic cterm=italic
 highlight htmlArg gui=italic cterm=italic
 
 """ Basic Behavior
@@ -58,7 +58,7 @@ set number	 	      " show line numbers
 set relativenumber	" show reltive line numbers
 set wrap 		        " wrap lines
 set encoding=utf-8	" set encoding to UTF-8
-set mouse=a		      " enablel mouse support
+set mouse=a		      " enable mouse support
 set wildmenu		    " visual autocomplete for commend menu
 set lazyredraw		  " redraw screen only when we need to
 set showmatch		    " hightlight matching parens and brackets
@@ -68,7 +68,7 @@ set noswapfile		  " disable swap-files
 set noerrorbells	  " disable the goddamn bell
 set visualbell		  " blink the curror instead of beeping
 set hidden		      " allow buffers to be switched w/o saving first
-" set autochdir       " Set pwd to the current buffers directory
+set autochdir       " Set pwd to the current buffers directory
 
 
 """ Tab Settings
@@ -145,11 +145,14 @@ nnoremap <C-Up> <C-W><C-K>
 nnoremap <C-Right> <C-W><C-L>
 nnoremap <C-Left> <C-W><C-H>
 
-" leader q to close buffer and nerdtreee together 
+" leader q to close buffer and explorer together 
 nnoremap <leader>q :bp<cr>:bd #<cr>
 
 " Use Ctrl+C to copy to global clipboard
 map <C-c> "+y<CR>
+
+" Use Ctrk+A to Yank enter buffer
+map <C-a> :% y+<CR>
 
 " Autoformat on save
 let g:prettier#autoformat = 0
@@ -164,7 +167,7 @@ nmap <leader>prw :CocSearch <C-R>=expand("<cword>")<CR><CR>
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gt<Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
@@ -227,7 +230,7 @@ nmap <leader>gs :G<CR>
 nmap <leader>ga :G add -A<CR>
 nmap <leader>gc :G commit<CR>
 nmap <leader>gp :G push<CR>
-nmap <leader>mm :G add -A<CR> :G commit --amend --no-edit<CR> :G push --force<CR> :echo "YOLO COMPLETE!" <CR> <Esc>
+nmap <leader>gy :!yolo<CR><CR>
 
 " File Explorer settings
 let g:netrw_banner = 0

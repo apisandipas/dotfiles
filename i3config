@@ -36,7 +36,9 @@ bindsym $mod+Shift+q kill
 
 # start program launcher
 bindsym $mod+d exec rofi -show run -theme nord
+bindsym $mod+Shift+f exec rofi -show window -theme nord
 bindsym $mod+Shift+Return exec rofimoji --skin-tone="medium-light" --rofi-args="-theme nord"
+bindsym $mod+Shift+Ctrl+Return exec rofi-pass 
 
 # launch categorized menu
 bindsym $mod+z exec --no-startup-id morc_menu
@@ -54,8 +56,8 @@ bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 ################################################################################################
 
 # Screen brightness controls
-# bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
-# bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
+bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
+bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
 
 
 # Start Applications
@@ -184,14 +186,6 @@ bindsym $mod+Shift+6 move container to workspace $ws6; workspace $ws6
 bindsym $mod+Shift+7 move container to workspace $ws7; workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 
-#workspace $ws1 output eDP-1
-#workspace $ws2 output eDP-1
-#workspace $ws3 output eDP-1
-#workspace $ws4 output DP-1
-#workspace $ws5 output DP-1
-#workspace $ws6 output DP-2
-#workspace $ws7 output DP-2
-# workspace $ws8 output DP-2
 
 # Open applications on specific workspaces
 assign [class="Google Chrome"] $ws4
@@ -301,7 +295,7 @@ bindcode $mod + 117 exec --no-startup-id pactl set-sink-volume 0 -10% # decrease
 bindcode $mod + 127 exec --no-startup-id pactl set-sink-mute 0 toggle # toggle mute
 
 # Lock screen
-bindsym $mod+9 exec --no-startup-id betterlockscreen
+bindsym $mod+9 exec --no-startup-id betterlockscreen -l dim 
 # xrandr config
 exec --no-startup-id xrandr --output eDP-1 --mode 1920x1080 --left-of DP-2 --output DP-1 --left-of eDP-1  
 
@@ -322,6 +316,7 @@ exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec_always --no-startup-id fix_xcursor
 exec_always ~/.fehbg &
+
 # Color palette used for the terminal ( ~/.Xresources file )
 # Colors are gathered based on the documentation:
 # https://i3wm.org/docs/userguide.html#xresources
@@ -352,35 +347,6 @@ set_from_resource $term_color12    color12
 set_from_resource $term_color13    color13
 set_from_resource $term_color14    color14
 set_from_resource $term_color15    color15
-
-# Start i3bar to display a workspace bar (plus the system information i3status if available)
-#bar {
-#	i3bar_command i3bar
-#	status_command i3status
-#	position bottom
-#
-## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
-#	tray_output primary
-#	tray_output eDP1
-
-#	bindsym button4 nop
-#	bindsym button5 nop
-#  font xft:URWGothic-Book 11
-#	strip_workspace_numbers yes
-#
-#    colors {
-#        background #2b303b
-#        statusline #F9FAF9
-#        separator  #65737e
-#
-#                      border  backgr. text
-#        focused_workspace  #65737e #8fa1b3 #292F34
-#        active_workspace   #8fa1b3 #353836 #FDF6E3
-#        inactive_workspace #595B5B #222D31 #EEE8D5
-#        binding_mode       #8fa1b3 #2C2C2C #F9FAF9
-#        urgent_workspace   #bf616a #FDF6E3 #bf616a
-#    }
-#}
 
 # hide/unhide i3status bar
 bindsym $mod+m bar mode toggle
