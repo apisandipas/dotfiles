@@ -5,15 +5,15 @@
 	default = simple
 [core]
 	excludesfile = /Users/bryan/.gitignore
-	editor = code
+	editor = nvim
 [merge]
-    tool = vscode
-[mergetool "vscode"]
-    cmd = code --wait $MERGED
+    tool = nvim
+[mergetool "nvim"]
+    cmd = nvim $MERGED
 [diff]
-    tool = vscode
-[difftool "vscode"]
-    cmd = code --wait --diff $LOCAL $REMOTE
+    tool = nvim
+[difftool "nvim"]
+    cmd = nvim -d $LOCAL $REMOTE
 [http]
 	sslVerify = false
 [alias]

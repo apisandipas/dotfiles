@@ -18,12 +18,10 @@ set shellcmdflag=-ic
 call plug#begin('~/.vim/plugged/')
   Plug 'tpope/vim-sensible'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  Plug 'unkiwii/vim-nerdtree-sync'
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
   Plug 'tpope/vim-fugitive'
   Plug 'alvan/vim-closetag'
-  Plug 'scrooloose/nerdtree'
   Plug 'scrooloose/nerdcommenter'
   Plug 'chrisbra/Colorizer'
   Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
@@ -33,7 +31,6 @@ call plug#begin('~/.vim/plugged/')
   Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
   Plug 'jparise/vim-graphql'
   Plug 'mattn/emmet-vim'
-  Plug 'mhinz/vim-startify'
   Plug 'arcticicestudio/nord-vim'
   Plug 'jiangmiao/auto-pairs'
   Plug 'vim-scripts/loremipsum'
@@ -54,6 +51,20 @@ set autoread                " Autoreload this file in vim if it was changed outo
 
 highlight Comment ctermfg=cyan gui=italic cterm=italic
 highlight htmlArg gui=italic cterm=italic
+
+""" File Explorer settings
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+let g:netrw_winsize = 25
+
+" Open explorer on start up
+augroup ProjectDrawer
+  autocmd!
+  autocmd VimEnter * :Vexplore
+augroup END
+
 
 """ Basic Behavior
 
@@ -93,7 +104,6 @@ nnoremap <CR> :nohlsearch<CR><CR>
 
 """ Plugin Specific settings
 let g:closetag_filenames = '*.html,*.js,*.jsx,*.ts,*.tsx'
-let NERDTreeShowHidden=1  		             " Show hidden files in NERDTree
 let g:airline_powerline_fonts=1 	         " Enable powerline fonts
 let g:prettier#autoformat_require_pragma = 0 " Enable autoformatter
 
@@ -101,7 +111,6 @@ let g:airline_theme='nord'  		         " enable airline theme
 
 let g:airline#extensions#tabline#enabled=1 " enable airline tabline extention
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
-let g:nerdtree_sync_cursorline=1 " Highlight current file in NERDTree
 
 let g:colorizer_auto_filetype='css,html,scss,javascript,typescript'
 
@@ -121,6 +130,7 @@ let g:coc_global_extensions = [
   \ 'coc-eslint',  
   \ 'coc-json', 
   \ ]
+
 """ Keybindings
 
 " Map F5 to list buffers. Just enter buffer # and hit enter
@@ -139,18 +149,15 @@ nmap <F8> :bn<CR>
 vmap <F8> <Esc>:bn<CR>i
 imap <F8> <Esc>:bn<CR>i
 
-" Ctrl+N to toggle file view
-map <C-n> :NERDTreeToggle<CR>
-
 " move vertically by visual line (dont skip wrapped lines)
 nmap j gj
 nmap k gk
 
 " Easier navigation between splits
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
+nnoremap <C-Down> <C-W><C-J>
+nnoremap <C-Up> <C-W><C-K>
+nnoremap <C-Right> <C-W><C-L>
+nnoremap <C-Left> <C-W><C-H>
 
 " leader q to close buffer and nerdtreee together 
 nnoremap <leader>q :bp<cr>:bd #<cr>
@@ -180,8 +187,8 @@ nnoremap <Leader>ps :Rg<SPACE>
 nnoremap <C-p> :GFiles<CR>
 nnoremap <Leader>pf :Files<CR>
 
-" Map ESC ESC to save
-map <Esc><Esc> :w<CR> 
+" Map ESC to save on Normal Mode
+map <Esc> :w<CR> 
 map <leader>s :w<CR> 
 
 " Use tab for trigger completion with characters ahead and navigate.
@@ -230,3 +237,25 @@ let g:coc_snippet_next = '<tab>'
 nmap <leader>gj :diffget //3<CR>
 nmap <leader>gf :diffget //2<CR>
 nmap <leader>gs :G<CR>
+
+" Toggle File Explorer with Ctrl+n
+let g:NetrwIsOpen=1
+
+function! ToggleNetrw()
+    if g:NetrwIsOpen
+        let i = bufnr("$")
+        while (i >= 1)
+            if (getbufvar(i, "&filetype") == "netrw")
+                silent exe "bwipeout " . i 
+            endif
+            let i-=1
+        endwhile
+        let g:NetrwIsOpen=0
+    else
+        let g:NetrwIsOpen=1
+        silent Lexplore
+    endif
+endfunction
+
+" Add your own mapping. For example:
+noremap <silent> <C-n> :call ToggleNetrw()<CR>

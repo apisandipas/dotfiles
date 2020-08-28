@@ -13,7 +13,7 @@ EDITOR=$(which nvim)
 BROWSER=$(which google-chrome-stable)
 export BAT_THEME="Nord"
 ZSH=$HOME/.oh-my-zsh
-ZSH_THEME="agnoster"  #"powerlevel10k/powerlevel10k"
+ZSH_THEME="agnoster"  
 DEFAULT_USER="bryan"
 
 # Path Config,
@@ -67,17 +67,5 @@ flip() {
     echo     "  (╯°□°）╯︵ ┻━┻"; sleep .5;
 }
 
-
-
 source ~/.nvm/nvm.sh
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-export LESS_TERMCAP_mb=$'\e[1;32m'
-export LESS_TERMCAP_md=$'\e[1;32m'
-export LESS_TERMCAP_me=$'\e[0m'
-export LESS_TERMCAP_se=$'\e[0m'
-export LESS_TERMCAP_so=$'\e[01;33m'
-export LESS_TERMCAP_ue=$'\e[0m'
-export LESS_TERMCAP_us=$'\e[1;4;31m'
