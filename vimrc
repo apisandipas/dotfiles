@@ -17,6 +17,7 @@ set shellcmdflag=-ic
 """ Load plugins
 call plug#begin('~/.vim/plugged/')
   Plug 'tpope/vim-sensible'
+  Plug 'tpope/vim-vinegar'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
@@ -42,7 +43,6 @@ call plug#end()
 
 colorscheme nord  " Set colorscheme 
 
-" let base16colorspace=256
 syntax enable		            " Enable syntax hightlighting
 filetype plugin indent on   " Enable filtype detection and indent plugin
 
@@ -51,20 +51,6 @@ set autoread                " Autoreload this file in vim if it was changed outo
 
 highlight Comment ctermfg=cyan gui=italic cterm=italic
 highlight htmlArg gui=italic cterm=italic
-
-""" File Explorer settings
-let g:netrw_banner = 0
-let g:netrw_liststyle = 3
-let g:netrw_browse_split = 4
-let g:netrw_altv = 1
-let g:netrw_winsize = 25
-
-" Open explorer on start up
-augroup ProjectDrawer
-  autocmd!
-  autocmd VimEnter * :Vexplore
-augroup END
-
 
 """ Basic Behavior
 
@@ -214,6 +200,7 @@ nnoremap <silent> K :call <SID>show_documentation()<CR>
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
+
   else
     call CocAction('doHover')
   endif
@@ -233,24 +220,37 @@ endfunction
 
 let g:coc_snippet_next = '<tab>'
 
-" Sweet Sweet FuGITive
+" Sweet Sweet GIT!
 nmap <leader>gj :diffget //3<CR>
 nmap <leader>gf :diffget //2<CR>
 nmap <leader>gs :G<CR>
 nmap <leader>ga :G add -A<CR>
 nmap <leader>gc :G commit<CR>
 nmap <leader>gp :G push<CR>
+nmap <leader>mm :G add -A<CR> :G commit --amend --no-edit<CR> :G push --force<CR> :echo "YOLO COMPLETE!" <CR> <Esc>
+
+" File Explorer settings
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+let g:netrw_winsize = 25
+
+" Open explorer on start up
+augroup ProjectDrawer
+  autocmd!
+  autocmd VimEnter * :Vexplore
+augroup END
 
 " Toggle File Explorer with Ctrl+n
-let g:NetrwIsOpen=1
-
+let g:NetrwIsOpen=1 
 function! ToggleNetrw()
     if g:NetrwIsOpen
         let i = bufnr("$")
         while (i >= 1)
             if (getbufvar(i, "&filetype") == "netrw")
                 silent exe "bwipeout " . i 
-            endif
+             endif
             let i-=1
         endwhile
         let g:NetrwIsOpen=0
@@ -260,5 +260,4 @@ function! ToggleNetrw()
     endif
 endfunction
 
-" Add your own mapping. For example:
 noremap <silent> <C-n> :call ToggleNetrw()<CR>
