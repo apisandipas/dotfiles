@@ -237,6 +237,8 @@ let g:coc_snippet_next = '<tab>'
 nmap <leader>gj :diffget //3<CR>
 nmap <leader>gf :diffget //2<CR>
 nmap <leader>gs :G<CR>
+nmap <leader>ga :G add -A<CR>
+nmap <leader>gp :G push<CR>
 
 " Toggle File Explorer with Ctrl+n
 let g:NetrwIsOpen=1
