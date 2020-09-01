@@ -49,7 +49,7 @@ filetype plugin indent on   " Enable filtype detection and indent plugin
 set cursorline              " Highlight currentline
 set autoread                " Autoreload this file in vim if it was changed outof vim
 
-highlight Comment gui=italic cterm=italic
+highlight Comment ctermfg=Yellow gui=italic cterm=italic
 highlight htmlArg gui=italic cterm=italic
 
 """ Basic Behavior
