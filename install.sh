@@ -27,10 +27,7 @@ echo "Linking $PWD/picom.conf";
 ln -svi "$PWD/picom.conf" ~/.config/picom/picom.conf;
 
 echo "Linking $PWD/rofi/nord.rasi"
-ln -svi "$PWD/rofi/nord.rasi" ~/.config/rofi/nord.rasi
-
-echo "Linking $PWD/fehbg"
-ln -svi "$PWD/fehbg" ~/.fehbg 
+ln -svi "$PWD/rofi/nord.rasi" ~/.config/rofi/nord.rasi;
 
 echo "Finished linking config files!";
 

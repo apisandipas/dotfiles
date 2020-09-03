@@ -18,8 +18,7 @@ DEFAULT_USER="bryan"
 DOTS_DIR="~/.dotfiles"
 
 # Path Config,
-export PATH=$HOME/.yarn/bin:$PATH
-export PATH=$PATH:$HOME/scripts
+export PATH=$PATH:$HOME/.yarn/bin:$HOME/scripts
 
 # Load oh-my--zsh plugins
 plugins=(git z zsh-autosuggestions zsh-syntax-highlighting)

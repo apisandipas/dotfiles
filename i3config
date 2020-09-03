@@ -59,7 +59,6 @@ bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
 bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
 
-
 # Start Applications
 bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
 bindsym $mod+F2 exec google-chrome-stable
@@ -188,9 +187,9 @@ bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 
 
 # Open applications on specific workspaces
-assign [class="Google Chrome"] $ws4
+assign [class="Google Chrome"] $ws6
 assign [class="Code"] $ws1
-assign [class="Spotify"] $ws3
+assign [class="Spotify"] $ws8
 # assign [class="Pcmanfm"] $ws3
 # assign [class="Skype"] $ws5
 
@@ -315,7 +314,7 @@ exec --no-startup-id xautolock -time 120 -locker 'betterlockscreen -l dim'
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec_always --no-startup-id fix_xcursor
-exec_always ~/.fehbg &
+exec_always ~/.dotfiles/fehbg &
 
 # Color palette used for the terminal ( ~/.Xresources file )
 # Colors are gathered based on the documentation:
