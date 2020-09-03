@@ -17,6 +17,7 @@ set shellcmdflag=-ic
 """ Load plugins
 call plug#begin('~/.vim/plugged/')
   Plug 'tpope/vim-sensible'
+  Plug 'mhinz/vim-startify'
   Plug 'tpope/vim-vinegar'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -114,7 +115,9 @@ let g:coc_global_extensions = [
   \ 'coc-pairs',
   \ 'coc-tsserver',
   \ 'coc-eslint',  
-  \ 'coc-json', 
+  \ 'coc-json',
+  \ 'coc-explorer',
+  \ 'coc-marketplace'
   \ ]
 
 """ Keybindings
@@ -232,35 +235,12 @@ nmap <leader>gc :G commit<CR>
 nmap <leader>gp :G push<CR>
 nmap <leader>gy :!yolo<CR><CR>
 
-" File Explorer settings
-let g:netrw_banner = 0
-let g:netrw_liststyle = 3
-let g:netrw_browse_split = 4
-let g:netrw_altv = 1
-let g:netrw_winsize = 25
-
 " Open explorer on start up
 augroup ProjectDrawer
   autocmd!
-  autocmd VimEnter * :Vexplore
+  autocmd VimEnter * :exec ":CocCommand explorer ".expand("%:p:h")
 augroup END
 
-" Toggle File Explorer with Ctrl+n
-let g:NetrwIsOpen=1 
-function! ToggleNetrw()
-    if g:NetrwIsOpen
-        let i = bufnr("$")
-        while (i >= 1)
-            if (getbufvar(i, "&filetype") == "netrw")
-                silent exe "bwipeout " . i 
-             endif
-            let i-=1
-        endwhile
-        let g:NetrwIsOpen=0
-    else
-        let g:NetrwIsOpen=1
-        silent Lexplore
-    endif
-endfunction
-
-noremap <silent> <C-n> :call ToggleNetrw()<CR>
+" Explorer
+nmap <C-n> :CocCommand explorer<CR>
+autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
