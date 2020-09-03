@@ -20,12 +20,15 @@ DOTS_DIR="~/.dotfiles"
 # Path Config,
 export PATH=$PATH:$HOME/.yarn/bin:$HOME/scripts
 
-# Load oh-my--zsh plugins
+# Load oh-my-zsh plugins
 plugins=(git z zsh-autosuggestions zsh-syntax-highlighting)
 
 # External scripts
 source $ZSH/oh-my-zsh.sh
 source ~/.nvm/nvm.sh
+
+# Disabled CapsLock
+setxkbmap -option ctrl:nocaps
 
 # Aliases
 alias vim="nvim"
