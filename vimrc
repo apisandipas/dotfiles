@@ -18,6 +18,7 @@ set shellcmdflag=-ic
 call plug#begin('~/.vim/plugged/')
   Plug 'tpope/vim-sensible'
   Plug 'mhinz/vim-startify'
+  Plug 'airblade/vim-rooter'
   Plug 'tpope/vim-vinegar'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -90,6 +91,7 @@ set hlsearch        " Hightlight matches
 nnoremap <CR> :nohlsearch<CR><CR>
 
 """ Plugin Specific settings
+let g:rooter_patterns = ['.git', 'node_modules']
 let g:closetag_filenames = '*.html,*.js,*.jsx,*.ts,*.tsx'
 let g:airline_powerline_fonts=1 	         " Enable powerline fonts
 let g:prettier#autoformat_require_pragma = 0 " Enable autoformatter
