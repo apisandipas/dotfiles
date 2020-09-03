@@ -15,7 +15,7 @@ export BAT_THEME="Nord"
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="agnoster"  
 DEFAULT_USER="bryan"
-DOTS_DIR="~/dotfiles-loki"
+DOTS_DIR="~/.dotfiles"
 
 # Path Config,
 export PATH=$HOME/.yarn/bin:$PATH
