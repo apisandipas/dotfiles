@@ -35,9 +35,9 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+q kill
 
 # start program launcher
-bindsym $mod+d exec rofi -show run -theme nord
-bindsym $mod+Shift+f exec rofi -show window -theme nord
-bindsym $mod+Shift+Return exec rofimoji --skin-tone="medium-light" --rofi-args="-theme nord"
+bindsym $mod+d exec rofi -show run -theme nord2
+bindsym $mod+Shift+f exec rofi -show window -theme nord2
+bindsym $mod+Shift+Return exec rofimoji --skin-tone="medium-light" --rofi-args="-theme nord2"
 bindsym $mod+Shift+Ctrl+Return exec rofi-pass 
 
 # launch categorized menu
