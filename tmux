@@ -79,8 +79,8 @@ setw -g mode-keys vi
 # }}}2
 
 # The panes {{{2
-  set -g pane-border-style fg=colour237,bg=colour237
-  set -g pane-active-border-style fg=colour235,bg=colour235
+  set -g pane-border-style fg=blue
+  set -g pane-active-border-style "bg=default fg=blue"
 # }}}2
 
 # The statusbar {{{2
@@ -89,7 +89,7 @@ setw -g mode-keys vi
   set -g status-right '#[fg=colour188,bold] %H:%M '
 
   setw -g window-status-style fg=colour223,bg=colour237,bold
-	setw -g window-status-current-format '#[bg=green,fg=black] #I:#W#F '
+  setw -g window-status-current-format '#[bg=green,fg=black] #I:#W#F '
 # }}}2
 
 # The messages {{{2

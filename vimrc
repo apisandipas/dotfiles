@@ -36,9 +36,6 @@ call plug#begin('~/.vim/plugged/')
   Plug 'alvan/vim-closetag'
   Plug 'scrooloose/nerdcommenter'
   Plug 'chrisbra/Colorizer'
-  "Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
-  "Plug 'vim-airline/vim-airline'
-  "Plug 'vim-airline/vim-airline-themes'
   Plug 'MaxMEllon/vim-jsx-pretty'
   Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
   Plug 'jparise/vim-graphql'
@@ -55,7 +52,7 @@ call plug#end()
 """ ---------------------------------------------------------------- Appearance
 
 "colorscheme nord            " Set colorscheme 
-syntax enable		            " Enable syntax hightlighting
+syntax enable		            " Enable syntax highlighting
 filetype plugin indent on   " Enable filtype detection and indent plugin
 
 set colorcolumn=100         " Respect the limits!
@@ -66,40 +63,42 @@ set splitright splitbelow   " open new split panes to right and below
 
 " Tweak theme colors
 
-
-hi Function ctermfg=4
-hi Statement ctermfg=3
-hi Type ctermfg=6
-hi Comment ctermfg=4
-hi Boolean ctermfg=2
-hi PreProc ctermfg=4
-hi Visual ctermbg=0
-hi Special ctermfg=5
-hi Underlined ctermfg=1 cterm=underline
-hi StatusLine cterm=NONE,reverse
-hi Identifier cterm=NONE
-
-" search highlights
-hi Search ctermbg=0 ctermfg=7 cterm=NONE
-
-" popup menu
-hi Pmenu ctermbg=0 ctermfg=7
-hi PmenuSel ctermbg=14 ctermfg=0
-
-" line numbers
-hi LineNr ctermfg=4
-hi CursorLine cterm=NONE ctermbg=0
-hi CursorLineNr ctermbg=NONE ctermfg=5 cterm=NONE
-
+highlight Function ctermfg=4
+highlight Statement ctermfg=3
+highlight Type ctermfg=6 cterm=italic
+highlight Boolean ctermfg=2
+highlight PreProc ctermfg=4
+highlight Visual ctermbg=0
+highlight Special ctermfg=5
+highlight Underlined ctermfg=1 cterm=underline
+highlight StatusLine cterm=NONE,reverse
+highlight Identifier cterm=NONE
 highlight Comment ctermfg=Yellow ctermbg=None gui=italic cterm=italic
 highlight htmlArg gui=italic cterm=italic
 highlight htmlArg cterm=italic
-highlight Type cterm=italic ctermfg=Green
-highlight OverLength ctermbg=magenta ctermfg=black
+
+" Tab line
+highlight TabLine ctermbg=6 ctermfg=NONE
+highlight TabLineSel ctermbg=4 ctermfg=black
+highlight TabLineFill ctermfg=black ctermbg=NONE
+
+" Search highlight
+highlight Search ctermbg=0 ctermfg=7 cterm=NONE
+
+" popup menu
+highlight Pmenu ctermbg=0 ctermfg=7
+highlight PmenuSel ctermbg=14 ctermfg=0
+
+" line numbers
+highlight LineNr ctermfg=4
+highlight CursorLine cterm=NONE ctermbg=0
+highlight CursorLineNr ctermbg=NONE ctermfg=5 cterm=NONE
+
+" styled overlength line
+highlight OverLength ctermbg=red ctermfg=black
 match OverLength /\%101v.\+/  " Start OverLength highlight at line 101
 
-
-"" ---------------------------------------------------------------- Basic Behavior
+"" ---------------------------------------------------O------------- Basic Behavior
 
 set number	 	      " show line numbers
 set relativenumber	" show reltive line numbers
@@ -108,7 +107,7 @@ set encoding=utf-8	" set encoding to UTF-8
 set mouse=a		      " enable mouse support
 set wildmenu		    " visual autocomplete for commend menu
 set lazyredraw		  " redraw screen only when we need to
-set showmatch		    " hightlight matching parens and brackets
+set showmatch		    " highlight matching parens and brackets
 set noswapfile		  " disable swap-fils
 set noerrorbells	  " disable the goddamn bell
 set visualbell		  " blink the curror instead of beeping
@@ -143,18 +142,36 @@ set smartindent     " end better autoindent
 set incsearch       " Search as characters are entered
 set hlsearch        " Hightlight matches
 
+"" ---------------------------------------------------------------- Statusline
+
+hi User1 ctermfg=none ctermbg=black
+hi User2 ctermfg=black ctermbg=red
+hi User3 ctermfg=black ctermbg=green
+hi User4 ctermfg=black ctermbg=yellow
+hi User5 ctermfg=black ctermbg=blue
+hi User6 ctermfg=black ctermbg=magenta
+hi User7 ctermfg=black ctermbg=cyan
+hi User8 ctermfg=black ctermbg=white
+hi User9 ctermfg=none ctermbg=none
+
+
+set statusline=
+set statusline+=%5\*%{FugitiveStatusline()}
+set statusline+=%4*\ %f
+set statusline+=\ %1*\ %1*%{mode()}
+set statusline+=%1*\ %m
+set statusline+=%9*%=
+set statusline+=\ %1*\ %v:%l\/%L
+set statusline+=\ %5*\ %Y
+set statusline+=\ "
+
 
 """ ---------------------------------------------------------------- Plugin Specific settings
 
 let g:user_emmet_leader_key='<C-z>'
-let g:rooter_patterns = ['.git', 'node_modules']
+
 let g:closetag_filenames = '*.html,*.js,*.jsx,*.ts,*.tsx'
-"let g:airline_powerline_fonts=1 	         
-"let g:airline_theme='nord'  		         
-"let g:airline#extensions#tabline#enabled=1
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
-"let g:prettier#autoformat_require_pragma = 0
-"let g:prettier#autoformat = 0
 let g:colorizer_auto_filetype='css,html,scss,javascript,typescript'
 let g:coc_snippet_next = '<tab>'
 let g:coc_global_extensions = [
@@ -305,7 +322,7 @@ tnoremap <Esc> <C-\><C-n>
 " start terminal in insert mode
 augroup AutoFocusTerminal
   autocmd!
-  autocmd BufEnter * if (&buftype == 'terminal') |:startinsert | endif
+  autocmd BufEnter * if (&buftype == 'terminal') | :startinsert | endif
 augroup END
 
 " open terminal on <leader>t
@@ -358,11 +375,11 @@ cnoreabbrev So so
 " Open explorer on start up
 augroup ProjectDrawer
   autocmd!
+  autocmd BufEnter <buffer> if (&filetype == 'coc-explorer') | :setlocal laststatus=0 | endif
   autocmd VimEnter * :exec ":CocCommand explorer --no-focus"
   autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
 augroup END
 
-nmap <C-n> :CocCommand explorer<CR>
 nmap <a-c-n> :CocCommand explorer --preset floating<CR>
 
 """ ---------------------------------------------------------------- COC-specific config:
@@ -415,25 +432,10 @@ augroup ReloadVIMRC
   autocmd BufWritePost $MYVIMRC silent! source $MYVIMRC | redraw
 augroup END
 
-"function! s:gitModified()
-    "let files = systemlist('git ls-files -m 2>/dev/null')
-    "return map(files, "{'line': v:val, 'path': v:val}")
-"endfunction
-
-"" same as above, but show untracked files, honouring .gitignore
-"function! s:gitUntracked()
-    "let files = systemlist('git ls-files -o --exclude-standard 2>/dev/null')
-    "return map(files, "{'line': v:val, 'path': v:val}")
-"endfunction
 
 let g:startify_lists = [
         \ { 'type': 'files',     'header': ['   MRU']            },
         \ { 'type': 'dir',       'header': ['   MRU '. getcwd()] },
-        "\ { 'type': 'sessions',  'header': ['   Sessions']       },
-        "\ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
-        "\ { 'type': function('s:gitModified'),  'header': ['   git modified']},
-        "\ { 'type': function('s:gitUntracked'), 'header': ['   git untracked']},
-        "\ { 'type': 'commands',  'header': ['   Commands']       },
         \ ]
 
 
