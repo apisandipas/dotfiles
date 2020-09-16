@@ -24,6 +24,7 @@ set shellcmdflag=-ic
 """ ---------------------------------------------------------------- Load plugins
 call plug#begin('~/.vim/plugged/')
   Plug 'voldikss/vim-floaterm'
+  Plug 'christoomey/vim-tmux-navigator'
   Plug 'tpope/vim-sensible'
   Plug 'tpope/vim-vinegar'
   Plug 'tpope/vim-fugitive'
@@ -35,9 +36,9 @@ call plug#begin('~/.vim/plugged/')
   Plug 'alvan/vim-closetag'
   Plug 'scrooloose/nerdcommenter'
   Plug 'chrisbra/Colorizer'
-  Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
-  Plug 'vim-airline/vim-airline'
-  Plug 'vim-airline/vim-airline-themes'
+  "Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+  "Plug 'vim-airline/vim-airline'
+  "Plug 'vim-airline/vim-airline-themes'
   Plug 'MaxMEllon/vim-jsx-pretty'
   Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
   Plug 'jparise/vim-graphql'
@@ -53,18 +54,52 @@ call plug#end()
 
 """ ---------------------------------------------------------------- Appearance
 
-colorscheme nord            " Set colorscheme 
+"colorscheme nord            " Set colorscheme 
 syntax enable		            " Enable syntax hightlighting
 filetype plugin indent on   " Enable filtype detection and indent plugin
 
-"set cursorline              " Highlight currentline
+set colorcolumn=100         " Respect the limits!
+set cursorline              " Highlight currentline
 set autoread                " Autoreload this file in vim if it was changed outof vim
 
-" Tweak theme colors 
-highlight Comment ctermfg=Yellow gui=italic cterm=italic
-highlight htmlArg gui=italic cterm=italic
+set splitright splitbelow   " open new split panes to right and below
 
-""" ---------------------------------------------------------------- Basic Behavior
+" Tweak theme colors
+
+
+hi Function ctermfg=4
+hi Statement ctermfg=3
+hi Type ctermfg=6
+hi Comment ctermfg=4
+hi Boolean ctermfg=2
+hi PreProc ctermfg=4
+hi Visual ctermbg=0
+hi Special ctermfg=5
+hi Underlined ctermfg=1 cterm=underline
+hi StatusLine cterm=NONE,reverse
+hi Identifier cterm=NONE
+
+" search highlights
+hi Search ctermbg=0 ctermfg=7 cterm=NONE
+
+" popup menu
+hi Pmenu ctermbg=0 ctermfg=7
+hi PmenuSel ctermbg=14 ctermfg=0
+
+" line numbers
+hi LineNr ctermfg=4
+hi CursorLine cterm=NONE ctermbg=0
+hi CursorLineNr ctermbg=NONE ctermfg=5 cterm=NONE
+
+highlight Comment ctermfg=Yellow ctermbg=None gui=italic cterm=italic
+highlight htmlArg gui=italic cterm=italic
+highlight htmlArg cterm=italic
+highlight Type cterm=italic ctermfg=Green
+highlight OverLength ctermbg=magenta ctermfg=black
+match OverLength /\%101v.\+/  " Start OverLength highlight at line 101
+
+
+"" ---------------------------------------------------------------- Basic Behavior
 
 set number	 	      " show line numbers
 set relativenumber	" show reltive line numbers
@@ -74,16 +109,25 @@ set mouse=a		      " enable mouse support
 set wildmenu		    " visual autocomplete for commend menu
 set lazyredraw		  " redraw screen only when we need to
 set showmatch		    " hightlight matching parens and brackets
-set laststatus=2	  " always show last command in statusline
-"set ruler		        " show line and col number of the cursor
-set noswapfile		  " disable swap-files
+set noswapfile		  " disable swap-fils
 set noerrorbells	  " disable the goddamn bell
 set visualbell		  " blink the curror instead of beeping
 set hidden		      " allow buffers to be switched w/o saving first
 set autochdir       " Set pwd to the current buffers directory
+set showmode 
+set noruler
+set laststatus=2
+set showtabline=2
 
-" Use global clipboard as yank register
-set clipboard+=unnamedplus 
+" Enable persistent undo so that undo history persists across vim sessions
+set undofile
+set undodir=~/.vim/.undodir
+set formatoptions-=cro
+set clipboard+=unnamedplus " Use global clipboard as yank register
+
+" Dont auto-insert comments on new lines after comments
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
 
 """ ---------------------------------------------------------------- Tab Settings
 
@@ -99,20 +143,18 @@ set smartindent     " end better autoindent
 set incsearch       " Search as characters are entered
 set hlsearch        " Hightlight matches
 
-" Turn off search highlighting with <CR>
-nnoremap <CR> :nohlsearch<CR><CR>
 
 """ ---------------------------------------------------------------- Plugin Specific settings
 
 let g:user_emmet_leader_key='<C-z>'
 let g:rooter_patterns = ['.git', 'node_modules']
 let g:closetag_filenames = '*.html,*.js,*.jsx,*.ts,*.tsx'
-let g:airline_powerline_fonts=1 	         
-let g:airline_theme='nord'  		         
-let g:airline#extensions#tabline#enabled=1
+"let g:airline_powerline_fonts=1 	         
+"let g:airline_theme='nord'  		         
+"let g:airline#extensions#tabline#enabled=1
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
-let g:prettier#autoformat_require_pragma = 0
-let g:prettier#autoformat = 0
+"let g:prettier#autoformat_require_pragma = 0
+"let g:prettier#autoformat = 0
 let g:colorizer_auto_filetype='css,html,scss,javascript,typescript'
 let g:coc_snippet_next = '<tab>'
 let g:coc_global_extensions = [
@@ -122,9 +164,9 @@ let g:coc_global_extensions = [
   \ 'coc-eslint',  
   \ 'coc-json',
   \ 'coc-explorer',
-  \ 'coc-marketplace'
+  \ 'coc-marketplace',
+  \ 'coc-prettier'
   \ ]
-  " TODO - add coc-prettier and drom vim-prettier
 
 let g:coc_explorer_global_presets = {
 \   'floating': {
@@ -142,21 +184,30 @@ let $FZF_DEFAULT_OPTS="--ansi --preview-window 'right:60%' --layout reverse --ma
 
 """ ---------------------------------------------------------------- Keybindings
 
+" Turn off search highlighting with <CR>
+nnoremap <CR> :nohlsearch<CR><CR>
+
 " Map F5 to list buffers. Just enter buffer # and hit enter
 map <F5> :buffers<CR>:buffer<Space>
 
 " Map to Spellcheck
 map <leader>sp :setlocal spell! spelllang=en_us<CR>
 
-" Switch to Previous Buffer
-nmap <F7> :bp<CR>
-vmap <F7> <Esc>:bp<CR>i
-imap <F7> <Esc>:bp<CR>i
+" Map F5 to list buffers. Just enter buffer # and hit enter
+map <F5> :buffers<CR>:buffer<Space>
 
-"Switch to Next Buffer
-nmap <F8> :bn<CR>
-vmap <F8> <Esc>:bn<CR>i
-imap <F8> <Esc>:bn<CR>i
+" Switch to Buffer to the Left
+nmap <silent><S-left> :bp<CR>
+vmap <silent><S-left> <Esc>:bp<CR>i
+imap <silent><S-left> <Esc>:bp<CR>i
+
+"Switch to Buffer to the Right
+nmap <silent><S-right> :bp<CR>
+vmap <silent><S-right> <Esc>:bp<CR>i
+imap <silent><S-right> <Esc>:bp<CR>i
+
+" Toggle previous Buffer
+nnoremap <silent><S-Tab> :b#<CR>
 
 " move vertically by visual line (dont skip wrapped lines)
 nmap j gj
@@ -168,16 +219,23 @@ nnoremap <C-Up> <C-W><C-K>
 nnoremap <C-Right> <C-W><C-L>
 nnoremap <C-Left> <C-W><C-H>
 
+" Same as above but vimmier 
+nnoremap <C-j> <C-W><C-J>
+nnoremap <C-k> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
 " leader q to close buffer and explorer together 
 nnoremap <leader>q :bp<cr>:bd #<cr>
 
 " Use Ctrl+C to copy to global clipboard
-map <C-c> "+y<CR>
+map <c-c> "+y<CR>
 
 " Use Ctrk+A to Yank entire buffer
-map <C-a> :% y+<CR>
+map <c>-a> :% y+<CR>
 
 " Autoformat on save
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
 augroup FormatOnSave
   autocmd!
   autocmd BufWritePre *.ts,*.tsx,*.jsx,*.js,*.css,*.scss,*.less,*.graphql Prettier
@@ -202,7 +260,37 @@ nmap <leader>gp :G push<CR>
 nmap <leader>gy :!yolo<CR><CR>
 nmap <label>g ::
 
+" Vmap for maintain Visual Mode after shifting > and <
+vmap < <gv
+vmap > >gv
+
+" Normal mode indent with only one keypress
+nmap > >>
+nmap < <<
+
+" Move visual block 
+vnoremap K :m '<-2<CR>gv=gv
+vnoremap J :m '>+1<CR>gv=gv
+
+" Don't copy single letter deletes
+nnoremap x "_x
+
+" non-saving delete
+noremap X "_d
+
+" Repeat command for each line in selection
+vnoremap . :normal .<CR>
+
+" Search mappings: These will make it so that going to the next one in a 
+" search will center on the line it's found in.
+nnoremap n :<BS>nzzzv
+nnoremap N :<BS>Nzzzv
+
 """  --------------------------------------------------------------- In-vim terminal 
+
+" Toggle floating terminal 
+tnoremap <leader>tt  <C-\><C-n>:FloatermToggle<CR>
+tnoremap <Esc><Esc>  <C-\><C-n>:FloatermHide<CRe
 
 " allow for eazy split resizing
 nnoremap <silent> <a-Up> :exec "resize +5"<CR>
@@ -210,9 +298,6 @@ nnoremap <silent> <a-Down> :exec "resize -5"<CR>
 nnoremap <silent> <a-Left> :exec "vertical:resize +5"<CR>
 nnoremap <silent> <a-Right> :exec "vertical:resize -5"<CR>
 
-" open new split panes to right and below
-set splitright
-set splitbelow
 
 " turn terminal to normal mode with escape
 tnoremap <Esc> <C-\><C-n>
@@ -255,6 +340,18 @@ nnoremap <c-a-Down> <C-w>j
 nnoremap <c-a-Up> <C-w>k
 nnoremap <c-a-Right> <C-w>l
 
+" Fat-finger-proof commands
+cnoreabbrev W! w!
+cnoreabbrev Q! q!
+cnoreabbrev Qall! qall!
+cnoreabbrev Wq wq
+cnoreabbrev Wa wa
+cnoreabbrev wQ wq
+cnoreabbrev WQ wq
+cnoreabbrev W w
+cnoreabbrev Q q
+cnoreabbrev Qall qall
+cnoreabbrev So so
 
 """ ---------------------------------------------------------------- COC Explorer
 
@@ -318,26 +415,25 @@ augroup ReloadVIMRC
   autocmd BufWritePost $MYVIMRC silent! source $MYVIMRC | redraw
 augroup END
 
+"function! s:gitModified()
+    "let files = systemlist('git ls-files -m 2>/dev/null')
+    "return map(files, "{'line': v:val, 'path': v:val}")
+"endfunction
 
-function! s:gitModified()
-    let files = systemlist('git ls-files -m 2>/dev/null')
-    return map(files, "{'line': v:val, 'path': v:val}")
-endfunction
-
-" same as above, but show untracked files, honouring .gitignore
-function! s:gitUntracked()
-    let files = systemlist('git ls-files -o --exclude-standard 2>/dev/null')
-    return map(files, "{'line': v:val, 'path': v:val}")
-endfunction
+"" same as above, but show untracked files, honouring .gitignore
+"function! s:gitUntracked()
+    "let files = systemlist('git ls-files -o --exclude-standard 2>/dev/null')
+    "return map(files, "{'line': v:val, 'path': v:val}")
+"endfunction
 
 let g:startify_lists = [
         \ { 'type': 'files',     'header': ['   MRU']            },
         \ { 'type': 'dir',       'header': ['   MRU '. getcwd()] },
-        \ { 'type': 'sessions',  'header': ['   Sessions']       },
-        \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
-        \ { 'type': function('s:gitModified'),  'header': ['   git modified']},
-        \ { 'type': function('s:gitUntracked'), 'header': ['   git untracked']},
-        \ { 'type': 'commands',  'header': ['   Commands']       },
+        "\ { 'type': 'sessions',  'header': ['   Sessions']       },
+        "\ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
+        "\ { 'type': function('s:gitModified'),  'header': ['   git modified']},
+        "\ { 'type': function('s:gitUntracked'), 'header': ['   git untracked']},
+        "\ { 'type': 'commands',  'header': ['   Commands']       },
         \ ]
 
 
@@ -346,56 +442,5 @@ let g:startify_lists = [
   "autocmd VimEnter * :exec ":FloatermNew  --title=LazyGit --height=0.9 --width=0.9 --wintype=floating --name=lazygit lazygit"
 "augroup END
 
-
-
 finish
 
-
-"function! EnvelopeToggle()
-  "if (expand("%") == '.env')
-    "redir => currentShVarColor
-      "hi shVar
-    "redir end
-    "echo substitute(currentShVarColor, 'shVar          xxx', '', 'ig')
-    "highlight shVariable ctermfg=yellow ctermbg=yellow
-    "highlight shVar ctermfg=yellow ctermbg=yellow
-  "else
-    "highlight shVariable ctermbg=none ctermfg=red
-    "highlight shVar ctermbg=none ctermfg=green
-  "endif
-"endfunction
-"
-"nnoremap <leader>y :call EnvelopeToggle()<cr>
-
-" Set Plugin defaults
-"if !exists('s:envelope_open')
-  "let s:envelope_open = 1 
-"endif
-
-"function! EnvelopeToggleFn()
-  "if expand("%:t") =~  ".env"
-    "if s:envelope_open
-      "let s:envelope_open = 0
-      "highlight String ctermfg=black  ctermbg=black
-      "highlight shVar ctermfg=black  ctermbg=black
-    "else
-      "let s:envelope_open = 1
-      "highlight String ctermfg=white  ctermbg=none
-      "highlight shVar ctermfg=white  ctermbg=none
-    "endif
-"endif
-"endfunction
-
-"command -nargs=0 EnvelopeToggle call EnvelopeToggleFn()
-"nnoremap <silent> <leader>e :EnvelopeToggle<CR>
-
-"augroup Envelope
-  "autocmd!
-  "autocmd BufEnter,BufLeave * :EnvelopeToggle 
-"augroup END:
-
-""call `:exec SynGroup()` to show the highlight group under the cursor
-"function! SynGroup()
-  "let l:s = synID(line('.'), col('.'), 1)
-  "echo synIDattr(l:s, 'name') . ' -> ' . synIDattr(synIDtrans(l:s), 'name')
-"endfun

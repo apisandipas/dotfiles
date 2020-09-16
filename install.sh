@@ -8,6 +8,9 @@ ln -svi "$PWD/zshrc" ~/.zshrc;
 echo "Linking $PWD/vimrc";
 ln -svi "$PWD/vimrc" ~/.vimrc;
 
+echo "Linking $PWD/tmux"; 
+ln -svi "$PWD/tmux" ~/.tmux.conf
+
 echo "Linking $PWD/gitconfig";
 ln -svi "$PWD/gitconfig" ~/.gitconfig;
 
@@ -25,6 +28,9 @@ ln -svi "$PWD/polybar" ~/.config/ ;
 
 echo "Linking $PWD/picom.conf";
 ln -svi "$PWD/picom.conf" ~/.config/picom/picom.conf;
+
+echo "Linking $PWD/myclirc";
+ln -svi "$PWD/myclirc" ~/.myclirc;
 
 echo "Linking $PWD/rofi/"
 ln -svi "$PWD/rofi" ~/.config/;

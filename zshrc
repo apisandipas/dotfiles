@@ -10,6 +10,7 @@
 export GITSTATUS_LOG_LEVEL=DEBUG
 export DENO_INSTALL="/home/bryan/.deno"
 export TERM="xterm-256color"
+#export TERM="alacritty-256color"
 export EDITOR=$(which nvim)
 export BROWSER=$(which google-chrome-stable)
 export BAT_THEME="Nord"
