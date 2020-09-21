@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+
 echo "Linking config files...";
 
 echo "Linking $PWD/zshrc";

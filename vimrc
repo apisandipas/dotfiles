@@ -15,6 +15,7 @@
                  "++
 
 
+
 " zsh
 let &shell='/bin/zsh -i'
 
@@ -26,10 +27,11 @@ call plug#begin('~/.vim/plugged/')
   Plug 'voldikss/vim-floaterm'
   Plug 'christoomey/vim-tmux-navigator'
   Plug 'tpope/vim-sensible'
-  Plug 'tpope/vim-vinegar'
   Plug 'tpope/vim-fugitive'
   Plug 'mhinz/vim-startify'
   Plug 'airblade/vim-rooter'
+  Plug 'itchyny/lightline.vim'
+  Plug 'mengelbrecht/lightline-bufferline'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
@@ -44,6 +46,7 @@ call plug#begin('~/.vim/plugged/')
   Plug 'jiangmiao/auto-pairs'
   Plug 'vim-scripts/loremipsum'
   Plug 'junegunn/goyo.vim'
+  Plug 'liuchengxu/vim-which-key'
   "Keep this one last as per project readme
   Plug 'ryanoasis/vim-devicons'
 call plug#end()
@@ -51,17 +54,16 @@ call plug#end()
 
 """ ---------------------------------------------------------------- Appearance
 
-"colorscheme nord            " Set colorscheme 
+colorscheme nord            " Set colorscheme 
 syntax enable		            " Enable syntax highlighting
 filetype plugin indent on   " Enable filtype detection and indent plugin
 
-set colorcolumn=100         " Respect the limits!
 set cursorline              " Highlight currentline
 set autoread                " Autoreload this file in vim if it was changed outof vim
-
 set splitright splitbelow   " open new split panes to right and below
 
 " Tweak theme colors
+
 
 highlight Function ctermfg=4
 highlight Statement ctermfg=3
@@ -78,9 +80,9 @@ highlight htmlArg gui=italic cterm=italic
 highlight htmlArg cterm=italic
 
 " Tab line
-highlight TabLine ctermbg=6 ctermfg=NONE
-highlight TabLineSel ctermbg=4 ctermfg=black
-highlight TabLineFill ctermfg=black ctermbg=NONE
+"highlight TabLine ctermbg=6 ctermfg=NONE
+"highlight TabLineSel ctermbg=4 ctermfg=black
+"highlight TabLineFill ctermfg=black ctermbg=NONE
 
 " Search highlight
 highlight Search ctermbg=0 ctermfg=7 cterm=NONE
@@ -94,11 +96,8 @@ highlight LineNr ctermfg=4
 highlight CursorLine cterm=NONE ctermbg=0
 highlight CursorLineNr ctermbg=NONE ctermfg=5 cterm=NONE
 
-" styled overlength line
-highlight OverLength ctermbg=red ctermfg=black
-match OverLength /\%101v.\+/  " Start OverLength highlight at line 101
 
-"" ---------------------------------------------------O------------- Basic Behavior
+" ---------------------------------------------------O------------- Basic Behavior
 
 set number	 	      " show line numbers
 set relativenumber	" show reltive line numbers
@@ -115,18 +114,14 @@ set hidden		      " allow buffers to be switched w/o saving first
 set autochdir       " Set pwd to the current buffers directory
 set showmode 
 set noruler
-set laststatus=2
+set laststatus=0
 set showtabline=2
 
 " Enable persistent undo so that undo history persists across vim sessions
 set undofile
 set undodir=~/.vim/.undodir
-set formatoptions-=cro
+set formatoptions-=cro " Dont auto-insert comments on new lines after comments
 set clipboard+=unnamedplus " Use global clipboard as yank register
-
-" Dont auto-insert comments on new lines after comments
-autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-
 
 """ ---------------------------------------------------------------- Tab Settings
 
@@ -141,30 +136,6 @@ set smartindent     " end better autoindent
 
 set incsearch       " Search as characters are entered
 set hlsearch        " Hightlight matches
-
-"" ---------------------------------------------------------------- Statusline
-
-hi User1 ctermfg=none ctermbg=black
-hi User2 ctermfg=black ctermbg=red
-hi User3 ctermfg=black ctermbg=green
-hi User4 ctermfg=black ctermbg=yellow
-hi User5 ctermfg=black ctermbg=blue
-hi User6 ctermfg=black ctermbg=magenta
-hi User7 ctermfg=black ctermbg=cyan
-hi User8 ctermfg=black ctermbg=white
-hi User9 ctermfg=none ctermbg=none
-
-
-set statusline=
-set statusline+=%5\*%{FugitiveStatusline()}
-set statusline+=%4*\ %f
-set statusline+=\ %1*\ %1*%{mode()}
-set statusline+=%1*\ %m
-set statusline+=%9*%=
-set statusline+=\ %1*\ %v:%l\/%L
-set statusline+=\ %5*\ %Y
-set statusline+=\ "
-
 
 """ ---------------------------------------------------------------- Plugin Specific settings
 
@@ -191,6 +162,26 @@ let g:coc_explorer_global_presets = {
 \     'open-action-strategy': 'sourceWindow'
 \   }
 \ }
+
+let g:lightline = {
+        \ 'colorscheme': 'nord',
+        \ 'active': {
+        \   'left': [ [ 'mode', 'paste' ], [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+        \ },
+        \ 'tabline': {
+        \   'left': [ ['buffers'] ],
+        \   'right': [ ['close'] ]
+        \ },
+        \ 'component_expand': {
+        \   'buffers': 'lightline#bufferline#buffers'
+        \ },
+        \ 'component_type': {
+        \   'buffers': 'tabsel'
+        \ },
+        \ 'component_function': {
+        \   'gitbranch': 'FugitiveHead'
+        \ },
+      \ }
 
 " Fuzzy Finder settings.
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9 } }
@@ -219,9 +210,9 @@ vmap <silent><S-left> <Esc>:bp<CR>i
 imap <silent><S-left> <Esc>:bp<CR>i
 
 "Switch to Buffer to the Right
-nmap <silent><S-right> :bp<CR>
-vmap <silent><S-right> <Esc>:bp<CR>i
-imap <silent><S-right> <Esc>:bp<CR>i
+nmap <silent><S-right> :bn<CR>
+vmap <silent><S-right> <Esc>:bn<CR>i
+imap <silent><S-right> <Esc>:bn<CR>i
 
 " Toggle previous Buffer
 nnoremap <silent><S-Tab> :b#<CR>
@@ -249,7 +240,10 @@ nnoremap <leader>q :bp<cr>:bd #<cr>
 map <c-c> "+y<CR>
 
 " Use Ctrk+A to Yank entire buffer
-map <c>-a> :% y+<CR>
+map <c-a> :% y+<CR>
+
+" Launch Which-key with <leader>
+nnoremap <silent> <leader>      :<c-u>WhichKey '\'<CR>
 
 " Autoformat on save
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
@@ -275,7 +269,6 @@ nmap <leader>ga :G add -A<CR>
 nmap <leader>gc :G commit<CR>
 nmap <leader>gp :G push<CR>
 nmap <leader>gy :!yolo<CR><CR>
-nmap <label>g ::
 
 " Vmap for maintain Visual Mode after shifting > and <
 vmap < <gv
@@ -286,8 +279,8 @@ nmap > >>
 nmap < <<
 
 " Move visual block 
-vnoremap K :m '<-2<CR>gv=gv
-vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-3<CR>gv=gv
+vnoremap J :m '>+0<CR>gv=gv
 
 " Don't copy single letter deletes
 nnoremap x "_x
@@ -310,10 +303,10 @@ tnoremap <leader>tt  <C-\><C-n>:FloatermToggle<CR>
 tnoremap <Esc><Esc>  <C-\><C-n>:FloatermHide<CRe
 
 " allow for eazy split resizing
-nnoremap <silent> <a-Up> :exec "resize +5"<CR>
-nnoremap <silent> <a-Down> :exec "resize -5"<CR>
-nnoremap <silent> <a-Left> :exec "vertical:resize +5"<CR>
-nnoremap <silent> <a-Right> :exec "vertical:resize -5"<CR>
+nnoremap <silent> <a-Up> :exec "resize +4"<CR>
+nnoremap <silent> <a-Down> :exec "resize -6"<CR>
+nnoremap <silent> <a-Left> :exec "vertical:resize +4"<CR>
+nnoremap <silent> <a-Right> :exec "vertical:resize -6"<CR>
 
 
 " turn terminal to normal mode with escape
@@ -326,22 +319,22 @@ augroup AutoFocusTerminal
 augroup END
 
 " open terminal on <leader>t
-command! -nargs=0 ToggleTerminal :call ToggleTerminalFn()
-nnoremap <Leader>t :ToggleTerminal<CR>
+"command! -nargs=-1 ToggleTerminal :call ToggleTerminalFn()
+"nnoremap <Leader>t :ToggleTerminal<CR>
 
 if !exists('s:bp_is_terminal_open')
-  let s:is_terminal_open=0
+  let s:is_terminal_open=-1
 endif
 
 function! ToggleTerminalFn()
-  if s:is_terminal_open == 1
-    let s:is_terminal_open=0
-    setlocal bufhidden=hide number relativenumber
+  if s:is_terminal_open == 0
+    let s:is_terminal_open=-1
+  /  setlocal bufhidden=hide number relativenumber
     close
   else
-    let s:is_terminal_open=1
+    let s:is_terminal_open=0
     split term://zsh
-    resize 10
+    resize 9
     setlocal nonumber norelativenumber
   endif
 endfunction
@@ -375,12 +368,12 @@ cnoreabbrev So so
 " Open explorer on start up
 augroup ProjectDrawer
   autocmd!
-  autocmd BufEnter <buffer> if (&filetype == 'coc-explorer') | :setlocal laststatus=0 | endif
-  autocmd VimEnter * :exec ":CocCommand explorer --no-focus"
+  autocmd VimEnter * :exec ":CocCommand explorer --no-focus --sources=buffer-,file+ --open-action-strategy=sourceWindow"
   autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
 augroup END
 
 nmap <a-c-n> :CocCommand explorer --preset floating<CR>
+nmap <C-n>   :CocCommand explorer<CR>
 
 """ ---------------------------------------------------------------- COC-specific config:
 
@@ -390,7 +383,7 @@ nmap <a-c-n> :CocCommand explorer --preset floating<CR>
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 nmap <leader>rr <Plug>(coc-rename)
-nmap <leader>prw :CocSearch <C-R>=expand("<cword>")<CR><CR>
+map <leader>prw :CocSearch <C-R>=expand("<cword>")<CR><CR>
 
 " GoTo code navigation.
 nmap <sirent> gd <Plug>(coc-definition)
