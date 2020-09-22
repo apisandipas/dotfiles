@@ -64,7 +64,6 @@ set splitright splitbelow   " open new split panes to right and below
 
 " Tweak theme colors
 
-
 highlight Function ctermfg=4
 highlight Statement ctermfg=3
 highlight Type ctermfg=6 cterm=italic
@@ -210,9 +209,9 @@ vmap <silent><S-left> <Esc>:bp<CR>i
 imap <silent><S-left> <Esc>:bp<CR>i
 
 "Switch to Buffer to the Right
-nmap <silent><S-right> :bn<CR>
-vmap <silent><S-right> <Esc>:bn<CR>i
-imap <silent><S-right> <Esc>:bn<CR>i
+nmap <silent><S-right> :bp<CR>
+vmap <silent><S-right> <Esc>:bp<CR>i
+imap <silent><S-right> <Esc>:bp<CR>i
 
 " Toggle previous Buffer
 nnoremap <silent><S-Tab> :b#<CR>
@@ -233,17 +232,17 @@ nnoremap <C-k> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-" leader q to close buffer and explorer together 
-nnoremap <leader>q :bp<cr>:bd #<cr>
+" leader k to 'kill' the buffer and explorer together 
+nnoremap <leader>k :bp<cr>:bd #<cr>
 
 " Use Ctrl+C to copy to global clipboard
 map <c-c> "+y<CR>
 
 " Use Ctrk+A to Yank entire buffer
-map <c-a> :% y+<CR>
+map <c>-a> :% y+<CR>
 
 " Launch Which-key with <leader>
-nnoremap <silent> <leader>      :<c-u>WhichKey '\'<CR>
+"nnoremap <silent> <leader>      :<c-u>WhichKey '\'<CR>
 
 " Autoformat on save
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
@@ -260,6 +259,7 @@ nnoremap <C-p> :GFiles<CR>
 " Quick Save keybindings
 map <Esc> :w<CR> 
 map <leader>s :w<CR> 
+map <leader>Q :q!<CR>
 
 " Sweet Sweet GIT!
 nmap <leader>gj :diffget //3<CR>
@@ -307,7 +307,6 @@ nnoremap <silent> <a-Up> :exec "resize +4"<CR>
 nnoremap <silent> <a-Down> :exec "resize -6"<CR>
 nnoremap <silent> <a-Left> :exec "vertical:resize +4"<CR>
 nnoremap <silent> <a-Right> :exec "vertical:resize -6"<CR>
-
 
 " turn terminal to normal mode with escape
 tnoremap <Esc> <C-\><C-n>
@@ -368,12 +367,12 @@ cnoreabbrev So so
 " Open explorer on start up
 augroup ProjectDrawer
   autocmd!
-  autocmd VimEnter * :exec ":CocCommand explorer --no-focus --sources=buffer-,file+ --open-action-strategy=sourceWindow"
+  autocmd BufEnter <buffer> if (&filetype == 'coc-explorer') | :setlocal laststatus=coc-explorer | endif
+  autocmd VimEnter * :exec ":CocCommand explorer --no-focus"
   autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
 augroup END
 
 nmap <a-c-n> :CocCommand explorer --preset floating<CR>
-nmap <C-n>   :CocCommand explorer<CR>
 
 """ ---------------------------------------------------------------- COC-specific config:
 
