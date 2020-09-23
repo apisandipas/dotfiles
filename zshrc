@@ -20,7 +20,8 @@ export BAT_THEME="Nord"
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="agnoster"  
 DEFAULT_USER="bryan"
-DOTS_DIR="~/.dotfiles"
+DOTS_DIR=$HOME/.dotfiles
+VIM_WIKI_DIR=$HOME/vimwiki
 
 # Path Config
 export PATH=$PATH:$HOME/.yarn/bin:$HOME/scripts:$DENO_INSTALL/bin
@@ -58,6 +59,18 @@ mkcd() { mkdir -p "$@" && cd $_; }
 gi() { echo "fetching $@ gitignore"; curl -sLw "\n" https://www.gitignore.io/api/$@ >> .gitignore;}
 killport() { echo "Killing port $1"; sudo kill -9 $(sudo lsof -t -i:$1) }
 path() { echo $PATH | tr ":" "\n" | nl; }
+
+vimwiki () {
+    if [[ $# == 0 ]]
+    then
+        nvim +'VimwikiIndex'
+    elif [[ $1 == 'git' ]]
+    then
+        git -C $VIM_WIKI_DIR ${@:2}
+    else
+        echo 'Usage: vimwiki [git] [args ...]'
+    fi
+}
 
 yolo() {
  if [ ! -d ./.git ]; then

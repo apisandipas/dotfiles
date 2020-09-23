@@ -25,6 +25,7 @@ set shellcmdflag=-ic
 """ ---------------------------------------------------------------- Load plugins
 call plug#begin('~/.vim/plugged/')
   Plug 'voldikss/vim-floaterm'
+  Plug 'vimwiki/vimwiki'
   Plug 'christoomey/vim-tmux-navigator'
   Plug 'tpope/vim-sensible'
   Plug 'tpope/vim-fugitive'
@@ -139,7 +140,8 @@ set hlsearch        " Hightlight matches
 """ ---------------------------------------------------------------- Plugin Specific settings
 
 let g:user_emmet_leader_key='<C-z>'
-
+let g:vimwiki_list = [{'path': '~/vimwiki/',
+                      \ 'syntax': 'markdown', 'ext': '.md'}]
 let g:closetag_filenames = '*.html,*.js,*.jsx,*.ts,*.tsx'
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 let g:colorizer_auto_filetype='css,html,scss,javascript,typescript'
@@ -367,12 +369,12 @@ cnoreabbrev So so
 " Open explorer on start up
 augroup ProjectDrawer
   autocmd!
-  autocmd BufEnter <buffer> if (&filetype == 'coc-explorer') | :setlocal laststatus=coc-explorer | endif
   autocmd VimEnter * :exec ":CocCommand explorer --no-focus"
   autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
 augroup END
 
-nmap <a-c-n> :CocCommand explorer --preset floating<CR>
+nmap <C-n> :CocCommand explorer --toggle<CR>
+nmap <a-c-n> :CocCommand explorer --toggle --preset floating<CR>
 
 """ ---------------------------------------------------------------- COC-specific config:
 
@@ -430,6 +432,32 @@ let g:startify_lists = [
         \ { 'type': 'dir',       'header': ['   MRU '. getcwd()] },
         \ ]
 
+function! s:goyo_enter()
+  if executable('tmux') && strlen($TMUX)
+    silent !tmux set status off
+    silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
+  endif
+  set noshowmode
+  set noshowcmd
+  set scrolloff=999
+  "Limelight
+  " ...
+endfunction
+
+function! s:goyo_leave()
+  if executable('tmux') && strlen($TMUX)
+    silent !tmux set status on
+    silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
+  endif
+  set showmode
+  set showcmd
+  set scrolloff=5
+  "Limelight!
+  " ...
+endfunction
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave() 
 
 "augroup LazyGit
   "autocmd!
