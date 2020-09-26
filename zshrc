@@ -22,12 +22,13 @@ ZSH_THEME="agnoster"
 DEFAULT_USER="bryan"
 DOTS_DIR=$HOME/.dotfiles
 VIM_WIKI_DIR=$HOME/vimwiki
+ZSH_TMUX_AUTOSTART=true
 
 # Path Config
 export PATH=$PATH:$HOME/.yarn/bin:$HOME/scripts:$DENO_INSTALL/bin
 
 # Load oh-my-zsh plugins
-plugins=(git z zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(git tmux z zsh-autosuggestions zsh-syntax-highlighting)
 
 # External scripts
 source $ZSH/oh-my-zsh.sh
@@ -41,7 +42,7 @@ alias vim="nvim"
 alias cat="bat"
 alias ls="exa --icons"
 alias ll="exa -alh --icons"
-alias lt="exa -T --icons"
+alias lt="exa -T --icons --git-ignore"
 alias dennis="curl -L http://git.io/unix"
 alias open="xdg-open"
 alias dots="cd $DOTS_DIR; vim ; cd -;"  # avoids netrw

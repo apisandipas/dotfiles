@@ -89,7 +89,7 @@ setw -g mode-keys vi
   set -g status-right '#[fg=colour188,bold] %H:%M '
 
   setw -g window-status-style fg=colour223,bg=colour237,bold
-  setw -g window-status-current-format '#[bg=green,fg=black] #I:#W#F '
+  setw -g window-status-current-format '#[bg=blue,fg=black] #I:#W#F '
 # }}}2
 
 # The messages {{{2
