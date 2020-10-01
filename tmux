@@ -6,7 +6,7 @@
 #oo__oo__o_oo__oo__o_ooo___o__o_oo__oo_oo______oo___oo_oo____o_oo_____
 #oo___ooo__oo______o_oo_ooo__o___oo_oo__ooooo___ooooo__oo____o_oo_____
 #_____________________________________________________________________
-# 
+#
 #  Author: Bryan Paronto <bparonto@gmail.com> - github.com/apisandipas
 #
 
@@ -36,7 +36,7 @@ bind - split-window -v
 bind \\ split-window -h
 
 # Nice to haves
-set -g base-index 1           # start windows numbering at 1 
+set -g base-index 1           # start windows numbering at 1
 setw -g pane-base-index 1     # make pane numbering consistent with windows
 setw -g automatic-rename on   # rename window to reflect current program
 set -g renumber-windows on    # renumber windows when a window is closed
@@ -45,7 +45,11 @@ set -g display-panes-time 800 # slightly longer pane indicators display time
 set -g display-time 1000      # slightly longer status messages display time
 set -g status-interval 10     # redraw status line every 10 seconds
 
-# Smart pane switching with awareness of Vim splits 
+# Window navigation
+bind-key -n M-Left previous-window
+bind-key -n M-Right next-window
+
+# Smart pane switching with awareness of Vim splits
 is_vim="ps -o state= -o comm= -t '#{pane_tty}' \
     | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|n?vim?x?)(diff)?$'"
 bind-key -n 'C-h' if-shell "$is_vim" 'send-keys C-h'  'select-pane -L'
@@ -84,12 +88,14 @@ setw -g mode-keys vi
 # }}}2
 
 # The statusbar {{{2
-  set -g status-style fg=colour248,bg=black,dim
-  set -g status-left '#[fg=colour187,bold] #H '
-  set -g status-right '#[fg=colour188,bold] %H:%M '
+  set -g status-style fg=green,bg=black
+  set -g status-left '#[fg=yellow,bold] #H '
+  set -g status-right '#[fg=cyan,bold] %H:%M '
 
-  setw -g window-status-style fg=colour223,bg=colour237,bold
-  setw -g window-status-current-format '#[bg=blue,fg=black] #I:#W#F '
+  setw -g window-status-style fg=black,bg=green
+  setw -g window-status-format "#[bg=green,fg=black] #W #[fg=green,bg=black]\uE0C6 "
+  setw -g window-status-current-format "#[bg=blue,fg=black] #W #[fg=blue,bg=black]\uE0C6 "
+  setw -g window-status-separator " "
 # }}}2
 
 # The messages {{{2
@@ -101,7 +107,6 @@ set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-resurrect'
 set -g @plugin 'tmux-plugins/tmux-urlview'
 set -g @plugin 'tmux-plugins/tmux-logging'
-#set -g @plugin "arcticicestudio/nord-tmux"
 
 # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)2
 run -b '~/.tmux/plugins/tpm/tpm'

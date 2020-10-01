@@ -1,10 +1,12 @@
+[init]
+  defaultBranch = main
 [user]
-	email = bparonto@gmail.com
+	email = bryan.paronto@pm.me
 	name = Bryan Paronto
 [push]
 	default = simple
 [core]
-	excludesfile = /Users/bryan/.gitignore
+	excludesfile = /home/bryan/.gitignore
 	editor = nvim
 [merge]
     tool = nvim

@@ -10,25 +10,22 @@
 export GITSTATUS_LOG_LEVEL=DEBUG
 export DENO_INSTALL="/home/bryan/.deno"
 export TERM="xterm-256color"
-#export TERM="alacritty-256color"
 export EDITOR=$(which nvim)
 export BROWSER=$(which google-chrome-stable)
 export BAT_THEME="Nord"
-
+export DOTS_DIR=$HOME/.dotfiles
 
 # Local Vars
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="agnoster"  
 DEFAULT_USER="bryan"
-DOTS_DIR=$HOME/.dotfiles
 VIM_WIKI_DIR=$HOME/vimwiki
-ZSH_TMUX_AUTOSTART=true
 
 # Path Config
 export PATH=$PATH:$HOME/.yarn/bin:$HOME/scripts:$DENO_INSTALL/bin
 
 # Load oh-my-zsh plugins
-plugins=(git tmux z zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(git tmux yarn z zsh-autosuggestions zsh-syntax-highlighting)
 
 # External scripts
 source $ZSH/oh-my-zsh.sh

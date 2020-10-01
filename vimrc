@@ -14,95 +14,70 @@
         "'V/' ++++++
                  "++
 
-
-
 " zsh
 let &shell='/bin/zsh -i'
 
 " load zshrc
-set shellcmdflag=-ic  
+set shellcmdflag=-ic
 
 """ ---------------------------------------------------------------- Load plugins
 call plug#begin('~/.vim/plugged/')
-  Plug 'voldikss/vim-floaterm'
+  Plug 'apisandipas/pimento.vim', { 'branch': 'main' }
   Plug 'vimwiki/vimwiki'
   Plug 'christoomey/vim-tmux-navigator'
   Plug 'tpope/vim-sensible'
   Plug 'tpope/vim-fugitive'
   Plug 'mhinz/vim-startify'
   Plug 'airblade/vim-rooter'
-  Plug 'itchyny/lightline.vim'
-  Plug 'mengelbrecht/lightline-bufferline'
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
   Plug 'alvan/vim-closetag'
   Plug 'scrooloose/nerdcommenter'
   Plug 'chrisbra/Colorizer'
-  Plug 'MaxMEllon/vim-jsx-pretty'
+  Plug 'sheerun/vim-polyglot'
   Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
-  Plug 'jparise/vim-graphql'
   Plug 'mattn/emmet-vim'
-  Plug 'arcticicestudio/nord-vim'
   Plug 'jiangmiao/auto-pairs'
   Plug 'vim-scripts/loremipsum'
   Plug 'junegunn/goyo.vim'
   Plug 'liuchengxu/vim-which-key'
+  Plug 'vim-pandoc/vim-pandoc'
+  Plug 'vim-pandoc/vim-pandoc-syntax'
   "Keep this one last as per project readme
   Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
-
 """ ---------------------------------------------------------------- Appearance
 
-colorscheme nord            " Set colorscheme 
-syntax enable		            " Enable syntax highlighting
+colorscheme pimento         " Set colorscheme
+syntax enable               " Enable syntax highlighting
 filetype plugin indent on   " Enable filtype detection and indent plugin
 
 set cursorline              " Highlight currentline
-set autoread                " Autoreload this file in vim if it was changed outof vim
+set autoread                " Autoreload this file in vim if it was changed out of vim
 set splitright splitbelow   " open new split panes to right and below
+set list                    " Display unprintable characters
+set listchars=tab:•\ ,trail:•,extends:»,precedes:« " Show trailing whitespace chars
+set fillchars+=vert:\       " remove buffer divider lines
 
 " Tweak theme colors
 
-highlight Function ctermfg=4
-highlight Statement ctermfg=3
-highlight Type ctermfg=6 cterm=italic
-highlight Boolean ctermfg=2
-highlight PreProc ctermfg=4
-highlight Visual ctermbg=0
-highlight Special ctermfg=5
-highlight Underlined ctermfg=1 cterm=underline
-highlight StatusLine cterm=NONE,reverse
-highlight Identifier cterm=NONE
-highlight Comment ctermfg=Yellow ctermbg=None gui=italic cterm=italic
-highlight htmlArg gui=italic cterm=italic
-highlight htmlArg cterm=italic
-
-" Tab line
-"highlight TabLine ctermbg=6 ctermfg=NONE
-"highlight TabLineSel ctermbg=4 ctermfg=black
-"highlight TabLineFill ctermfg=black ctermbg=NONE
-
-" Search highlight
-highlight Search ctermbg=0 ctermfg=7 cterm=NONE
-
-" popup menu
-highlight Pmenu ctermbg=0 ctermfg=7
-highlight PmenuSel ctermbg=14 ctermfg=0
-
-" line numbers
-highlight LineNr ctermfg=4
-highlight CursorLine cterm=NONE ctermbg=0
-highlight CursorLineNr ctermbg=NONE ctermfg=5 cterm=NONE
-
+"highlight Comment cterm=italic
+"highlight htmlArg gui=italic cterm=italic
+"highlight htmlArg cterm=italic
+"highlight StatusLineNC ctermbg=NONE
+"highlight clear VertSplit
+"highlight ColorColumn ctermbg=7
 
 " ---------------------------------------------------O------------- Basic Behavior
 
 set number	 	      " show line numbers
 set relativenumber	" show reltive line numbers
 set wrap 		        " wrap lines
-set encoding=utf-8	" set encoding to UTF-8
+set encoding=utf-8  " set encoding to UTF-8
 set mouse=a		      " enable mouse support
 set wildmenu		    " visual autocomplete for commend menu
 set lazyredraw		  " redraw screen only when we need to
@@ -112,7 +87,7 @@ set noerrorbells	  " disable the goddamn bell
 set visualbell		  " blink the curror instead of beeping
 set hidden		      " allow buffers to be switched w/o saving first
 set autochdir       " Set pwd to the current buffers directory
-set showmode 
+set noshowmode
 set noruler
 set laststatus=0
 set showtabline=2
@@ -125,10 +100,10 @@ set clipboard+=unnamedplus " Use global clipboard as yank register
 
 """ ---------------------------------------------------------------- Tab Settings
 
-set tabstop=2		    " width of a <TAB> character displays as
-set expandtab		    " convert <TAB> key-presses to spaces
-set shiftwidth=2	  " number of spaces to use for each step of auto indent
-set softtabstop=2	  " backspace after pressing <TAB> will remove up this many spaces
+set tabstop=2       " width of a <TAB> character displays as
+set expandtab       " convert <TAB> key-presses to spaces
+set shiftwidth=2    " number of spaces to use for each step of auto indent
+set softtabstop=2   " backspace after pressing <TAB> will remove up this many spaces
 set autoindent      " copy indent from the current line when starting a new line
 set smartindent     " end better autoindent
 
@@ -137,20 +112,45 @@ set smartindent     " end better autoindent
 set incsearch       " Search as characters are entered
 set hlsearch        " Hightlight matches
 
-""" ---------------------------------------------------------------- Plugin Specific settings
+""" ---------------------------------------------------------------- Key Map UI
+let g:which_key_map =  {}
+let g:which_key_map.c = {
+      \'name': '+comment',
+      \' ':'toggle-comment',
+      \'$':'comment-to-EOL'
+      \}
 
+let g:which_key_map.k = 'kill-buffer'
+let g:which_key_map.w = 'save-buffer'
+let g:which_key_map.sp = 'toggle-spellcheck'
+
+let g:which_key_map.g = {
+  \ 'name': '+git',
+  \ 'a': 'git-add-all'
+  \}
+
+call which_key#register('\', 'g:which_key_map')
+nnoremap <silent> <leader> :WhichKey '\'<CR>
+vnoremap <silent> <leader> :WhichKeyVisual '\'<CR>
+
+""" ---------------------------------------------------------------- Plugin Specific settings
+let g:airline_theme='blossom'
 let g:user_emmet_leader_key='<C-z>'
-let g:vimwiki_list = [{'path': '~/vimwiki/',
-                      \ 'syntax': 'markdown', 'ext': '.md'}]
-let g:closetag_filenames = '*.html,*.js,*.jsx,*.ts,*.tsx'
+let g:vimwiki_list = [
+  \ {'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'},
+  \ {'path': '~/Notes/', 'syntax': 'markdown', 'ext': '.md'}]
+let g:closetag_filenames = '*.html,*.js,*.jsx,*.ts,*.tsx,*.mdx'
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 let g:colorizer_auto_filetype='css,html,scss,javascript,typescript'
+let g:startify_custom_header=[]
+let g:airline#extensions#tabline#enabled = 1
+let g:tmuxline_powerline_separators = 0
 let g:coc_snippet_next = '<tab>'
 let g:coc_global_extensions = [
   \ 'coc-snippets',
   \ 'coc-pairs',
   \ 'coc-tsserver',
-  \ 'coc-eslint',  
+  \ 'coc-eslint',
   \ 'coc-json',
   \ 'coc-explorer',
   \ 'coc-marketplace',
@@ -164,25 +164,6 @@ let g:coc_explorer_global_presets = {
 \   }
 \ }
 
-let g:lightline = {
-        \ 'colorscheme': 'nord',
-        \ 'active': {
-        \   'left': [ [ 'mode', 'paste' ], [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
-        \ },
-        \ 'tabline': {
-        \   'left': [ ['buffers'] ],
-        \   'right': [ ['close'] ]
-        \ },
-        \ 'component_expand': {
-        \   'buffers': 'lightline#bufferline#buffers'
-        \ },
-        \ 'component_type': {
-        \   'buffers': 'tabsel'
-        \ },
-        \ 'component_function': {
-        \   'gitbranch': 'FugitiveHead'
-        \ },
-      \ }
 
 " Fuzzy Finder settings.
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9 } }
@@ -196,9 +177,6 @@ let $FZF_DEFAULT_OPTS="--ansi --preview-window 'right:60%' --layout reverse --ma
 " Turn off search highlighting with <CR>
 nnoremap <CR> :nohlsearch<CR><CR>
 
-" Map F5 to list buffers. Just enter buffer # and hit enter
-map <F5> :buffers<CR>:buffer<Space>
-
 " Map to Spellcheck
 map <leader>sp :setlocal spell! spelllang=en_us<CR>
 
@@ -211,9 +189,9 @@ vmap <silent><S-left> <Esc>:bp<CR>i
 imap <silent><S-left> <Esc>:bp<CR>i
 
 "Switch to Buffer to the Right
-nmap <silent><S-right> :bp<CR>
-vmap <silent><S-right> <Esc>:bp<CR>i
-imap <silent><S-right> <Esc>:bp<CR>i
+nmap <silent><S-right> :bn<CR>
+vmap <silent><S-right> <Esc>:bn<CR>i
+imap <silent><S-right> <Esc>:bn<CR>i
 
 " Toggle previous Buffer
 nnoremap <silent><S-Tab> :b#<CR>
@@ -228,29 +206,29 @@ nnoremap <C-Up> <C-W><C-K>
 nnoremap <C-Right> <C-W><C-L>
 nnoremap <C-Left> <C-W><C-H>
 
-" Same as above but vimmier 
+" Same as above but vimmier
 nnoremap <C-j> <C-W><C-J>
 nnoremap <C-k> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-" leader k to 'kill' the buffer and explorer together 
+" leader k to 'kill' the buffer and explorer together
 nnoremap <leader>k :bp<cr>:bd #<cr>
 
 " Use Ctrl+C to copy to global clipboard
 map <c-c> "+y<CR>
 
 " Use Ctrk+A to Yank entire buffer
-map <c>-a> :% y+<CR>
+map <c-a> :% y+<CR>
 
-" Launch Which-key with <leader>
-"nnoremap <silent> <leader>      :<c-u>WhichKey '\'<CR>
 
 " Autoformat on save
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
+command! -nargs=0 ESLintFix :CocCommand eslint.executeAutofix
 augroup FormatOnSave
   autocmd!
-  autocmd BufWritePre *.ts,*.tsx,*.jsx,*.js,*.css,*.scss,*.less,*.graphql Prettier
+  autocmd BufWritePre *.ts,*.tsx,*.jsx,*.js,*.css,*.scss,*.less,*.graphql,*.md,*.mdx Prettier
+  autocmd BufWritePre *.ts,*.tsx,*.jsx,*.js ESLintFix
 augroup END
 
 " Fuzzy Finder commands
@@ -258,10 +236,9 @@ nnoremap <Leader>ps :Rg<Space>
 nnoremap <Leader>pf :Files<CR>
 nnoremap <C-p> :GFiles<CR>
 
-" Quick Save keybindings
-map <Esc> :w<CR> 
-map <leader>s :w<CR> 
-map <leader>Q :q!<CR>
+" Quick Save keybindings:
+map <Esc> :w<CR>
+map <leader>s :w<CR>
 
 " Sweet Sweet GIT!
 nmap <leader>gj :diffget //3<CR>
@@ -280,7 +257,7 @@ vmap > >gv
 nmap > >>
 nmap < <<
 
-" Move visual block 
+" Move visual block
 vnoremap K :m '<-3<CR>gv=gv
 vnoremap J :m '>+0<CR>gv=gv
 
@@ -293,63 +270,10 @@ noremap X "_d
 " Repeat command for each line in selection
 vnoremap . :normal .<CR>
 
-" Search mappings: These will make it so that going to the next one in a 
+" Search mappings: These will make it so that going to the next one in a
 " search will center on the line it's found in.
 nnoremap n :<BS>nzzzv
 nnoremap N :<BS>Nzzzv
-
-"""  --------------------------------------------------------------- In-vim terminal 
-
-" Toggle floating terminal 
-tnoremap <leader>tt  <C-\><C-n>:FloatermToggle<CR>
-tnoremap <Esc><Esc>  <C-\><C-n>:FloatermHide<CRe
-
-" allow for eazy split resizing
-nnoremap <silent> <a-Up> :exec "resize +4"<CR>
-nnoremap <silent> <a-Down> :exec "resize -6"<CR>
-nnoremap <silent> <a-Left> :exec "vertical:resize +4"<CR>
-nnoremap <silent> <a-Right> :exec "vertical:resize -6"<CR>
-
-" turn terminal to normal mode with escape
-tnoremap <Esc> <C-\><C-n>
-
-" start terminal in insert mode
-augroup AutoFocusTerminal
-  autocmd!
-  autocmd BufEnter * if (&buftype == 'terminal') | :startinsert | endif
-augroup END
-
-" open terminal on <leader>t
-"command! -nargs=-1 ToggleTerminal :call ToggleTerminalFn()
-"nnoremap <Leader>t :ToggleTerminal<CR>
-
-if !exists('s:bp_is_terminal_open')
-  let s:is_terminal_open=-1
-endif
-
-function! ToggleTerminalFn()
-  if s:is_terminal_open == 0
-    let s:is_terminal_open=-1
-  /  setlocal bufhidden=hide number relativenumber
-    close
-  else
-    let s:is_terminal_open=0
-    split term://zsh
-    resize 9
-    setlocal nonumber norelativenumber
-  endif
-endfunction
-
-
-" use alt+hjkl to move between split/vsplit panels
-tnoremap <c-a-Left> <C-\><C-n><C-w>h
-tnoremap <c-a-Down> <C-\><C-n><C-w>j
-tnoremap <c-a-Up> <C-\><C-n><C-w>k
-tnoremap <c-a-Right> <C-\><C-n><C-w>l
-nnoremap <c-a-Left> <C-w>h
-nnoremap <c-a-Down> <C-w>j
-nnoremap <c-a-Up> <C-w>k
-nnoremap <c-a-Right> <C-w>l
 
 " Fat-finger-proof commands
 cnoreabbrev W! w!
@@ -365,7 +289,6 @@ cnoreabbrev Qall qall
 cnoreabbrev So so
 
 """ ---------------------------------------------------------------- COC Explorer
-
 " Open explorer on start up
 augroup ProjectDrawer
   autocmd!
@@ -378,7 +301,7 @@ nmap <a-c-n> :CocCommand explorer --toggle --preset floating<CR>
 
 """ ---------------------------------------------------------------- COC-specific config:
 
-" COC Related keybindings 
+" COC Related keybindings
 
 " Use `[g` and `]g` to navigate diagnostics
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
@@ -406,7 +329,7 @@ function! s:show_documentation()
   endif
 endfunction
 
-" Use tab for coc completion 
+" Use tab for coc completion
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? coc#_select_confirm() :
       \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
@@ -423,7 +346,7 @@ endfunction
 " Auto reload .vimrc after saving
 augroup ReloadVIMRC
   autocmd!
-  autocmd BufWritePost $MYVIMRC silent! source $MYVIMRC | redraw
+  autocmd BufWritePost $DOTS_DIR/vimrc silent! source $MYVIMRC | redraw
 augroup END
 
 
@@ -457,12 +380,8 @@ function! s:goyo_leave()
 endfunction
 
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
-autocmd! User GoyoLeave nested call <SID>goyo_leave() 
-
-"augroup LazyGit
-  "autocmd!
-  "autocmd VimEnter * :exec ":FloatermNew  --title=LazyGit --height=0.9 --width=0.9 --wintype=floating --name=lazygit lazygit"
-"augroup END
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
 finish
+
 
