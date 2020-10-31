@@ -30,7 +30,6 @@ call plug#begin('~/.vim/plugged/')
   Plug 'mhinz/vim-startify'
   Plug 'airblade/vim-rooter'
   Plug 'vim-airline/vim-airline'
-  Plug 'vim-airline/vim-airline-themes'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
@@ -46,7 +45,6 @@ call plug#begin('~/.vim/plugged/')
   Plug 'liuchengxu/vim-which-key'
   Plug 'vim-pandoc/vim-pandoc'
   Plug 'vim-pandoc/vim-pandoc-syntax'
-  "Keep this one last as per project readme
   Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
@@ -134,7 +132,7 @@ nnoremap <silent> <leader> :WhichKey '\'<CR>
 vnoremap <silent> <leader> :WhichKeyVisual '\'<CR>
 
 """ ---------------------------------------------------------------- Plugin Specific settings
-let g:airline_theme='blossom'
+let g:airline_theme='pimento'
 let g:user_emmet_leader_key='<C-z>'
 let g:vimwiki_list = [
   \ {'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'},
@@ -144,7 +142,6 @@ let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 let g:colorizer_auto_filetype='css,html,scss,javascript,typescript'
 let g:startify_custom_header=[]
 let g:airline#extensions#tabline#enabled = 1
-let g:tmuxline_powerline_separators = 0
 let g:coc_snippet_next = '<tab>'
 let g:coc_global_extensions = [
   \ 'coc-snippets',
@@ -219,7 +216,7 @@ nnoremap <leader>k :bp<cr>:bd #<cr>
 map <c-c> "+y<CR>
 
 " Use Ctrk+A to Yank entire buffer
-map <c-a> :% y+<CR>
+map <c-C> :% y+<CR>
 
 
 " Autoformat on save

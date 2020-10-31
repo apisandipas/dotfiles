@@ -9,8 +9,8 @@ ln -svi "$PWD/zshrc" ~/.zshrc;
 echo "Linking $PWD/vimrc";
 ln -svi "$PWD/vimrc" ~/.vimrc;
 
-echo "Linking tmux status config";
-ln -svi "$PWD/onestatus.json" ~/.config/nvim/onestatus.json;
+echo "Linking $PWD/coc-settings.json"; 
+ln -svi "$PWD/coc-settings.json" ~/.config/nvim/coc-settings.json;
 
 echo "Linking $PWD/tmux"; 
 ln -svi "$PWD/tmux" ~/.tmux.conf;
