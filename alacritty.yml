@@ -1,3 +1,8 @@
+background_opacity: 0.90
+window:
+  padding:
+    x: 8
+    y: 0
 colors:
   # Default colors
   primary:

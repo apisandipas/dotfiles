@@ -1,19 +1,15 @@
 #!/usr/bin/env bash
 
-
 echo "Linking config files...";
 
 echo "Linking $PWD/zshrc";
 ln -svi "$PWD/zshrc" ~/.zshrc;
 
-echo "Linking $PWD/vimrc";
-ln -svi "$PWD/vimrc" ~/.vimrc;
-
-echo "Linking $PWD/coc-settings.json"; 
-ln -svi "$PWD/coc-settings.json" ~/.config/nvim/coc-settings.json;
+echo "Linking $PWD/nvim";
+ln -svi "$PWD/nvim" ~/.config/;
 
 echo "Linking $PWD/tmux"; 
-ln -svi "$PWD/tmux" ~/.tmux.conf;
+ln -svi "$PWD/tmux.conf" ~/.tmux.conf;
 
 echo "Linking $PWD/gitconfig";
 ln -svi "$PWD/gitconfig" ~/.gitconfig;
@@ -39,10 +35,13 @@ ln -svi "$PWD/myclirc" ~/.myclirc;
 echo "Linking $PWD/rofi/"
 ln -svi "$PWD/rofi" ~/.config/;
 
+echo "Linking $PWD/p10k.zsh"
+ln -svi "$PWD/p10k.zsh" ~/.p10k.zsh
+
 echo "Finished linking config files!";
 
 echo "Linking scripts directory...";
 
-ln -svi  "$PWD/scripts" ~/;
+ln -svi  "$PWD/bin" ~/;
 
 echo "Finished linking scripts directory!";

@@ -29,7 +29,7 @@ DEFAULT_USER="bryan"
 VIM_WIKI_DIR=$HOME/vimwiki
 
 # Path Config
-export PATH=$PATH:$HOME/.yarn/bin:$HOME/scripts:$DENO_INSTALL/bin
+export PATH=$PATH:$HOME/.yarn/bin:$HOME/bin:$DENO_INSTALL/bin
 
 # Load oh-my-zsh plugins
 plugins=(git tmux yarn z zsh-autosuggestions zsh-syntax-highlighting)
