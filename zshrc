@@ -47,6 +47,8 @@ alias cat="bat"
 alias ls="exa --icons"
 alias ll="exa -alh --icons"
 alias lt="exa -T --icons --git-ignore"
+alias cl="clear"
+alias sz="source ~/.zshrc"
 alias dennis="curl -L http://git.io/unix"
 alias open="xdg-open"
 alias dots="cd $DOTS_DIR; vim ; cd -;"  # avoids netrw
@@ -55,7 +57,7 @@ alias vimrc="vim $DOTS_DIR/vimrc"
 alias polyc="vim $DOTS_DIR/polybar/config"
 alias zshrc="vim $DOTS_DIR/zshrc"
 alias services-enabled="systemctl list-unit-files | grep enabled"
-alias services-running="systemctl list-units --type=service --state=active" 
+alias services-running="systemctl list-units --type=service --state=active"
 alias fzf='rg --files --ignore-case --hidden -g "!{.git,node_modules,vendor,.config,.cargo,.cache}" | fzf'
 alias fix='vim $(git diff --name-only | uniq)'
 
@@ -79,18 +81,18 @@ vimwiki () {
 
 yolo() {
  if [ ! -d ./.git ]; then
-  echo "$PWD is not a git repository"
+  echo "$PWD is not a git repository";
   return 1;
  fi
 
   echo 'YOLO INCOMING!';
   clear;
-  sleep .5; 
-  git add -A 
-  git commit --amend --no-edit
-  git push -f 
-  echo 'YOLO COMPLETE'; 
   sleep .5;
+  git add -A
+  git commit --amend --no-edit
+  git push -f
+  echo 'YOLO COMPLETE';
+  return 0;
 }
 
 flip() {

@@ -33,8 +33,10 @@ call plug#begin('~/.config/nvim/plugged/')
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
+  Plug 'editorconfig/editorconfig-vim'
   Plug 'alvan/vim-closetag'
   Plug 'scrooloose/nerdcommenter'
+  Plug 'iamcco/markdown-preview.nvim'
   Plug 'chrisbra/Colorizer'
   Plug 'sheerun/vim-polyglot'
   Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
@@ -102,6 +104,7 @@ set incsearch       " Search as characters are entered
 set hlsearch        " Hightlight matches
 
 """ ---------------------------------------------------------------- Key Map UI
+
 let g:which_key_map = {}
 let g:which_key_map.c = {
    \'name': '+comment',

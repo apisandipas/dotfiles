@@ -16,7 +16,7 @@ let s:gui07 = '#D2D2D4'
 let s:gui08 = '#424A56'
 let s:gui09 = '#FF6565'
 let s:gui10 = '#3BD37D'
-let s:gui11 = '#FBD37E'
+let s:gui11 = '#FBD37vE'
 let s:gui12 = '#6F97EC'
 let s:gui13 = '#FF6386'
 let s:gui14 = '#71C6FF'
@@ -40,27 +40,27 @@ let s:cterm14 = 14
 let s:cterm15 = 15
 
 let s:airline_a_normal = [ s:gui00 , s:gui02 , s:cterm00  , s:cterm02 ]
-let s:airline_b_normal = [ s:gui09 , s:gui00 , s:cterm09  , s:cterm00 ]
+let s:airline_b_normal = [ s:gui09 , s:gui00 , s:cterm15  , s:cterm00 ]
 let s:airline_c_normal = [ s:gui11 , s:gui00 , s:cterm11  , s:cterm00 ]
 let g:airline#themes#pimento#palette.normal = airline#themes#generate_color_map(s:airline_a_normal, s:airline_b_normal, s:airline_c_normal)
 
 let s:airline_a_insert = [ s:gui00, s:gui04, s:cterm00, s:cterm04 ]
-let s:airline_b_insert = [ s:gui09, s:gui00, s:cterm09, s:cterm00 ]
+let s:airline_b_insert = [ s:gui09, s:gui00, s:cterm15, s:cterm00 ]
 let s:airline_c_insert = [ s:gui11, s:gui00, s:cterm11, s:cterm00 ]
 let g:airline#themes#pimento#palette.insert = airline#themes#generate_color_map(s:airline_a_insert, s:airline_b_insert, s:airline_c_insert)
 
 let s:airline_a_replace = [ s:gui09, s:gui00, s:cterm09, s:cterm00 ]
-let s:airline_b_replace = [ s:gui09, s:gui00, s:cterm09, s:cterm00 ]
+let s:airline_b_replace = [ s:gui09, s:gui00, s:cterm15, s:cterm00 ]
 let s:airline_c_replace = [ s:gui11, s:gui00, s:cterm11, s:cterm00 ]
 let g:airline#themes#pimento#palette.replace = airline#themes#generate_color_map(s:airline_a_replace, s:airline_b_replace, s:airline_c_replace)
 
-let s:airline_a_visual  = [ s:gui05, s:gui05, s:cterm00, s:cterm05 ]
-let s:airline_b_visual  = [ s:gui05, s:gui00, s:cterm05, s:cterm00 ]
-let s:airline_c_visual  = [ s:gui11, s:gui00, s:cterm11, s:cterm00 ]
+let s:airline_a_visual  = [ s:gui01, s:gui01, s:cterm00, s:cterm01 ]
+let s:airline_b_visual  = [ s:gui01, s:gui00, s:cterm15, s:cterm00 ]
+let s:airline_c_visual  = [ s:gui11, s:gui00, s:cterm11, s:cterm01 ]
 let g:airline#themes#pimento#palette.visual = airline#themes#generate_color_map(s:airline_a_visual, s:airline_b_visual, s:airline_c_visual)
 
 let s:airline_a_inactive   = [ s:gui09, s:gui00, s:cterm00, s:cterm02 ]
-let s:airline_b_inactive   = [ s:gui09, s:gui00, s:cterm09, s:cterm00 ]
+let s:airline_b_inactive   = [ s:gui09, s:gui00, s:cterm15, s:cterm00 ]
 let s:airline_c_inactive   = [ s:gui09, s:gui00, s:cterm09, s:cterm00 ]
 let g:airline#themes#pimento#palette.inactive = airline#themes#generate_color_map(s:airline_a_inactive, s:airline_b_inactive, s:airline_c_inactive)
 
