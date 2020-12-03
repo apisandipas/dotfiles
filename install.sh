@@ -29,8 +29,8 @@ ln -svi "$PWD/config/kitty" ~/.config/;
 echo "Linking $PWD/config/polybar";
 ln -svi "$PWD/config/polybar" ~/.config/ ;
 
-echo "Linking $PWD/config/picom";
 ln -svi "$PWD/config/picom" ~/.config/ ;
+echo "Linking $PWD/config/picom";
 
 echo "Linking $PWD/config/i3";
 ln -svi "$PWD/config/i3" ~/.config/;

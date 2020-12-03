@@ -1,12 +1,12 @@
 
+#░░    ░░░░░░░░░░░░░░░ ░░░░ ░░░░░░░░░░    ░░░░░░  
+ #██    ███████████████ ████ ██████████  ░░██████ 
                        #█████
                       #░░███ 
        #█████████ █████ ░███████  ████████ ██████ 
-      #░█░░░░███ ███░░  ░███░░███░░███░░█████░░███
       #░   ███░ ░░█████ ░███ ░███ ░███ ░░░███ ░░░ 
+      #░█░░░░███ ███░░  ░███░░███░░███░░█████░░███
         #███░   █░░░░███░███ ░███ ░███   ░███  ███
- #██    ███████████████ ████ ██████████  ░░██████ 
-#░░    ░░░░░░░░░░░░░░░ ░░░░ ░░░░░░░░░░    ░░░░░░  
 
 
 # Global env Vars
@@ -56,10 +56,8 @@ alias fzf='rg --files --ignore-case --hidden -g "!{.git,node_modules,vendor,.con
 alias fix='vim $(git diff --name-only | uniq)'
 alias XX='trash'
 
-
 # Sets up ruby env
 eval "$(rbenv init -)"
-
 # Functions
 mkcd() { mkdir -p "$@" && cd $_; }
 gi() { echo "fetching $@ gitignore"; curl -sLw "\n" https://www.gitignore.io/api/$@ >> .gitignore;}
@@ -106,9 +104,6 @@ flip() {
 
 alias dennis="curl -L http://git.io/unix"
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-
-
-
 eval "$(starship init zsh)"
+export PATH="$PATH:$HOME/.rvm/bin"
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.

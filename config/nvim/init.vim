@@ -27,6 +27,8 @@ if exists('g:vscode')
   "source $HOME/.config/nvim/plug-config/easymotion.vim
   "source $HOME/.config/nvim/plug-config/highlightyank.vim
 else
+
+
 """ ---------------------------------------------------------------- Plugin Specific settings
 if &term =~ '256color'
   " disable Background Color Erase (BCE)
@@ -37,7 +39,6 @@ let g:user_emmet_leader_key = '<C-z>'
 
 let g:vimwiki_list = [
   \ {'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'},
-  \ {'path': '~/Notes/', 'syntax': 'markdown', 'ext': '.md'}
 \]
 let g:vimwiki_global_ext = 0
 
@@ -264,7 +265,7 @@ command! -nargs=0 Prettier :CocCommand prettier.formatFile
 command! -nargs=0 ESLintFix :CocCommand eslint.executeAutofix
 augroup FormatOnSave
   autocmd!
-  autocmd BufWritePre *.ts,*.tsx,*.jsx,*.js,*.mjs,*.css,*.scss,*.less,*.md,*.mdx,*.html Prettier
+  autocmd BufWritePre *.ts,*.tsx,*.jsx,*.js,*.mjs,*.css,*.scss,*.less,*.graphql,*.md,*.mdx,*.html Prettier
   autocmd BufWritePre *.ts,*.tsx,*.jsx,*.js ESLintFix
 augroup END
 

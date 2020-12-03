@@ -3,7 +3,8 @@ let &shell='/bin/zsh -i'    " point defauly shell to zsh
 set shellcmdflag=-ic        " load zshrc 
 
 """ ---------------------------------------------------------------- Appearance
-colorscheme base16-google-dark " Set colorscheme
+
+colorscheme pimento         " Set colorscheme
 syntax enable               " Enable syntax highlighting
 filetype plugin indent on   " Enable filtype detection and indent plugin
 
