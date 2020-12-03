@@ -26,6 +26,9 @@ ln -svi "$PWD/Xresources" ~/.Xresources;
 echo "Linking $PWD/polybar/";
 ln -svi "$PWD/polybar" ~/.config/ ;
 
+echo "Linkg $PWD/picom.conf";
+ln -svi "$PWD/picom.conf" ~/.config/ ;
+
 echo "Linking $PWD/picom.conf";
 ln -svi "$PWD/picom.conf" ~/.config/picom/picom.conf;
 

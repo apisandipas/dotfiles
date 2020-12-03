@@ -1,130 +1,32 @@
-        "________ ++ ________
-       "/VVVVVVVV\\++++ /VVVVVVVV\\
-       "\VVVVVVVV/++++++\VVVVVVVVV/
-        "|VVVVVV|++++++++/VVVVV/'
-        "|VVVVVV|++++++/VVVVV/'
-       "+|VVVVVV|++++/VVVVV/'+
-     "+++|VVVVVV|++/VVVVV/'+++++
-   "+++++|VVVVVV|/VVVVV/'+++++++++
-     "+++|VVVVVVVVVVVV/'+++++++++
-       "+|VVVVVVVVV/'+++++++++
-        "|VVVVVVV/'+++++++++
-        "|VVVVV/'+++++++++
-        "|VVV/'+++++++++
-        "'V/' ++++++
-                 "++
+ "██████   █████                              ███                
+"░░██████ ░░███                              ░░░                 
+ "░███░███ ░███   ██████  ██████  █████ █████████ █████████████  
+ "░███░░███░███  ███░░██████░░███░░███ ░░███░░███░░███░░███░░███ 
+ "░███ ░░██████ ░███████░███ ░███ ░███  ░███ ░███ ░███ ░███ ░███ 
+ "░███  ░░█████ ░███░░░ ░███ ░███ ░░███ ███  ░███ ░███ ░███ ░███ 
+ "█████  ░░█████░░██████░░██████   ░░█████   ██████████░███ █████
+"░░░░░    ░░░░░  ░░░░░░  ░░░░░░     ░░░░░   ░░░░░░░░░░ ░░░ ░░░░░ 
 
-" zsh
-let &shell='/bin/zsh -i'
 
-" load zshrc
-set shellcmdflag=-ic
+if !exists('g:vscode')
+  source $HOME/.config/nvim/plug-config/polyglot.vim
+endif
 
-""" ---------------------------------------------------------------- Load plugins
-call plug#begin('~/.config/nvim/plugged/')
-  Plug 'apisandipas/pimento.vim', { 'branch': 'main' }
-  Plug 'vimwiki/vimwiki'
-  Plug 'christoomey/vim-tmux-navigator'
-  Plug 'tpope/vim-sensible'
-  Plug 'tpope/vim-fugitive'
-  Plug 'mhinz/vim-startify'
-  Plug 'airblade/vim-rooter'
-  Plug 'vim-airline/vim-airline'
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-  Plug 'junegunn/fzf.vim'
-  Plug 'editorconfig/editorconfig-vim'
-  Plug 'alvan/vim-closetag'
-  Plug 'scrooloose/nerdcommenter'
-  Plug 'iamcco/markdown-preview.nvim'
-  Plug 'chrisbra/Colorizer'
-  Plug 'sheerun/vim-polyglot'
-  Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
-  Plug 'mattn/emmet-vim'
-  Plug 'jiangmiao/auto-pairs'
-  Plug 'vim-scripts/loremipsum'
-  Plug 'junegunn/goyo.vim'
-  Plug 'liuchengxu/vim-which-key'
-  Plug 'vim-pandoc/vim-pandoc'
-  Plug 'vim-pandoc/vim-pandoc-syntax'
-  Plug 'ryanoasis/vim-devicons'
-call plug#end()
+source $HOME/.config/nvim/general/plugins.vim
+source $HOME/.config/nvim/general/settings.vim
+source $HOME/.config/nvim/general/functions.vim
+source $HOME/.config/nvim/keys/mappings.vim
 
-""" ---------------------------------------------------------------- Appearance
+" Plugins
+source $HOME/.config/nvim/keys/which-key.vim
 
-colorscheme pimento         " Set colorscheme
-syntax enable               " Enable syntax highlighting
-filetype plugin indent on   " Enable filtype detection and indent plugin
 
-set cursorline              " Highlight currentline
-set autoread                " Autoreload this file in vim if it was changed out of vim
-set splitright splitbelow   " open new split panes to right and below
-set list                    " Display unprintable characters
-set listchars=tab:•\ ,trail:•,extends:»,precedes:« " Show trailing whitespace chars
-set fillchars+=vert:\       " remove buffer divider lines
-
-" ---------------------------------------------------O------------- Basic Behavior
-
-set number	 	      " show line numbers
-set relativenumber	" show reltive line numbers
-set wrap 		        " wrap lines
-set encoding=utf-8  " set encoding to UTF-8
-set mouse=a		      " enable mouse support
-set wildmenu		    " visual autocomplete for commend menu
-set lazyredraw		  " redraw screen only when we need to
-set showmatch		    " highlight matching parens and brackets
-set noswapfile		  " disable swap-fils
-set noerrorbells	  " disable the goddamn bell
-set visualbell		  " blink the curror instead of beeping
-set hidden		      " allow buffers to be switched w/o saving first
-set autochdir       " Set pwd to the current buffers directory
-set noshowmode
-set noruler
-set laststatus=0
-set showtabline=2
-
-" Enable persistent undo so that undo history persists across vim sessions
-set undofile
-set undodir=~/.config/nvim/undodir
-set formatoptions-=cro " Dont auto-insert comments on new lines after comments
-set clipboard+=unnamedplus " Use global clipboard as yank register
-
-""" ---------------------------------------------------------------- Tab Settings
-
-set tabstop=2       " width of a <TAB> character displays as
-set expandtab       " convert <TAB> key-presses to spaces
-set shiftwidth=2    " number of spaces to use for each step of auto indent
-set softtabstop=2   " backspace after pressing <TAB> will remove up this many spaces
-set autoindent      " copy indent from the current line when starting a new line
-set smartindent     " end better autoindent
-
-""" ---------------------------------------------------------------- Search settings
-
-set incsearch       " Search as characters are entered
-set hlsearch        " Hightlight matches
-
-""" ---------------------------------------------------------------- Key Map UI
-
-let g:which_key_map = {}
-let g:which_key_map.c = {
-   \'name': '+comment',
-   \' ':'toggle-comment',
-   \'$':'comment-to-EOL'
-\}
-
-let g:which_key_map.k = 'kill-buffer'
-let g:which_key_map.w = 'save-buffer'
-let g:which_key_map.sp = 'toggle-spellcheck'
-
-let g:which_key_map.g = {
-   \ 'name': '+git',
-   \ 'a': 'git-add-all'
-\}
-
-call which_key#register('\', 'g:which_key_map')
-nnoremap <silent> <leader> :WhichKey '\'<CR>
-vnoremap <silent> <leader> :WhichKeyVisual '\'<CR>
-
+if exists('g:vscode')
+  " VS Code extension
+  source $HOME/.config/nvim/vscode/settings.vim
+  "source $HOME/.config/nvim/plug-config/easymotion.vim
+  "source $HOME/.config/nvim/plug-config/highlightyank.vim
+else
 """ ---------------------------------------------------------------- Plugin Specific settings
 
 let g:user_emmet_leader_key = '<C-z>'
@@ -133,6 +35,7 @@ let g:vimwiki_list = [
   \ {'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'},
   \ {'path': '~/Notes/', 'syntax': 'markdown', 'ext': '.md'}
 \]
+let g:vimwiki_global_ext = 0
 
 let g:closetag_filenames = '*.html,*.js,*.jsx,*.ts,*.tsx,*.mdx'
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
@@ -156,7 +59,18 @@ let g:coc_global_extensions = [
   \ 'coc-json',
   \ 'coc-explorer',
   \ 'coc-marketplace',
-  \ 'coc-prettier'
+  \ 'coc-prettier',
+  \ 'coc-vimlsp',
+  \ 'coc-svg',
+  \ 'coc-sh',
+  \ 'coc-json',
+  \ 'coc-html',
+  \ 'coc-highlight',
+  \ 'coc-graphql',
+  \ 'coc-fzf-preview',
+  \ 'coc-floaterm',
+  \ 'coc-css',
+  \ 'coc-emoji'
 \ ]
 
 let g:coc_explorer_global_presets = {
@@ -218,11 +132,8 @@ nnoremap <C-H> <C-W><C-H>
 " leader k to 'kill' the buffer and explorer together
 nnoremap <leader>k :bp<cr>:bd #<cr>
 
-" Use Ctrl+C to copy to global clipboard
-map <c-c> "+y<CR>
-
 " Use Ctrk+A to Yank entire buffer
-map <c-C> :% y+<CR>
+map <c-C> :%y+<CR>
 
 " Fuzzy Finder commands
 nnoremap <Leader>ps :Rg<Space>
@@ -283,7 +194,7 @@ cnoreabbrev So so
 
 """ ---------------------------------------------------------------- COC Explorer
 " Open explorer on start up
-augroup ProjectDrawer
+augrou ProjectDrawer
   autocmd!
   autocmd VimEnter * :exec ":CocCommand explorer --no-focus"
   autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
@@ -347,7 +258,7 @@ command! -nargs=0 Prettier :CocCommand prettier.formatFile
 command! -nargs=0 ESLintFix :CocCommand eslint.executeAutofix
 augroup FormatOnSave
   autocmd!
-  autocmd BufWritePre *.ts,*.tsx,*.jsx,*.js,*.css,*.scss,*.less,*.graphql,*.md,*.mdx Prettier
+  autocmd BufWritePre *.ts,*.tsx,*.jsx,*.js,*.mjs,*.css,*.scss,*.less,*.graphql,*.md,*.mdx,*.html Prettier
   autocmd BufWritePre *.ts,*.tsx,*.jsx,*.js ESLintFix
 augroup END
 

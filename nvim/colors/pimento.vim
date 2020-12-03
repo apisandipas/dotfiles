@@ -72,7 +72,7 @@ if has('terminal')
   let g:terminal_ansi_colors = [s:pimento1_gui, s:pimento11_gui, s:pimento14_gui, s:pimento13_gui, s:pimento9_gui, s:pimento15_gui, s:pimento8_gui, s:pimento5_gui, s:pimento3_gui, s:pimento11_gui, s:pimento14_gui, s:pimento13_gui, s:pimento9_gui, s:pimento15_gui, s:pimento7_gui, s:pimento6_gui]
 endif
 
-" Neovim Terminal Colors 
+" Neovim Terminal Colors
 if has('nvim')
   let g:terminal_color_0 = s:pimento0_gui
   let g:terminal_color_1 = s:pimento1_gui
@@ -92,12 +92,7 @@ if has('nvim')
   let g:terminal_color_15 = s:pimento15_gui
 endif
 
-" TODO: add GUI values to colorscheme
-
 syntax enable
-
-" line numbers
-highlight CursorLine ctermbg=8
 
 "+--- Gutter ---+
 call s:hi("LineNr", s:pimento6_gui, "",  s:pimento6_term, "", "", "")
@@ -113,15 +108,15 @@ call s:hi("Directory", s:pimento6_gui, "", s:pimento6_term, "NONE", "", "")
 
 "+--- Prompt/Status ---+
 call s:hi("EndOfBuffer", s:pimento0_gui, "", s:pimento0_term, "NONE", "", "")
-call s:hi("ErrorMsg", s:pimento4_gui, s:pimento11_gui, "NONE", s:pimento11_term, "", "")
+call s:hi("ErrorMsg", s:pimento11_gui, s:pimento1_gui, s:pimento11_term, s:pimento1_term, "", "")
 call s:hi("ModeMsg", s:pimento4_gui, "", "", "", "", "")
 call s:hi("MoreMsg", s:pimento8_gui, "", s:pimento8_term, "", "", "")
-call s:hi("Question", s:pimento4_gui, "", "NONE", "", "", "")
+call s:hi("Question", s:pimento4_gui, "", s:pimento4_term, "", s:italic, "")
 call s:hi("StatusLine", s:pimento8_gui, s:pimento3_gui, s:pimento8_term, s:pimento3_term, "NONE", "")
 call s:hi("StatusLineNC", s:pimento4_gui, s:pimento1_gui, "NONE", s:pimento1_term, "NONE", "")
 call s:hi("StatusLineTerm", s:pimento8_gui, s:pimento3_gui, s:pimento8_term, s:pimento3_term, "NONE", "")
 call s:hi("StatusLineTermNC", s:pimento4_gui, s:pimento1_gui, "NONE", s:pimento1_term, "NONE", "")
-call s:hi("WarningMsg", s:pimento0_gui, s:pimento13_gui, s:pimento1_term, s:pimento13_term, "", "")
+call s:hi("WarningMsg", s:pimento5_gui, s:pimento13_gui, s:pimento5_term, s:pimento13_term, "", "")
 call s:hi("WildMenu", s:pimento8_gui, s:pimento1_gui, s:pimento8_term, s:pimento1_term, "", "")
 
 "+--- Search ---+
@@ -137,6 +132,9 @@ call s:hi("TabLineSel", s:pimento8_gui, s:pimento3_gui, s:pimento8_term, s:pimen
 call s:hi("Title", s:pimento4_gui, "", "NONE", "", "NONE", "")
 call s:hi("VertSplit", s:pimento3_gui, s:pimento0_gui, s:pimento3_term, s:pimento0_term, "NONE", "")
 
+"+--- PMenu ---+
+call s:hi("PMenu", s:pimento4_gui, s:pimento0_gui, s:pimento4_term, s:pimento0_term, "NONE", "")
+call s:hi("PMenuSel", s:pimento12_gui, s:pimento0_gui, s:pimento12_term, s:pimento0_term, "NONE", "")
 
 "+----------------------+
 "+ Language Base Groups +
@@ -172,8 +170,10 @@ call s:hi("Type", s:pimento6_gui, "", s:pimento6_term, "", "NONE", "")
 call s:hi("Typedef", s:pimento9_gui, "", s:pimento9_term, "", "", "")
 hi! link Macro Define
 hi! link PreCondit PreProc
+hi! link Italic Comment
 
 "+-----------+
+"
 "+ Languages +
 "+-----------+
 call s:hi("asciidocAttributeEntry", s:pimento10_gui, "", s:pimento10_term, "", "", "")
@@ -201,7 +201,7 @@ call s:hi("cssAttributeSelector", s:pimento7_gui, "", s:pimento7_term, "", "", "
 call s:hi("cssDefinition", s:pimento7_gui, "", s:pimento7_term, "", "NONE", "")
 call s:hi("cssIdentifier", s:pimento7_gui, "", s:pimento7_term, "", s:underline, "")
 call s:hi("cssStringQ", s:pimento7_gui, "", s:pimento7_term, "", "", "")
-hi! link cssAttr Keyword
+hi! link cssAttr Comment
 hi! link cssBraces Delimiter
 hi! link cssClassName cssDefinition
 hi! link cssColor Number
@@ -227,7 +227,7 @@ call s:hi("helpHyperTextJump", s:pimento8_gui, "", s:pimento8_term, "", s:underl
 
 call s:hi("htmlArg", s:pimento7_gui, "", s:pimento7_term, "", "", "")
 call s:hi("htmlLink", s:pimento4_gui, "", "", "", "NONE", "NONE")
-call s:hi("htmlH1", s:pimento4_gui, "", "", "", "NONE", "NONE")
+call s:hi("htmlH1", s:pimento4_gui, "", s:pimento4_term, "", "NONE", "NONE")
 hi! link htmlBold Bold
 hi! link htmlEndTag htmlTag
 hi! link htmlItalic Italic
@@ -251,7 +251,7 @@ call s:hi("markdownCodeDelimiter", s:pimento7_gui, "", s:pimento7_term, "", "", 
 call s:hi("markdownFootnote", s:pimento7_gui, "", s:pimento7_term, "", "", "")
 call s:hi("markdownId", s:pimento7_gui, "", s:pimento7_term, "", "", "")
 call s:hi("markdownIdDeclaration", s:pimento7_gui, "", s:pimento7_term, "", "", "")
-call s:hi("markdownH1", s:pimento8_gui, "", s:pimento8_term, "", "", "")
+call s:hi("markdownH1", s:pimento14_gui, "", s:pimento14_term, "", "", "")
 call s:hi("markdownLinkText", s:pimento8_gui, "", s:pimento8_term, "", "", "")
 call s:hi("markdownUrl", s:pimento4_gui, "", "NONE", "", "NONE", "")
 hi! link markdownBold Bold
@@ -335,7 +335,7 @@ call s:hi("CocWarningHighlight" , s:pimento13_gui, "", s:pimento13_term, "", "un
 call s:hi("CocErrorHighlight" , s:pimento11_gui, "", s:pimento11_term, "", "undercurl", "")
 call s:hi("CocWarningSign", s:pimento13_gui, "", s:pimento13_term, "", "", "")
 call s:hi("CocErrorSign" , s:pimento11_gui, "", s:pimento11_term, "", "", "")
-call s:hi("CocInfoSign" , s:pimento8_gui, "", s:pimento8_term, "", "", "")
+call s:hi("CocInfoSign" , s:pimento14_gui, "", s:pimento14_term, "", "", "")
 call s:hi("CocHintSign" , s:pimento10_gui, "", s:pimento10_term, "", "", "")
 
 " Nvim LSP
@@ -379,10 +379,18 @@ hi! link StartifyBracket Delimiter
 hi! link StartifySlash Normal
 hi! link StartifySpecial Comment
 
+" vim-whichkey
+highlight default link WhichKey          Operator
+highlight default link WhichKeySeperator Comment
+highlight default link WhichKeyGroup     Identifier
+highlight default link WhichKeyDesc      Function
+
+"
+
 "+--- Languages ---+
 " JavaScript
 " > pangloss/vim-javascript
-call s:hi("jsGlobalNodeObjects", s:pimento8_gui, "", s:pimento8_term, "", s:italic, "")
+call s:hi("jsGlobalNodeObjects", s:pimento14_gui, "", s:pimento14_term, "", s:italic, "")
 hi! link jsBrackets Delimiter
 hi! link jsFuncCall Function
 hi! link jsFuncParens Delimiter
@@ -399,7 +407,7 @@ call s:hi("typescriptDecorator", s:pimento12_gui, "", s:pimento12_term, "", "", 
 call s:hi("typescriptInterfaceName", s:pimento7_gui, "", s:pimento7_term, "", s:bold, "")
 call s:hi("typescriptRegexpString", s:pimento13_gui, "", s:pimento13_term, "", "", "")
 " TypeScript JSX
- call s:hi("tsxAttrib", s:pimento7_gui, "", s:pimento7_term, "", "", "")
+call s:hi("tsxAttrib", s:pimento7_gui, "", s:pimento7_term, "", "", "")
 hi! link typescriptOperator Operator
 hi! link typescriptBinaryOp Operator
 hi! link typescriptAssign Operator
@@ -434,21 +442,21 @@ hi! link tsxTagName tsxIntrinsicTagName
 
 " Vimwiki
 " > vimwiki/vimwiki
-if !exists("g:vimwiki_hl_headers") || g:vimwiki_hl_headers == 0
-  for s:i in range(1,6)
-    call s:hi("VimwikiHeader".s:i, s:pimento8_gui, "", s:pimento8_term, "", s:bold, "")
-  endfor
-else
-  let s:vimwiki_hcolor_guifg = [s:pimento7_gui, s:pimento8_gui, s:pimento9_gui, s:pimento10_gui, s:pimento14_gui, s:pimento15_gui]
-  let s:vimwiki_hcolor_ctermfg = [s:pimento7_term, s:pimento8_term, s:pimento9_term, s:pimento10_term, s:pimento14_term, s:pimento15_term]
-  for s:i in range(1,6)
-    call s:hi("VimwikiHeader".s:i, s:vimwiki_hcolor_guifg[s:i-1] , "", s:vimwiki_hcolor_ctermfg[s:i-1], "", s:bold, "")
-  endfor
-endif
+"if !exists("g:vimwiki_hl_headers") || g:vimwiki_hl_headers == 0
+  "for s:i in range(1,6)
+    "call s:hi("VimwikiHeader".s:i, s:pimento8_gui, "", s:pimento8_term, "", s:bold, "")
+  "endfor
+"else
+  "let s:vimwiki_hcolor_guifg = [s:pimento7_gui, s:pimento8_gui, s:pimento9_gui, s:pimento10_gui, s:pimento14_gui, s:pimento15_gui]
+  "let s:vimwiki_hcolor_ctermfg = [s:pimento7_term, s:pimento8_term, s:pimento9_term, s:pimento10_term, s:pimento14_term, s:pimento15_term]
+  "for s:i in range(1,6)
+    "call s:hi("VimwikiHeader".s:i, s:vimwiki_hcolor_guifg[s:i-1] , "", s:vimwiki_hcolor_ctermfg[s:i-1], "", s:bold, "")
+  "endfor
+"endif
 
-call s:hi("VimwikiLink", s:pimento8_gui, "", s:pimento8_term, "", s:underline, "")
-hi! link VimwikiHeaderChar markdownHeadingDelimiter
-hi! link VimwikiHR Keyword
-hi! link VimwikiList markdownListMarker
+"call s:hi("VimwikiLink", s:pimento8_gui, "", s:pimento8_term, "", s:underline, "")
+"hi! link VimwikiHeaderChar markdownHeadingDelimiter
+"hi! link VimwikiHR Keyword
+"hi! link VimwikiList markdownListMarker
 
 

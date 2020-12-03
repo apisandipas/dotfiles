@@ -1,17 +1,17 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
+
+                       #█████
+                      #░░███ 
+       #█████████ █████ ░███████  ████████ ██████ 
+      #░█░░░░███ ███░░  ░███░░███░░███░░█████░░███
+      #░   ███░ ░░█████ ░███ ░███ ░███ ░░░███ ░░░ 
+        #███░   █░░░░███░███ ░███ ░███   ░███  ███
+ #██    ███████████████ ████ ██████████  ░░██████ 
+#░░    ░░░░░░░░░░░░░░░ ░░░░ ░░░░░░░░░░    ░░░░░░  
+
+
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
-
-#                   .__
-#    ________  _____|  |_________   ____
-#    \___   / /  ___/  |  \_  __ \_/ ___\
-#     /    /  \___ \|   Y  \  | \/\  \___
-# /\ /_____ \/____  >___|  /__|    \___  >
-# \/       \/     \/     \/            \/
-#
 
 # Global env Vars
 export GITSTATUS_LOG_LEVEL=DEBUG
@@ -61,6 +61,9 @@ alias services-running="systemctl list-units --type=service --state=active"
 alias fzf='rg --files --ignore-case --hidden -g "!{.git,node_modules,vendor,.config,.cargo,.cache}" | fzf'
 alias fix='vim $(git diff --name-only | uniq)'
 
+# Sets up ruby env
+eval "$(rbenv init -)"
+
 # Functions
 mkcd() { mkdir -p "$@" && cd $_; }
 gi() { echo "fetching $@ gitignore"; curl -sLw "\n" https://www.gitignore.io/api/$@ >> .gitignore;}
@@ -107,3 +110,6 @@ flip() {
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
