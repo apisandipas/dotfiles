@@ -8,6 +8,7 @@
 [core]
 	excludesfile = /home/bryan/.gitignore
 	editor = nvim
+	pager = nvim -R
 [merge]
     tool = nvim
 [mergetool "nvim"]

@@ -21,8 +21,8 @@ call plug#begin('~/.config/nvim/plugged/')
     Plug 'machakann/vim-highlightedyank'
   else
 
-  Plug 'apisandipas/pimento.vim', { 'branch': 'main' }
-  Plug 'chrisbra/Colorizer'
+  Plug 'norcalli/nvim-colorizer.lua'
+  "Plug 'apisandipas/pimento.vim', { 'branch': 'main' }
   Plug 'easymotion/vim-easymotion'
   Plug 'christoomey/vim-tmux-navigator'
   Plug 'tpope/vim-fugitive'

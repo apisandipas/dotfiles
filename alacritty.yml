@@ -6,30 +6,30 @@ window:
 colors:
   # Default colors
   primary:
-    background: '0x242c38'
-    foreground: '0xf2f2f4'
+    background: #242c38"
+    foreground: #f2f2f4"
 
   # Normal colors
   normal:
-    black:   '0x333b47'
-    red:     '0xf05656'
-    green:   '0x2cc46e'
-    yellow:  '0xecc46f'
-    blue:    '0x6088dd'
-    magenta: '0xfa5477'
-    cyan:    '0x64b9f2'
-    white:   '0xd2d2d4'
+    black: #333b47"
+    red: #f05656"
+    green: #2cc46e"
+    yellow: #ecc46f"
+    blue: #6088dd"
+    magenta: #fa5477"
+    cyan: #64b9f2"
+    white: #d2d2d4"
 
   # Bright colors
   bright:
-    black:   '0x424a56'
-    red:     '0xff6565'
-    green:   '0x3bd37d'
-    yellow:  '0xfbd37e'
-    blue:    '0x6f97ec'
-    magenta: '0xff6386'
-    cyan:    '0x71c6ff'
-    white:   '0xf1f1f3'
+    black: #424a56"
+    red: #ff6565"
+    green: #3bd37d"
+    yellow: #fbd37e"
+    blue: #6f97ec"
+    magenta: #ff6386"
+    cyan: #71c6ff"
+    white: #f1f1f3"
 
 env:
   TERM: xterm-256color-italic

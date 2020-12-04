@@ -274,7 +274,7 @@
   # the full directory that was used in previous commands.
   typeset -g POWERLEVEL9K_DIR_HYPERLINK=false
 
-  # Enable special styling for non-writable directories. See POWERLEVEL9K_LOCK_ICON and
+  # Enable special styling for non-writable directories. See POWERLEVEL10K_LOCK_ICON and
   # POWERLEVEL9K_DIR_CLASSES below.
   typeset -g POWERLEVEL9K_DIR_SHOW_WRITABLE=v2
 

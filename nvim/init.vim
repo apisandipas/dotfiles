@@ -39,7 +39,7 @@ let g:vimwiki_global_ext = 0
 
 let g:closetag_filenames = '*.html,*.js,*.jsx,*.ts,*.tsx,*.mdx'
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
-let g:colorizer_auto_filetype = 'css,html,scss,javascript,typescript'
+let g:colorizer_auto_filetype = 'css,html,scss,javascript,typescript,yaml,markdown,vimwiki'
 
 let g:startify_custom_header = []
 let g:startify_lists = [
@@ -47,7 +47,7 @@ let g:startify_lists = [
    \ { 'type': 'dir',   'header': ['   MRU '. getcwd()] },
 \ ]
 
-let g:airline_theme = 'pimento'
+let g:airline_theme = 'test'
 let g:airline#extensions#tabline#enabled = 1
 
 let g:coc_snippet_next = '<tab>'
@@ -90,8 +90,10 @@ let $FZF_DEFAULT_OPTS = "--ansi --preview-window 'right:60%' --layout reverse --
 command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
 """ ---------------------------------------------------------------- Keybindings
+set termguicolors
+lua require'colorizer'.setup()
 
-" Turn off search highlighting with <CR>
+"Turin off search highlighting with <CR>
 nnoremap <CR> :nohlsearch<CR><CR>
 
 " Map to Spellcheck
@@ -200,6 +202,7 @@ augrou ProjectDrawer
   autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
 augroup END
 
+
 nmap <C-n> :CocCommand explorer --toggle<CR>
 nmap <a-c-n> :CocCommand explorer --toggle --preset floating<CR>
 
@@ -288,6 +291,7 @@ endfunction
 
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
+
 
 finish
 

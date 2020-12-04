@@ -18,10 +18,11 @@ export GITSTATUS_LOG_LEVEL=DEBUG
 export DENO_INSTALL="/home/bryan/.deno"
 export TERM="xterm-256color"
 export EDITOR=$(which nvim)
-export BROWSER=$(which google-chrome-stable)
+export BROWSER=$(which brave-bin)
 export BAT_THEME="Nord"
 export DOTS_DIR=$HOME/.dotfiles
-
+export MANPAGER="nvim -c 'set ft=man' -"
+#
 # Local Vars
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="powerlevel10k/powerlevel10k"
@@ -29,7 +30,7 @@ DEFAULT_USER="bryan"
 VIM_WIKI_DIR=$HOME/vimwiki
 
 # Path Config
-export PATH=$PATH:$HOME/.yarn/bin:$HOME/bin:$DENO_INSTALL/bin
+export PATH=$PATH:$HOME/.yarn/bin:$DENO_INSTALL/bin:$DOTS_DIR/bin
 
 # Load oh-my-zsh plugins
 plugins=(git tmux yarn z zsh-autosuggestions zsh-syntax-highlighting)
@@ -43,23 +44,24 @@ setxkbmap -option ctrl:nocaps
 
 # Aliases
 alias vim="nvim"
+alias vim8="/usr/bin/vim"
+alias mux="tmuxinator"
 alias cat="bat"
 alias ls="exa --icons"
-alias ll="exa -alh --icons"
+alias ll="exa -lh --icons"
+alias lll="exa -alh --icons"
 alias lt="exa -T --icons --git-ignore"
 alias cl="clear"
-alias sz="source ~/.zshrc"
-alias dennis="curl -L http://git.io/unix"
 alias open="xdg-open"
 alias dots="cd $DOTS_DIR; vim ; cd -;"  # avoids netrw
-alias i3c="vim $DOTS_DIR/i3config"
-alias vimrc="vim $DOTS_DIR/vimrc"
-alias polyc="vim $DOTS_DIR/polybar/config"
-alias zshrc="vim $DOTS_DIR/zshrc"
+alias ec="vim $DOTS_DIR/zshrc"
+alias sc="source ~/.zshrc; echo '~/.zshrc reloaded! ☮ '"
 alias services-enabled="systemctl list-unit-files | grep enabled"
 alias services-running="systemctl list-units --type=service --state=active"
 alias fzf='rg --files --ignore-case --hidden -g "!{.git,node_modules,vendor,.config,.cargo,.cache}" | fzf'
 alias fix='vim $(git diff --name-only | uniq)'
+alias XX='trash'
+
 
 # Sets up ruby env
 eval "$(rbenv init -)"
@@ -108,8 +110,12 @@ flip() {
     echo     "  (╯°□°）╯︵ ┻━┻"; sleep .5;
 }
 
+alias dennis="curl -L http://git.io/unix"
+
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
+
