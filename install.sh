@@ -5,53 +5,42 @@ echo "Linking config files...";
 echo "Linking $PWD/zshrc";
 ln -svi "$PWD/zshrc" ~/.zshrc;
 
-echo "Linking $PWD/nvim";
-ln -svi "$PWD/nvim" ~/.config/;
+echo "Linking $PWD/Xresources";
+ln -svi "$PWD/Xresources" ~/.Xresources;
 
-# @REFACTOR
 echo "Linking $PWD/tmux"; 
 ln -svi "$PWD/tmux.conf" ~/.tmux.conf;
-
-echo "Linking $PWD/gitconfig";
-ln -svi "$PWD/gitconfig" ~/.gitconfig;
-
-echo "Linking $PWD/i3config";
-ln -svi "$PWD/i3config" ~/.i3/config;
-
-# @REFACTOR
-echo "Linking $PWD/alacritty.yml";
-ln -svi "$PWD/alacritty.yml" ~/.alacritty.yml;
-
-# @REFACTOR
-echo "Linking $PWD/kitty.conf"
-ln -svi "$PWD/kitty.conf" ~/.config/kitty/kitty.conf;
-
-echo "Linking $PWD/Xresources";
-#ln -svi "$PWD/Xresources" ~/.Xresources;
-ln -svi "$PWD/pimento-dark.Xresources" ~/.Xresources;
-
-# @REFACTOR
-echo "Linking $PWD/polybar/";
-ln -svi "$PWD/polybar" ~/.config/ ;
-
-# @REFACTOR
-echo "Linkg $PWD/picom.conf";
-ln -svi "$PWD/picom.conf" ~/.config/ ;
-
-# @REFACTOR
-echo "Linking $PWD/picom.conf";
-ln -svi "$PWD/picom.conf" ~/.config/picom/picom.conf;
 
 echo "Linking $PWD/myclirc";
 ln -svi "$PWD/myclirc" ~/.myclirc;
 
-# @REFACTOR
-echo "Linking $PWD/rofi/"
-ln -svi "$PWD/rofi" ~/.config/;
+echo "Linking $PWD/gitconfig";
+ln -svi "$PWD/gitconfig" ~/.gitconfig;
 
-# @REFACTOR
-echo "Linking $PWD/p10k.zsh"
-ln -svi "$PWD/p10k.zsh" ~/.p10k.zsh
+echo "Linking $PWD/config/nvim";
+ln -svi "$PWD/config/nvim" ~/.config/;
+
+echo "Linking $PWD/config/alacritty";
+ln -svi "$PWD/config/alacritty" ~/.config/;
+
+echo "Linking $PWD/config/kitty"
+ln -svi "$PWD/config/kitty" ~/.config/;
+
+echo "Linking $PWD/config/polybar";
+ln -svi "$PWD/config/polybar" ~/.config/ ;
+
+echo "Linking $PWD/config/picom";
+ln -svi "$PWD/config/picom" ~/.config/ ;
+
+echo "Linking $PWD/config/i3";
+ln -svi "$PWD/config/i3" ~/.config/;
+
+echo "Linking $PWD/config/rofi"
+ln -svi "$PWD/config/rofi" ~/.config/;
+
+
+echo "Linking $PWD/config/starship.toml"
+ln -svi "$PWD/config/starship.toml" ~/.config/starship.toml;
 
 echo "Finished linking config files!";
 

@@ -9,23 +9,17 @@
 #░░    ░░░░░░░░░░░░░░░ ░░░░ ░░░░░░░░░░    ░░░░░░  
 
 
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 # Global env Vars
 export GO_PATH=$HOME/go
 export DENO_INSTALL=$HOME/deno
 export DOTS_DIR=$HOME/.dotfiles
-#export TERM="xterm-256color"
 export EDITOR=$(which nvim)
 export BROWSER=$(which brave)
-export BAT_THEME="Nord"
 export MANPAGER="nvim -c 'set ft=man' -"
 #
 # Local Vars
 ZSH=$HOME/.oh-my-zsh
-ZSH_THEME="powerlevel10k/powerlevel10k"
+# ZSH_THEME="powerlevel10k/powerlevel10k"
 DEFAULT_USER="bryan"
 VIM_WIKI_DIR=$HOME/vimwiki
 
@@ -33,7 +27,7 @@ VIM_WIKI_DIR=$HOME/vimwiki
 export PATH=$PATH:$HOME/.yarn/bin:$DENO_INSTALL/bin:$DOTS_DIR/bin:$GO_PATH
 
 # Load oh-my-zsh plugins
-plugins=(git tmux yarn z zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(git vi-mode tmux yarn z zsh-autosuggestions zsh-syntax-highlighting)
 
 # External scripts
 source $ZSH/oh-my-zsh.sh
@@ -112,10 +106,9 @@ flip() {
 
 alias dennis="curl -L http://git.io/unix"
 
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 
+
+
+eval "$(starship init zsh)"
