@@ -1,4 +1,4 @@
-@" Auto-install vim-plug
+" Auto-install vim-plug
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
   silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -20,7 +20,6 @@ call plug#begin('~/.config/nvim/plugged/')
     Plug 'ChristianChiarulli/vscode-easymotion'
     Plug 'machakann/vim-highlightedyank'
   else
-
   Plug 'norcalli/nvim-colorizer.lua'
   "Plug 'apisandipas/pimento.vim', { 'branch': 'main' }
   Plug 'easymotion/vim-easymotion'
@@ -31,6 +30,7 @@ call plug#begin('~/.config/nvim/plugged/')
   Plug 'voldikss/vim-floaterm'
   Plug 'airblade/vim-rooter'
   Plug 'vim-airline/vim-airline'
+  "Plug 'vim-airline/vim-airline-themes'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'

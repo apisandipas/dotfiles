@@ -14,13 +14,13 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # Global env Vars
-export GITSTATUS_LOG_LEVEL=DEBUG
-export DENO_INSTALL="/home/bryan/.deno"
-export TERM="xterm-256color"
-export EDITOR=$(which nvim)
-export BROWSER=$(which brave-bin)
-export BAT_THEME="Nord"
+export GO_PATH=$HOME/go
+export DENO_INSTALL=$HOME/deno
 export DOTS_DIR=$HOME/.dotfiles
+#export TERM="xterm-256color"
+export EDITOR=$(which nvim)
+export BROWSER=$(which brave)
+export BAT_THEME="Nord"
 export MANPAGER="nvim -c 'set ft=man' -"
 #
 # Local Vars
@@ -30,7 +30,7 @@ DEFAULT_USER="bryan"
 VIM_WIKI_DIR=$HOME/vimwiki
 
 # Path Config
-export PATH=$PATH:$HOME/.yarn/bin:$DENO_INSTALL/bin:$DOTS_DIR/bin
+export PATH=$PATH:$HOME/.yarn/bin:$DENO_INSTALL/bin:$DOTS_DIR/bin:$GO_PATH
 
 # Load oh-my-zsh plugins
 plugins=(git tmux yarn z zsh-autosuggestions zsh-syntax-highlighting)

@@ -11,6 +11,7 @@
 if !exists('g:vscode')
   source $HOME/.config/nvim/plug-config/polyglot.vim
 endif
+set ttyfast
 
 source $HOME/.config/nvim/general/plugins.vim
 source $HOME/.config/nvim/general/settings.vim
@@ -28,6 +29,10 @@ if exists('g:vscode')
   "source $HOME/.config/nvim/plug-config/highlightyank.vim
 else
 """ ---------------------------------------------------------------- Plugin Specific settings
+if &term =~ '256color'
+  " disable Background Color Erase (BCE)
+  set t_ut=
+endif
 
 let g:user_emmet_leader_key = '<C-z>'
 
@@ -47,7 +52,7 @@ let g:startify_lists = [
    \ { 'type': 'dir',   'header': ['   MRU '. getcwd()] },
 \ ]
 
-let g:airline_theme = 'test'
+let g:airline_theme = 'pimento'
 let g:airline#extensions#tabline#enabled = 1
 
 let g:coc_snippet_next = '<tab>'
@@ -66,7 +71,6 @@ let g:coc_global_extensions = [
   \ 'coc-json',
   \ 'coc-html',
   \ 'coc-highlight',
-  \ 'coc-graphql',
   \ 'coc-fzf-preview',
   \ 'coc-floaterm',
   \ 'coc-css',
