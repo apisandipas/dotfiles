@@ -51,7 +51,7 @@ let g:startify_lists = [
    \ { 'type': 'dir',   'header': ['   MRU '. getcwd()] },
 \ ]
 
-let g:airline_theme = 'base16_google'
+let g:line_theme = 'base16_google_dark'
 let g:airline#extensions#tabline#enabled = 1
 
 let g:coc_snippet_next = '<tab>'

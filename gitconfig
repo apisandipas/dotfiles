@@ -1,7 +1,7 @@
 [init]
   defaultBranch = main
 [user]
-	email = bryan.paronto@pm.me
+	email = bryan@cablecar.digtal
 	name = Bryan Paronto
 [push]
 	default = simple

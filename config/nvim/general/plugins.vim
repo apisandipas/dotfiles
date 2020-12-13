@@ -21,7 +21,6 @@ call plug#begin('~/.config/nvim/plugged/')
     Plug 'machakann/vim-highlightedyank'
   else
 
-  Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
   Plug 'chriskempson/base16-vim'
   Plug 'norcalli/nvim-colorizer.lua'
   Plug 'easymotion/vim-easymotion'
@@ -46,10 +45,10 @@ call plug#begin('~/.config/nvim/plugged/')
   Plug 'vim-scripts/loremipsum'
   Plug 'junegunn/goyo.vim'
   Plug 'liuchengxu/vim-which-key'
+  Plug 'ryanoasis/vim-devicons'
   Plug 'vim-pandoc/vim-pandoc'
   Plug 'vim-pandoc/vim-pandoc-syntax'
-  Plug 'ryanoasis/vim-devicons'
-  Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+  "Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 
   endif
 call plug#end()
