@@ -14,14 +14,14 @@ export GO_PATH=$HOME/go
 export DENO_INSTALL=$HOME/deno
 export DOTS_DIR=$HOME/.dotfiles
 export EDITOR=$(which nvim)
-export BROWSER=$(which brave)
+export BROWSER=$(which firefox-developer-edition)
 export MANPAGER="nvim -c 'set ft=man' -"
 #
 # Local Vars
 ZSH=$HOME/.oh-my-zsh
 # ZSH_THEME="powerlevel10k/powerlevel10k"
 DEFAULT_USER="bryan"
-VIM_WIKI_DIR=$HOME/vimwiki
+VIM_WIKI_DIR=$HOME/Dropbox/vimwiki
 
 # Path Config
 export PATH=$PATH:$HOME/.yarn/bin:$DENO_INSTALL/bin:$DOTS_DIR/bin:$GO_PATH
