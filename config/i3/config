@@ -188,7 +188,7 @@ bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 
 # Open applications on specific workspaces
 # assign [class="kitty"] $ws1
-assign [class="brave-brower"] $ws6
+assign [class="firefox-developer-edition"] $ws6
 assign [class="spotify"] $ws8
 
 # Open specific applications in floating mode
@@ -219,7 +219,7 @@ for_window [class="Simple-scan"] floating enable border normal
 for_window [class="(?i)System-config-printer.py"] floating enable border normal
 for_window [class="Skype"] floating enable border normal
 for_window [class="Timeset-gui"] floating enable border normal
-for_window [class="(?i)virtualbox"] floating enable border normal
+#for_window [class="(?i)virtualbox"] floating enable border normal
 for_window [class="Xfburn"] floating enable
 
 # switch to workspace with urgent window automatically
@@ -313,6 +313,7 @@ exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec_always --no-startup-id fix_xcursor
 exec_always ~/.dotfiles/fehbg &
+exec_always --no-startup-id picom -b --config ~/.config/picom/picom.conf
 
 # Color palette used for the terminal ( ~/.Xresources file )
 # Colors are gathered based on the documentation:

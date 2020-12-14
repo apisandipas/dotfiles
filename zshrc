@@ -2,60 +2,47 @@
 #░░    ░░░░░░░░░░░░░░░ ░░░░ ░░░░░░░░░░    ░░░░░░  
  #██    ███████████████ ████ ██████████  ░░██████ 
                        #█████
+<<<<<<< HEAD
                       #░░███ 
        #█████████ █████ ░███████  ████████ ██████ 
       #░   ███░ ░░█████ ░███ ░███ ░███ ░░░███ ░░░ 
       #░█░░░░███ ███░░  ░███░░███░░███░░█████░░███
         #███░   █░░░░███░███ ░███ ░███   ░███  ███
+=======
+                      #░░███
+       #█████████ █████ ░███████  ████████ ██████
+      #░█░░░░███ ███░░  ░███░░███░░███░░█████░░███
+      #░   ███░ ░░█████ ░███ ░███ ░███ ░░░███ ░░░
+        #███░   █░░░░███░███ ░███ ░███   ░███  ███
+ #██    ███████████████ ████ ██████████  ░░██████
+#░░    ░░░░░░░░░░░░░░░ ░░░░ ░░░░░░░░░░    ░░░░░░
+>>>>>>> goog-dark
 
 
-# Global env Vars
-export GO_PATH=$HOME/go
-export DENO_INSTALL=$HOME/deno
-export DOTS_DIR=$HOME/.dotfiles
-export EDITOR=$(which nvim)
-export BROWSER=$(which brave)
-export MANPAGER="nvim -c 'set ft=man' -"
-#
-# Local Vars
-ZSH=$HOME/.oh-my-zsh
-# ZSH_THEME="powerlevel10k/powerlevel10k"
-DEFAULT_USER="bryan"
-VIM_WIKI_DIR=$HOME/vimwiki
+# 🔨 TODO -
+# - drop oh-my-zsh dependency
+# - further configure starship
 
-# Path Config
-export PATH=$PATH:$HOME/.yarn/bin:$DENO_INSTALL/bin:$DOTS_DIR/bin:$GO_PATH
+DOTS_DIR=$HOME/.dotfiles
 
-# Load oh-my-zsh plugins
-plugins=(git vi-mode tmux yarn z zsh-autosuggestions zsh-syntax-highlighting)
+# Load plugins
+plugins=(
+  git
+  vi-mode
+  tmux
+  yarn
+  z
+  zsh-autosuggestions
+  zsh-syntax-highlighting
+)
 
-# External scripts
-source $ZSH/oh-my-zsh.sh
-source ~/.nvm/nvm.sh
+# Modules
+source $DOTS_DIR/config/zsh/globals.zsh
+source $DOTS_DIR/config/zsh/keybinds.zsh
+source $DOTS_DIR/config/zsh/aliases.zsh
+source $DOTS_DIR/config/zsh/functions.zsh
 
-# Disabled CapsLock
-setxkbmap -option ctrl:nocaps
-
-# Aliases
-alias vim="nvim"
-alias vim8="/usr/bin/vim"
-alias mux="tmuxinator"
-alias cat="bat"
-alias ls="exa --icons"
-alias ll="exa -lh --icons"
-alias lll="exa -alh --icons"
-alias lt="exa -T --icons --git-ignore"
-alias cl="clear"
-alias open="xdg-open"
-alias dots="cd $DOTS_DIR; vim ; cd -;"  # avoids netrw
-alias ec="vim $DOTS_DIR/zshrc"
-alias sc="source ~/.zshrc; echo '~/.zshrc reloaded! ☮ '"
-alias services-enabled="systemctl list-unit-files | grep enabled"
-alias services-running="systemctl list-units --type=service --state=active"
-alias fzf='rg --files --ignore-case --hidden -g "!{.git,node_modules,vendor,.config,.cargo,.cache}" | fzf'
-alias fix='vim $(git diff --name-only | uniq)'
-alias XX='trash'
-
+<<<<<<< HEAD
 # Sets up ruby env
 eval "$(rbenv init -)"
 # Functions
@@ -104,6 +91,16 @@ flip() {
 
 alias dennis="curl -L http://git.io/unix"
 
+=======
+# External scripts
+source $HOME/.oh-my-zsh/oh-my-zsh.sh
+source $HOME/.nvm/nvm.sh
+
+# Sets up ruby vers mgmt
+eval "$(rbenv init -)"
+
+# load the starship prompt
+>>>>>>> goog-dark
 eval "$(starship init zsh)"
 export PATH="$PATH:$HOME/.rvm/bin"
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
