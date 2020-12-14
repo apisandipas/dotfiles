@@ -1,18 +1,19 @@
- "██████   █████                              ███                
-"░░██████ ░░███                              ░░░                 
- "░███░███ ░███   ██████  ██████  █████ █████████ █████████████  
- "░███░░███░███  ███░░██████░░███░░███ ░░███░░███░░███░░███░░███ 
- "░███ ░░██████ ░███████░███ ░███ ░███  ░███ ░███ ░███ ░███ ░███ 
- "░███  ░░█████ ░███░░░ ░███ ░███ ░░███ ███  ░███ ░███ ░███ ░███ 
+ "██████   █████                              ███
+"░░██████ ░░███                              ░░░
+ "░███░███ ░███   ██████  ██████  █████ █████████ █████████████
+ "░███░░███░███  ███░░██████░░███░░███ ░░███░░███░░███░░███░░███
+ "░███ ░░██████ ░███████░███ ░███ ░███  ░███ ░███ ░███ ░███ ░███
+ "░███  ░░█████ ░███░░░ ░███ ░███ ░░███ ███  ░███ ░███ ░███ ░███
  "█████  ░░█████░░██████░░██████   ░░█████   ██████████░███ █████
-"░░░░░    ░░░░░  ░░░░░░  ░░░░░░     ░░░░░   ░░░░░░░░░░ ░░░ ░░░░░ 
+"░░░░░    ░░░░░  ░░░░░░  ░░░░░░     ░░░░░   ░░░░░░░░░░ ░░░ ░░░░░
 
 
+ "neo-vscodium configs
 if !exists('g:vscode')
   source $HOME/.config/nvim/plug-config/polyglot.vim
 endif
 
-" general config
+" general configs
 source $HOME/.config/nvim/general/plugins.vim
 source $HOME/.config/nvim/general/settings.vim
 source $HOME/.config/nvim/general/functions.vim
@@ -21,7 +22,7 @@ source $HOME/.config/nvim/general/functions.vim
 source $HOME/.config/nvim/keys/mappings.vim
 source $HOME/.config/nvim/keys/which-key.vim
 
-" plugin confs
+" plugin configs
 source $HOME/.config/nvim/plug-config/airline.vim
 source $HOME/.config/nvim/plug-config/coc.vim
 source $HOME/.config/nvim/plug-config/emmet.vim
@@ -29,7 +30,6 @@ source $HOME/.config/nvim/plug-config/fzf.vim
 source $HOME/.config/nvim/plug-config/startify.vim
 source $HOME/.config/nvim/plug-config/vimwiki.vim
 luafile $HOME/.config/nvim/lua/plug-colorizer.lua
-
 
 """ ---------------------------------------------------------------- Plugin Specific settings
 
@@ -47,12 +47,14 @@ let g:closetag_filenames = '*.html,*.js,*.jsx,*.ts,*.tsx,*.mdx'
 
 " Autoformat on save
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
-command! -nargs=0 ESLintFix :CocCommand eslint.executeAutofix
+"command! -nargs=0 ESLintFix :CocCommand eslint.executeAutofix
 augroup FormatOnSave
   autocmd!
-  autocmd BufWritePre *.ts,*.tsx,*.jsx,*.js,*.mjs,*.css,*.scss,*.less,*.md,*.mdx,*.html Prettier
-  autocmd BufWritePre *.ts,*.tsx,*.jsx,*.js ESLintFix
+  autocmd BufWritePre *.ts,*.tsx,*.jsx,*.js,*.mjs,*.css,*.scss,*.less,*.html Prettier
+  "autocmd BufWritePre *.ts,*.tsx,*.jsx,*.js ESLintFix
 augroup END
+
+let g:limelight_conceal_ctermfg = 'gray'
 
 function! s:goyo_enter()
   if executable('tmux') && strlen($TMUX)
@@ -79,10 +81,9 @@ endfunction
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
-
-" Theme tweaks 
-"hi Normal guibg=NONE ctermbg=NONE
-
+" Theme tweaks
+hi Normal guibg=NONE ctermbg=NONE
+hi Comment cterm=italic
 finish
 
 

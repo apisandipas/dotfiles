@@ -2,7 +2,7 @@
 nnoremap <CR> :nohlsearch<CR><CR>
 
 " Map to Spellcheck
-map <leader>sp :setlocal spell! spelllang=en_us<CR>
+"map <leader>sp :setlocal spell! spelllang=en_us<CR>
 
 " Map F5 to list buffers. Just enter buffer # and hit enter
 map <F5> :buffers<CR>:buffer<Space>
@@ -37,28 +37,28 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 " leader k to 'kill' the buffer and explorer together
-nnoremap <leader>k :bp<cr>:bd #<cr>
+"nnoremap <leader>k :bp<cr>:bd #<cr>
 
 " Use Ctrk+A to Yank entire buffer
 map <c-C> :%y+<CR>
 
 " Fuzzy Finder commands
-nnoremap <Leader>ps :Rg<Space>
-nnoremap <Leader>pf :Files<CR>
-nnoremap <C-p> :GFiles<CR>
+"nnoremap <Leader>ps :Rg<Space>
+"nnoremap <Leader>pf :Files<CR>
+"nnoremap <C-p> :GFiles<CR>
 
 " Quick Save keybindings:
 map <Esc> :w<CR>
-map <leader>s :w<CR>
+"map <leader>s :w<CR>
 
 " Sweet Sweet GIT!
-nmap <leader>gj :diffget //3<CR>
-nmap <leader>gf :diffget //2<CR>
-nmap <leader>gs :G<CR>
-nmap <leader>ga :G add -A<CR>
-nmap <leader>gc :G commit<CR>
-nmap <leader>gp :G push<CR>
-nmap <leader>gy :!yolo<CR><CR>
+"nmap <leader>gj :diffget //3<CR>
+"nmap <leader>gf :diffget //2<CR>
+"nmap <leader>gs :G<CR>
+"nmap <leader>ga :G add -A<CR>
+"nmap <leader>gc :G commit<CR>
+"nmap <leader>gp :G push<CR>
+"nmap <leader>gy :!yolo<CR><CR>
 
 " Vmap for maintain Visual Mode after shifting > and <
 vmap < <gv
@@ -102,19 +102,19 @@ cnoreabbrev So so
 " COC Related keybindings
 
 " Use `[g` and `]g` to navigate diagnostics
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
-nmap <leader>rr <Plug>(coc-rename)
-map <leader>prw :CocSearch <C-R>=expand("<cword>")<CR><CR>
+"nmap <silent> [g <Plug>(coc-diagnostic-prev)
+"nmap <silent> ]g <Plug>(coc-diagnostic-next)
+"nmap <leader>rr <Plug>(coc-rename)
+"map <leader>prw :CocSearch <C-R>=expand("<cword>")<CR><CR>
 
 " GoTo code navigation.
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gt<Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+"nmap <silent> gd <Plug>(coc-definition)
+"nmap <silent> gt<Plug>(coc-type-definition)
+"nmap <silent> gi <Plug>(coc-implementation)
+"nmap <silent> gr <Plug>(coc-references)
 
 " Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
+"inoremap <silent><expr> <c-space> coc#refresh()
 
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
