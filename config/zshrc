@@ -1,0 +1,43 @@
+
+                       #█████
+                      #░░███
+       #█████████ █████ ░███████  ████████ ██████
+      #░█░░░░███ ███░░  ░███░░███░░███░░█████░░███
+      #░   ███░ ░░█████ ░███ ░███ ░███ ░░░███ ░░░
+        #███░   █░░░░███░███ ░███ ░███   ░███  ███
+ #██    ███████████████ ████ ██████████  ░░██████
+#░░    ░░░░░░░░░░░░░░░ ░░░░ ░░░░░░░░░░    ░░░░░░
+
+# 🔨 TODO -
+# - drop oh-my-zsh dependency
+# - further configure starship
+
+DOTS_DIR=$HOME/.dotfiles
+ZSH=$HOME/.oh-my-zsh
+
+# Load plugins
+plugins=(
+  vi-mode
+  tmux
+  yarn
+  z
+  zsh-autosuggestions
+  zsh-syntax-highlighting
+)
+
+source $ZSH/oh-my-zsh.sh
+
+source $DOTS_DIR/lib/utils.sh
+
+source $DOTS_DIR/config/zsh/globals.zsh
+source $DOTS_DIR/config/zsh/keybinds.zsh
+source $DOTS_DIR/config/zsh/aliases.zsh
+source $DOTS_DIR/config/zsh/functions.zsh
+
+source $DOTS_DIR/lib/nvm.sh
+
+# Sets up ruby vers mgmt
+eval "$(rbenv init -)"
+
+# load the starship prompt
+eval "$(starship init zsh)"

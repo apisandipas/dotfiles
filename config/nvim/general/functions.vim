@@ -11,3 +11,8 @@ nnoremap <f10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> 
 
 " Trim trailing whitespace on save
 autocmd BufWritePre * %s/\s\+$//e
+
+augroup vimwiki_use_md
+  "autocmd!
+  autocmd BufNewFile,BufRead *.md set syntax=markdown
+augroup END

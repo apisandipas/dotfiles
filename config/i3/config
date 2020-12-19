@@ -1,7 +1,7 @@
 # i3 config file (v4)
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
-# Fonts 
+# Fonts
 font pango:Operator Mono Nerd Font
 font pango:Font Awesome 5 Free
 
@@ -38,7 +38,7 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec rofi -show run -theme base16-google-dark
 bindsym $mod+Shift+f exec rofi -show window -theme base16-google-dark
 bindsym $mod+Shift+Return exec rofimoji --skin-tone="medium-light" --rofi-args="-theme base16-google-dark"
-bindsym $mod+Shift+Ctrl+Return exec rofi-pass 
+bindsym $mod+Shift+Ctrl+Return exec rofi-pass
 
 # launch categorized menu
 bindsym $mod+z exec --no-startup-id morc_menu
@@ -151,7 +151,7 @@ set $ws2 "2 "
 set $ws3 "3 "
 set $ws4 "4 磊"
 set $ws5 "5  "
-set $ws6 "6 " 
+set $ws6 "6 "
 set $ws7 "7 "
 set $ws8 "8 "
 
@@ -292,12 +292,12 @@ bindcode $mod + 117 exec --no-startup-id pactl set-sink-volume 0 -10% # decrease
 bindcode $mod + 127 exec --no-startup-id pactl set-sink-mute 0 toggle # toggle mute
 
 # Lock screen
-bindsym $mod+9 exec --no-startup-id betterlockscreen -l dim 
+bindsym $mod+9 exec --no-startup-id betterlockscreen -l dim
 # xrandr config
-exec --no-startup-id xrandr --output eDP-1 --mode 1920x1080 --left-of DP-2 --output DP-1 --left-of eDP-1  
+exec --no-startup-id xrandr --output eDP-1 --mode 1920x1080 --left-of DP-2 --output DP-1 --left-of eDP-1
 
 # Autostart applications
-exec --no-startup-id kitty 
+exec --no-startup-id kitty
 exec --no-startup-id brave-bin
 exec --no-startup-id spotify
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
@@ -312,7 +312,7 @@ exec --no-startup-id xautolock -time 120 -locker 'betterlockscreen -l dim'
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec_always --no-startup-id fix_xcursor
-exec_always ~/.dotfiles/fehbg &
+exec_always --no-startup-id ~/.dotfiles/fehbg &
 exec_always --no-startup-id picom -b --config ~/.config/picom/picom.conf
 
 # Color palette used for the terminal ( ~/.Xresources file )
@@ -321,7 +321,7 @@ exec_always --no-startup-id picom -b --config ~/.config/picom/picom.conf
 # Change the variable name at the place you want to match the color
 # of your terminal like this:
 # [example]
-# If you want your bar to have the same background color as your 
+# If you want your bar to have the same background color as your
 # terminal background change the line 362 from:
 # background #14191D
 # to:
@@ -385,7 +385,7 @@ client.background       $base07
 #  client.focused_inactive #2F3D44 #2F3D44 #8fa1b3 #454948
 #  client.unfocused        #2F3D44 #2F3D44 #8fa1b3 #454948
 #  client.urgent           #bf616a #FDF6E3 #8fa1b3 #268BD2
-#  client.placeholder      #000000 #0c0c0c #ffffff #000000 
+#  client.placeholder      #000000 #0c0c0c #ffffff #000000
 #  client.background       #2B2C2B
 
 #############################
@@ -404,7 +404,7 @@ gaps outer 0
 # Smart gaps (gaps used if only more than one container on the workspace)
 # smart_gaps off
 
-# Smart borders (draw borders around container only if it is not the only container on this workspace) 
+# Smart borders (draw borders around container only if it is not the only container on this workspace)
 # on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
 # smart_borders on
 

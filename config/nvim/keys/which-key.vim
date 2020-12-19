@@ -128,7 +128,7 @@ let g:which_key_map.s = {
       \ 'name' : '⦿ search' ,
       \ '/' : [':History/'              , 'history'],
       \ ';' : [':FzfPreviewCommandPalette'              , 'commands'],
-      \ 'a' : [':Ag'                    , 'text Ag'],
+      \ 'a' : [':Rg'                    , 'text Rg'],
       \ 'b' : [':CocCommand fzf-preview.BufferLines'                , 'current buffer'],
       \ 'B' : [':CocCommand fzf-preview.Buffers'               , 'open buffers'],
       \ 'c' : [':Commits'               , 'commits'],

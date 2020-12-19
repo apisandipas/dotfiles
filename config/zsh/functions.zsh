@@ -1,10 +1,38 @@
-# Functions
-mkcd() { mkdir -p "$@" && cd $_; }
-gi() { echo "fetching $@ gitignore"; curl -sLw "\n" https://www.gitignore.io/api/$@ >> .gitignore;}
-killport() { echo "Killing port $1"; sudo kill -9 $(sudo lsof -t -i:$1) }
-path() { echo $PATH | tr ":" "\n" | nl; }
+#!/usr/bin/env zsh
 
-vimwiki () {
+# Make a directory and immediate change into it
+# - requires a new directory name
+# - ex: mkcd new-project
+mkcd() {
+  mkdir -p "$@" && cd $_; i
+}
+
+# Uses the http://gitignore.io api to generate contents of a `.gitignore` file
+# - requires a command-sep list of keywords, see: from https://docs.gitignore.io/use/command-line
+# - ex: `gi node,ruby`
+gi() {
+  echo "fetching $@ gitignore";
+  curl -sLw "\n" https://www.gitignore.io/api/$@ >> .gitignore;
+}
+
+# Kills a process by the port number their running on.
+# - great for ghost node processes.
+# - ex: `killport 8000`
+killport() {
+  echo "Killing port $1";
+  sudo kill -9 $(sudo lsof -t -i:$1)
+}
+
+# List out the current $PATH entries as a list
+path() {
+  echo $PATH | tr ":" "\n" | nl;
+}
+
+# Lauches vim and opens the main wiki entry  point.
+# - also accepts git commands to run in the context of the repo
+# - ex w/ git arg: `wiki git push` works as one might expect
+# - TODO add a `wiki sync` - add + commit + push to origin/main
+wiki () {
     if [[ $# == 0 ]]
     then
         nvim +'VimwikiIndex'
@@ -18,7 +46,7 @@ vimwiki () {
 
 yolo() {
  if [ ! -d ./.git ]; then
-  echo "$PWD is not a git repository";
+  echo "$PWD does not contain a git repository";
   return 1;
  fi
 
