@@ -1,6 +1,6 @@
 # ~/.dotfiles
 
-> There are many like this, but this on is mine.
+> There are many like them, but these ones are mine.
 
 ## TODO!
 
