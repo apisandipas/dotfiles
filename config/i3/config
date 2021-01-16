@@ -238,7 +238,7 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 bindsym $mod+0 mode "$mode_system"
 set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
 mode "$mode_system" {
-    bindsym l exec --no-startup-id i3exit lock, mode "default"
+    #bindsym l exec --no-startup-id i3exit lock, mode "default"
     bindsym s exec --no-startup-id i3exit suspend, mode "default"
     bindsym u exec --no-startup-id i3exit switch_user, mode "default"
     bindsym e exec --no-startup-id i3exit logout, mode "default"
@@ -292,7 +292,7 @@ bindcode $mod + 117 exec --no-startup-id pactl set-sink-volume 0 -10% # decrease
 bindcode $mod + 127 exec --no-startup-id pactl set-sink-mute 0 toggle # toggle mute
 
 # Lock screen
-bindsym $mod+9 exec --no-startup-id betterlockscreen -l dim
+#bindsym $mod+9 exec --no-startup-id betterlockscreen -l dim
 # xrandr config
 exec --no-startup-id xrandr --output eDP-1 --mode 1920x1080 --left-of DP-2 --output DP-1 --left-of eDP-1
 
@@ -308,7 +308,7 @@ exec --no-startup-id pamac-tray
 exec --no-startup-id clipit
 exec --no-startup-id blueman-applet
 # exec --no-startup-id start_conky_maia
-exec --no-startup-id xautolock -time 120 -locker 'betterlockscreen -l dim'
+#exec --no-startup-id xautolock -time 120 -locker 'betterlockscreen -l dim'
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec_always --no-startup-id fix_xcursor

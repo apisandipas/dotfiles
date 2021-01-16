@@ -1,3 +1,2 @@
--#!/bin/sh
-feh --no-fehbg --bg-scale --randomize ~/.dotfiles/wallpaper/
-
+#!/bin/sh
+feh --no-fehbg --bg-fill '/home/bryan/.dotfiles/etc/wallpaper/octagon.png' 
