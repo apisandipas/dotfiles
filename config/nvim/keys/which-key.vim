@@ -268,30 +268,24 @@ let g:which_key_map.t = {
 " w is for wiki
 let g:which_key_map.w = {
        \ 'name' : '⦿ wiki' ,
-       \ 'w' : ['<Plug>VimwikiIndex'                              , 'ncdu'],
-       \ 'n' : ['<plug>(wiki-open)'                              , 'ncdu'],
-       \ 'j' : ['<plug>(wiki-journal)'                              , 'ncdu'],
-       \ 'R' : ['<plug>(wiki-reload)'                              , 'ncdu'],
-       \ 'c' : ['<plug>(wiki-code-run)'                              , 'ncdu'],
-       \ 'b' : ['<plug>(wiki-graph-find-backlinks)'                              , 'ncdu'],
-       \ 'g' : ['<plug>(wiki-graph-in)'                              , 'ncdu'],
-       \ 'G' : ['<plug>(wiki-graph-out)'                              , 'ncdu'],
-       \ 'l' : ['<plug>(wiki-link-toggle)'                              , 'ncdu'],
-       \ 'd' : ['<plug>(wiki-page-delete)'                              , 'ncdu'],
-       \ 'r' : ['<plug>(wiki-page-rename)'                              , 'ncdu'],
-       \ 't' : ['<plug>(wiki-page-toc)'                              , 'ncdu'],
-       \ 'T' : ['<plug>(wiki-page-toc-local)'                              , 'ncdu'],
-       \ 'e' : ['<plug>(wiki-export)'                              , 'ncdu'],
-       \ 'u' : ['<plug>(wiki-list-uniq)'                              , 'ncdu'],
-       \ 'U' : ['<plug>(wiki-list-uniq-local)'                              , 'ncdu'],
+       \ 'w' : 'Open current wiki index',
+       \ 't' : 'Open current wiki index in new tab',
+       \ 's' : 'Select and open wiki index',
+       \ 'i' : 'Open current wiki diary index',
        \ }
 
+
+let g:which_key_map.w['\'] = {
+      \ 'name': 'diary',
+      \ 'i': 'Generate Links',
+      \ 'w': 'Open today’s diary entry for current wiki',
+      \ 't': 'Open today’s diary entry for current wiki in new tab',
+      \ 'y': 'Open yesterday’s diary entry for current wiki',
+      \ 'm': 'Open tomorrow’s diary entry for current wiki',
+      \}
+
+
 " Global
-" <Plug>VimwikiIndex
-" <Plug>VimwikiTabIndex
-" <Plug>VimwikiUISelect
-" <Plug>VimwikiDiaryIndex
-" <Plug>VimwikiMakeDiaryNote
 " <Plug>VimwikiTabMakeDiaryNote
 " <Plug>VimwikiMakeYesterdayDiaryNote
 " <Plug>VimwikiMakeTomorrowDiaryNote
@@ -307,7 +301,6 @@ let g:which_key_map.w = {
 " <Plug>VimwikiGoBackLink
 " <Plug>VimwikiNextLink
 " <Plug>VimwikiPrevLink
-" <Plug>VimwikiGoto
 " <Plug>VimwikiDeleteLink
 " <Plug>VimwikiRenameLink
 " <Plug>VimwikiAddHeaderLevel
