@@ -34,7 +34,7 @@ source $DOTS_DIR/config/zsh/keybinds.zsh
 source $DOTS_DIR/config/zsh/aliases.zsh
 source $DOTS_DIR/config/zsh/functions.zsh
 
-source $DOTS_DIR/lib/nvm.sh
+source $HOME/.nvm/nvm.sh
 
 # Sets up ruby vers mgmt
 eval "$(rbenv init -)"
