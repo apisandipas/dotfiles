@@ -19,7 +19,7 @@ font:
 
   italic:
     family: OperatorMono Nerd Font
-    styled: Book Italic
+    style: Book Italic
 
 # Base16 Google Dark 256 - alacritty color config
 # Seth Wright (http://sethawright.com)

@@ -30,21 +30,21 @@
   height   = 35
   offset-x = 0
   offset-y = 0
-  bottom = true
+  bottom = false
 
-tray-position = left 
- tray-padding = 2
- tray-offset-x = 20
- tray-transparent = true
- tray-background = ${xrdb:color0}
+  tray-position = center
+  tray-padding = 0
+  tray-offset-x = 0
+  tray-transparent = true
+  tray-background = ${xrdb:color0}
 
-  background = #000f0f0f
+  background = ${xrdb:background}
   foreground = ${xrdb:color7}
 
-  border-bottom-size  = 16
+  border-bottom-size  = 0
   border-top-size     = 0
 
-  border-left-size  = 16
+  border-left-size  = 0
   border-right-size = 0
 
   border-bottom-color = #000f0f0f
@@ -54,8 +54,8 @@ tray-position = left
   border-right-color = ${xrdb:color0}
 
   spacing            = 0
-  padding-left       = 2
-  padding-right      = 4
+  padding-left       = 0
+  padding-right      = 0
   module-margin-left = 0
 
   font-0 = OperatorMono Nerd Font:style=Medium,Regular
@@ -63,9 +63,9 @@ tray-position = left
   font-2 = FontAwesome:style=Regular
   font-3 = IcoFont:style=Regular
 
-  modules-left  = paddinglite workspaces
+  modules-left  = workspaces
   modules-center =
-  modules-right = currentsong previous playpause next paddinglite battery date
+  modules-right = currentsong previous playpause next battery date
 
   fixed-center = true
 
@@ -241,4 +241,4 @@ tray-position = left
 	label-urgent-background = ${xrdb:color0}
 	label-urgent-foreground = ${xrdb:color7}
 	label-urgent-padding    = 3
- 
+

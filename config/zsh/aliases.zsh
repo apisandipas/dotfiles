@@ -1,6 +1,7 @@
 #!/usr/bin/env zsh
 
 # Aliases
+alias lvim="nvim -u ~/.dotfiles/config/nvim-lua/init.lua"
 alias vim="nvim"
 alias vim8="/usr/bin/vim"
 alias mux="tmuxinator"

@@ -298,12 +298,13 @@ exec --no-startup-id xrandr --output eDP-1 --mode 1920x1080 --left-of DP-2 --out
 
 # Autostart applications
 exec --no-startup-id kitty
-exec --no-startup-id brave-bin
+exec --no-startup-id firefox-develeloper-edition
 exec --no-startup-id spotify
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id picom -b --config ~/.config/picom/picom.conf
 exec --no-startup-id nm-applet
-# exec --no-startup-id xfce4-power-manager
+exec --no-startup-id dropbox
+exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pamac-tray
 exec --no-startup-id clipit
 exec --no-startup-id blueman-applet
@@ -312,7 +313,7 @@ exec --no-startup-id blueman-applet
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec_always --no-startup-id fix_xcursor
-exec_always --no-startup-id ~/.dotfiles/fehbg &
+exec_always --no-startup-id ~/.dotfiles/config/fehbg &
 exec_always --no-startup-id picom -b --config ~/.config/picom/picom.conf
 
 # Color palette used for the terminal ( ~/.Xresources file )

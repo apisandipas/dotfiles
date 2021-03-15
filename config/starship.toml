@@ -1,24 +1,16 @@
-empty_line=false
-format="""\
-    $directory\
-    $package\
-    $git_branch\
-    $line_break\
-    $homename\
-    $character\
-    """
-[[battery.display]]  # "bold red" style when capacity is between 0% and 10%
-threshold = 10
-style = "bold red"
+empty_line = false
 
-[[battery.display]]  # "bold yellow" style when capacity is between 10% and 30%
-threshold = 30
-style = "bold yellow"
+format = "$all"
+
+[battery]
+full_symbol = "🔋"
+charging_symbol = "⚡️"
+discharging_symbol = "💀"
 
 [character]
-success_symbol = "[λ](bold green)"
-error_symbol = "[λ](bold red)"
-vicmd_symbol = "[λ](bold green)"
+success_symbol = "[👉](bold green)"
+error_symbol = "[🚨](bold magenta)"
+vicmd_symbol = "[✌️](bold green)"
 
 [hostname]
-ssh_only=true
+ssh_only = true
