@@ -5,6 +5,10 @@
 font pango:Operator Mono Nerd Font
 font pango:Font Awesome 5 Free
 
+# Rounded Corders!
+smart_borders on
+smart_borders no_gaps
+border_radius 15
 
 # Set mod key (Mod1=<Alt>, Mod4=<Super>)
 set $mod Mod4
