@@ -1,6 +1,6 @@
 """ Shell -----------------------------------------------------------------------------
 
-let &shell='/bin/zsh -i'    " point defauly shell to zsh
+"let &shell='/usr/bin/zsh -i'    " point default shell to zsh
 set shellcmdflag=-ic        " load zshrc
 
 """ Appearance -------------------------------------------------------------------------
@@ -56,7 +56,7 @@ set shiftwidth=2    " number of spaces to use for each step of auto indent
 set softtabstop=2   " backspace after pressing <TAB> will remove up this many spaces
 set autoindent      " copy indent from the current line when starting a new line
 set smartindent     " end better autoindent
-set list                    " Display unprintable characters
+set list            " Display unprintable characters
 set listchars=tab:•\ ,trail:•,extends:»,precedes:« " Show trailing whitespace chars
 
 

@@ -17,12 +17,15 @@
 ;==========================================================
 
 [colors]
-  background = ${xrdb:background}
-  foreground = ${xrdb:color7:#222}
-  primary = #ffb52a
-  secondary = #e60053
-  alert = #bd2c40
-  transparent = #000f0f0f
+  bg = #801d1f21
+  fg = #c5c8c6
+  transparent = #00ffffff
+  red = #cc342b
+  green = #198844
+  yellow = #fba922
+  blue = #3971ed
+  magenta = #a36ac7
+  cyan = #618cec
 
 [bar/example]
   monitor = ${env:MONITOR:}
@@ -36,10 +39,10 @@
   tray-padding = 0
   tray-offset-x = 0
   tray-transparent = true
-  tray-background = ${xrdb:color0}
+  ;tray-background = ${colors.transparent}
 
-  background = ${xrdb:background}
-  foreground = ${xrdb:color7}
+  background = ${colors.bg}
+  foreground = ${colors.fg}
 
   border-bottom-size  = 0
   border-top-size     = 0
@@ -47,11 +50,11 @@
   border-left-size  = 0
   border-right-size = 0
 
-  border-bottom-color = #000f0f0f
-  border-top-color    = ${xrdb:color0}
+  ;border-bottom-color = ${colors.transparent}
+  ;border-top-color    = ${colors.transparent}
 
-  border-left-color = #000f0f0f
-  border-right-color = ${xrdb:color0}
+  ;border-left-color = ${colrs.transparent}
+  ;border-right-color = ${colors.transparent}
 
   spacing            = 0
   padding-left       = 0
@@ -103,15 +106,15 @@
 	interval = 1.0
 	label = %output%
 	exec = sh ~/.config/polybar/currentsong.sh
-  label-background = ${xrdb:color0}
-  label-foreground = ${xrdb:color7}
+  label-background = ${colors.bg}
+  label-foreground = ${colors.fg}
   label-padding = 2
 
 [module/previous]
 	type = custom/text
 	content = " "
-	content-background = ${xrdb:color2}
-	content-foreground = ${xrdb:color0}
+	content-background = ${colors.bg}
+	content-foreground = ${colors.fg}
 	content-padding = 1
 	click-left = "playerctl --player=spotify previous"
 
@@ -120,16 +123,16 @@
 	exec = sh ~/.config/polybar/playpause.sh
 	interval = 1
 	label = %output%
-	label-background = ${xrdb:color2}
-	label-foreground = ${xrdb:color0}
+	label-background = ${colors.bg}
+	label-foreground = ${colors.fg}
 	label-padding = 1
 	click-left = "playerctl  --player=spotify play-pause"
 
 [module/next]
 	type = custom/text
 	content = " "
-	content-background = ${xrdb:color2}
-	content-foreground = ${xrdb:color0}
+	content-background = ${colors.bg}
+	content-foreground = ${colors.fg}
 	content-padding = 1
 	click-left = "playerctl --player=spotify next"
 
@@ -144,34 +147,34 @@
   format-charging = <label-charging>
 
 	format-charging-prefix = "    "
-	format-charging-foreground = ${xrdb:color4}
-	format-charging-background = ${xrdb:color0}
+	format-charging-foreground = ${colors.green}
+	format-charging-background = ${colors.bg}
 
 	label-charging            = "%percentage%%   "
-	label-charging-background = ${xrdb:color0}
-	label-charging-foreground = ${xrdb:color7}
+	label-charging-background = ${colors.bg}
+	label-charging-foreground = ${colors.fg}
 	label-charging-padding    = 1
 
 	format-discharging = <label-discharging>
 
 	format-discharging-prefix = "    "
-	format-discharging-prefix-foreground = ${xrdb:color4}
-	format-discharging-prefix-background =${xrdb:color0}
+	format-discharging-prefix-foreground = ${colors.yellow}
+	format-discharging-prefix-background =${colors.bg}
 
 	label-discharging            = "%percentage%%   "
-	label-discharging-background = ${xrdb:color0}
-	label-discharging-foreground = ${xrdb:color7}
+	label-discharging-background = ${colors.bg}
+	label-discharging-foreground = ${colors.fg}
 	label-discharging-padding    = 1
 
 	format-full = <label-full>
 
 	format-full-prefix = "   "
-  format-full-prefix-foreground = ${xrdb:color4}
-	format-full-prefix-background = ${xrdb:color0}
+  format-full-prefix-foreground = ${colors.green}
+	format-full-prefix-background = ${colors.bg}
 
 	label-full            = "%percentage%%   "
-	label-full-background = ${xrdb:color0}
-	label-full-foreground = ${xrdb:color7}
+	label-full-background = ${colors.bg}
+	label-full-foreground = ${colors.fg}
 	label-full-padding    = 1
 
 [module/volume]
@@ -206,8 +209,8 @@
 [module/paddinglite]
 	type               = custom/text
 	content            = ||
-	content-foreground = #000f0f0f
-	content-background = #000f0f0f
+	content-foreground = ${colors.transparent}
+	content-background = ${colors.transparent}
 
 [module/workspaces]
 
@@ -218,27 +221,28 @@
 	strip-wsnumbers = true
   pin-workspaces  = true
 
-	label-mode-background = ${xrdb:color0}
-	label-mode-foreground = ${xrdb:color7}
+	label-mode-background = ${colors.bg}
+	label-mode-foreground = ${colors.fg}
 	label-mode-padding    = 3
 
 	label-focused            = %name%
-	label-focused-background = ${xrdb:color3}
-	label-focused-foreground = ${xrdb:color0}
+	label-focused-background = ${colors.bg}
+	label-focused-foreground = ${colors.fg}
 	label-focused-padding    = 3
+  label-focused-underline = ${colors.yellow}
 
 	label-unfocused            = %name%
-	label-unfocused-background = ${xrdb:color0}
-	label-unfocused-foreground = ${xrdb:color7}
+	label-unfocused-background = ${colors.bg}
+	label-unfocused-foreground = ${colors.fg}
 	label-unfocused-padding    = 3
 
 	label-visible            = %name%
 	label-visible-background = ${xrdb:color0}
-	label-visible-foreground = ${xrdb:color7}
+	label-visible-foreground = ${colors.fg}
 	label-visible-padding    = 3
 
 	label-urgent            = %name%
-	label-urgent-background = ${xrdb:color0}
-	label-urgent-foreground = ${xrdb:color7}
+	label-urgent-background = ${colors.magenta}
+	label-urgent-foreground = ${colors.fg}
 	label-urgent-padding    = 3
 
