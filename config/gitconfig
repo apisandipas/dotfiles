@@ -7,16 +7,6 @@
 	default = simple
 [core]
 	excludesfile = /home/bryan/.gitignore
-	editor = nvim
-	pager = nvim -R
-[merge]
-    tool = nvim
-[mergetool "nvim"]
-    cmd = nvim $MERGED
-[diff]
-    tool = nvim
-[difftool "nvim"]
-    cmd = nvim -d $LOCAL $REMOTE
 [http]
 	sslVerify = false
 [alias]
