@@ -6,7 +6,7 @@ export EDITOR=$(which nvim)
 export BROWSER=$(which firefox-developer-edition)
 export MANPAGER="nvim -c 'set ft=man' -"
 export DEFAULT_USER="bryan"
-export VIM_WIKI_DIR=$HOME/Dropbox/vimwiki
+export VIM_WIKI_DIR=$HOME/Dropbox/Knowledge
 
 # Path Config
 export PATH=$PATH:$HOME/.yarn/bin:$DENO_INSTALL/bin:$DOTS_DIR/bin:$GO_PATH

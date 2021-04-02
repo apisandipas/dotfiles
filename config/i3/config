@@ -8,7 +8,7 @@ font pango:Font Awesome 5 Free
 # Rounded Corders!
 smart_borders on
 smart_borders no_gaps
-border_radius 15
+border_radius 5
 
 # Set mod key (Mod1=<Alt>, Mod4=<Super>)
 set $mod Mod4
@@ -150,14 +150,14 @@ bindsym $mod+Ctrl+Left workspace prev
 # something like: set $ws1 1:mail
 #                 set $ws2 2:
 
-set $ws1 "1  "
-set $ws2 "2 "
-set $ws3 "3 "
-set $ws4 "4 磊"
-set $ws5 "5  "
-set $ws6 "6 "
-set $ws7 "7 "
-set $ws8 "8 "
+set $ws1 1:
+set $ws2 2:
+set $ws3 3:
+set $ws4 4:磊
+set $ws5 5:
+set $ws6 6:
+set $ws7 7:
+set $ws8 8:
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
