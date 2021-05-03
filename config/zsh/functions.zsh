@@ -4,7 +4,7 @@
 # - requires a new directory name
 # - ex: mkcd new-project
 mkcd() {
-  mkdir -p "$@" && cd $_; i
+  mkdir -p "$@" && cd $_;
 }
 
 # Uses the http://gitignore.io api to generate contents of a `.gitignore` file

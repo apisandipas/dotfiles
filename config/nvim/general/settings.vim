@@ -1,6 +1,6 @@
 """ Shell -----------------------------------------------------------------------------
 
-"let &shell='/usr/bin/zsh -i'    " point default shell to zsh
+let &shell='/usr/bin/zsh -i'    " point default shell to zsh
 set shellcmdflag=-ic        " load zshrc
 
 """ Appearance -------------------------------------------------------------------------
@@ -23,6 +23,8 @@ set laststatus=0
 set showtabline=2
 
 """  Basic Behavior --------------------------------------------------------------------
+nnoremap <SPACE> <Nop>
+let g:mapleader=" "
 
 if &term =~ '256color'
   " disable Background Color Erase (BCE)

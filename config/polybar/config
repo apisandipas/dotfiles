@@ -38,10 +38,10 @@
   line-size = 1
   line-color = ${colors.yellow}
 
-;tray-position = center
-;tray-padding = 0
-;tray-offset-x = 0
-;tray-transparent = true
+tray-position = center
+tray-padding = 0
+tray-offset-x = 0
+tray-transparent = true
 ;tray-background = ${colors.transparent}
 
   background = ${colors.bg}

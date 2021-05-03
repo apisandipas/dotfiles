@@ -298,11 +298,12 @@ bindcode $mod + 127 exec --no-startup-id pactl set-sink-mute 0 toggle # toggle m
 # Lock screen
 #bindsym $mod+9 exec --no-startup-id betterlockscreen -l dim
 # xrandr config
-exec --no-startup-id xrandr --output eDP-1 --mode 1920x1080 --left-of DP-2 --output DP-1 --left-of eDP-1
+exec --no-startup-id xrandr --output eDP-1 --mode 1920x1080 
+# --left-of DP-2 --output DP-1 --left-of eDP-1
 
 # Autostart applications
 exec --no-startup-id kitty
-exec --no-startup-id firefox-develeloper-edition
+exec --no-startup-id firefox-developer-edition
 exec --no-startup-id spotify
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id picom -b --config ~/.config/picom/picom.conf
@@ -313,7 +314,7 @@ exec --no-startup-id pamac-tray
 exec --no-startup-id clipit
 exec --no-startup-id blueman-applet
 # exec --no-startup-id start_conky_maia
-#exec --no-startup-id xautolock -time 120 -locker 'betterlockscreen -l dim'
+exec --no-startup-id xautolock -time 120 -locker 'betterlockscreen -l dim'
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec_always --no-startup-id fix_xcursor

@@ -51,13 +51,13 @@ let g:closetag_filenames = '*.html,*.js,*.jsx,*.ts,*.tsx,*.mdx'
 "augroup END
 
 " Autoformat on save
-command! -nargs=0 Prettier :CocCommand prettier.formatFile
+"command! -nargs=0 Prettier :CocCommand prettier.formatFile
 "command! -nargs=0 ESLintFix :CocCommand eslint.executeAutofix
-augroup FormatOnSave
-  autocmd!
-  autocmd BufWritePre *.ts,*.tsx,*.jsx,*.js,*.mjs,*.css,*.scss,*.less,*.html Prettier
+"augroup FormatOnSave
+  "autocmd!
+  "autocmd BufWritePre *.ts,*.tsx,*.jsx,*.js,*.mjs,*.css,*.scss,*.less,*.html Prettier
   "autocmd BufWritePre *.ts,*.tsx,*.jsx,*.js ESLintFix
-augroup END
+"augroup END
 
 " Theme tweaks
 hi Normal guibg=NONE ctermbg=NONE
