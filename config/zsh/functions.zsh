@@ -1,5 +1,12 @@
 #!/usr/bin/env zsh
 
+# Clear and display system profile
+cl() {
+	clear;
+	pfetch;
+}
+
+
 # Make a directory and immediate change into it
 # - requires a new directory name
 # - ex: mkcd new-project

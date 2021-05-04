@@ -26,14 +26,11 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
-
 source $DOTS_DIR/lib/utils.sh
-
 source $DOTS_DIR/config/zsh/globals.zsh
 source $DOTS_DIR/config/zsh/keybinds.zsh
 source $DOTS_DIR/config/zsh/aliases.zsh
 source $DOTS_DIR/config/zsh/functions.zsh
-
 source $HOME/.nvm/nvm.sh
 
 # Sets up ruby vers mgmt
@@ -41,3 +38,5 @@ eval "$(rbenv init -)"
 
 # load the starship prompt
 eval "$(starship init zsh)"
+
+pfetch

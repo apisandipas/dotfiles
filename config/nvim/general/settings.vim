@@ -1,6 +1,6 @@
 """ Shell -----------------------------------------------------------------------------
 
-let &shell='/usr/bin/zsh -i'    " point default shell to zsh
+"let &shell='/usr/bin/zsh -i'    " point default shell to zsh
 set shellcmdflag=-ic        " load zshrc
 
 """ Appearance -------------------------------------------------------------------------

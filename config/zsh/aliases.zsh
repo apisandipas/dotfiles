@@ -13,7 +13,6 @@ alias ll="exa -lh --icons"
 alias lll="exa -alh --icons"
 alias lt="exa -T --icons --git-ignore"
 
-alias cl="clear"
 alias open="xdg-open"
 alias dots="cd $DOTS_DIR; vim ; cd -;"  # avoids netrw, TODO prevent the core netrw package from loaded
 alias fix='vim $(git diff --name-only | uniq)'
