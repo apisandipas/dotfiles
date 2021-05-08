@@ -1,3 +1,5 @@
+luafile ~/.config/nvim/lua/bp/settings.lua
+
 "VSCode
 function! s:split(...) abort
     let direction = a:1
