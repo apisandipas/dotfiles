@@ -18,10 +18,6 @@ alias dots="cd $DOTS_DIR; vim ; cd -;"  # avoids netrw, TODO prevent the core ne
 alias fix='vim $(git diff --name-only | uniq)'
 alias xx='trash'
 
-# Edit / Re-source zshrc
-alias e="vim $DOTS_DIR/zshrc"
-alias sc="source ~/.zshrc; echo '~/.zshrc reloaded! ☮ '"
-
 # git aliases
 alias gco="git checkout"
 alias gst="git status"

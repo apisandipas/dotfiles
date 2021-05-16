@@ -41,8 +41,6 @@
 tray-position = center
 tray-padding = 0
 tray-offset-x = 0
-tray-transparent = true
-;tray-background = ${colors.transparent}
 
   background = ${colors.bg}
   foreground = ${colors.fg}
@@ -196,7 +194,7 @@ tray-transparent = true
 	label-muted            = " 0"
 	label-muted-background = ${xrdb:color0}
 	label-muted-foreground = ${xrdb:color3}
-	label-muted-padding    = 3
+	label-muted-padding    =
 
 	format-volume-padding = 0
 	format-muted-padding  = 0
@@ -215,14 +213,15 @@ tray-transparent = true
 	content-foreground = ${colors.transparent}
 	content-background = ${colors.transparent}
 
-[module/workspaces]
 
-	type            = internal/i3
-	format          = <label-state> <label-mode>
-	index-sort      = true
-	wrapping-scroll = false
-  strip-wsnumbers = true
-  pin-workspaces  = true
+
+[module/workspaces]
+	type = internal/xworkspaces
+	format          = <label-state>
+
+	; false for awesome window manager true for other wm.
+    pin-workspaces  = false
+
 	label-mode-background = ${colors.bg}
 	label-mode-foreground = ${colors.fg}
 	label-mode-padding    = 2
@@ -231,7 +230,7 @@ tray-transparent = true
 	label-focused-background = ${colors.bg}
 	label-focused-foreground = ${colors.fg}
 	label-focused-padding    = 2
-  label-focused-underline = ${colors.yellow}
+    label-focused-underline = ${colors.yellow}
 
 	label-unfocused            = %name%
 	label-unfocused-background = ${colors.bg}
@@ -248,3 +247,71 @@ tray-transparent = true
 	label-urgent-foreground = ${colors.fg}
 	label-urgent-padding    = 2
 
+	icon-0 = 1;
+	icon-1 = 2;
+	icon-2 = 3;
+	icon-3 = 4;
+	icon-4 = 5;
+	icon-5 = 6;
+	icon-6 = 7;
+	icon-7 = 8;
+	icon-8 = 9;
+	icon-9 = 10;
+	icon-default =
+
+	enable-click = true
+	enable-scroll = true
+	format-padding = 0
+
+;	label-active = " %name% "
+;	label-active-foreground = ${colors.foreground};
+; label-active-background = ${colors.bg}
+; label-active-underline = ${colors.wsbackground}
+; label-occupied = " %name% "
+; lable-occupied-background = ${colors.bg}
+; label-occupied-foreground = ${colors.foreground}
+; label-occupied-underline = ${colors.wsbackground}
+; label-urgent = " %name% "
+; label-urgent-foreground = ${colors.urgent}
+; label-urgent-underline = ${colors.urgent}
+; label-empty = " %name% "
+; label-empty-background = ${colors.bg}
+; label-empty-foreground = ${colors.foreground}
+; label-empty-underline = ${colors.bg}
+
+
+; [module/i3-workspaces]
+;
+; 	type            = internal/i3
+; 	format          = <label-state> <label-mode>
+; 	index-sort      = true
+; 	wrapping-scroll = false
+;     strip-wsnumbers = true
+;     pin-workspaces  = false
+; 	label-mode-background = ${colors.bg}
+; 	label-mode-foreground = ${colors.fg}
+; 	label-mode-padding    = 2
+;
+; 	label-focused            = %name%
+; 	label-focused-background = ${colors.bg}
+; 	label-focused-foreground = ${colors.fg}
+; 	label-focused-padding    = 2
+;     label-focused-underline = ${colors.yellow}
+;
+; 	label-unfocused            = %name%
+; 	label-unfocused-background = ${colors.bg}
+; 	label-unfocused-foreground = ${colors.fg}
+; 	label-unfocused-padding    = 2
+;
+; 	label-visible            = %name%
+; 	label-visible-background = ${xrdb:color0}
+; 	label-visible-foreground = ${colors.fg}
+; 	label-visible-padding    = 2
+;
+; 	label-urgent            = %name%
+; 	label-urgent-background = ${colors.magenta}
+; 	label-urgent-foreground = ${colors.fg}
+; 	label-urgent-padding    = 2
+;
+;
+;

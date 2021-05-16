@@ -4,7 +4,7 @@ source $HOME/.dotfiles/lib/utils.sh
 config_dir=$HOME/.dotfiles/config
 
 files_to_link=(zshrc Xresources fehbg tmux.conf myclirc gitconfig)
-dirs_to_link=(nvim alacritty kitty polybar picom i3 rofi)
+dirs_to_link=(nvim alacritty kitty polybar picom i3 rofi awesome)
 
 e_header "Linking config files...";
 

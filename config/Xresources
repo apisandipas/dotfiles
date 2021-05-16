@@ -1,36 +1,44 @@
 ! special
-*.foreground:   #c5c8c6
-*.background:   #1d1f21
-*.cursorColor:  #c5c8c6
+*.foreground:   #eeeeee
+*.background:   #444444
+*.cursorColor:  #eeeeee
 
 ! black
-*.color0:       #1d1f21
-*.color8:       #969896
+*.color0:       #000000
+*.color8:       #069896
+*.black:        #000000
 
-! red
-*.color1:       #cc342b
-*.color9:       #cc342b
+! red (brick red)
+*.color1:       #cb4154
+*.color9:       #cb4154
+*.red:       #cb4154
 
-! green
-*.color2:       #198844
-*.color10:      #198844
+! green (jade)
+*.color2: 		#00a86b
+*.color10: 		#00a86b
+*.green: 		#00a86b
 
-! yellow
-*.color3:       #fba922
-*.color11:      #fba922
+! yellow (banana yellow)
+*.color3: 		#ffe135
+*.color11: 		#ffe135
+*.yellow: 		#ffe135
 
-! blue
-*.color4:       #3971ed
-*.color12:      #3971ed
+! blue (cobalt blue)
+*.color4:       #0047ab
+*.color12:      #0047ab
+*.blue:      #0047ab
 
-! magenta
+! magenta (amethyst)
 *.color5:       #a36ac7
 *.color13:      #a36ac7
+*.magenta:      #a36ac7
 
-! cyan
-*.color6:       #618cec
-*.color14:      #5584ed
+! cyan (electric blue)
+*.color6:       #59CBE8
+*.color14:      #59CBE8
+*.cyan:      #59CBE8
 
 ! white
-*.color7:       #c5c8c6
-*.color15:      #ffffff
+*.color7:       #c0c0c0
+*.color15:      #eeeeee
+*.white:      #eeeeee
