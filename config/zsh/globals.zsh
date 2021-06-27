@@ -3,6 +3,7 @@
 export GO_PATH=$HOME/Code/go
 export DENO_INSTALL=$HOME/Code/deno
 export EDITOR=$(which vim)
+export TERMINAL=$(which kitty)
 export BROWSER=$(which brave)
 export MANPAGER="nvim -c 'set ft=man' -"
 export DEFAULT_USER="bryan"

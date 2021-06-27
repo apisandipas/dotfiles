@@ -9,30 +9,31 @@ local gears = require("gears")
 local lain  = require("lain")
 local awful = require("awful")
 local wibox = require("wibox")
-local dpi   = require("beautiful.xresources").apply_dpi
+local xresources=require("beautiful.xresources");
+local dpi   = xresources.apply_dpi
+local xrdb = xresources.get_current_theme();
 
 local os = os
 local my_table = awful.util.table or gears.table -- 4.{0,1} compatibility
 
 local theme                                     = {}
 theme.dir                                       = os.getenv("HOME") .. "/.config/awesome/themes/blackburn"
-theme.wallpaper                                 = theme.dir .. "/wall.png"
-theme.font                                      = "Terminus 10.5"
-theme.taglist_font                              = "Icons 10"
-theme.fg_normal                                 = "#D7D7D7"
-theme.fg_focus                                  = "#F6784F"
-theme.bg_normal                                 = "#060606"
+theme.font                                      = "Operator Mono Lig 16"
+theme.taglist_font                              = "Operator Mono Lig 16"
+theme.fg_normal                                 = xrdb.foreground
+theme.fg_focus                                  = xrdb.color4
+theme.bg_normal                                 = xrdb.color0
 theme.bg_focus                                  = "#060606"
 theme.fg_urgent                                 = "#CC9393"
 theme.bg_urgent                                 = "#2A1F1E"
-theme.border_width                              = dpi(1)
+theme.border_width                              = dpi(2)
 theme.border_normal                             = "#0E0E0E"
-theme.border_focus                              = "#F79372"
-theme.taglist_fg_focus                          = "#F6784F"
-theme.taglist_bg_focus                          = "#060606"
-theme.tasklist_fg_focus                         = "#F6784F"
+theme.border_focus                              = xrdb.color2
+theme.taglist_fg_focus                          = xrdb.foreground
+theme.taglist_bg_focus                          = xrdb.background
+theme.tasklist_fg_focus                         = xrdb.foreground
 theme.tasklist_bg_focus                         = "#060606"
-theme.menu_height                               = dpi(16)
+theme.menu_height                               = dpi(32)
 theme.menu_width                                = dpi(130)
 theme.menu_submenu_icon                         = theme.dir .. "/icons/submenu.png"
 theme.awesome_icon                              = theme.dir .."/icons/awesome.png"
@@ -52,7 +53,7 @@ theme.layout_magnifier                          = theme.dir .. "/icons/magnifier
 theme.layout_floating                           = theme.dir .. "/icons/floating.png"
 theme.tasklist_plain_task_name                  = true
 theme.tasklist_disable_icon                     = true
-theme.useless_gap                               = 0
+theme.useless_gap                               = 8
 theme.titlebar_close_button_focus               = theme.dir .. "/icons/titlebar/close_focus.png"
 theme.titlebar_close_button_normal              = theme.dir .. "/icons/titlebar/close_normal.png"
 theme.titlebar_ontop_button_focus_active        = theme.dir .. "/icons/titlebar/ontop_focus_active.png"
@@ -72,7 +73,6 @@ theme.titlebar_maximized_button_normal_active   = theme.dir .. "/icons/titlebar/
 theme.titlebar_maximized_button_focus_inactive  = theme.dir .. "/icons/titlebar/maximized_focus_inactive.png"
 theme.titlebar_maximized_button_normal_inactive = theme.dir .. "/icons/titlebar/maximized_normal_inactive.png"
 
-awful.util.tagnames   = { "ƀ", "Ƅ", "Ɗ", "ƈ", "ƙ" }
 
 local markup     = lain.util.markup
 local separators = lain.util.separators
@@ -86,8 +86,8 @@ mytextclock.font = theme.font
 theme.cal = lain.widget.cal({
     attach_to = { mytextclock },
     notification_preset = {
-        font = "Terminus 11",
-        fg   = theme.fg_normal,
+        font = "Operator Mono Lig, FiraCode",
+        fg   = xrdb.color6,
         bg   = theme.bg_normal
     }
 })
@@ -190,11 +190,11 @@ theme.weather = lain.widget.weather({
 --]]
 
 -- Separators
-local first     = wibox.widget.textbox('<span font="Terminus 4"> </span>')
+local first     = wibox.widget.textbox('<span font="FireCode 10.5"></span>')
 local arrl_pre  = separators.arrow_right("alpha", "#1A1A1A")
 local arrl_post = separators.arrow_right("#1A1A1A", "alpha")
 
-local barheight = dpi(18)
+local barheight = dpi(36)
 local barcolor  = gears.color({
     type  = "linear",
     from  = { barheight, 0 },
@@ -243,7 +243,7 @@ function theme.at_screen_connect(s)
     s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, awful.util.tasklist_buttons, { bg_normal = barcolor, bg_focus = barcolor })
 
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s, height = dpi(18), bg = barcolor })
+    s.mywibox = awful.wibar({ position = "top", screen = s, height = dpi(36), bg = barcolor })
 
     -- Add widgets to the wibox
     s.mywibox:setup {
@@ -263,11 +263,6 @@ function theme.at_screen_connect(s)
             layout = wibox.layout.fixed.horizontal,
             wibox.widget.systray(),
             first,
-            theme.mpd.widget,
-            --theme.mail.widget,
-            --theme.weather.icon,
-            --theme.weather.widget,
-            --theme.fs.widget,
             bat,
             theme.volume.widget,
             mytextclock,

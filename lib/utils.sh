@@ -118,8 +118,8 @@ return 1
 
 pushover () {
     PUSHOVERURL="https://api.pushover.net/1/messages.json"
-  API_KEY="your-api-here"
-  USER_KEY="your-user-key-here"
+		API_KEY="your-api-here"
+		USER_KEY="your-user-key-here"
     DEVICE=""
 
     TITLE="${1}"

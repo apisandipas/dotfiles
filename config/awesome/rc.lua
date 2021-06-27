@@ -81,8 +81,9 @@ run_once({
 	"clipit",
 	"blueman-applet",
 	"xautolock -time -120 -lock 'betterlockscreen -l dim'",
-	"~/.config/polybar/launch.sh",
-	"xrandr --output eDP-1 --mode-1920-1080"
+	-- "~/.config/polybar/launch.sh",
+	"xrandr --output eDP-1 --mode-1920-1080",
+	"picom -b --config ~/.config/picom/picom.conf",
 })
 
 -- This function implements the XDG autostart specification
@@ -112,23 +113,20 @@ local themes = {
     "vertex"           -- 10
 }
 
-local chosen_theme = themes[5]
+local chosen_theme = themes[1]
 local modkey       = "Mod4"
 local altkey       = "Mod1"
 local terminal     = "kitty"
 local vi_focus     = false -- vi-like client focus https://github.com/lcpz/awesome-copycats/issues/275
 local cycle_prev   = true  -- cycle with only the previously focused client or all https://github.com/lcpz/awesome-copycats/issues/274
 local editor       = os.getenv("EDITOR") or "nvim"
-local browser      = "firefox-developer-edition"
+local browser      = "brave"
 
 awful.util.terminal = terminal
 awful.util.tagnames = { "", "", "", "", "", "爵", "" ,"" }
 awful.layout.layouts = {
-    awful.layout.suit.floating,
     awful.layout.suit.tile,
-    awful.layout.suit.tile.left,
-    awful.layout.suit.tile.bottom,
-    awful.layout.suit.tile.top,
+    awful.layout.suit.floating,
     --awful.layout.suit.fair,
     --awful.layout.suit.fair.horizontal,
     --awful.layout.suit.spiral,
@@ -705,6 +703,7 @@ awful.rules.rules = {
           "Blueman-manager",
           "Gpick",
           "Kruler",
+					"Dropbox",
           "MessageWin",  -- kalarm.
           "Sxiv",
           "Tor Browser", -- Needs a fixed window size to avoid fingerprinting by screen size.
@@ -730,8 +729,8 @@ awful.rules.rules = {
     },
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
-    -- { rule = { class = "Firefox" },
-    --   properties = { screen = 1, tag = "2" } },
+    { rule = { class = "Brave" },
+      properties = { screen = 1, tag = "6" } },
 }
 
 -- }}}
@@ -775,7 +774,6 @@ client.connect_signal("request::titlebars", function(c)
 
     awful.titlebar(c, { size = 16 }) : setup {
         { -- Left
-            awful.titlebar.widget.iconwidget(c),
             buttons = buttons,
             layout  = wibox.layout.fixed.horizontal
         },
@@ -788,12 +786,13 @@ client.connect_signal("request::titlebars", function(c)
             layout  = wibox.layout.flex.horizontal
         },
         { -- Right
+            awful.titlebar.widget.iconwidget(c),
             awful.titlebar.widget.floatingbutton (c),
-            awful.titlebar.widget.maximizedbutton(c),
-            awful.titlebar.widget.stickybutton   (c),
-            awful.titlebar.widget.ontopbutton    (c),
             awful.titlebar.widget.closebutton    (c),
             layout = wibox.layout.fixed.horizontal()
+            -- awful.titlebar.widget.maximizedbutton(c),
+            -- awful.titlebar.widget.stickybutton   (c),
+            -- awful.titlebar.widget.ontopbutton    (c),
         },
         layout = wibox.layout.align.horizontal
     }
