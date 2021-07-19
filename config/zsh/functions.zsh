@@ -1,23 +1,25 @@
 #!/usr/bin/env zsh
+# Function to source files if they exist
+
 
 # Clear and display system profile
-cl() {
+function cl() {
 	clear;
-	pfetch;
+	nerdfetch;
 }
 
 
 # Make a directory and immediate change into it
 # - requires a new directory name
 # - ex: mkcd new-project
-mkcd() {
+function mkcd() {
   mkdir -p "$@" && cd $_;
 }
 
 # Uses the http://gitignore.io api to generate contents of a `.gitignore` file
 # - requires a command-sep list of keywords, see: from https://docs.gitignore.io/use/command-line
 # - ex: `gi node,ruby`
-gi() {
+function gi() {
   echo "fetching $@ gitignore";
   curl -sLw "\n" https://www.gitignore.io/api/$@ >> .gitignore;
 }
@@ -25,33 +27,18 @@ gi() {
 # Kills a process by the port number their running on.
 # - great for ghost node processes.
 # - ex: `killport 8000`
-killport() {
+function killport() {
   echo "Killing port $1";
   sudo kill -9 $(sudo lsof -t -i:$1)
 }
 
 # List out the current $PATH entries as a list
-path() {
+function path() {
   echo $PATH | tr ":" "\n" | nl;
 }
 
-# Lauches vim and opens the main wiki entry  point.
-# - also accepts git commands to run in the context of the repo
-# - ex w/ git arg: `wiki git push` works as one might expect
-# - TODO add a `wiki sync` - add + commit + push to origin/main
-wiki () {
-    if [[ $# == 0 ]]
-    then
-        nvim +'VimwikiIndex'
-    elif [[ $1 == 'git' ]]
-    then
-        git -C $VIM_WIKI_DIR ${@:2}
-    else
-        echo 'Usage: vimwiki [git] [args ...]'
-    fi
-}
 
-yolo() {
+function yolo() {
  if [ ! -d ./.git ]; then
   echo "$PWD does not contain a git repository";
   return 1;
@@ -67,7 +54,8 @@ yolo() {
   return 0;
 }
 
-flip() {
+function flip() {
+		clear;
     echo;
     echo -en "( º_º）  ┬─┬   \r"; sleep .5;
     echo -en " ( º_º） ┬─┬   \r"; sleep .5;

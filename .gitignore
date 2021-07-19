@@ -3,3 +3,5 @@
 nvim/undodir/*
 nvim/plugged/*
 
+
+config/zsh/plugins/*

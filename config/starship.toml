@@ -1,16 +1,24 @@
 empty_line = false
 
-format = "$all"
-
+format = """\
+  $battery\
+  $username\
+  $hostname\
+  $directory\
+  $git_branch\
+  $git_commit\
+  $git_state\
+  $git_status\
+  $line_break\
+  $character\
+"""
 [battery]
 full_symbol = "🔋"
 charging_symbol = "⚡️"
 discharging_symbol = "💀"
 
 [character]
-success_symbol = "[👉](bold green)"
-error_symbol = "[🚨](bold magenta)"
-vicmd_symbol = "[✌️](bold green)"
+success_symbol = "[-->](bold white)"
+error_symbol = "[!==](bold magenta)"
+vicmd_symbol = "[</>](bold cyan)"
 
-[hostname]
-ssh_only = true

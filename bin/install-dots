@@ -3,10 +3,18 @@ source $HOME/.dotfiles/lib/utils.sh
 
 config_dir=$HOME/.dotfiles/config
 
-files_to_link=(zshrc Xresources fehbg tmux.conf myclirc gitconfig)
-dirs_to_link=(nvim alacritty bspwm sxhkd kitty polybar picom i3 rofi awesome)
+files_to_link=(Xresources fehbg tmux.conf myclirc gitconfig)
+dirs_to_link=(alacritty bspwm sxhkd kitty polybar picom i3 rofi awesome autorandr)
 
 e_header "Linking config files...";
+
+  seek_confirmation_head "➜ Link ~/.zshrc ?";
+  if is_confirmed; then
+    ln -sf "$config_dir/zsh/.zshrc" ~/.zshrc
+    e_success "Finished linking ~/.zshrc"
+  else
+    e_error "Skipping ~/.zshrc ..."
+  fi
 
 for file in "${files_to_link[@]}"; do
   seek_confirmation_head "➜ Link ~/.$file ?";

@@ -1,9 +1,7 @@
 #!/usr/bin/env zsh
 
 # Aliases
-alias lvim="nvim -u ~/.config/nvim-lua/init.lua"
 alias vim="nvim"
-alias vim8="/usr/bin/vim"
 alias mux="tmuxinator"
 alias cat="bat"
 
@@ -14,7 +12,7 @@ alias lll="exa -alh --icons"
 alias lt="exa -T --icons --git-ignore"
 
 alias open="xdg-open"
-alias dots="cd $DOTS_DIR; vim ; cd -;"  # avoids netrw, TODO prevent the core netrw package from loaded
+alias dots="cd $DOTS_DIR; vim; cd -"
 alias fix='vim $(git diff --name-only | uniq)'
 alias xx='trash'
 

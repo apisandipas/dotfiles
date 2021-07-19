@@ -166,3 +166,12 @@ super + alt + shift + {h,j,k,l}
 # move a floating window
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
+
+
+# Toggle desktop modes
+super + alt + Return
+	bspc monitor eDP1 -d I II III IV V VI VII VIII IX X
+
+super + alt + shift + Return
+	bspc monitor HDMI1 -d I III V VI IX
+	bspc monitor eDP1 -d II IV VII VIII X

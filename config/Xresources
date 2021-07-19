@@ -1,12 +1,12 @@
 ! special
 *.foreground:   #eeeeee
-*.background:   #34343c
+*.background:   #6634343c
 *.cursorColor:  #eeeeee
-*.transparent:  #eeeeee00
+*.transparent:  #6634343c
 
 ! black
-*.color0:       #000000
-*.color8:       #000000
+*.color0:       #1d1f21
+*.color8:       #1d1f21
 
 ! red (brick red)
 *.color1:       #cb4154

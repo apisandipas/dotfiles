@@ -21,7 +21,7 @@ getcolors
 
 
 ## Global Settings -------------------------------#
-bspc config focused_border_color "$MAGENTA"
+bspc config focused_border_color "$GREEN"
 bspc config normal_border_color "$BACKGROUND"
 bspc config active_border_color "$MAGENTA"
 bspc config presel_feedback_color "$YELLOW"
@@ -35,16 +35,19 @@ bspc config remove_disabled_monitors true
 bspc config remove_unplugged_monitors true
 bspc config merge_overlapping_monitors true
 
-bspc monitor -d I II III IV V VI VII VIII IX X
-# bspc monitor HDMI1 -d I III V VI IX
-# bspc monitor eDP1 -d II IV VII VIII X
+if [[ $(xrandr -q | grep "HDMI1 connected" ) ]]; then
+	bspc monitor HDMI1 -d 1 2 3 4 5
+	bspc monitor eDP1 -d 6 7 8 9 0
+else
+	bspc monitor eDP1 -d 1 2 3 4 5 6 7 8 9 0
+fi
 
 bspc rule -a kitty desktop='^1'
 bspc rule -a Ferdi desktop='^2'
 bspc rule -a obsidian desktop='^3'
 bspc rule -a Thunderbird desktop='^4'
-bspc rule -a Zoom desktop='^5'
-bspc rule -a Brave-browser desktop='^6'
+bspc rule -a Brave-browser desktop='^5'
+bspc rule -a Zoom desktop='^6'
 bspc rule -a GitKraken desktop='^7'
 bspc rule -a Spotify desktop='^8'
 bspc rule -a dropbox state=floating manage=off
@@ -52,9 +55,10 @@ bspc rule -a dropbox state=floating manage=off
 ## Kickoff -------------------------------#
 
 # Kill if already running
-killall -9 volumeicon ferdi kitty thunderbird gitkraken sxhkd brave dunst xfce4-power-manager obsidian-insider
+killall -9 gpclient volumeicon ferdi kitty thunderbird gitkraken sxhkd brave dunst xfce4-power-manager obsidian-insider
 
 # Fire up on start/restart
+gpclient &
 sxhkd &
 kitty -e tmux &
 ferdi &

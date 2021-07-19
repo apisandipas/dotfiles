@@ -15,8 +15,8 @@ include-file = ~/.config/polybar/system-modules.ini
 include-file = ~/.config/polybar/user-modules.ini
 
 
-[bar/bungle]
-  monitor = ${env:MONITOR:}
+[bar/undocked_internal]
+  monitor = eDP1
   width    = 100%
   height   = 35
   offset-x = 0
@@ -32,19 +32,13 @@ include-file = ~/.config/polybar/user-modules.ini
 
   background = ${colors.bg}
   foreground = ${colors.fg}
-
+	wm-restack =bspwm
 	border-size = 2
   border-bottom-size  = 0
   border-top-size     = 0
 
   border-left-size  = 0
   border-right-size = 0
-
-  ;border-bottom-color = ${colors.transparent}
-  ;border-top-color    = ${colors.transparent}
-
-  ;border-left-color = ${colors.transparent}
-  ;border-right-color = ${colors.transparent}
 
   spacing            = 0
   padding-left       = 0
@@ -59,6 +53,84 @@ include-file = ~/.config/polybar/user-modules.ini
   modules-left  = workspaces xwindow
   modules-center =
   modules-right = currentsong previous playpause next battery date
+
+  fixed-center = true
+
+[bar/docked_internal]
+  monitor = eDP1
+  width    = 100%
+  height   = 35
+  offset-x = 0
+  offset-y = 0
+  bottom = false
+
+  line-size = 1
+  line-color = ${colors.yellow}
+
+	tray-position = center
+	tray-padding = 0
+	tray-offset-x = 0
+
+  background = ${colors.bg}
+  foreground = ${colors.fg}
+	wm-restack =bspwm
+	border-size = 2
+  border-bottom-size  = 0
+  border-top-size     = 0
+
+  border-left-size  = 0
+  border-right-size = 0
+
+  spacing            = 0
+  padding-left       = 0
+  padding-right      = 0
+  module-margin-left = 0
+
+  font-0 = OperatorMono Nerd Font:style=Medium,Regular
+  font-1 = siji:pixelsize=10;1
+  font-2 = FontAwesome:style=Regular
+  font-3 = IcoFont:style=Regular
+
+  modules-left  = workspaces xwindow
+  modules-center =
+  modules-right = currentsong previous playpause next battery date
+
+  fixed-center = true
+
+[bar/docked_external]
+  monitor = HDMI1
+  width    = 100%
+  height   = 35
+  offset-x = 0
+  offset-y = 0
+  bottom = false
+
+  line-size = 1
+  line-color = ${colors.yellow}
+
+  background = ${colors.bg}
+  foreground = ${colors.fg}
+	wm-restack =bspwm
+	border-size = 2
+  border-bottom-size  = 0
+  border-top-size     = 0
+
+  border-left-size  = 0
+  border-right-size = 0
+
+  spacing            = 0
+  padding-left       = 0
+  padding-right      = 0
+  module-margin-left = 0
+
+  font-0 = OperatorMono Nerd Font:style=Medium,Regular
+  font-1 = siji:pixelsize=10;1
+  font-2 = FontAwesome:style=Regular
+  font-3 = IcoFont:style=Regular
+
+  modules-left  = workspaces xwindow
+  modules-center = date
+  modules-right = battery
 
   fixed-center = true
 
@@ -95,15 +167,17 @@ include-file = ~/.config/polybar/user-modules.ini
 	label-empty-background = ${colors.bg}
 	label-empty-padding = 1
 
-	ws-icon-0 = I;
-	ws-icon-1 = II;
-	ws-icon-2 = III;
-	ws-icon-3 = IV;
-	ws-icon-4 = V;
-	ws-icon-5 = VI;爵
-	ws-icon-6 = VII;
-	ws-icon-7 = VIII;
-	ws-icon-default =
+	ws-icon-0 = 1;
+	ws-icon-1 = 2;
+	ws-icon-2 = 3;
+	ws-icon-3 = 4;
+	ws-icon-5 = 5;爵
+	ws-icon-4 = 6;
+	ws-icon-6 = 7;
+	ws-icon-7 = 8;
+	ws-icon-8 = 9;
+	ws-icon-9 = 0;
+	ws-icon-default =
 
 	enable-click = true
 	enable-scroll = false
