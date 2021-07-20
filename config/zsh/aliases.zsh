@@ -5,6 +5,11 @@ alias vim="nvim"
 alias mux="tmuxinator"
 alias cat="bat"
 
+# Lazy movements
+alias ..="cd ../"
+alias ...="cd ../../"
+alias ....="cd ../../../"
+
 # ls replacements
 alias ls="exa --icons"
 alias ll="exa -lh --icons"
@@ -13,8 +18,9 @@ alias lt="exa -T --icons --git-ignore"
 
 alias open="xdg-open"
 alias dots="cd $DOTS_DIR; vim; cd -"
+
+# Open all changed files in the current repo.
 alias fix='vim $(git diff --name-only | uniq)'
-alias xx='trash'
 
 # git aliases
 alias gco="git checkout"

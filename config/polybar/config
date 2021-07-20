@@ -11,9 +11,8 @@
 ;==========================================================
 
 include-file = ~/.config/polybar/colors.ini
+include-file = ~/.config/polybar/spotify.ini
 include-file = ~/.config/polybar/system-modules.ini
-include-file = ~/.config/polybar/user-modules.ini
-
 
 [bar/undocked_internal]
   monitor = eDP1
@@ -26,13 +25,13 @@ include-file = ~/.config/polybar/user-modules.ini
   line-size = 1
   line-color = ${colors.yellow}
 
-	tray-position = center
-	tray-padding = 0
-	tray-offset-x = 0
+	;tray-position = center
+	;tray-padding = 0
+	;tray-offset-x = 0
 
   background = ${colors.bg}
   foreground = ${colors.fg}
-	wm-restack =bspwm
+	wm-restack = bspwm
 	border-size = 2
   border-bottom-size  = 0
   border-top-size     = 0
@@ -52,7 +51,7 @@ include-file = ~/.config/polybar/user-modules.ini
 
   modules-left  = workspaces xwindow
   modules-center =
-  modules-right = currentsong previous playpause next battery date
+  modules-right =  spotify spotify-prev playpause spotify-next battery date
 
   fixed-center = true
 
@@ -67,9 +66,9 @@ include-file = ~/.config/polybar/user-modules.ini
   line-size = 1
   line-color = ${colors.yellow}
 
-	tray-position = center
-	tray-padding = 0
-	tray-offset-x = 0
+	;tray-position = center
+	;tray-padding = 0
+	;tray-offset-x = 0
 
   background = ${colors.bg}
   foreground = ${colors.fg}
@@ -175,8 +174,7 @@ include-file = ~/.config/polybar/user-modules.ini
 	ws-icon-4 = 6;
 	ws-icon-6 = 7;
 	ws-icon-7 = 8;
-	ws-icon-8 = 9;
-	ws-icon-9 = 0;
+	;ws-icon-8 = 9;
 	ws-icon-default =
 
 	enable-click = true
