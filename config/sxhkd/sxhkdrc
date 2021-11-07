@@ -10,17 +10,17 @@ super + b
 super + Return
 	kitty
 
-# program launcher
+# program quick-launch
 super + @space
-  rofi -show run -theme base16-google-dark
+  rofi -show run -theme onedark
 
 # emoji picker
 super + shift + Return
-  rofimoji --skin-tone="medium-light" --rofi-args="-theme base16-google-dark"
+  rofimoji --skin-tone="medium-light" --rofi-args="-theme onedark"
 
 # Window Selector
 super + shift + f
-  rofi -show window -theme base16-google-dark
+  rofi -show window -theme onedark
 
 # Password Picker (WIP)
 super + shift + ctrl + Return

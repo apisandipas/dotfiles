@@ -73,10 +73,16 @@ seek_confirmation_head() {
 
 # Test whether the result of an 'ask' is a confirmation
 is_confirmed() {
-if [[ "$REPLY" =~ ^[Yy]$ ]]; then
-  return 0
-fi
-return 1
+	if [[ "$REPLY" =~ ^[Yy]$ ]]; then
+		return 0
+	fi
+	return 1
+}
+
+# Starts a program in the bakground if its not already running
+start_up() {
+	APP=$1
+	ps -C $APP >/dev/null || $APP &
 }
 
 #

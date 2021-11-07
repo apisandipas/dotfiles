@@ -1,28 +1,29 @@
-#! /usr/bin/env bash
-
-internal_monitor=eDP1
-external_monitor=HDMI1
-
-
-monitor_add() {
-  bspc desktop 2 --to-monitor $external_monitor
-  bspc desktop 4 --to-monitor $external_monitor
-  bspc desktop 7 --to-monitor $external_monitor
-  bspc desktop 8 --to-monitor $external_monitor
-  bspc desktop 0 --to-monitor $external_monitor
-}
-
-monitor_remove() {
-  bspc desktop 2 --to-monitor $internal_monitor
-  bspc desktop 4 --to-monitor $internal_monitor
-  bspc desktop 7 --to-monitor $internal_monitor
-  bspc desktop 8 --to-monitor $internal_monitor
-  bspc desktop 0 --to-monitor $internal_monitor
-}
-
-
-if [[ $(xrandr -q | grep "$external_monitor connected"  )]]; then
-	monitor_add
-else
-	monitor_remove
-fi
+# #! /usr/bin/env bash
+#
+# internal_monitor=eDP1
+# top_monitor=DVI-I-1-1
+# sideways_monitor=DVI-I-2-2
+#
+#
+# monitor_add() {
+#   bspc desktop 2 --to-monitor $external_monitor
+#   bspc desktop 4 --to-monitor $external_monitor
+#   bspc desktop 7 --to-monitor $external_monitor
+#   bspc desktop 8 --to-monitor $external_monitor
+#   bspc desktop 0 --to-monitor $external_monitor
+# }
+#
+# monitor_remove() {
+#   bspc desktop 2 --to-monitor $internal_monitor
+#   bspc desktop 4 --to-monitor $internal_monitor
+#   bspc desktop 7 --to-monitor $internal_monitor
+#   bspc desktop 8 --to-monitor $internal_monitor
+#   bspc desktop 0 --to-monitor $internal_monitor
+# }
+#
+#
+# if [[ $(xrandr -q | grep "$external_monitor connected"  )]]; then
+# 	monitor_add
+# else
+# 	monitor_remove
+# fi

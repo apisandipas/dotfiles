@@ -1,9 +1,10 @@
 #!/usr/bin/env zsh
 
 # Aliases
-alias vim="nvim"
+alias vim="lvim"
 alias mux="tmuxinator"
 alias cat="bat"
+alias tm='tmux attach || tmux new'
 
 # Lazy movements
 alias ..="cd ../"
@@ -32,3 +33,10 @@ alias services-running="systemctl list-units --type=service --state=active"
 alias fzf='rg --files --ignore-case --hidden -g "!{.git,node_modules,vendor,.config,.cargo,.cache}" | fzf'
 
 alias dennis="curl -L htt://git.io/unix"
+
+
+# Docker Commands
+alias dcu="docker-compose up"
+alias dcuh="docker-compose up -d"
+alias dcs="docker-compose stop"
+alias dcr="docker-compose restart"

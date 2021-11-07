@@ -18,4 +18,3 @@ if [[ "$TERM" == screen ]]; then
 fi
 
 #
-export NPM_TOKEN=24d57f43-e8b6-4580-a061-9cfda80b65b0
