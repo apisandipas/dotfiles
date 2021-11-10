@@ -49,9 +49,9 @@ include-file = ~/.config/polybar/system-modules.ini
   font-2 = FontAwesome:style=Regular
   font-3 = IcoFont:style=Regular
 
-  modules-left  = workspaces
+  modules-left  = workspaces xwindow
   modules-center =  spotify-next playpause spotify spotify-prev
-	modules-right = battery date
+	modules-right = network battery date
 
   fixed-center = true
 

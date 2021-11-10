@@ -3,8 +3,10 @@
 # Aliases
 alias vim="lvim"
 alias mux="tmuxinator"
+alias emacs="emacsclient"
 alias cat="bat"
 alias tm='tmux attach || tmux new'
+alias terminus="~/terminus/terminus"
 
 # Lazy movements
 alias ..="cd ../"
