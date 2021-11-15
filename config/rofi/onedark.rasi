@@ -23,10 +23,10 @@
   fg:         #abb2bf;
   bg:         #282c34;
 
-  spacing: 0;
+  spacing: 10px;
   background-color: transparent;
 
-  font: "Knack Nerd Font 14";
+  font: "OperatorMono Nerd Font 18";
   text-color: @text;
 }
 
@@ -37,7 +37,7 @@ window {
 }
 
 mainbox {
-  padding: 30% 30%;
+  padding: 25% 25%;
 }
 
 inputbar {
@@ -63,6 +63,11 @@ listview {
   spacing: 5px;
   dynamic: true;
   scrollbar: false;
+}
+
+element-icon {
+    size:                           26px;
+    border:                         0px;
 }
 
 element {

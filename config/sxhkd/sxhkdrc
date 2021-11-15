@@ -2,25 +2,26 @@
 # wm independent hotkeys
 #
 
-super + b
-  ~/Code/pocs/dmenu/bookmarks
-
 
 # terminal emulator
 super + Return
 	kitty
 
-# program quick-launch
+# Power Menu
+super + shift + alt + q 
+  ~/.config/rofi/scripts/powermenu.sh
+
+# Program Quick-launch
 super + @space
-  rofi -show run -theme onedark
+  ~/.config/rofi/scripts/launch.sh
 
 # emoji picker
 super + shift + Return
-  rofimoji --skin-tone="medium-light" --rofi-args="-theme onedark"
+  ~/.config/rofi/scripts/emoji-picker.sh
 
 # Window Selector
 super + shift + f
-  rofi -show window -theme onedark
+  ~/.config/rofi/scripts/window-picker.sh
 
 # Password Picker (WIP)
 super + shift + ctrl + Return
@@ -35,30 +36,34 @@ super + Escape
 # Media Keys
 #
 
-# Take a screenshot
+# Take a screenshot of current screen
 Print
+ ~/.dotfiles/bin/screenshot
+
+# Take a screenshot of all screens and stitch them vertically.
+alt + Print
 	scrot 'Screenshot_%Y-%m-%d-%S_$wx$h.png' -e 'mv $f $$(xdg-user-dir PICTURES) ; feh $$(xdg-user-dir PICTURES)/$f'
 
-# Take a screenshot in 5 second
-alt + Print
-	scrot -d 5 'Screenshot_%Y-%m-%d-%S_$wx$h.png' -e 'mv $f $$(xdg-user-dir PICTURES) ; feh $$(xdg-user-dir PICTURES)/$f'
+# Brighness control
+XF86MonBrightnessUp
+  brightnessctl s +10%
 
 # Brighness control
-XF86MonBrightness{Up,Down}
-	backlight{-up,-down}
+XF86MonBrightnessDown
+  brightnessctl s 10%-
 
 # Volume control
 XF86Audio{RaiseVolume,LowerVolume}
-	volume{-up,-down}
+	pulsemixer --change-volume {+,-}10
 
 XF86AudioMute
-	amixer set Master toggle
+  pulsemixer --toggle-mute
 #
 #  Applications
 #
 
 # Launch Apps
-super + shift + {f,w}
+super + shift + {b,w}
 	{pcmanfm,brave}
 
 #
@@ -167,11 +172,3 @@ super + alt + shift + {h,j,k,l}
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
-
-# Toggle desktop modes
-super + alt + Return
-	bspc monitor eDP1 -d I II III IV V VI VII VIII IX X
-
-super + alt + shift + Return
-	bspc monitor HDMI1 -d I III V VI IX
-	bspc monitor eDP1 -d II IV VII VIII X

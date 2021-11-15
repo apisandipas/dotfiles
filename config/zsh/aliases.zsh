@@ -6,7 +6,6 @@ alias mux="tmuxinator"
 alias emacs="emacsclient"
 alias cat="bat"
 alias tm='tmux attach || tmux new'
-alias terminus="~/terminus/terminus"
 
 # Lazy movements
 alias ..="cd ../"
@@ -21,7 +20,8 @@ alias lt="exa -T --icons --git-ignore"
 
 alias open="xdg-open"
 alias dots="cd $DOTS_DIR; vim; cd -"
-
+alias zcf="echo 'Opening .zshrc...'; vim ~/.zshrc"
+alias src="source ~/.zshrc; echo '~/.zshrc reloaded!'"
 # Open all changed files in the current repo.
 alias fix='vim $(git diff --name-only | uniq)'
 

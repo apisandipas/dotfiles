@@ -1,7 +1,7 @@
 #! /bin/sh
 
 ## Reset Everything -------------------------------#
-bapc rule -r "*"
+bspc rule -r "*"
 
 ## Get colors from .Xresources -------------------------------#
 xrdb ~/.Xresources
@@ -25,6 +25,7 @@ bspc config normal_border_color "$BACKGROUND"
 bspc config active_border_color "$MAGENTA"
 bspc config presel_feedback_color "$YELLOW"
 bspc config border_width         2
+bspc config border_radius        30
 bspc config window_gap          16
 bspc config window_border_radius 10
 bspc config top_padding          32

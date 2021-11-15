@@ -11,11 +11,15 @@ format = """\
   $git_status\
   $line_break\
   $character\
+  $docker_context\
 """
 [battery]
 full_symbol = "🔋"
 charging_symbol = "⚡️"
 discharging_symbol = "💀"
+
+[docker_context]
+format = "via [🐋 $context](blue bold)"
 
 [character]
 success_symbol = "[-->](bold white)"

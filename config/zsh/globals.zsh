@@ -5,14 +5,14 @@ export DENO_INSTALL=$HOME/.local/share/deno
 export EDITOR=$(which vim)
 export TERMINAL=$(which kitty)
 export BROWSER=$(which brave)
-export MANPAGER="nvim -c 'set ft=man' -"
 export DEFAULT_USER="bryan"
-export VIM_WIKI_DIR=$HOME/Mastermind
 export ZDOTDIR=$DOTS_DIR/config/zsh
+export COMPOSER_PATH=/home/bryan/.config/composer/vendor/bin
+export HOME_SCRIPTS=~/bin
+
 
 # Path Config/
-TERMINUS_PATH=/home/bryan/terminus/vendor/bin
-export PATH=$HOME/.yarn/bin:$DENO_INSTALL/bin:$DOTS_DIR/bin:$GO_PATH:$TERMINUS_PATH:$PATH
+export PATH=$HOME/.yarn/bin:$DENO_INSTALL/bin:$DOTS_DIR/bin:$GO_PATH:$COMPOSER_PATH:$HOME_SCRIPTS:$PATH
 
 if [[ "$TERM" == screen ]]; then
     TERM=screen-256color

@@ -66,6 +66,7 @@ end
 
 -- {{{ Autostart windowless processes
 
+
 -- This function will run once every time Awesome is started
 local function run_once(cmd_arr)
     for _, cmd in ipairs(cmd_arr) do

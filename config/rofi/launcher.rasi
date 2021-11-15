@@ -1,11 +1,11 @@
-ronfiguration {
+configuration {
 	font:							"Iosevka Nerd Font 10";
-    show-icons:                     true;
+  show-icons:                     true;
 	icon-theme: 					"Papirus";
-    display-drun: 					"";
-    drun-display-format:            "{name}";
-    disable-history:                false;
-    fullscreen:                     false;
+  display-drun: 					"";
+  drun-display-format:            "{name}";
+  disable-history:                false;
+  fullscreen:                     false;
 	hide-scrollbar: 				true;
 	sidebar-mode: 					false;
 }

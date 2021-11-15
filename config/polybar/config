@@ -17,7 +17,7 @@ include-file = ~/.config/polybar/system-modules.ini
 [bar/main]
 	monitor = ${env:MONITOR:}
   width    = 100%
-  height   = 35
+  height   = 30
   offset-x = 0
   offset-y = 0
   bottom = false
@@ -40,8 +40,10 @@ include-file = ~/.config/polybar/system-modules.ini
   border-right-size = 0
 
   spacing            = 0
-  padding-left       = 0
-  padding-right      = 0
+  padding-left       = 1
+  padding-right      = 1
+  margin-right       = 1
+  margin-left        = 1
   module-margin-left = 0
 
   font-0 = OperatorMono Nerd Font:style=Medium,Regular
@@ -49,9 +51,9 @@ include-file = ~/.config/polybar/system-modules.ini
   font-2 = FontAwesome:style=Regular
   font-3 = IcoFont:style=Regular
 
-  modules-left  = workspaces xwindow
-  modules-center =  spotify-next playpause spotify spotify-prev
-	modules-right = network battery date
+  modules-left  = sysmenu workspaces xwindow
+  modules-center =  spotify-next playpause spotify-prev spotify
+	modules-right = memory cpu battery date
 
   fixed-center = true
 
