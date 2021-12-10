@@ -46,12 +46,12 @@ include-file = ~/.config/polybar/system-modules.ini
   margin-left        = 1
   module-margin-left = 0
 
-  font-0 = OperatorMono Nerd Font:style=Medium,Regular
-  font-1 = siji:pixelsize=10;1
+  font-0 = Victor Mono:style=Medium,Regular
+  font-1 = OperatorMono Nerd Font:style=Medium,Regular
   font-2 = FontAwesome:style=Regular
   font-3 = IcoFont:style=Regular
 
-  modules-left  = sysmenu workspaces xwindow
+  modules-left  = sysmenu workspaces exwm-workspace xwindow
   modules-center =  spotify-next playpause spotify-prev spotify
 	modules-right = memory cpu battery date
 

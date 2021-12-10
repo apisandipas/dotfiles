@@ -21,13 +21,13 @@ getcolors
 
 ## Global Settings -------------------------------#
 bspc config focused_border_color "$GREEN"
-bspc config normal_border_color "$BACKGROUND"
+# bspc config normal_border_color "$BACKGROUND"
 bspc config active_border_color "$MAGENTA"
 bspc config presel_feedback_color "$YELLOW"
-bspc config border_width         2
+bspc config border_width         4
 bspc config border_radius        30
-bspc config window_gap          16
-bspc config window_border_radius 10
+bspc config window_gap          32
+bspc config window_border_radius 30
 bspc config top_padding          32
 bspc config split_ratio          0.50
 bspc config borderless_monocle   false
@@ -49,12 +49,14 @@ else
 	bspc monitor eDP-1 -d I II III IV V VI VII VIII IX X
 fi
 
-bspc rule -a kitty desktop='^1'
-bspc rule -a Slack desktop='^2'
+bspc rule -a Emacs state=tiled desktop='^1'
+bspc rule -a kitty desktop='^2'
 bspc rule -a obsidian desktop='^3'
 bspc rule -a Thunderbird desktop='^4'
+bspc rule -a Slack desktop='^5'
 bspc rule -a Zoom desktop='^5'
 bspc rule -a Brave-browser desktop='^6'
+bspc rule -a firefox desktop='^6'
 bspc rule -a GitKraken desktop='^7'
 bspc rule -a spotify desktop='^8'
 bspc rule -a dropbox state=floating manage=off
@@ -62,12 +64,12 @@ bspc rule -a dropbox state=floating manage=off
 ## Kickoff -------------------------------#
 
 # Kill if already running
-killall -9 kitty thunderbird sxhkd brave dunst xfce4-power-manager fix_xcursor nm-applet blueman-applet
+killall -9 kitty thunderbird sxhkd firefox dunst xfce4-power-manager fix_xcursor nm-applet blueman-applet
 
 # Fire up on start/restart
 sxhkd &
 kitty &
-brave &
+firefox &
 thunderbird &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 nm-applet &
@@ -78,13 +80,12 @@ fix_xcursor &
 picom -b --config ~/.config/picom/picom.conf
 /usr/bin/emacs --daemon &
 
-
 # Restore wallpaper
 bash $HOME/.fehbg
 
 # Lauch notification daemon
 dunst \
--geom "280x50-10+38" -frame_width "1" -font "OperatorMono Nerd Font 14" \
+-geom "380x50-10+38" -frame_width "1" -font "Victor Mono Medium 14" \
 -lb "$BACKGROUND" -lf "$FOREGROUND" -lfr "$BLUE" \
 -nb "$BACKGROUND" -nf "$FOREGROUND" -nfr "$BLUE" \
 -cb "$BACKGROUND" -cf "$RED" -cfr "$RED" &

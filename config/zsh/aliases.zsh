@@ -3,7 +3,9 @@
 # Aliases
 alias vim="lvim"
 alias mux="tmuxinator"
-alias emacs="emacsclient"
+#alias emacs="emacs --with-profile doom &"
+#alias memacs="emacs --with-profile custom &"
+alias emacs="emacsclient -c -a emacs"
 alias cat="bat"
 alias tm='tmux attach || tmux new'
 

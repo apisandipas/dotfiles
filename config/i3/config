@@ -68,8 +68,8 @@ bindsym $mod+F3 exec pcmanfm
 # bindsym $mod+F3 exec ranger
 bindsym $mod+Shift+F3 exec pcmanfm_pkexec
 bindsym $mod+F5 exec terminal -e 'mocp'
-bindsym $mod+t exec --no-startup-id pkill comptoni
-bindsym $mod+Ctrl+t exec --no-startup-id compton -b
+bindsym $mod+t exec --no-startup-id pkill picom
+bindsym $mod+Ctrl+t exec --no-startup-id picom-b
 bindsym Print exec --no-startup-id i3-scrot
 bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
 bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
@@ -285,13 +285,13 @@ bindsym XF86AudioPrev exec "playerctl previous"
 bindsym XF86AudioNext exec "playerctl next"
 
 # Bind non-media keys for Ducky keyboard
-bindcode $mod + 118 exec "playerctl play-pause"
-bindcode $mod + 110 exec "playerctl stop"
-bindcode $mod + 119 exec "playerctl previous"
-bindcode $mod + 115 exec "playerctl next"
-bindcode $mod + 112 exec --no-startup-id pactl set-sink-volume 0 +10% # increase volume
-bindcode $mod + 117 exec --no-startup-id pactl set-sink-volume 0 -10% # decrease volume
-bindcode $mod + 127 exec --no-startup-id pactl set-sink-mute 0 toggle # toggle mute
+# bindcode $mod + 118 exec "playerctl play-pause"
+# bindcode $mod + 110 exec "playerctl stop"
+# bindcode $mod + 119 exec "playerctl previous"
+# bindcode $mod + 115 exec "playerctl next"
+# bindcode $mod + 112 exec --no-startup-id pactl set-sink-volume 0 +10% # increase volume
+# bindcode $mod + 117 exec --no-startup-id pactl set-sink-volume 0 -10% # decrease volume
+# bindcode $mod + 127 exec --no-startup-id pactl set-sink-mute 0 toggle # toggle mute
 
 # Lock screen
 #bindsym $mod+9 exec --no-startup-id betterlockscreen -l dim
