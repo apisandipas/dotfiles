@@ -36,7 +36,7 @@ alias services-running="systemctl list-units --type=service --state=active"
 
 alias fzf='rg --files --ignore-case --hidden -g "!{.git,node_modules,vendor,.config,.cargo,.cache}" | fzf'
 
-alias dennis="curl -L htt://git.io/unix"
+alias dennis="curl -L http://git.io/unix"
 
 
 # Docker Commands

@@ -98,3 +98,10 @@ include-file = ~/.config/polybar/system-modules.ini
 	enable-scroll = false
 	format-padding = 2.5
 
+
+[module/exwm-workspace]
+	type = custom/ipc
+	hook-0 = emacsclient -e "exwm-workspace-current-index" | sed -e 's/^"//' -e 's/"$//'
+	initial = 1
+	format-underline = ${colors.fg}
+	format-padding = 1

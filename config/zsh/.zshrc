@@ -44,6 +44,6 @@ eval "$(starship init zsh)"
 # load z-jump script
 eval "$(zoxide init zsh)"
 
-nerdfetch
+treefetch -xmas
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"

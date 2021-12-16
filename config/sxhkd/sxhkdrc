@@ -66,6 +66,9 @@ XF86AudioMute
 super + shift + {b,w}
 	{pcmanfm,brave}
 
+super + shift + e
+	doom everywhere
+
 #
 # bspwm hotkeys
 #

@@ -37,7 +37,7 @@ bspc config remove_unplugged_monitors true
 bspc config merge_overlapping_monitors true
 
 xrandr --output eDP-1 --mode 1920x1080  --auto \
-  --output DVI-I-1-1 --left-of eDP-1 --mode 1920x1080 --auto \
+  --output DVI-I-1-1 --left-of eDP-1 --rotate right --mode 1920x1080 --auto \
   --output DVI-I-2-2 --mode 1920x1080 --left-of DVI-I-1-1  --auto 
 
 if [[ $(xrandr -q | grep "DVI-I-2-2 connected" ) ]]; then
@@ -79,6 +79,7 @@ xautolock -time 120 -locker 'betterlockscreen -l dim' &
 fix_xcursor &
 picom -b --config ~/.config/picom/picom.conf
 /usr/bin/emacs --daemon &
+/usr/bin/emacsclient -c -a emacs &
 
 # Restore wallpaper
 bash $HOME/.fehbg
