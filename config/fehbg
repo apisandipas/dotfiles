@@ -1,2 +1,2 @@
 #!/bin/sh
-feh --no-fehbg --bg-fill '/home/bryan/.dotfiles/etc/wallpaper/nebula2.jpg' 
+feh --no-fehbg --bg-fill '/home/bryan/.dotfiles/etc/wallpaper/scene.jpg' 

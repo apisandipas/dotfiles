@@ -2,6 +2,9 @@
 # wm independent hotkeys
 #
 
+# Key Map Popup
+super + shift + ctrl + h
+  showkeys
 
 # terminal emulator
 super + Return
@@ -64,10 +67,10 @@ XF86AudioMute
 
 # Launch Apps
 super + shift + {b,w}
-	{pcmanfm,brave}
+	{pcmanfm,firefox}
 
 super + shift + e
-	doom everywhere
+	emacsclient
 
 #
 # bspwm hotkeys

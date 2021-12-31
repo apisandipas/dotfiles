@@ -6,7 +6,7 @@
 function cl() {
 	clear;
 	# nerdfetch;
-  treefetch -xmas
+ colorscript -r
 }
 
 

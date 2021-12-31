@@ -26,7 +26,7 @@
   spacing: 10px;
   background-color: transparent;
 
-  font: "OperatorMono Nerd Font 18";
+  font: "VictorMono Nerd Font 18";
   text-color: @text;
 }
 

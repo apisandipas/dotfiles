@@ -83,6 +83,8 @@ case $chosen in
 				bspc quit
 			elif [[ "$DESKTOP_SESSION" == "i3" ]]; then
 				i3-msg exit
+            elif [[ "$DESKTOP_SESSION" == "EXWM" ]]; then
+                dm-tool switch-to-greeter
 			fi
 		elif [[ $ans == "no" || $ans == "NO" || $ans == "n" || $ans == "N" ]]; then
 			exit 0

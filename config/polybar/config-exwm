@@ -15,25 +15,27 @@ include-file = ~/.config/polybar/spotify.ini
 include-file = ~/.config/polybar/system-modules.ini
 
 [bar/main]
-	monitor = ${env:MONITOR:}
-  width    = 100%
-  height   = 30
-  offset-x = 0
-  offset-y = 0
+  monitor = ${env:MONITOR:}
+  width    = 1888
+  height   = 48
+  offset-x = 16
+  offset-y = 16
   bottom = false
   enable-ipc = true
 
   line-size = 1
   line-color = ${colors.yellow}
 
-	tray-position = right
-	tray-padding = 0
-	tray-offset-x = 0
+  ;tray-transparent = true
+  tray-background = ${colors.bg}
+  tray-position = center
+  tray-padding = 0
+  tray-offset-x = 0
 
   background = ${colors.bg}
   foreground = ${colors.fg}
-	wm-restack = bspwm
-	border-size = 2
+  wm-restack = bspwm
+  border-size = 2
   border-bottom-size  = 0
   border-top-size     = 0
 
@@ -41,10 +43,10 @@ include-file = ~/.config/polybar/system-modules.ini
   border-right-size = 0
 
   spacing            = 0
-  padding-left       = 1
-  padding-right      = 1
-  margin-right       = 1
-  margin-left        = 1
+  padding-left       = 0
+  padding-right      = 0
+  margin-right       = 0
+  margin-left        = 0
   module-margin-left = 0
 
   font-0 = Victor Mono:style=Medium,Regular
@@ -52,57 +54,19 @@ include-file = ~/.config/polybar/system-modules.ini
   font-2 = FontAwesome:style=Regular
   font-3 = IcoFont:style=Regular
 
-  modules-left  = sysmenu workspaces  xwindow
-  modules-center =  spotify-next playpause spotify-prev spotify
-	modules-right = memory cpu battery date
+  modules-left  = sysmenu exwm-workspace xwindow
+  modules-center =
+  modules-right = memory cpu battery date
 
-  fixed-center = true
+  fixed-center = false
 
 ;--------------------------------------------
 ; modules                                   ;
 ;--------------------------------------------
 
-[module/workspaces]
-	type = internal/bspwm
-  format  = <label-state> <label-mode>
-
-	; false for awesome window manager true for other wm.
-  pin-workspaces  = true
-
-	label-mode-background = ${colors.bg}
-	label-mode-foreground = ${colors.fg}
-	label-mode-padding    = 1
-
-
-	label-focused            =  
-	label-focused-padding    = 1
-	label-focused-foreground = ${colors.yellow}
-  ;label-focused-background = ${colors.yellow}
-
-	label-occupied = %icon%
-	label-occupied-padding = 1
-	label-occupied-foreground = ${colors.fg}
-
-	label-urgent = %icon%
-	label-urgent-background = ${colors.bg}
-	label-urgent-foreground = ${colors.magenta}
-	label-urgent-padding = 1
-
-	label-empty = %icon%
-	label-empty-foreground = ${colors.green}
-	label-empty-background = ${colors.bg}
-	label-empty-padding = 1
-
-	ws-icon-default=
-
-	enable-click = true
-	enable-scroll = false
-	format-padding = 2.5
-
-
 [module/exwm-workspace]
 	type = custom/ipc
-	hook-0 = emacsclient -e "exwm-workspace-current-index"  | sed -e 's/^"//' -e 's/"$//'
+  hook-0 = emacsclient -e "(bp/polybar-exwm-workspace)" | sed -e 's/^"//' -e 's/"$//'
 	initial = 1
 	format-underline = ${colors.fg}
 	format-padding = 1

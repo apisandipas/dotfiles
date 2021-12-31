@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+get_screen_id () {
+  xinput | grep 99E | grep pointer | awk '{print $5}' | sed 's/id\=//g'
+}
+
+get_primary_display_name () {
+  xrandr | grep ' connected' | grep primary | awk '{print $1}'
+}
+
+xinput map-to-output $(get_screen_id) $(get_primary_display_name)

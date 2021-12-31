@@ -51,7 +51,7 @@ fi
 
 bspc rule -a Emacs state=tiled desktop='^1'
 bspc rule -a kitty desktop='^2'
-bspc rule -a obsidian desktop='^3'
+# bspc rule -a obsidian desktop='^3'
 bspc rule -a Thunderbird desktop='^4'
 bspc rule -a Slack desktop='^5'
 bspc rule -a Zoom desktop='^5'
@@ -77,9 +77,10 @@ blueman-applet &
 xautolock -time 120 -locker 'betterlockscreen -l dim' &
 ~/.config/polybar/launch.sh &
 fix_xcursor &
+fix-touchscreen #remap the touch screen to its display only 
 picom -b --config ~/.config/picom/picom.conf
-/usr/bin/emacs --daemon &
-/usr/bin/emacsclient -c -a emacs &
+# /usr/bin/emacs --daemon &
+# /usr/bin/emacsclient -c -a emacs &
 
 # Restore wallpaper
 bash $HOME/.fehbg
