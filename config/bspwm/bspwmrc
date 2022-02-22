@@ -85,6 +85,11 @@ picom -b --config ~/.config/picom/picom.conf
 # Restore wallpaper
 bash $HOME/.fehbg
 
+# Start Agenda Server
+killport 8989
+serve ~/org/brain/bins/agenda -p 8989 &
+
+
 # Lauch notification daemon
 dunst \
 -geom "380x50-10+38" -frame_width "1" -font "Victor Mono Medium 14" \
