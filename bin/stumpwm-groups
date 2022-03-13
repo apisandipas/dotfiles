@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+~/.dotfiles/bin/stumpish eval "(stumpwm::polybar-groups)" | sed "s/\"//g"

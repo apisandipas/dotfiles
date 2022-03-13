@@ -1,0 +1,15 @@
+#!/bin/bash
+#
+# `fake' stumpish.
+# This loads the latest version of `real' stumpish
+
+# In my case /path/to/quicklisp is ${HOME}/quicklisp; your mileage may be different!
+
+stump_start="/home/bryan/.stumpwm.d/modules/util"
+stump_end="stumpish/stumpish"
+
+stumpish=${stump_start}/${stump_end}
+
+# Note the `.' - the `real' stumpish must be sourced!
+
+. ${stumpish}

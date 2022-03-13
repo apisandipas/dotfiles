@@ -17,7 +17,7 @@ include-file = ~/.config/polybar/system-modules.ini
 [bar/main]
 	monitor = ${env:MONITOR:}
   width    = 100%
-  height   = 30
+  height   = 36
   offset-x = 0
   offset-y = 0
   bottom = false
@@ -52,9 +52,11 @@ include-file = ~/.config/polybar/system-modules.ini
   font-2 = FontAwesome:style=Regular
   font-3 = IcoFont:style=Regular
 
-  modules-left  = sysmenu workspaces  xwindow
-  modules-center =  spotify-next playpause spotify-prev spotify
-	modules-right = memory cpu battery date
+  modules-left  = sysmenu workspaces
+  ;; xwindow
+  modules-center = xwindow
+  ;;spotify-next playpause spotify-prev spotify
+	modules-right = cpu2 memory2 battery2 date2
 
   fixed-center = true
 
@@ -106,3 +108,112 @@ include-file = ~/.config/polybar/system-modules.ini
 	initial = 1
 	format-underline = ${colors.fg}
 	format-padding = 1
+
+
+[module/battery2]
+  type = internal/battery
+
+  full-at = ${config.battery-full-at}
+
+  battery = ${config.battery-bat}
+  adapter = ${config.battery-adp}
+
+
+  format-charging = <animation-charging> <label-charging>
+  format-charging-underline = ${colors.blue}
+  format-charging-margin = 1
+
+  label-charging-foreground = ${colors.blue}
+
+  animation-charging-0 = 
+  animation-charging-1 = 
+  animation-charging-2 = 
+  animation-charging-3 = 
+  animation-charging-4 = 
+  animation-charging-framerate = 750
+  animation-charging-foreground = ${colors.blue}
+
+  animation-charging-4-foreground = ${colors.blue}
+  animation-charging-margin-right = 1
+
+  format-discharging = <ramp-capacity> <label-discharging>
+  format-discharging-underline = ${colors.blue}
+  format-discharging-margin = 1
+
+  label-discharging-foreground = ${colors.blue}
+
+  ramp-capacity-0 = 
+  ramp-capacity-1 = 
+  ramp-capacity-2 = 
+  ramp-capacity-3 = 
+  ramp-capacity-4 = 
+  ramp-capacity-foreground = ${colors.blue}
+  ramp-capacity-margin-right = 1
+
+  ramp-capacity-0-foreground = ${colors.red}
+  ramp-capacity-1-foreground = ${colors.yellow}
+  ramp-capacity-2-foreground = ${colors.yellow}
+  ramp-capacity-3-foreground = ${colors.green}
+  ramp-capacity-4-foreground = ${colors.blue}
+
+  ; format-full = <label-fill>
+  ; label-full-foreground = ${colors.green}
+  format-full-margin = 1
+  format-full =   <label-full>
+  format-full-underline = ${colors.blue}
+  format-full-foreground = ${colors.blue}
+
+[module/cpu2]
+  type = internal/cpu
+  interval = 1
+
+  format = <ramp-load> <label>
+  format-margin = 1
+  format-underline = ${colors.green}
+
+  label-foreground = ${colors.green}
+
+  ramp-load-0 = 
+  ramp-load-0-foreground = ${colors.green}
+
+  ramp-load-1 = 
+  ramp-load-1-foreground = ${colors.yellow}
+
+  ramp-load-2 = 
+  ramp-load-2-foreground = ${colors.red}
+
+
+[module/memory2]
+  type = internal/memory
+  interval = 3
+
+  format = <ramp-used> <label>
+  format-underline = ${colors.yellow}
+  format-margin  = 1
+  label-foreground = ${colors.yellow}
+
+  label = %gb_used%/%gb_total%
+
+  ramp-used-0 = 
+  ramp-used-0-foreground = ${colors.green}
+
+  ramp-used-1 = 
+  ramp-used-1-foreground = ${colors.yellow}
+
+  ramp-used-2 = 
+  ramp-used-2-foreground = ${colors.red}
+
+[module/date2]
+  type = internal/date
+  interval = 1.0
+  ; See "http://en.cppreference.com/w/cpp/io/manip/put_time" for details on how to format the date string
+  ; NOTE: if you want to use syntax tags here you need to use %%{...}
+  date = %H:%M
+
+  date-alt = %Y/%m/%d %a
+
+  format = <label>
+  label =  %date%
+  label-margin = 1
+  label-foreground = ${colors.magenta}
+  label-underline = ${colors.magenta}
