@@ -5,17 +5,17 @@ bspc rule -r "*"
 
 ## Get colors from .Xresources -------------------------------#
 xrdb ~/.Xresources
-getcolors () {
-	FOREGROUND=$(xrdb -query | grep 'foreground:'| awk '{print $NF}')
-	BACKGROUND=$(xrdb -query | grep 'background:'| awk '{print $NF}')
-	BLACK=$(xrdb -query | grep 'color0:'| awk '{print $NF}')
-	RED=$(xrdb -query | grep 'color1:'| awk '{print $NF}')
-	GREEN=$(xrdb -query | grep 'color2:'| awk '{print $NF}')
-	YELLOW=$(xrdb -query | grep 'color3:'| awk '{print $NF}')
-	BLUE=$(xrdb -query | grep 'color4:'| awk '{print $NF}')
-	MAGENTA=$(xrdb -query | grep 'color5:'| awk '{print $NF}')
-	CYAN=$(xrdb -query | grep 'color6:'| awk '{print $NF}')
-	WHITE=$(xrdb -query | grep 'color7:'| awk '{print $NF}')
+getcolors() {
+	FOREGROUND=$(xrdb -query | grep 'foreground:' | awk '{print $NF}')
+	BACKGROUND=$(xrdb -query | grep 'background:' | awk '{print $NF}')
+	BLACK=$(xrdb -query | grep 'color0:' | awk '{print $NF}')
+	RED=$(xrdb -query | grep 'color1:' | awk '{print $NF}')
+	GREEN=$(xrdb -query | grep 'color2:' | awk '{print $NF}')
+	YELLOW=$(xrdb -query | grep 'color3:' | awk '{print $NF}')
+	BLUE=$(xrdb -query | grep 'color4:' | awk '{print $NF}')
+	MAGENTA=$(xrdb -query | grep 'color5:' | awk '{print $NF}')
+	CYAN=$(xrdb -query | grep 'color6:' | awk '{print $NF}')
+	WHITE=$(xrdb -query | grep 'color7:' | awk '{print $NF}')
 }
 getcolors
 
@@ -24,23 +24,23 @@ bspc config focused_border_color "$GREEN"
 # bspc config normal_border_color "$BACKGROUND"
 bspc config active_border_color "$MAGENTA"
 bspc config presel_feedback_color "$YELLOW"
-bspc config border_width         4
-bspc config border_radius        30
-bspc config window_gap          32
+bspc config border_width 4
+bspc config border_radius 30
+bspc config window_gap 32
 bspc config window_border_radius 30
-bspc config top_padding          32
-bspc config split_ratio          0.50
-bspc config borderless_monocle   false
-bspc config gapless_monocle      false
+bspc config top_padding 32
+bspc config split_ratio 0.50
+bspc config borderless_monocle false
+bspc config gapless_monocle false
 bspc config remove_disabled_monitors true
 bspc config remove_unplugged_monitors true
 bspc config merge_overlapping_monitors true
 
-xrandr --output eDP-1 --mode 1920x1080  --auto \
-  --output DVI-I-1-1 --left-of eDP-1 --rotate right --mode 1920x1080 --auto \
-  --output DVI-I-2-2 --mode 1920x1080 --left-of DVI-I-1-1  --auto 
+xrandr --output eDP-1 --mode 1920x1080 --auto \
+	--output DVI-I-1-1 --left-of eDP-1 --rotate right --mode 1920x1080 --auto \
+	--output DVI-I-2-2 --mode 1920x1080 --left-of DVI-I-1-1 --auto
 
-if [[ $(xrandr -q | grep "DVI-I-2-2 connected" ) ]]; then
+if [[ $(xrandr -q | grep "DVI-I-2-2 connected") ]]; then
 	bspc monitor DVI-I-1-1 -d I II III
 	bspc monitor DVI-I-2-2 -d IV V VI VII
 	bspc monitor eDP-1 -d VIII IX X
@@ -74,10 +74,11 @@ thunderbird &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 nm-applet &
 blueman-applet &
+pasystray &
 xautolock -time 120 -locker 'betterlockscreen -l dim' &
 ~/.config/polybar/launch.sh &
 fix_xcursor &
-fix-touchscreen #remap the touch screen to its display only 
+fix-touchscreen #remap the touch screen to its display only
 picom -b --config ~/.config/picom/picom.conf
 # /usr/bin/emacs --daemon &
 # /usr/bin/emacsclient -c -a emacs &
@@ -89,12 +90,9 @@ bash $HOME/.fehbg
 killport 8989
 serve ~/org/brain/bins/agenda -p 8989 &
 
-
 # Lauch notification daemon
 dunst \
--geom "380x50-10+38" -frame_width "1" -font "Victor Mono Medium 14" \
--lb "$BACKGROUND" -lf "$FOREGROUND" -lfr "$BLUE" \
--nb "$BACKGROUND" -nf "$FOREGROUND" -nfr "$BLUE" \
--cb "$BACKGROUND" -cf "$RED" -cfr "$RED" &
-
-
+	-geom "380x50-10+38" -frame_width "1" -font "Victor Mono Medium 14" \
+	-lb "$BACKGROUND" -lf "$FOREGROUND" -lfr "$BLUE" \
+	-nb "$BACKGROUND" -nf "$FOREGROUND" -nfr "$BLUE" \
+	-cb "$BACKGROUND" -cf "$RED" -cfr "$RED" &
