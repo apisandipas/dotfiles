@@ -1,0 +1,2 @@
+#! /bin/env bash
+xautolock -time 120 -locker 'betterlockscreen -l dim' &

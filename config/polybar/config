@@ -23,14 +23,14 @@ include-file = ~/.config/polybar/system-modules.ini
   bottom = false
   enable-ipc = true
 
-  line-size = 1
+  line-size = 3
   line-color = ${colors.yellow}
 
 	tray-position = right
 	tray-padding = 0
 	tray-offset-x = 0
 
-  background = ${colors.bg}
+  background = #272A39
   foreground = ${colors.fg}
 	wm-restack = bspwm
 	border-size = 2
@@ -86,13 +86,11 @@ include-file = ~/.config/polybar/system-modules.ini
 	label-occupied-foreground = ${colors.fg}
 
 	label-urgent = %icon%
-	label-urgent-background = ${colors.bg}
 	label-urgent-foreground = ${colors.magenta}
 	label-urgent-padding = 1
 
 	label-empty = %icon%
 	label-empty-foreground = ${colors.green}
-	label-empty-background = ${colors.bg}
 	label-empty-padding = 1
 
 	ws-icon-default=
