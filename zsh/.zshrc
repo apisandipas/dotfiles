@@ -1,21 +1,20 @@
 #!/usr/bin/env zsh
-                       #█████
-                      #░░███
-       #█████████ █████ ░███████  ████████ ██████
-      #░█░░░░███ ███░░  ░███░░███░░███░░█████░░███
-      #░   ███░ ░░█████ ░███ ░███ ░███ ░░░███ ░░░
-        #███░   █░░░░███░███ ░███ ░███   ░███  ███
- #██    ███████████████ ████ ██████████  ░░██████
+#█████
+#░░███
+#█████████ █████ ░███████  ████████ ██████
+#░█░░░░███ ███░░  ░███░░███░░███░░█████░░███
+#░   ███░ ░░█████ ░███ ░███ ░███ ░░░███ ░░░
+#███░   █░░░░███░███ ░███ ░███   ░███  ███
+#██    ███████████████ ████ ██████████  ░░██████
 #░░    ░░░░░░░░░░░░░░░ ░░░░ ░░░░░░░░░░    ░░░░░░
 
 export DOTS_DIR=$HOME/.dotfiles
 
-source $DOTS_DIR/config/zsh/utils.zsh
-source $DOTS_DIR/config/zsh/functions.zsh
-source $DOTS_DIR/config/zsh/globals.zsh
-source $DOTS_DIR/config/zsh/globals.zsh
-source $DOTS_DIR/config/zsh/keybinds.zsh
-source $DOTS_DIR/config/zsh/aliases.zsh
+source $DOTS_DIR/zsh/lib/utils.zsh
+source $DOTS_DIR/zsh/lib/functions.zsh
+source $DOTS_DIR/zsh/lib/globals.zsh
+source $DOTS_DIR/zsh/lib/keybinds.zsh
+source $DOTS_DIR/zsh/lib/aliases.zsh
 
 # Plugins
 zsh_add_plugin "zsh-users/zsh-autosuggestions"

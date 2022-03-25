@@ -4,4 +4,4 @@ nvim/undodir/*
 nvim/plugged/*
 
 
-config/zsh/plugins/*
+zsh/lib/plugins/*
