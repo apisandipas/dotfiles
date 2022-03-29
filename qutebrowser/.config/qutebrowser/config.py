@@ -207,6 +207,7 @@ c.downloads.location.directory = "~/Downloads"
 #   - multiple: Hide the tab bar if only one tab is open.
 #   - switching: Show the tab bar when switching tabs.
 c.tabs.show = "always"
+c.tabs.tabs_are_windows = True
 
 # Setting default page for when opening new tabs or new windows with
 # commands like :open -t and :open -w .

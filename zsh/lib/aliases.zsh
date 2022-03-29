@@ -7,7 +7,7 @@ alias mux="tmuxinator"
 #alias memacs="emacs --with-profile custom &"
 # alias emacs="emacsclient -c -a emacs"
 alias cat="bat"
-alias tm='tmux attach || tmux new'
+alias tm="tmux new -A -s default"
 
 # Lazy movements
 alias ..="cd ../"
@@ -37,7 +37,6 @@ alias services-running="systemctl list-units --type=service --state=active"
 alias fzf='rg --files --ignore-case --hidden -g "!{.git,node_modules,vendor,.config,.cargo,.cache}" | fzf'
 
 alias dennis="curl -L http://git.io/unix"
-
 
 # Docker Commands
 alias dcu="docker-compose up"

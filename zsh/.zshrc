@@ -21,6 +21,10 @@ zsh_add_plugin "zsh-users/zsh-autosuggestions"
 zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
 zsh_add_plugin "hlissner/zsh-autopair"
 
+# if [ -z "$TMUX" ]; then
+#   tmux attach -t TMUX || tmux new -s TMUX
+# fi
+
 ## History file configuration
 [ -z "$HISTFILE" ] && HISTFILE="$HOME/.zsh_history"
 [ "$HISTSIZE" -lt 50000 ] && HISTSIZE=50000
@@ -44,5 +48,8 @@ eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 
 colorscript -r
+
+GUIX_PROFILE="/home/bryan/.guix-profile"
+. "$GUIX_PROFILE/etc/profile"
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"

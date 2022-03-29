@@ -71,7 +71,6 @@ killall polybar
 pgrep -x sxhkd >/dev/null || sxhkd &
 pgrep -x kitty >/dev/null || kitty &
 pgrep -x firefox >/dev/null || firefox &
-pgrep -x thunderbird >/dev/null || thunderbird &
 pgrep -x pasystray >/dev/null || pasystray &
 pgrep -x nm-applet >/dev/null || nm-applet &
 pgrep -x blueman-applet >/dev/null || blueman-applet &
