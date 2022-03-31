@@ -79,7 +79,9 @@ pgrep -x lockscreen-setup >/dev/null || lockscreen-setup &
 pgrep -x fix-touchscreen >/dev/null || fix-touchscreen &
 pgrep -x fix_xcursor >/dev/null || fix_xcursor &
 
-# pgrep -x emacs >/dev/null || emacs --daemon --with-profile default &
+# pgrep -x emacs >/dev/null ||
+killall emacs
+emacs --daemon --with-profile default &
 # pgrep -c emacsclient >/dev/null || emacsclient -c -s default -a emacs &
 
 # Restore wallpaper

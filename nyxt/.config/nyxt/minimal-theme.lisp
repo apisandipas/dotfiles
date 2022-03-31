@@ -132,20 +132,29 @@
   (spinneret:with-html-string
     (cond ((find-submode buffer 'vi-normal-mode)
            (:div
-            (:a :class "button" :title "vi-normal-mode" :href (lisp-url '(nyxt/vi-mode:vi-insert-mode)) "NORMAL")))
+            (:a :class "button" :title "vi-normal-mode" :href (lisp-url '(nyxt/vi-mode:vi-insert-mode)) " --NORMAL")))
           ((find-submode buffer 'vi-insert-mode)
            (:div
-            (:a :class "button" :title "vi-insert-mode" :href (lisp-url '(nyxt/vi-mode:vi-normal-mode)) "INSERT")))
+            (:a :class "button" :title "vi-insert-mode" :href (lisp-url '(nyxt/vi-mode:vi-normal-mode)) " INSERT")))
           (t (:span "")))))
 
   ;; ;Styling status buffer
   (define-configuration status-buffer
-      ((style (str:concat
+      ((height 36)
+       (style (str:concat
                %slot-default%
                (cl-css:css
-                `(
+                `(("@font-face"
+                   :font-family "VictoMono Nerd Font"
+                   :src "local('VictorMono Nerd Font')")
+                  ("*"
+                   :font-family "VictorMono Nerd Font")
+                  ("body"
+                   :font-size ,(override "18px")
+                   :font-weight ,(override "bold")
+                   :line-height ,(override "36px"))
                   ("#container"
-                   :font-family ,(override "monospace")
+                   :height ,(override "36px")
                    :grid-template-columns ,(override "2fr 3fr")
                    :background-color ,(override mlbg))
                   ("#container-vi"

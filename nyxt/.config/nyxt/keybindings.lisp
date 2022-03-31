@@ -49,8 +49,8 @@
 (defvar *my-leader-keymap* (make-keymap "*my-leader-keymap*"))
 (define-key *my-leader-keymap*
   "b" *my-buffer-keymap*
-  "H" *my-history-keymap*
-  "h" *my-help-keymap*
+  "h" *my-history-keymap*
+  "H" *my-help-keymap*
   "o" *my-open-keymap*
   "f" *my-follow-keymap*
   "m" *my-media-keymap*)

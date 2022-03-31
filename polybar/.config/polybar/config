@@ -30,7 +30,7 @@ include-file = ~/.config/polybar/system-modules.ini
 	tray-padding = 0
 	tray-offset-x = 0
 
-  background = #272A39
+  background = #21242D
   foreground = ${colors.fg}
 	wm-restack = bspwm
 	border-size = 2
