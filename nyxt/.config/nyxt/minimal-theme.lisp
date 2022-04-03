@@ -3,15 +3,17 @@
 
 (let ((bg "#21242B")
       (fg "#FFFFFF")
-      (mlbg "#272A33")                  ; modeline bg
+      (mlbg "#272A33")
       (mlfg "#5F656B")
       (ml-highlight-bg "#3F4350")
       (ml-highlight-fg "#749362")
       (h1 "#619ECA")
       (a "#749362")
       (cursor "#eeeee8")
-      (mb-prompt "#619ECA")             ; minibuffer prompt
+      (mb-prompt "#619ECA")
       (mb-separator "#AE7BBF")
+      (btn-hover "#AE7BBF")
+      (btn-active "#619ECA")
       (mono-font "VictorMono Nerd Font")
       )
 
@@ -21,7 +23,11 @@
         (str:concat
          %slot-default%
          (cl-css:css
-          `((body
+          `(
+            ("@font-face"
+            :font-family "VictoMono Nerd Font"
+            :src "local('VictorMono Nerd Font')")
+            (body
              :border-top ,(str:concat "1px solid" mb-separator)
              :background-color ,bg
              :font-family ,mono-font
@@ -58,37 +64,52 @@
         (str:concat
          %slot-default%
          (cl-css:css
-          `((body
+          `(("@font-face"
+            :font-family "VictoMono Nerd Font"
+            :src "local('VictorMono Nerd Font')")
+            (body
+             :font-family ,(override mono-font)
              :background-color ,(override bg)
              :color ,(override fg))
             (hr
              :background-color ,(override bg)
              :color ,(override cursor))
             (.button
-             :background-color ,(override mlbg)
-             :color ,(override mlfg))
+             :cursor ,(override "pointer")
+             :min-width ,(override "120px")
+             :text-align ,(override "center")
+             :background-color ,(override a)
+             :padding ,(override "1.25rem")
+             :margin-bottom ,(override "1rem")
+             :color ,(override bg))
             (".button:hover"
-             :color ,(override ml-highlight-fg)
-             :background-color ,(override ml-highlight-bg))
+             :color ,(override ml-highlight-bg)
+             :background-color ,(override btn-hover))
             (".button:active"
-             :color ,(override ml-highlight-fg)
-             :background-color ,(override ml-highlight-bg))
+             :color ,(override ml-highlight-bg)
+             :background-color ,(override btn-active))
             (".button:visited"
-             :color ,(override ml-highlight-fg)
-             :background-color ,(override ml-highlight-bg))
+             :color ,(override ml-highlight-bg)
+             :background-color ,(override btn-active))
             (a
              :color ,(override a))
             (h1
+             :font-family ,(override mono-font)
              :color ,(override h1))
             (h2
+             :font-family ,(override mono-font)
              :color ,(override h1))
             (h3
+             :font-family ,(override mono-font)
              :color ,(override h1))
             (h4
+             :font-family ,(override mono-font)
              :color ,(override h1))
             (h5
+             :font-family ,(override mono-font)
              :color ,(override h1))
             (h6
+             :font-family ,(override mono-font)
              :color ,(override h1))))))))
 
   ;; status bar
@@ -132,10 +153,10 @@
   (spinneret:with-html-string
     (cond ((find-submode buffer 'vi-normal-mode)
            (:div
-            (:a :class "button" :title "vi-normal-mode" :href (lisp-url '(nyxt/vi-mode:vi-insert-mode)) " --NORMAL")))
+            (:a :class "button" :title "vi-normal-mode" :href (lisp-url '(nyxt/vi-mode:vi-insert-mode)) "NORMAL")))
           ((find-submode buffer 'vi-insert-mode)
            (:div
-            (:a :class "button" :title "vi-insert-mode" :href (lisp-url '(nyxt/vi-mode:vi-normal-mode)) " INSERT")))
+            (:a :class "button" :title "vi-insert-mode" :href (lisp-url '(nyxt/vi-mode:vi-normal-mode)) "INSERT")))
           (t (:span "")))))
 
   ;; ;Styling status buffer
@@ -144,7 +165,8 @@
        (style (str:concat
                %slot-default%
                (cl-css:css
-                `(("@font-face"
+                `(
+                  ("@font-face"
                    :font-family "VictoMono Nerd Font"
                    :src "local('VictorMono Nerd Font')")
                   ("*"
@@ -179,7 +201,7 @@
                    :color "white"
                    :background-color ,(override bg)))))))))
 
-(defun laconic-format-status-modes (buffer window)
+(defun bp-format-status-modes (buffer window)
   (spinneret:with-html-string
     (when (nosave-buffer-p buffer) (:span "⚠ nosave"))
     (:span (format nil "~2d:~2d |"
@@ -206,7 +228,7 @@
           (t (:span "")))))
 
 
-(defun laconic-format-status-load-status (buffer)
+(defun bp-format-status-load-status (buffer)
   (spinneret:with-html-string
     (:div :class (if (web-buffer-p buffer)
                      (case (slot-value buffer 'nyxt::load-status)
@@ -215,7 +237,7 @@
                        (:finished ""))
                      ""))))
 
-(defun laconic-format-status-url (buffer)
+(defun bp-format-status-url (buffer)
   (spinneret:with-html-string
     (:a :class "button"
         :href (lisp-url '(nyxt:set-url))
@@ -226,7 +248,7 @@
                  "")
                 (title buffer)))))
 
-(defun laconic-format-status (window)
+(defun bp-format-status (window)
   (let* ((buffer (current-buffer window))
          (vi-class (cond ((find-submode buffer 'vi-normal-mode)
                           "vi-normal-mode")
@@ -240,12 +262,12 @@
                     (:raw (format-status-vi-mode buffer))))
             (:div :id "url" :class "arrow-right"
                   (:raw
-                   (laconic-format-status-load-status buffer)
-                   (laconic-format-status-url buffer)))
+                   (bp-format-status-load-status buffer)
+                   (bp-format-status-url buffer)))
             (:div :id "tabs"
                   (:raw
                    (nyxt::format-status-tabs)))
             ))))
 
 (define-configuration window
-  ((status-formatter #'laconic-format-status)))
+  ((status-formatter #'bp-format-status)))

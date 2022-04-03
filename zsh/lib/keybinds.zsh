@@ -1,5 +1,4 @@
 #!/usr/bin/env zsh
 
 # Disabled CapsLock
-setxkbmap -option ctrl:nocaps
-
+# setxkbmap -option ctrl:nocaps

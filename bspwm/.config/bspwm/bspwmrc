@@ -49,7 +49,7 @@ else
 	bspc monitor eDP-1 -d I II III IV V VI VII VIII IX X
 fi
 
-bspc rule -a Emacs state=tiled desktop='^1'
+# bspc rule -a Emacs state=tiled desktop='^1'
 bspc rule -a kitty desktop='^2'
 # bspc rule -a obsidian desktop='^3'
 bspc rule -a Thunderbird desktop='^4'
@@ -64,10 +64,11 @@ bspc rule -a dropbox state=floating manage=off
 ## Kickoff -------------------------------#
 
 # Kill if already running
-killall polybar
+killall polybar dropbox
 
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 # Fire up on start/restart
+dropbox &
 pgrep -x sxhkd >/dev/null || sxhkd &
 pgrep -x kitty >/dev/null || kitty &
 pgrep -x firefox >/dev/null || firefox &

@@ -5,3 +5,4 @@ nvim/plugged/*
 
 
 zsh/lib/plugins/*
+stumpwm/.stumpwm/modules
