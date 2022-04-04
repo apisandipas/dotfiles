@@ -5,8 +5,7 @@
 # Clear and display system profile
 function cl() {
 	clear;
-	# nerdfetch;
- colorscript -r
+	nerdfetch
 }
 
 

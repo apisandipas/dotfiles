@@ -1,8 +1,6 @@
 #!/usr/bin/env zsh
 
 # Aliases
-alias vim="lvim"
-alias mux="tmuxinator"
 #alias emacs="emacs --with-profile doom &"
 #alias memacs="emacs --with-profile custom &"
 # alias emacs="emacsclient -c -a emacs"

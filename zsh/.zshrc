@@ -39,7 +39,7 @@ setopt hist_verify            # show command with history expansion to user befo
 setopt share_history          # share command history data
 
 # load Node Version Manager
-source $HOME/.nvm/nvm.sh
+source '/usr/share/nvm/init-nvm.sh'
 
 # load the starship prompt
 eval "$(starship init zsh)"
@@ -47,7 +47,7 @@ eval "$(starship init zsh)"
 # load z-jump script
 eval "$(zoxide init zsh)"
 
-colorscript -r
+nerdfetch
 
 GUIX_PROFILE="/home/bryan/.guix-profile"
 . "$GUIX_PROFILE/etc/profile"
