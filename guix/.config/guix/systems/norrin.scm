@@ -1,25 +1,28 @@
-(define-module (atlas)
+(define-module (norrin)
   #:use-module (base-system)
   #:use-module (gnu))
 
 (operating-system
  (inherit base-operating-system)
- (host-name "atlas")
+ (host-name "norrin")
 
  (swap-devices
   (list (swap-space
-         (target
-	   (list
-          	(uuid "ea40b994-e20f-421c-be3b-c34053a32fb1"))))))
+	  (target
+         	(file-system-label "swap_partition")))))
  (file-systems
   (cons* (file-system
           (mount-point "/boot/efi")
-          (device (uuid "9DEA-F42D" 'fat32))
+          (device (file-system-label "efi_part"))
           (type "vfat"))
          (file-system
           (mount-point "/")
           (device
-           (uuid "8833dc17-20b4-4c2c-a5af-ad5747b0fab1"
-                 'ext4))
+           (file-system-label "root_partition"))
+          (type "ext4"))
+         (file-system
+          (mount-point "/home")
+          (device
+           (file-system-label "home_partition"))
           (type "ext4"))
          %base-file-systems)))
