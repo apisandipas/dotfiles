@@ -6,3 +6,4 @@ nvim/plugged/*
 
 zsh/lib/plugins/*
 stumpwm/.stumpwm/modules
+zsh/.config/zsh/lib/plugins

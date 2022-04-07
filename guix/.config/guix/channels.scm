@@ -5,9 +5,6 @@
         (name 'channel-x)
         (url "https://github.com/daviwil/channel-x"))
       (channel
-       (name 'rekahsoft)
-       (url "https://git.rekahsoft.ca/rekahsoft/rekahsoft-guix"))
-      (channel
         (name 'rde)
         (url "https://git.sr.ht/~abcdw/rde"))
       (channel

@@ -2,6 +2,7 @@
   #:use-module (base-system)
   #:use-module (gnu))
 
+
 (operating-system
  (inherit base-operating-system)
  (host-name "norrin")
@@ -13,7 +14,7 @@
  (file-systems
   (cons* (file-system
           (mount-point "/boot/efi")
-          (device (file-system-label "efi_part"))
+          (device (file-system-label "EFI_PART"))
           (type "vfat"))
          (file-system
           (mount-point "/")

@@ -14,14 +14,18 @@
   #:use-module (gnu packages gtk)
   #:use-module (gnu packages xorg)
   #:use-module (gnu packages emacs)
+  #:use-module (gnu packages emacs-xyz)
   #:use-module (gnu packages file-systems)
   #:use-module (gnu packages gnome)
   #:use-module (gnu packages mtools)
+  #:use-module (gnu packages lisp)
   #:use-module (gnu packages linux)
   #:use-module (gnu packages audio)
   #:use-module (gnu packages gnuzilla)
   #:use-module (gnu packages pulseaudio)
   #:use-module (gnu packages web-browsers)
+  #:use-module (gnu packages chromium)
+  #:use-module (gnu packages xdisorg)
   #:use-module (gnu packages version-control)
   #:use-module (gnu packages package-management)
   #:use-module (nongnu packages linux)
@@ -138,6 +142,14 @@ EndSection
                         stow
                         vim
                         qutebrowser
+			emacs-next
+			emacs-desktop-environment
+			emacs-exwm
+			bspwm
+			sxhkd
+			rofi
+			sbcl
+			stumpwm
                         xterm
                         bluez
                         bluez-alsa

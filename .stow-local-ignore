@@ -1,6 +1,3 @@
-.git
-.gitignore
-bin/
-config/
-etc/
-zsh/lib
+.DS_Store
+zsh/.config/zsh/.zshenv
+zsh/.config/zsh/lib/plugins

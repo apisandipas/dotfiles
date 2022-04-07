@@ -14,8 +14,7 @@
 (home-environment
   (packages
     (map (compose list specification->package+output)
-         (list "emacs-next"
-               "mtools"
+         (list "mtools"
                "xclip"
                "ungoogled-chromium"
                "font-gnu-freefont")))
