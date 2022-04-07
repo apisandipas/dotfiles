@@ -61,4 +61,16 @@ ufetch
 GUIX_PROFILE="/home/bryan/.guix-profile"
 . "$GUIX_PROFILE/etc/profile"
 
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+#export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH="$HOME/.dotfiles/bin:$PATH"
+
+# Customize prompt
+# TODO: move into its own module
+autoload -Uz vcs_info
+setopt prompt_subst
+precmd () { vcs_info }
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:*' unstagedstr '%F{red}*%f'
+zstyle ':vcs_info:*' stagedstr '%F{green}*%f'
+zstyle ':vcs_info:*' formats ' (%F{blue}%b%u%c%f)'
+PS1='[ %B%n%b@%B%m%b:%F{green}%/%f$vcs_info_msg_0_ ] $ '

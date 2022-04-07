@@ -142,14 +142,14 @@ EndSection
                         stow
                         vim
                         qutebrowser
-			emacs-next
-			emacs-desktop-environment
-			emacs-exwm
-			bspwm
-			sxhkd
-			rofi
-			sbcl
-			stumpwm
+                        emacs-next
+                        emacs-desktop-environment
+                        emacs-exwm
+                        bspwm
+                        sxhkd
+                        rofi
+                        sbcl
+                        stumpwm
                         xterm
                         bluez
                         bluez-alsa

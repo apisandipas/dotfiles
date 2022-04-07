@@ -1,6 +1,6 @@
 ;; ;;; -*-  mode: lisp; -*-
 (in-package :stumpwm)
-(load "~/.quicklisp/setup.lisp")
+(load "~/quicklisp/setup.lisp")
 (ql:quickload :slynk)
 (ql:quickload :clx-truetype)
 ;; ;;  Set contrib module directory
@@ -252,8 +252,8 @@ Press ^2Ctrl+z ? ^7for Help. ^4 Happy Hacking!^n
        " %W "                             ; windows
        "^>"                             ; align right
        " %S "                             ; slynk status
-       " [MEM: %M%] "                   ; Memory
-       " [BAT: %B] "                    ; Battere
+       ;; " [MEM: %M%] "                   ; Memory
+       ;; " [BAT: %B] "                    ; Battere
        "%d"))                           ; Date / Time
 
 (defun enable-mode-line-everywhere ()

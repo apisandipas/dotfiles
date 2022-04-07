@@ -56,7 +56,7 @@ bspc rule -a Thunderbird desktop='^4'
 bspc rule -a Slack desktop='^5'
 bspc rule -a Zoom desktop='^5'
 bspc rule -a Brave-browser desktop='^6'
-bspc rule -a firefox desktop='^6'
+bspc rule -a firefox-default desktop='^6'
 bspc rule -a GitKraken desktop='^7'
 bspc rule -a spotify desktop='^8'
 bspc rule -a dropbox state=floating manage=off

@@ -14,11 +14,20 @@
 (home-environment
   (packages
     (map (compose list specification->package+output)
-         (list "emacs-next"
-               "mtools"
-               "xclip"
-               "ungoogled-chromium"
-               "font-gnu-freefont")))
+         (list "bat"
+               "tree"
+               "curl"
+               "ufetch"
+               "ncurses"
+               "firefox"
+               "exa"
+               "zoxide"
+               "picom"
+               "xrdb"
+               "font-awesome"
+               "kitty"
+               "polybar"
+               "feh")))
   (services
     (list (service
             home-bash-service-type
@@ -29,9 +38,9 @@
                   ("ls" . "ls -p --color=auto")))
               (bashrc
                 (list (local-file
-                        "/home/bryan/.dotfiles/guix/.config/guix/home/.bashrc"
+                        "/home/bryan/.config/guix/home/.bashrc"
                         "bashrc")))
               (bash-profile
                 (list (local-file
-                        "/home/bryan/.dotfiles/guix/.config/guix/home/.bash_profile"
+                        "/home/bryan/.config/guix/home/.bash_profile"
                         "bash_profile"))))))))
