@@ -1,8 +1,8 @@
 (specifications->manifest
  '(
    ;; Emacs: the next batch
-;;   "emacs-next-pgtk-latest"
-   
+   "emacs-next-pgtk-latest"
+  
    ;; Keep it tight
    "emacs-no-littering"
    "emacs-ws-butler"

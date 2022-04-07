@@ -11,9 +11,11 @@
 
    ;; Terminal environment
    "kitty"
+   "exa"
+   "bat"
    "tmux"
    "neovim"
-
+   "zoxide"
    ;; System monitor
    "bpytop"
 

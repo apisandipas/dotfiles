@@ -6,7 +6,7 @@
 function cl() {
 	clear;
 	# nerdfetch;
- colorscript -r
+  #colorscript -r
 }
 
 

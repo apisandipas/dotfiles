@@ -4,6 +4,9 @@
       (channel
         (name 'channel-x)
         (url "https://github.com/daviwil/channel-x"))
+     (channel
+       (name 'flat)
+	(url "https://github.com/flatwhatson/guix-channel"))
       (channel
         (name 'rde)
         (url "https://git.sr.ht/~abcdw/rde"))
