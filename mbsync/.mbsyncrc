@@ -7,10 +7,10 @@ SyncState *
 IMAPAccount bparonto@gmail
 Host imap.gmail.com
 User bparonto@gmail.com
-PassCmd "gpg --quiet --for-your-eyes-only --no-tty --decrypt \~/Mail\/.mbsync-pw-bparonto@gmail.gpg"
+PassCmd "gpg --quiet --for-your-eyes-only --no-tty --decrypt \~/.ssh\/mbsync-pw-bparonto@gmail.gpg"
 AuthMechs LOGIN
 SSLType IMAPS
-CertificateFile ~/.ssh/mu4e/cert.pem
+CertificateFile ~/.ssh/mu4e.crt
 
 IMAPStore bparonto@gmail-remote
 Account bparonto@gmail
@@ -56,7 +56,7 @@ User bryan@cablecar.digital
 PassCmd "gpg --quiet --for-your-eyes-only --no-tty --decrypt \~/Mail\/.mbsync-pw-bryan@cablecar.gpg"
 AuthMechs LOGIN
 SSLType IMAPS
-CertificateFile ~/.ssh/mu4e/cert.pem
+CertificateFile ~/.ssh/mu4e.crt
 
 IMAPStore bryan@cablecar-remote
 Account bryan@cablecar

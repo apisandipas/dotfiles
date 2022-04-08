@@ -1,11 +1,10 @@
 ;; ;;; -*-  mode: lisp; -*-
 (in-package :stumpwm)
-(load "~/.quicklisp/setup.lisp")
-(ql:quickload :slynk)
-(ql:quickload :clx-truetype)
+(load "~/quicklisp/setup.lisp")
 ;; ;;  Set contrib module directory
 (set-module-dir "~/.stumpwm.d/modules/")
-
+(ql:quickload :slynk)
+(ql:quickload :clx-truetype)
 ;; ;; (load "~/.stumpwm.d/utilities.lisp")
 
 ;; ;; Set up Fonts
@@ -218,31 +217,31 @@ Press ^2Ctrl+z ? ^7for Help. ^4 Happy Hacking!^n
 (setf *mode-line-border-color* *mode-line-bg-color*)
 (setf *mode-line-foreground-color* *mode-line-fg-color*)
 
-(defun bp-memory-check (ml)
-  (declare (ignore ml))
-  (let ((p (get-memory-usage-percent)))
-    (format nil "^[~a~a^]"
-      (cond ((> 25 p) "^(:fg \"green\")")
-      ((> 50 p) "^(:fg \"yellow\")")
-      ((> 70 p) "^(:fg \"orange\")")
-      (t "^(:fg \"red\")"))
-      (ceiling p))))
+;; (defun bp-memory-check (ml)
+;;   (declare (ignore ml))
+;;   (let ((p (get-memory-usage-percent)))
+;;     (format nil "^[~a~a^]"
+;;       (cond ((> 25 p) "^(:fg \"green\")")
+;;       ((> 50 p) "^(:fg \"yellow\")")
+;;       ((> 70 p) "^(:fg \"orange\")")
+;;       (t "^(:fg \"red\")"))
+;;       (ceiling p))))
 
-(add-screen-mode-line-formatter #\M #'bp-memory-check)
+;; (add-screen-mode-line-formatter #\M #'bp-memory-check)
 
-(defparameter *battery-percent* "")
+;; (defparameter *battery-percent* "")
 
-(defun get-battery-status ()
-  (let* ((batgetcap (run-shell-command "cat /sys/class/power_supply/BAT0/capacity | tr -d '\\r\\n'" t)))
-    (setf *battery-percent* (format nil "^4^f1^f0^n ~a% " batgetcap))))
+;; (defun get-battery-status ()
+;;   (let* ((batgetcap (run-shell-command "cat /sys/class/power_supply/BAT0/capacity | tr -d '\\r\\n'" t)))
+;;     (setf *battery-percent* (format nil "^4^f1^f0^n ~a% " batgetcap))))
 
-(defun battery-percentage (ml)
-  (declare (ignore ml))
-  *battery-percent*)
+;; (defun battery-percentage (ml)
+;;   (declare (ignore ml))
+;;   *battery-percent*)
 
-(run-with-timer 0 10 #'get-battery-status)
+;; (run-with-timer 0 10 #'get-battery-status)
 
-(add-screen-mode-line-formatter #\B #'battery-percentage)
+;; (add-screen-mode-line-formatter #\B #'battery-percentage)
 
 (setf *time-modeline-string* "^2 %Y-%m-%d %H:%M")
 
@@ -252,7 +251,7 @@ Press ^2Ctrl+z ? ^7for Help. ^4 Happy Hacking!^n
        " %W "                             ; windows
        "^>"                             ; align right
        " %S "                             ; slynk status
-       " [MEM: %M%] "                   ; Memory
+       ;; " [MEM: %M%] "                   ; Memory
        " [BAT: %B] "                    ; Battere
        "%d"))                           ; Date / Time
 

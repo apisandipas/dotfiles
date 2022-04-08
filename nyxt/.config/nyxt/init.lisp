@@ -1,7 +1,7 @@
 (in-package #:nyxt-user)
 
 ;; Load Common Lisp package manager
-(load (merge-pathnames #p".quicklisp/setup.lisp" (user-homedir-pathname)))
+(load (merge-pathnames #p"quicklisp/setup.lisp" (user-homedir-pathname)))
 
 ;;;; Consider using this safer approac to file loading
 ;;; Load quicklisp. Not sure it works.

@@ -170,31 +170,31 @@ function to_install() {
 }
 
 function zsh_add_file() {
-    [ -f "$DOTS_DIR/zsh/lib/$1" ] && source "$DOTS_DIR/zsh/lib/$1"
+    [ -f "$ZDOTDIR/lib/$1" ] && source "$ZDOTDIR/lib/$1"
 }
 
 function zsh_add_plugin() {
     PLUGIN_NAME=$(echo $1 | cut -d "/" -f 2)
-    if [ -d "$DOTS_DIR/zsh/lib/plugins/$PLUGIN_NAME" ]; then
+    if [ -d "$ZDOTDIR/lib/plugins/$PLUGIN_NAME" ]; then
         # For plugins
         zsh_add_file "plugins/$PLUGIN_NAME/$PLUGIN_NAME.plugin.zsh" || \
         zsh_add_file "plugins/$PLUGIN_NAME/$PLUGIN_NAME.zsh"
     else
-        git clone "https://github.com/$1.git" "$DOTS_DIR/zsh/lib/plugins/$PLUGIN_NAME"
+        git clone "https://github.com/$1.git" "$ZDOTDIR/lib/plugins/$PLUGIN_NAME"
     fi
 }
 
 function zsh_add_completion() {
     PLUGIN_NAME=$(echo $1 | cut -d "/" -f 2)
-    if [ -d "$DOTS_DIR/zsh/lib/plugins/$PLUGIN_NAME" ]; then
+    if [ -d "$ZDOTDIR/lib/plugins/$PLUGIN_NAME" ]; then
         # For completions
-		completion_file_path=$(ls $DOTS_DIR/config/zsh/plugins/$PLUGIN_NAME/_*)
+		completion_file_path=$(ls $ZDOTDIR/config/zsh/plugins/$PLUGIN_NAME/_*)
 		fpath+="$(dirname "${completion_file_path}")"
         zsh_add_file "plugins/$PLUGIN_NAME/$PLUGIN_NAME.plugin.zsh"
     else
-        git clone "https://github.com/$1.git" "$DOTS_DIR/zsh/lib/plugins/$PLUGIN_NAME"
-		fpath+=$(ls $DOTS_DIR/zsh/lib/plugins/$PLUGIN_NAME/_*)
-        [ -f $DOTS_DIR/zsh/lib/.zccompdump ] && $DOTS_DIR/zsh/lib/.zccompdump
+        git clone "https://github.com/$1.git" "$ZDOTDIR/lib/plugins/$PLUGIN_NAME"
+		fpath+=$(ls $ZDOTDIR/lib/plugins/$PLUGIN_NAME/_*)
+        [ -f $ZDOTDIR/lib/.zccompdump ] && $ZDOTDIR/lib/.zccompdump
     fi
 	completion_file="$(basename "${completion_file_path}")"
 	if [ "$2" = true ] && compinit "${completion_file:1}"

@@ -10,11 +10,9 @@
 
 export DOTS_DIR=$HOME/.dotfiles
 
-source $DOTS_DIR/zsh/lib/utils.zsh
-source $DOTS_DIR/zsh/lib/functions.zsh
-source $DOTS_DIR/zsh/lib/globals.zsh
-source $DOTS_DIR/zsh/lib/keybinds.zsh
-source $DOTS_DIR/zsh/lib/aliases.zsh
+source $ZDOTDIR/lib/utils.zsh
+source $ZDOTDIR/lib/functions.zsh
+source $ZDOTDIR/lib/keybinds.zsh
 
 # Plugins
 zsh_add_plugin "zsh-users/zsh-autosuggestions"
@@ -25,8 +23,11 @@ zsh_add_plugin "hlissner/zsh-autopair"
 #   tmux attach -t TMUX || tmux new -s TMUX
 # fi
 
+if [ "$TMUX" = "" ]; then tmux; fi
+
+
 ## History file configuration
-[ -z "$HISTFILE" ] && HISTFILE="$HOME/.zsh_history"
+[ -z "$HISTFILE" ] && HISTFILE="$ZDOTDIR/.zsh_history"
 [ "$HISTSIZE" -lt 50000 ] && HISTSIZE=50000
 [ "$SAVEHIST" -lt 10000 ] && SAVEHIST=10000
 
@@ -39,7 +40,41 @@ setopt hist_verify            # show command with history expansion to user befo
 setopt share_history          # share command history data
 
 # load Node Version Manager
-source '/usr/share/nvm/init-nvm.sh'
+# source '/usr/share/nvm/init-nvm.sh'
+
+# Aliases
+alias cat="bat"
+
+# Lazy movements
+alias ..="cd ../"
+alias ...="cd ../../"
+alias ....="cd ../../../"
+
+# ls replacements
+alias ls="exa --icons"
+alias ll="exa -lh --icons"
+alias lll="exa -alh --icons"
+alias lt="exa -T --icons --git-ignore"
+
+alias open="xdg-open"
+
+# git aliases
+alias gco="git checkout"
+alias gst="git status"
+
+alias services-enabled="systemctl list-unit-files | grep enabled"
+alias services-running="systemctl list-units --type=service --state=active"
+
+alias dennis="curl -L http://git.io/unix"
+
+# Docker Commands
+alias dcu="docker-compose up"
+alias dcuh="docker-compose up -d"
+alias dcs="docker-compose stop"
+alias dcr="docker-compose restart"
+
+
+alias zsrc="source $ZDOTDIR/.zshrc"
 
 # load the starship prompt
 eval "$(starship init zsh)"
@@ -47,9 +82,5 @@ eval "$(starship init zsh)"
 # load z-jump script
 eval "$(zoxide init zsh)"
 
-nerdfetch
+ufetch
 
-GUIX_PROFILE="/home/bryan/.guix-profile"
-. "$GUIX_PROFILE/etc/profile"
-
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
