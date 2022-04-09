@@ -1,19 +1,17 @@
 (in-package :nyxt-user)
 (use-package :spinneret)
 
-(let ((bg "#21242B")
-      (fg "#FFFFFF")
+(let (
+      (white "#FFFFFF")
+      (dark-gray "#21242B")
       (mlbg "#272A33")
-      (mlfg "#5F656B")
       (ml-highlight-bg "#3F4350")
-      (ml-highlight-fg "#749362")
-      (h1 "#619ECA")
-      (a "#749362")
+      (mlfg "#5F656B")
+      (green "#749362")
       (cursor "#eeeee8")
-      (mb-prompt "#619ECA")
+      (blue "#619ECA")
       (mb-separator "#AE7BBF")
       (btn-hover "#AE7BBF")
-      (btn-active "#619ECA")
       (mono-font "VictorMono Nerd Font")
       )
 
@@ -29,22 +27,22 @@
             :src "local('VictorMono Nerd Font')")
             (body
              :border-top ,(str:concat "1px solid" mb-separator)
-             :background-color ,bg
+             :background-color ,dark-gray
              :font-family ,mono-font
-             :color ,fg)
+             :color white)
             ("#input"
-             :background-color ,bg
-             :color ,fg
+             :background-color ,dark-gray
+             :color white
              :border-bottom ,(str:concat "solid 1px " mb-separator))
             ("#cursor"
              :background-color ,cursor
-             :color ,fg)
+             :color white)
             ("#prompt"
-             :color ,mb-prompt)
+             :color ,blue)
             (".source-content"
-             :background-color ,bg)
+             :background-color ,dark-gray)
             (".source-content th"
-             :background-color ,bg)
+             :background-color ,dark-gray)
             ("#selection"
              :background-color ,mlbg
              :color ,mlfg)
@@ -69,48 +67,48 @@
             :src "local('VictorMono Nerd Font')")
             (body
              :font-family ,(override mono-font)
-             :background-color ,(override bg)
+             :background-color ,(override white)
              :color ,(override fg))
             (hr
-             :background-color ,(override bg)
+             :background-color ,(override white)
              :color ,(override cursor))
             (.button
              :cursor ,(override "pointer")
              :min-width ,(override "120px")
              :text-align ,(override "center")
-             :background-color ,(override a)
+             :background-color ,(override green)
              :padding ,(override "1.25rem")
              :margin-bottom ,(override "1rem")
-             :color ,(override bg))
+             :color ,(override white))
             (".button:hover"
              :color ,(override ml-highlight-bg)
              :background-color ,(override btn-hover))
             (".button:active"
              :color ,(override ml-highlight-bg)
-             :background-color ,(override btn-active))
+             :background-color ,(override blue))
             (".button:visited"
              :color ,(override ml-highlight-bg)
-             :background-color ,(override btn-active))
+             :background-color ,(override blue))
             (a
-             :color ,(override a))
-            (h1
+             :color ,(override green))
+            (blue
              :font-family ,(override mono-font)
-             :color ,(override h1))
+             :color ,(override blue))
             (h2
              :font-family ,(override mono-font)
-             :color ,(override h1))
+             :color ,(override blue))
             (h3
              :font-family ,(override mono-font)
-             :color ,(override h1))
+             :color ,(override blue))
             (h4
              :font-family ,(override mono-font)
-             :color ,(override h1))
+             :color ,(override blue))
             (h5
              :font-family ,(override mono-font)
-             :color ,(override h1))
+             :color ,(override blue))
             (h6
              :font-family ,(override mono-font)
-             :color ,(override h1))))))))
+             :color ,(override blue))))))))
 
   ;; status bar
 
@@ -142,7 +140,7 @@
          %slot-default%
          (cl-css:css
           `((body
-             :background-color ,(override bg)
+             :background-color ,(override white)
              :color ,(override fg)
              )
             (a :color , (override "blue"))
@@ -185,21 +183,21 @@
                   ("#vi-mode"
                    :padding-right ,(override "1rem"))
                   ("#vi-mode a"
-                   :color ,(override bg))
+                   :color ,(override white))
                   (".vi-normal-mode"
-                   :background-color ,(override h1))
+                   :background-color ,(override blue))
                   (".vi-insert-mode"
                    :background-color ,(override mb-separator))
                   ("#url"
                    :background-color ,(override mlbg))
                   ("#tabs"
                    :background-color ,(override mlbg)
-                   :color ,(override h1))
+                   :color ,(override blue))
                   ("a"
-                   :color ,(override h1))
+                   :color ,(override blue))
                   (".tab:hover"
                    :color "white"
-                   :background-color ,(override bg)))))))))
+                   :background-color ,(override white)))))))))
 
 (defun bp-format-status-modes (buffer window)
   (spinneret:with-html-string

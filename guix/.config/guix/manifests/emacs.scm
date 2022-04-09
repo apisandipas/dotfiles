@@ -1,7 +1,7 @@
 (specifications->manifest
  '(
    ;; Emacs: the next batch
-   "emacs-next-pgtk-latest"
+   "emacs-next"
    
    ;; Keep it tight
    "emacs-no-littering"
@@ -39,6 +39,5 @@
   
     ;; Misc
     "emacs-vterm"
-    "emacs-format-all"
 
    ))

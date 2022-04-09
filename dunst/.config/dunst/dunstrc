@@ -1,17 +1,21 @@
-frame_color = "#abb2bf"
-separator_color = "#abb2bf"
+[global]
+    frame_color = "#545862"
+    separator_color = "#abb2bf"
+    font = "VictorMono Nerd Font 14"
+    width = 420
+    min_icon_size = 84
 
 [base16_low]
     msg_urgency = low
-    background = "#353b45"
-    foreground = "#545862"
+    background = "#22252E"
+    foreground = "#abb2bf"
 
 [base16_normal]
     msg_urgency = normal
-    background = "#3e4451"
+    background = "#22252E"
     foreground = "#abb2bf"
 
 [base16_critical]
     msg_urgency = critical
-    background = "#e06c75"
+    background = "#22252E"
     foreground = "#b6bdca"
