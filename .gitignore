@@ -1,10 +1,4 @@
-
-### Vim ###
-nvim/undodir/*
-nvim/plugged/*
-
-
 zsh/lib/plugins/*
 stumpwm/.stumpwm/modules
 zsh/.config/zsh/.zsh_history
-stumpwm/.stumpwm.d/modules/*
+stumpwm/.stumpwm.d/modules

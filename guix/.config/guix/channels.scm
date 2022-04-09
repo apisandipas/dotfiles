@@ -8,6 +8,9 @@
        (name 'rekahsoft)
        (url "https://git.rekahsoft.ca/rekahsoft/rekahsoft-guix"))
       (channel
+        (name 'flat)
+        (url "https://github.com/flatwhatson/guix-channel.git"))
+      (channel
         (name 'rde)
         (url "https://git.sr.ht/~abcdw/rde"))
       (channel

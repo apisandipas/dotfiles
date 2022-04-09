@@ -13,6 +13,8 @@
    "kitty"
    "tmux"
    "neovim"
+   "exa"
+   "bat"
 
    ;; System monitor
    "bpytop"

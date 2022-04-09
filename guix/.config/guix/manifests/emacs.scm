@@ -2,6 +2,8 @@
  '(
    ;; Emacs: the next batch
    "emacs-next"
+   "emacs-exwm"
+   "emacs-desktop-environment"
    
    ;; Keep it tight
    "emacs-no-littering"
@@ -37,7 +39,7 @@
    ;; File Explorer
    "emacs-treemacs"
   
-    ;; Misc
-    "emacs-vterm"
+   ;; Misc
+   "emacs-vterm"
 
    ))

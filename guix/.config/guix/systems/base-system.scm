@@ -25,6 +25,7 @@
   #:use-module (gnu packages version-control)
   #:use-module (gnu packages package-management)
   #:use-module (nongnu packages linux)
+  #:use-module (nongnu packages mozilla)
   #:use-module (nongnu system linux-initrd))
 
 (use-service-modules nix)
@@ -137,7 +138,7 @@ EndSection
                         git
                         stow
                         vim
-                        qutebrowser
+                        firefox
                         xterm
                         bluez
                         bluez-alsa
