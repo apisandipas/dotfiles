@@ -138,7 +138,6 @@ EndSection
                         git
                         stow
                         vim
-                        firefox
                         xterm
                         bluez
                         bluez-alsa
