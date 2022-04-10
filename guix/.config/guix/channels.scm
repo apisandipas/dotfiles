@@ -19,7 +19,4 @@
        (branch "master"))
       (channel
         (name 'guixed)
-        (url "https://github.com/apisandipas/guixed"))
-      channel
-
-      )
+        (url "https://github.com/apisandipas/guixed")))
