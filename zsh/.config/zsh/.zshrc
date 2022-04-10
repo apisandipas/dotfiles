@@ -18,7 +18,7 @@ source $ZDOTDIR/lib/keybinds.zsh
 # Plugins
 zsh_add_plugin "zsh-users/zsh-autosuggestions"
 zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
-zsh_add_plugin "hlissner/zsh-autopair"
+#zsh_add_plugin "hlissner/zsh-autopair"
 
 # if [ -z "$TMUX" ]; then
 #   tmux attach -t TMUX || tmux new -s TMUX
@@ -77,11 +77,10 @@ alias dcuh="docker-compose up -d"
 alias dcs="docker-compose stop"
 alias dcr="docker-compose restart"
 
-
 alias zsrc="source $ZDOTDIR/.zshrc"
 
 # load the starship prompt
-if type_exists "starship"; then 
+if type_exists "starship"; then
 	eval "$(starship init zsh)"
 fi
 
@@ -93,4 +92,3 @@ fi
 if type_exists "ufetch"; then
 	ufetch
 fi
-
