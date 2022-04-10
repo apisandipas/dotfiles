@@ -68,6 +68,7 @@
        "emacs-elfeed-goodies"
 
        ;; Specific Editing Modes
+       ;; TODO: all these need configured
        "emacs-markdown-mode"
        "emacs-ledger-mode"
        "emacs-clojure-mode"
@@ -79,6 +80,7 @@
        "emacs-prettier"
 
        ;; General Editing Modes
+       ;; TODO: all these need configured
        "emacs-sudo-edit"
        "emacs-expand-region"
        "emacs-multiple-cursors"

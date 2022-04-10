@@ -8,12 +8,12 @@
 
  (swap-devices
   (list (swap-space
-	  (target
-         	(file-system-label "swap_partition")))))
+      (target
+            (file-system-label "swap_partition")))))
  (file-systems
   (cons* (file-system
           (mount-point "/boot/efi")
-          (device (file-system-label "efi_part"))
+          (device (file-system-label "EFI_PART"))
           (type "vfat"))
          (file-system
           (mount-point "/")
