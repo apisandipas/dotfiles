@@ -17,7 +17,12 @@
        (name 'nonguix)
        (url "https://gitlab.com/nonguix/nonguix")
        (branch "master"))
+      ;; (channel
+      ;;  (name 'guixed)
+      ;;  (url "https://github.com/apisandipas/guixed")
+      ;;  (branch "main"))
       (channel
-       (name 'guixed)
-       (url "https://github.com/apisandipas/guixed")
-       (branch "main")))
+       (name 'tassos)
+       (url "https://github.com/Tass0sm/tassos-guix")
+       (branch "main"))
+      )
