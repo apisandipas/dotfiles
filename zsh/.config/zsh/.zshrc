@@ -8,6 +8,7 @@
 #██    ███████████████ ████ ██████████  ░░██████
 #░░    ░░░░░░░░░░░░░░░ ░░░░ ░░░░░░░░░░    ░░░░░░
 
+# I dont think this is used anymore
 export DOTS_DIR=$HOME/.dotfiles
 
 source $ZDOTDIR/lib/utils.zsh
@@ -23,8 +24,9 @@ zsh_add_plugin "hlissner/zsh-autopair"
 #   tmux attach -t TMUX || tmux new -s TMUX
 # fi
 
-if [ "$TMUX" = "" ]; then tmux; fi
-
+if type_exists "tmux"; then
+	if [ "$TMUX" = "" ]; then tmux; fi
+fi
 
 ## History file configuration
 [ -z "$HISTFILE" ] && HISTFILE="$ZDOTDIR/.zsh_history"
@@ -62,6 +64,8 @@ alias open="xdg-open"
 alias gco="git checkout"
 alias gst="git status"
 
+# these dont work on guix, for obvious reasons.
+# TODO: wrap these in functions which gripe when you try to run then on GUIX
 alias services-enabled="systemctl list-unit-files | grep enabled"
 alias services-running="systemctl list-units --type=service --state=active"
 
@@ -77,10 +81,16 @@ alias dcr="docker-compose restart"
 alias zsrc="source $ZDOTDIR/.zshrc"
 
 # load the starship prompt
-eval "$(starship init zsh)"
+if type_exists "starship"; then 
+	eval "$(starship init zsh)"
+fi
 
 # load z-jump script
-eval "$(zoxide init zsh)"
+if type_exists "zoxide"; then
+	eval "$(zoxide init zsh)"
+fi
 
-ufetch
+if type_exists "ufetch"; then
+	ufetch
+fi
 

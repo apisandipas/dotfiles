@@ -11,6 +11,9 @@
 
    ;; Terminal environment
    "kitty"
+   "ncurses"
+   "ufetch"
+   "zoxide"
    "tmux"
    "neovim"
    "exa"

@@ -1,4 +1,4 @@
-zsh/lib/plugins/*
+zsh/.config/zsh/lib/plugins/*
 stumpwm/.stumpwm/modules
 zsh/.config/zsh/.zsh_history
 stumpwm/.stumpwm.d/modules
