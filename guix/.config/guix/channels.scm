@@ -23,6 +23,5 @@
       ;;  (branch "main"))
       (channel
        (name 'tassos)
-       (url "https://github.com/Tass0sm/tassos-guix")
-       (branch "main"))
+       (url "https://github.com/Tass0sm/tassos-guix"))
       )
