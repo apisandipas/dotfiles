@@ -6,9 +6,9 @@
   #:use-module (gnu home-services xorg)
 
   #:use-module (guix gexp)
-  #:use-module (tassos-guix packages xorg)
-  #:use-module (tassos-guix home-services wm)
-  #:use-module (tassos-guix home-services notifications))
+  #:use-module (guixed packages xorg)
+  #:use-module (guixed home-services wm)
+  #:use-module (guixed home-services notifications))
 
 (define-public desktop-packages
   (map specification->package
