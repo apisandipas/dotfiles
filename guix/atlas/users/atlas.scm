@@ -1,4 +1,4 @@
-(define-module (atlas home environment)
+(define-module (atlas users atlas)
   #:use-module (gnu home)
   #:use-module (gnu home services)
   #:use-module (gnu packages)
