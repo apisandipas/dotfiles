@@ -21,7 +21,7 @@
   `(,@browser-packages
     ,@music-packages
     ,@video-packages
-    ,@zsh-packages
+    ;; ,@zsh-packages
     ,@desktop-packages))
  (services
   `(,@xdg-services
