@@ -1,4 +1,4 @@
-(define-module (home environment)
+(define-module (atlas home environment)
   #:use-module (gnu home)
   #:use-module (gnu home services)
   #:use-module (gnu packages)
@@ -8,7 +8,7 @@
   #:use-module (guix build-system copy)
   #:use-module ((guix licenses) #:prefix license:)
   ;; personal modules
-  #:use-module (home modules xdg)
+  #:use-module (atlas home modules xdg)
   #:use-module (home modules browsers)
   #:use-module (home modules video)
   #:use-module (home modules music)
