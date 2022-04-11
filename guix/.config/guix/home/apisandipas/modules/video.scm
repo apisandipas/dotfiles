@@ -1,4 +1,4 @@
-(define-module (home modules video)
+(define-module (apisandipas modules video)
   #:use-module (guix gexp)
   #:use-module (gnu home)
   #:use-module (gnu packages)

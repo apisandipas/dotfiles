@@ -1,4 +1,4 @@
-(define-module (home modules desktop)
+(define-module (apisandipas modules desktop)
   #:use-module (gnu home)
   #:use-module (gnu packages)
   #:use-module (gnu services)

@@ -8,13 +8,13 @@
   #:use-module (guix build-system copy)
   #:use-module ((guix licenses) #:prefix license:)
   ;; personal modules
-  #:use-module (modules xdg)
-  #:use-module (home modules browsers)
-  #:use-module (home modules video)
-  #:use-module (home modules music)
-  #:use-module (home modules emacs)
-  #:use-module (home modules shell)
-  #:use-module (home modules desktop))
+  #:use-module (apisandipas modules xdg)
+  #:use-module (apisandipas modules browsers)
+  #:use-module (apisandipas modules video)
+  #:use-module (apisandipas modules music)
+  #:use-module (apisandipas modules emacs)
+  #:use-module (apisandipas modules shell)
+  #:use-module (apisandipas modules desktop))
 
 (home-environment
  (packages

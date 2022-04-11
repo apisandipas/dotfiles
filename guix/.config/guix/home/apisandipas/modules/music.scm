@@ -1,4 +1,4 @@
-(define-module (home modules music)
+(define-module (apisandipas modules music)
   #:use-module (gnu packages))
 
 (define-public music-packages

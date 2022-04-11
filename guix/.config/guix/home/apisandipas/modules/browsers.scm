@@ -1,4 +1,4 @@
-(define-module (home modules browsers)
+(define-module (apisandipas modules browsers)
   #:use-module (gnu home)
   #:use-module (gnu packages))
 

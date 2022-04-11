@@ -1,4 +1,4 @@
-(define-module (home modules emacs)
+(define-module (apisandipas modules emacs)
   #:use-module (guix gexp)
   #:use-module (gnu home)
   #:use-module (gnu packages)
