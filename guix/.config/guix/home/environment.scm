@@ -1,4 +1,4 @@
-(define-module (home environment)
+(define-module (environment)
   #:use-module (gnu home)
   #:use-module (gnu home services)
   #:use-module (gnu packages)
