@@ -63,9 +63,9 @@
        "emacs-magit"
        "emacs-guix"
        "emacs-vterm"
-       "emacs-mu4e"
-       "emacs-elfeed"
-       "emacs-elfeed-goodies"
+       ;; "emacs-mu4e"
+       ;; "emacs-elfeed"
+       ;; "emacs-elfeed-goodies"
 
        ;; Specific Editing Modes
        ;; TODO: all these need configured
