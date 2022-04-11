@@ -31,7 +31,7 @@
                 ("_JAVA_AWT_WM_NONREPARENTING" . "1"))))
              (zshrc
               (list
-               (local-file "../files/zshrc")))))
+               (local-file "../files/zshrc"))))
    (simple-service 'login-variables
                    home-environment-variables-service-type
                    `(;; ("XDG_DATA_DIRS" . "$XDG_DATA_DIRS:/usr/local/share/:/usr/share/")
@@ -39,4 +39,4 @@
                      ;; ("XDG_CONFIG_DIRS" . "$HOME/.guix-home/profile/etc/xdg:$XDG_CONFIG_DIRS")
                      ;; ("GUILE_LOAD_PATH" . "$XDG_CONFIG_HOME/guix/current/share/guile/site/3.0:$GUILE_LOAD_PATH")
                      ;; ("GUILE_LOAD_COMPILED_PATH" . "$XDG_CONFIG_HOME/guix/current/lib/guile/3.0/site-ccache:$GUILE_LOAD_COMPILED_PATH")
-                     ("PATH" . "$HOME/.local/bin/:$PATH"))))
+                     ("PATH" . "$HOME/.local/bin/:$PATH")))))
