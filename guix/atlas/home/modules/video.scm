@@ -7,12 +7,11 @@
   #:use-module (gnu packages graphics))
 
 (define-public video-packages
-  (map specification->package
   (list obs
         obs-websocket
         ffmpeg
         kdenlive
-        blender)))
+        blender))
 
 ;; (define-public video-services
 ;;   '())
