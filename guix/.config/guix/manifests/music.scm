@@ -14,8 +14,8 @@
    "zrythm"
 
    ;; Guitar
-   ;; "guitarix"
-   ;; "guitarix-lv2"
+   "guitarix"
+   "guitarix-lv2"
 
    ;; Effects
    "calf"

@@ -17,4 +17,5 @@
    ;; ffplay -f v4l2 -framerate 60 -video_size hd480 /dev/video2 -v 0
 
    ;; Video Editing
+   "kdenlive"
    "blender"))
