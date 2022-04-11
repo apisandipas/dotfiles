@@ -3,7 +3,7 @@
   #:use-module (gnu packages))
 
 (define-public browsers-packages
-  (map specifications->manifest
+  (map specification->package
     (list
     ;; TODO: Add qutebrowser config
     "qutebrowser"

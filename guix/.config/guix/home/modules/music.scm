@@ -2,7 +2,7 @@
   #:use-module (gnu packages))
 
 (define-public music-packages
-    (map specifications->manifest
+    (map specification->package
         (list
         ;; JACK tools
         "jack"

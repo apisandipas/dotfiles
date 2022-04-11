@@ -12,12 +12,13 @@
   #:use-module (gnu home-services shellutils))
 
 (define-public zsh-packages
+  (map specification->package
   (list kitty
         ufetch
         exa
         bat
         zsh-syntax-highlighting
-        zsh-autosuggestions))
+        zsh-autosuggestions)))
 
 (define-public zsh-services
   (list

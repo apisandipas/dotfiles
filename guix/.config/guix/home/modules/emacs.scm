@@ -10,7 +10,7 @@
 
 (define emacs-packages
   (map specification->package
-
+       (list
        ;; Emacs: the next batch
        "emacs-next"
        "emacs-exwm"
@@ -104,7 +104,7 @@
        "emacs-which-key"
 
        "emacs-cattpuccin"
-       "emacs-olivetti"))
+       "emacs-olivetti")))
 
 (define-public emacs-services
   (list
