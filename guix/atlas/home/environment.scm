@@ -9,12 +9,12 @@
   #:use-module ((guix licenses) #:prefix license:)
   ;; personal modules
   #:use-module (atlas home modules xdg)
-  #:use-module (home modules browsers)
-  #:use-module (home modules video)
-  #:use-module (home modules music)
-  #:use-module (home modules emacs)
-  #:use-module (home modules shell)
-  #:use-module (home modules desktop))
+  #:use-module (atlas home modules browsers)
+  #:use-module (atlas home modules video)
+  #:use-module (atlas home modules music)
+  #:use-module (atlas home modules emacs)
+  #:use-module (atlas home modules shell)
+  #:use-module (atlas home modules desktop))
 
 (home-environment
  (packages
