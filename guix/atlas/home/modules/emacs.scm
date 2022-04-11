@@ -103,7 +103,7 @@
        "emacs-doom-themes"
        "emacs-which-key"
 
-       "emacs-cattpuccin"
+       "emacs-modus-themes"
        "emacs-olivetti")))
 
 (define-public emacs-services
