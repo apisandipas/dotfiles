@@ -2,7 +2,7 @@
   #:use-module (gnu home)
   #:use-module (gnu packages))
 
-(define-public browsers-packages
+(define-public browser-packages
   (map specification->package
     (list
     ;; TODO: Add qutebrowser config
