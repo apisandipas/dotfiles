@@ -23,7 +23,7 @@
 
        ;; Pkg mgr / configurator
        "emacs-use-package"
-       "emacs-straight"
+       ;; "emacs-straight"
 
        ;; Completion
        "emacs-vertico"

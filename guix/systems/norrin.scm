@@ -1,4 +1,4 @@
-(define-module (norrin)
+(define-module (systems norrin)
   #:use-module (base-system)
   #:use-module (gnu))
 

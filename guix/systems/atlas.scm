@@ -1,4 +1,4 @@
-(define-module (atlas)
+(define-module (systems atlas)
   #:use-module (base-system)
   #:use-module (gnu))
 
