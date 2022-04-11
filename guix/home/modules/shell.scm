@@ -1,4 +1,4 @@
-(define-module (apisandipas modules shell)
+(define-module (home modules shell)
   #:use-module (guix gexp)
   #:use-module (gnu home)
   #:use-module (gnu packages)
