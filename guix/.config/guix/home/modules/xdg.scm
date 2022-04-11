@@ -1,4 +1,4 @@
-(define-module (home modules xdg)
+(define-module (modules xdg)
   #:use-module (gnu home services)
   #:use-module (gnu home services xdg))
 
