@@ -14,7 +14,7 @@
   #:use-module (home modules video)
   #:use-module (home modules music)
   #:use-module (home modules emacs)
-  #:use-module (atlas home modules shell)
+  #:use-module (home modules shell)
   #:use-module (home modules desktop))
 
 (home-environment
