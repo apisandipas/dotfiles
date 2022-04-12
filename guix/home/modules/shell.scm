@@ -31,7 +31,7 @@
                 ("_JAVA_AWT_WM_NONREPARENTING" . "1"))))
              (zshrc
               (list
-               (local-file "./files/zshrc"))))
+               (local-file "./files/zshrc")))
    (simple-service 'login-variables
                    home-environment-variables-service-type
-                   `(("PATH" . "$HOME/.local/bin/:$PATH")))))
+                   `(("PATH" . "$HOME/.local/bin/:$PATH"))))))
