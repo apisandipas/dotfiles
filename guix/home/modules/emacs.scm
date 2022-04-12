@@ -111,9 +111,9 @@
    (simple-service 'emacs-init
                    home-files-service-type
                    `(("config/emacs/early-init.el"
-                      ,(local-file "../files/early-init.el"))
+                      ,(local-file "./files/early-init.el"))
                      ("config/emacs/init.el"
-                      ,(local-file "../files/init.el"))))
+                      ,(local-file "./files/init.el"))))
    (service home-emacs-service-type
             (home-emacs-configuration
              (package emacs-next-pgtk)
