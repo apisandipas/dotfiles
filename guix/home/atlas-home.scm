@@ -27,6 +27,6 @@
     ,@desktop-packages))
  (services
   `(,@xdg-services
-    ,@zsh-services
+    ;; ,@zsh-services
     ,@emacs-services
     ,@desktop-services)))
