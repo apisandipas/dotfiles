@@ -14,7 +14,7 @@
   #:use-module (home modules video)
   #:use-module (home modules music)
   #:use-module (home modules emacs)
-  ;; #:use-module (atlas home modules shell)
+  #:use-module (atlas home modules shell)
   #:use-module (home modules desktop))
 
 (home-environment
@@ -23,10 +23,10 @@
     ,@music-packages
     ,@video-packages
     ,@code-packages
-    ;; ,@zsh-packages
+    ,@zsh-packages
     ,@desktop-packages))
  (services
   `(,@xdg-services
-    ;; ,@zsh-services
+    ,@zsh-services
     ,@emacs-services
     ,@desktop-services)))

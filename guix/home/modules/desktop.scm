@@ -55,7 +55,7 @@
    (service home-xresources-service-type
         (home-xresources-configuration
          (config
-          `((include . "\"./files/xresources\"")))))
+          `((include . "\"$HOME/.dotfiles/guix/home/modules/files/xresources\"")))))
    (service home-dunst-service-type
             (home-dunst-configuration
              (dunstrc (list
@@ -72,4 +72,10 @@
             (home-polybar-configuration
              (config (list
                       (local-file "./files/polybar.ini")))))
+   ;; (simple-service 'gtk-config
+   ;;                 home-files-service-type
+   ;;                 `(("config/gtk-3.0/settings.ini"
+   ;;                    ,(local-file "../files/gtk3.ini"))
+   ;;                   ("config/gtk-3.0/gtk.css"
+   ;;                    ,(local-file "../files/gtk3.css"))))
    ))
