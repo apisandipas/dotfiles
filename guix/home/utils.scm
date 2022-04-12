@@ -1,0 +1,25 @@
+(define-module (home utils)
+  #:export color-scheme)
+
+(define color-scheme
+  '(
+    (color0 . "#1E2127")
+    (color1 . "#E06C75")
+    (color2 . "#98C379")
+    (color3 . "#1E2127")
+    (color4 . "#1E2127")
+    (color5 . "#1E2127")
+    (color6 . "#1E2127")
+    (color7 . "#1E2127")
+    (color8 . "#1E2127")
+    (color9 . "#1E2127")
+    (color10 . "#1E2127")
+    (color11 . "#1E2127")
+    (color12 . "#1E2127")
+    (color13 . "#1E2127")
+    (color14 . "#1E2127")
+    (color15 . "#1E2127")
+    )
+  )
+
+(cdr (assoc 'color0 color-scheme))

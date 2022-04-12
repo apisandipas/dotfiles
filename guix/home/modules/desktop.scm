@@ -29,10 +29,6 @@
         "zoxide"
         "tmux"
         "neovim"
-        "exa"
-        "bat"
-
-        ;; System monitor
         "bpytop"
 
         ;; Top Panel
@@ -45,6 +41,13 @@
         ;; Fonts!
         "font-victor-mono"
         "font-microsoft-web-core-fonts"
+        "font-iosevka"
+        "font-fira-mono"
+        "font-fira-code"
+        "font-google-noto"
+        "font-gnu-freefont"
+        "font-awesome"
+        "font-google-material-design-icons"
         )))
 
 (define-public desktop-services
@@ -65,10 +68,10 @@
             (home-bspwm-configuration
              (bspwmrc (list
                        (local-file "../files/bspwmrc")))))
-   ;; (service home-polybar-service-type
-   ;;          (home-polybar-configuration
-   ;;           (config (list
-   ;;                    (local-file "../files/polybar.ini")))))
+   (service home-polybar-service-type
+            (home-polybar-configuration
+             (config (list
+                      (local-file "../files/polybar.ini")))))
    ;; (simple-service 'gtk-config
    ;;                 home-files-service-type
    ;;                 `(("config/gtk-3.0/settings.ini"

@@ -75,7 +75,7 @@ pgrep -x firefox >/dev/null || firefox &
 pgrep -x pasystray >/dev/null || pasystray &
 pgrep -x nm-applet >/dev/null || nm-applet &
 pgrep -x blueman-applet >/dev/null || blueman-applet &
-~/.config/polybar/launch.sh &
+~/.dotfiles/bin/launch-polybar .sh &
 pgrep -x lockscreen-setup >/dev/null || lockscreen-setup &
 pgrep -x fix-touchscreen >/dev/null || fix-touchscreen &
 pgrep -x fix_xcursor >/dev/null || fix_xcursor &

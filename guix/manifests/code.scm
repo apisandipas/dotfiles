@@ -2,41 +2,15 @@
 ;; platform-specific manifests at some point.
 
 (specifications->manifest
- '( ;; C/C++
-   ;; "gcc-toolchain"
-   ;; "make"
-   ;; "pkg-config"
-   ;; "texinfo"
-   ;; "llvm"
-   ;; "lld"
-   ;; "clang"
-   ;; "file"                               ; The 'file' command
-   ;; "elfutils"
-   ;; "go"
-
-   ;; Python
-   ;; "python2"
-
-   ;; Docker
+ '(
    "docker-cli"
-
-   ;; Node.js
-   "node@14.18.3"
-
-   ;; Guile
-   ;; "guile@2.2"
-   ;; "guile2.2-cairo"
-   ;; "guile-gnome"
-   ;; "guile-sdl2"
-
-   ;; SDL
-   ;; "glu"
-   ;; "glfw"
-   ;; "sdl2"
-   ;; "sdl2-image"
-   ;; "sdl2-mixer"
-   ;; "sdl2-gfx"
-   ;; "sdl2-ttf"
-
+   "node"
+   "gcc-toolchain"
+   "make"
+   "pkg-config"
+   "texinfo"
+   "sbcl"
    "curl"
-   "virt-manager"))
+   "clojure"
+   "clojure-tools")
+   "virt-manager")

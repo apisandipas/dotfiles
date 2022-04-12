@@ -1,4 +1,23 @@
 * .dotfiles
 
 
-i use emacs, btw.
+The mid-term goal here is to migrate all of my configuration to a Guix Home-based config, but with the sheer amout of config files I have, I know it may take a while. So.. baby steps.
+
+For the time being, dotfiles are managed by GNU Stow, which handles the symlinking. Because some not of my configs are shared across systems, the various directories contain their own nested =.config= folders, but this will change in time. to either be a single .config files which gets "Stowed" with "stow ." instead of the current folder-by-folder adding method, "stow bspwm; stow zsh; stow polybar;", etc.
+
+This would only be a stepping stone until all config is eventually under Guix management.
+
+* TODOs
+** TODO Zsh configs
+** TODO WM Configs [1/3]
+*** DONE bspwmrc
+CLOSED: [2022-04-11 Mon 19:56]
+*** TODO .stumpwm.d
+*** TODO exwm
+** TODO emacs configs
+** TODO Xresources
+** TODO tmux
+** TODO nyxt
+** TODO polybar
+** TODO picom
+** TODO kitty

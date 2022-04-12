@@ -10,6 +10,7 @@
   ;; personal modules
   #:use-module (home modules xdg)
   #:use-module (home modules browsers)
+  #:use-module (home modules code)
   #:use-module (home modules video)
   #:use-module (home modules music)
   #:use-module (home modules emacs)
@@ -21,6 +22,7 @@
   `(,@browser-packages
     ,@music-packages
     ,@video-packages
+    ,@code-packages
     ;; ,@zsh-packages
     ,@desktop-packages))
  (services
