@@ -1,4 +1,4 @@
-(define-module (atlas home modules music)
+(define-module (home modules music)
   #:use-module (gnu packages))
 
 (define-public music-packages

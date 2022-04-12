@@ -1,4 +1,4 @@
-(define-module (atlas home modules desktop)
+(define-module (home modules desktop)
   #:use-module (gnu home)
   #:use-module (gnu packages)
   #:use-module (gnu services)

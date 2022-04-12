@@ -1,4 +1,4 @@
-(define-module (atlas home modules browsers)
+(define-module (home modules browsers)
   #:use-module (gnu home)
   #:use-module (gnu packages))
 

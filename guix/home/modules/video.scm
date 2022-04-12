@@ -1,4 +1,4 @@
-(define-module (atlas home modules video)
+(define-module (home modules video)
   #:use-module (guix gexp)
   #:use-module (gnu home)
   #:use-module (gnu packages)
