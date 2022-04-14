@@ -111,9 +111,9 @@
                    home-files-service-type
                    `(("config/emacs/early-init.el"
                       ,(local-file
-                        (string-append (getenv "HOME") "/dotfiles/guix/home/files/early-init.el")))
+                        (string-append (getenv "HOME") "/dotfiles/guix/home/files/emacs/early-init.el")))
                      ("config/emacs/init.el"
-                      ,(local-file (string-append (getenv "HOME") "/dotfiles/guix/home/files/init.el")))))
+                      ,(local-file (string-append (getenv "HOME") "/dotfiles/guix/home/files/emacs/init.el")))))
    (service home-emacs-service-type
             (home-emacs-configuration
              (package emacs-next)
