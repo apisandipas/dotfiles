@@ -30,10 +30,12 @@
               '(("EDITOR" . "\"emacsclient -a ''\"")
                 ("GUIX_LOCPATH" . "$HOME/.guix-profile/lib/locale")
                 ("GUIX_EXTRA_PROFILES" . "$HOME/.guix-extra-profiles")
-                ("_JAVA_AWT_WM_NONREPARENTING" . "1"))))
+                ("_JAVA_AWT_WM_NONREPARENTING" . "1")))
              (zshrc
               (list
-               (local-file "./files/zshrc")))
-   (simple-service 'login-variables
-                   home-environment-variables-service-type
-                   `(("PATH" . "$HOME/.local/bin/:$PATH"))))))
+               (local-file "files/zshrc")))
+             )
+            ;; (simple-service 'login-variables
+            ;;                 home-environment-variables-service-type
+            ;;                 `(("PATH" . "$HOME/.local/bin/:$PATH")))
+            )))
