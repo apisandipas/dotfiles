@@ -40,11 +40,11 @@
                `(local-file
                  (string-append (genenv "HOME")
                                 "/dotfiles/guix/home/files/zsh/zshenv"))))
-             (zprofile
-              (list
-               `(local-file
-                 (string-append (genenv "HOME")
-                                "/dotfiles/guix/home/files/zsh/zprofile"))))
+             ;; (zprofile
+             ;;  (list
+             ;;   `(local-file
+             ;;     (string-append (genenv "HOME")
+             ;;                    "/dotfiles/guix/home/files/zsh/zprofile"))))
              (zshrc
               (list
                `(local-file
