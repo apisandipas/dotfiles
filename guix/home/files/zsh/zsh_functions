@@ -1,0 +1,178 @@
+#
+# Set Colors
+#
+
+bold=$(tput bold)
+underline=$(tput sgr 0 1)
+reset=$(tput sgr0)
+
+purple=$(tput setaf 171)
+red=$(tput setaf 1)
+green=$(tput setaf 76)
+teal=$(tput setaf 33)
+blue=$(tput setaf 38)
+
+#
+# Headers and  Logging
+#
+
+e_header() {
+  printf "\n${bold}${purple}==========  %s  ==========${reset}\n" "$@"
+}
+e_header_success() {
+  printf "\n${bold}${green}==========  %s  ==========${reset}\n" "$@"
+}
+e_arrow() {
+  printf "➜ $@\n"
+}
+e_success() {
+  printf "${green}✔ %s${reset}\n" "$@"
+}
+e_error() {
+  printf "${red}✖ %s${reset}\n" "$@"
+}
+e_warning() {
+  printf "${teal}➜ %s${reset}\n" "$@"
+}
+e_underline() {
+  printf "${underline}${bold}%s${reset}\n" "$@"
+}
+e_bold() {
+  printf "${bold}%s${reset}\n" "$@"
+}
+e_note() {
+  printf "${underline}${bold}${blue}Note:${reset}  ${blue}%s${reset}\n" "$@"
+}
+
+#
+# USAGE FOR SEEKING CONFIRMATION
+# seek_confirmation "Ask a question"
+# Credt: https://github.com/kevva/dotfiles
+#
+# if is_confirmed; then
+#   some action
+# else
+#   some other action
+# fi
+#
+
+seek_confirmation() {
+  printf "\n${bold}$@${reset}"
+  read -p " (y/n) " -n 1
+  printf "\n"
+}
+
+# underlined
+seek_confirmation_head() {
+  printf "\n${underline}${bold}$@${reset}"
+  read -p "${underline}${bold} (y/n)${reset} " -n 1
+  printf "\n"
+}
+
+# Test whether the result of an 'ask' is a confirmation
+is_confirmed() {
+	if [[ "$REPLY" =~ ^[Yy]$ ]]; then
+		return 0
+	fi
+	return 1
+}
+
+# Starts a program in the bakground if its not already running
+start_up() {
+	APP=$1
+	ps -C $APP >/dev/null || $APP &
+}
+
+#
+# Test whether a command exists
+# $1 = cmd to test
+# Usage:
+# if type_exists 'git'; then
+#   some action
+# else
+#   some other action
+# fi
+#
+
+type_exists() {
+if [ $(command -v $1) ]; then
+  return 0
+fi
+return 1
+}
+
+#
+# Test which OS the user runs
+# $1 = OS to test
+# Usage: if is_os 'darwin'; then
+#
+
+is_os() {
+if [[ "${OSTYPE}" == $1* ]]; then
+  return 0
+fi
+return 1
+}
+
+
+# Clear and display system profile
+function cl() {
+	clear;
+	ufetch;
+}
+
+# Make a directory and immediate change into it
+# - requires a new directory name
+# - ex: mkcd new-project
+function mkcd() {
+  mkdir -p "$@" && cd $_;
+}
+
+# Uses the http://gitignore.io api to generate contents of a `.gitignore` file
+# - requires a command-sep list of keywords, see: from https://docs.gitignore.io/use/command-line
+# - ex: `gi node,ruby`
+function gi() {
+  echo "fetching $@ gitignore";
+  curl -sLw "\n" https://www.gitignore.io/api/$@ >> .gitignore;
+}
+
+# Kills a process by the port number their running on.
+# - great for ghost node processes.
+# - ex: `killport 8000`
+function killport() {
+  echo "Killing port $1";
+  sudo kill -9 $(sudo lsof -t -i:$1)
+}
+
+# List out the current $PATH entries as a list
+function path() {
+  echo $PATH | tr ":" "\n" | nl;
+}
+
+
+function yolo() {
+ if [ ! -d ./.git ]; then
+  echo "$PWD does not contain a git repository";
+  return 1;
+ fi
+
+  echo 'YOLO INCOMING!';
+  clear;
+  sleep .5;
+  git add -A
+  git commit --amend --no-edit
+  git push -f
+  echo 'YOLO COMPLETE';
+  return 0;
+}
+
+function flip() {
+		clear;
+    echo;
+    echo -en "( º_º）  ┬─┬   \r"; sleep .5;
+    echo -en " ( º_º） ┬─┬   \r"; sleep .5;
+    echo -en "  ( ºДº）┬─┬   \r"; sleep .5;
+    echo -en "  (╯'Д'）╯︵⊏   \r"; sleep .5;
+    echo -en "  (╯'□'）╯︵ ⊏  \r"; sleep .5;
+    echo     "  (╯°□°）╯︵ ┻━┻"; sleep .5;
+}

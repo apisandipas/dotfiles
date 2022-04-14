@@ -1,0 +1,38 @@
+# ~ Guix #
+alias install="guix install"
+alias remove="guix remove"
+alias search="guix search"
+alias pull="guix pull"
+alias upgrade="guix package -u"
+alias hreconfig="guix home reconfigure ~/dotfiles/guix/home/atlas-home.scm"
+
+# ~ Source Zsh Configuration ~ #
+alias zsrc="source ~/dotfiles/guix/home/modules/files/zsh/zshrc"
+
+# ~ Aliases ~ #
+alias cat="bat"
+
+# ~ Lazy movements ~ #
+alias ..="cd ../"
+alias ...="cd ../../"
+alias ....="cd ../../../"
+
+# ~ ls replacements ~ #
+alias ls="exa --icons"
+alias ll="exa -lh --icons"
+alias lll="exa -alh --icons"
+alias lt="exa -T --icons --git-ignore"
+
+alias open="xdg-open"
+
+# ~ git aliases ~ #
+alias gco="git checkout"
+alias gst="git status"
+
+alias dennis="curl -L  http://git.io/unix"
+
+# Docker Commands
+alias dcu="docker-compose up"
+alias dcuh="docker-compose up -d"
+alias dcs="docker-compose stop"
+alias dcr="docker-compose restart"

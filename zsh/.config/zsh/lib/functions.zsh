@@ -8,7 +8,6 @@ function cl() {
 	ufetch;
 }
 
-
 # Make a directory and immediate change into it
 # - requires a new directory name
 # - ex: mkcd new-project

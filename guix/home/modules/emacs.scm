@@ -12,7 +12,6 @@
   (map specification->package
        (list
        ;; Emacs: the next batch
-       "emacs-next"
        "emacs-exwm"
        "emacs-desktop-environment"
 
@@ -111,12 +110,13 @@
    (simple-service 'emacs-init
                    home-files-service-type
                    `(("config/emacs/early-init.el"
-                      ,(local-file "./files/early-init.el"))
+                      ,(local-file
+                        (string-apped (getenv "HOME") "/dotfiles/guix/home/files/early-init.el")))
                      ("config/emacs/init.el"
-                      ,(local-file "./files/init.el"))))
+                      ,(local-file (string-append (getenv "HOME") "/dotfiles/guix/home/files/init.el")))))
    (service home-emacs-service-type
             (home-emacs-configuration
-             (package emacs-next-pgtk)
-             ;; (rebuild-elisp-packages? #t)
-             ;; (server-mode? #t)
+             (package emacs-next)
+             (rebuild-elisp-packages? #t)
+             (server-mode? #t)
              (elisp-packages emacs-packages)))))

@@ -1,0 +1,95 @@
+# ACCOUNT INFORMATION
+
+Create Both
+Expunge Both
+SyncState *
+
+IMAPAccount bparonto@gmail
+Host imap.gmail.com
+User bparonto@gmail.com
+PassCmd "gpg --quiet --for-your-eyes-only --no-tty --decrypt \~/.ssh\/mbsync-pw-bparonto@gmail.gpg"
+AuthMechs LOGIN
+SSLType IMAPS
+CertificateFile ~/.ssh/mu4e.crt
+
+IMAPStore bparonto@gmail-remote
+Account bparonto@gmail
+
+MaildirStore bparonto@gmail-local                  #
+Path ~/Mail/bparonto@gmail/
+Inbox ~/Mail/bparonto@gmail/INBOX
+
+Channel bparonto@gmail-inbox
+Far :bparonto@gmail-remote:
+Near :bparonto@gmail-local:
+Patterns INBOX
+
+Channel bparonto@gmail-sent
+Far :bparonto@gmail-remote:"[Gmail]/Sent Mail"
+Near  :bparonto@gmail-local:"[Gmail].Sent Mail"
+
+Channel bparonto@gmail-trash
+Far :bparonto@gmail-remote:"[Gmail]/Trash"
+Near  :bparonto@gmail-local:"[Gmail].Trash"
+
+Channel bparonto@gmail-archive
+Far :bparonto@gmail-remote:"[Gmail]/All Mail"
+Near  :bparonto@gmail-local:"[Gmail].All Mail"
+
+Channel bparonto@gmail-drafts
+Far :bparonto@gmail-remote:"[Gmail]/Drafts"
+Near :bparonto@gmail-local:"[Gmail].Drafts"
+
+
+Group bparonto@gmail
+Channel bparonto@gmail-inbox
+Channel bparonto@gmail-trash
+Channel bparonto@gmail-archive
+Channel bparonto@gmail-sent
+Channel bparonto@gmail-drafts
+
+############################################
+
+IMAPAccount bryan@cablecar
+Host imap.gmail.com
+User bryan@cablecar.digital
+PassCmd "gpg --quiet --for-your-eyes-only --no-tty --decrypt \~/Mail\/.mbsync-pw-bryan@cablecar.gpg"
+AuthMechs LOGIN
+SSLType IMAPS
+CertificateFile ~/.ssh/mu4e.crt
+
+IMAPStore bryan@cablecar-remote
+Account bryan@cablecar
+
+MaildirStore bryan@cablecar-local
+Subfolders Verbatim # channel to remote storage                    #
+Path ~/Mail/bryan@cablecar/
+Inbox ~/Mail/bryan@cablecar/INBOX
+
+Channel bryan@cablecar-inbox
+Far :bryan@cablecar-remote:
+Near :bryan@cablecar-local:
+Patterns INBOX
+
+Channel bryan@cablecar-sent
+Far :bryan@cablecar-remote:"[Gmail]/Sent Mail"
+Near  :bryan@cablecar-local:"[Gmail].Sent Mail"
+
+Channel bryan@cablecar-trash
+Far :bryan@cablecar-remote:"[Gmail]/Trash"
+Near  :bryan@cablecar-local:"[Gmail].Trash"
+
+Channel bryan@cablecar-archive
+Far :bryan@cablecar-remote:"[Gmail]/All Mail"
+Near  :bryan@cablecar-local:"[Gmail].All Mail"
+
+Channel bryan@cablecar-drafts
+Far :bryan@cablecar-remote:"[Gmail]/Drafts"
+Near :bryan@cablecar-local:"[Gmail].Drafts"
+
+Group bryan@cablecar
+Channel bryan@cablecar-inbox
+Channel bryan@cablecar-trash
+Channel bryan@cablecar-archive
+Channel bryan@cablecar-sent
+Channel bryan@cablecar-drafts

@@ -5,37 +5,14 @@
   #:use-module (gnu home services)
   #:use-module (gnu home-services xorg)
 
-  #:use-module (guix gexp)
-  #:use-module (tassos-guix packages xorg)
-  #:use-module (tassos-guix home-services wm)
-  #:use-module (tassos-guix home-services notifications))
+  #:use-module (guix gexp))
 
 (define-public desktop-packages
   (map specification->package
        (list
-        ;; Misc
-        "setxkbmap"
-
-        ;; Set wallpapeuu
         "feh"
-
-        ;; App launcher
         "rofi"
-
-        ;; Terminal environment
-        "kitty"
-        "ncurses"
-        "ufetch"
-        "zoxide"
-        "tmux"
-        "neovim"
-        "bpytop"
-
-        ;; Top Panel
         "polybar"
-
-        ;; Compositor
-        ;; TODO: May need to find a fork with blur patch
         "picom"
 
         ;; Fonts!
@@ -55,27 +32,41 @@
    (service home-xresources-service-type
         (home-xresources-configuration
          (config
-          `((include . "\"$HOME/.dotfiles/guix/home/modules/files/xresources\"")))))
-   (service home-dunst-service-type
-            (home-dunst-configuration
-             (dunstrc (list
-                       (local-file "./files/dunstrc")))))
-   (service home-sxhkd-service-type
-            (home-sxhkd-configuration
-             (sxhkdrc (list
-                       (local-file "./files/sxhkdrc")))))
-   (service home-bspwm-service-type
-            (home-bspwm-configuration
-             (bspwmrc (list
-                       (local-file "./files/bspwmrc")))))
-   (service home-polybar-service-type
-            (home-polybar-configuration
-             (config (list
-                      (local-file "./files/polybar.ini")))))
-   ;; (simple-service 'gtk-config
-   ;;                 home-files-service-type
-   ;;                 `(("config/gtk-3.0/settings.ini"
-   ;;                    ,(local-file "../files/gtk3.ini"))
-   ;;                   ("config/gtk-3.0/gtk.css"
-   ;;                    ,(local-file "../files/gtk3.css"))))
+          `((include . "/dotfiles/guix/home/files/xresources")))))
+    (simple-service 'picom-config
+                        home-files-service-type
+                        (list
+                        `("config/picom/picom.conf"
+                        ,(local-file
+                            (string-append (getenv "HOME")
+                                            "/dotfiles/guix/home/files/picom/picom.conf")))))
+     (simple-service 'dunst-config
+                        home-files-service-type
+                        (list
+                        `("config/dunst/dunstrc"
+                        ,(local-file
+                            (string-append (getenv "HOME")
+                                            "/dotfiles/guix/home/files/dunst/dunstrc")))))
+     ;; (simple-service 'rofi-config
+     ;;                    home-files-service-type
+     ;;                    (list
+     ;;                    `("config/rofi/config.rasi"
+     ;;                    ,(local-file
+     ;;                        (string-append (getenv "HOME")
+     ;;                                        "/dotfiles/guix/home/files/rofi/config.rasi"))))) V
+    (simple-service 'mbsync-config
+                    home-files-service-type
+                    (list
+                     `("config/mbsync/mbsyncrc"
+                       ,(local-file
+                         (string-append (getenv "HOME")
+                                        "/dotfiles/guix/home/files/mbsync/mbsyncrc")))))
+
+    (simple-service 'kitty-config
+			              home-files-service-type
+			              (list
+			               `("config/kitty/kitty.conf"
+			                 ,(local-file
+			                   (string-append (getenv "HOME")
+					                              "/dotfiles/guix/home/files/kitty/kitty.conf")))))
    ))
