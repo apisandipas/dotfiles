@@ -16,8 +16,6 @@
   #:use-module (gnu home-services xorg)
   #:use-module (gnu home-services shellutils))
 
-(use-package-modules shells)
-
 (define-public zsh-packages
   (list kitty
         ufetch
