@@ -45,6 +45,8 @@
 
 (define %my-desktop-services
   (modify-services %desktop-services
+;; sudo guix archive --authorize < signing-key.pub
+;; sudo guix system reconfigure /etc/config.scm --substitute-urls='https://ci.guix.gnu.org https://bordeaux.guix.gnu.org https://substitutes.nonguix.org'
                    (guix-service-type config => (guix-configuration
                                                  (inherit config)
                                                  (substitute-urls
