@@ -1,3 +1,4 @@
+#!/run/current-system/profile/bin/env sh
 #### ~~~~ Locale ~~~~ ####
 export LANG=en_US.UTF-8
 

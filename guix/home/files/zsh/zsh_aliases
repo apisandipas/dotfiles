@@ -1,3 +1,4 @@
+#!/run/current-system/profile/bin/env sh
 # ~ Guix #
 alias install="guix install"
 alias remove="guix remove"

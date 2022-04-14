@@ -1,3 +1,4 @@
+#!/run/current-system/profile/bin/env sh
 if [[ -z "$XDG_CONFIG_HOME" ]]
 then
         export XDG_CONFIG_HOME="$HOME/.config"

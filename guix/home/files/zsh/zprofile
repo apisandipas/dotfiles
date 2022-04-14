@@ -1,3 +1,6 @@
+#!/run/current-system/profile/bin/env sh
+
+
 HOME_ENVIRONMENT=$HOME/.guix-home
 . $HOME_ENVIRONMENT/setup-environment
 $HOME_ENVIRONMENT/on-first-login
