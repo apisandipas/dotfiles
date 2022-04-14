@@ -45,6 +45,14 @@
 
 (define %my-desktop-services
   (modify-services %desktop-services
+                   (guix-service-type config => (guix-configuration
+                                                 (inherit config)
+                                                 (substitute-urls
+                                                  (append (list "https://substitutes.nonguix.org")
+                                                          %default-substitute-urls))
+                                                 (authorized-keys
+                                                  (append (list (local-file "./signing-key.pub"))
+                                                          %default-authorized-guix-keys))))
                    (elogind-service-type config =>
                                          (elogind-configuration (inherit config)
                                                                 (handle-lid-switch-external-power 'suspend)))
@@ -175,15 +183,7 @@ EndSection
                           (list cups-filters))))
                (service nix-service-type)
                (bluetooth-service #:auto-enable? #t)
-               (services (modify-services %desktop-services
-             (guix-service-type config => (guix-configuration
-               (inherit config)
-               (substitute-urls
-                (append (list "https://substitutes.nonguix.org")
-                  %default-substitute-urls))
-               (authorized-keys
-                (append (list (local-file "./signing-key.pub"))
-                  %default-authorized-guix-keys))))))
+
                %my-desktop-services))
 
     ;; Allow resolution of '.local' host names with mDNS
