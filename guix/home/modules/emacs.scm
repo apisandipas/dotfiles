@@ -118,5 +118,5 @@
             (home-emacs-configuration
              (package emacs-next)
              (rebuild-elisp-packages? #t)
-             (server-mode? #t)
+             ;; (server-mode? #t)
              (elisp-packages emacs-packages)))))
