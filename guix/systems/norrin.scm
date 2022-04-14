@@ -1,5 +1,5 @@
 (define-module (systems norrin)
-  #:use-module (base-system)
+  #:use-module (systems base-system)
   #:use-module (gnu))
 
 (operating-system

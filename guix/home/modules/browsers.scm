@@ -2,7 +2,9 @@
   #:use-module (gnu home)
   #:use-module (gnu home services)
   #:use-module (gnu services)
-  #:use-module (gnu packages))
+  #:use-module (gnu packages)
+  #:use-module (guix gexp)
+  )
 
 (define-public browser-packages
   (map specification->package
