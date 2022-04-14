@@ -29,10 +29,14 @@
 
 (define-public desktop-services
   (list
-   (service home-xresources-service-type
-        (home-xresources-configuration
-         (config
-          `((include . "/dotfiles/guix/home/files/xresources")))))
+
+    (simple-service 'xresources-config
+                        home-files-service-type
+                        (list
+                        `(".Xresources"
+                        ,(local-file
+                            (string-append (getenv "HOME")
+                                            "/dotfiles/guix/home/files/xresources")))))
     (simple-service 'picom-config
                         home-files-service-type
                         (list
