@@ -1,5 +1,6 @@
 (define-module (home modules browsers)
   #:use-module (gnu home)
+  #:use-module (gnu services)
   #:use-module (gnu packages))
 
 (define-public browser-packages
