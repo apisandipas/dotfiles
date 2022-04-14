@@ -36,14 +36,14 @@
     (simple-service 'picom-config
                         home-files-service-type
                         (list
-                        `("config/picom/picom.conf"
+                        `(".config/picom/picom.conf"
                         ,(local-file
                             (string-append (getenv "HOME")
                                             "/dotfiles/guix/home/files/picom/picom.conf")))))
      (simple-service 'dunst-config
                         home-files-service-type
                         (list
-                        `("config/dunst/dunstrc"
+                        `(".config/dunst/dunstrc"
                         ,(local-file
                             (string-append (getenv "HOME")
                                             "/dotfiles/guix/home/files/dunst/dunstrc")))))
@@ -57,7 +57,7 @@
     (simple-service 'mbsync-config
                     home-files-service-type
                     (list
-                     `("config/mbsync/mbsyncrc"
+                     `(".config/mbsync/mbsyncrc"
                        ,(local-file
                          (string-append (getenv "HOME")
                                         "/dotfiles/guix/home/files/mbsync/mbsyncrc")))))
@@ -65,7 +65,7 @@
     (simple-service 'kitty-config
 			              home-files-service-type
 			              (list
-			               `("config/kitty/kitty.conf"
+			               `(".config/kitty/kitty.conf"
 			                 ,(local-file
 			                   (string-append (getenv "HOME")
 					                              "/dotfiles/guix/home/files/kitty/kitty.conf")))))
