@@ -8,23 +8,3 @@ then
         export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 fi
 
-HOME_ENVIRONMENT=$HOME/.guix-home
-. $HOME_ENVIRONMENT/setup-environment
-$HOME_ENVIRONMENT/on-first-login
-
-export XDG_CONFIG_HOME=~/.config
-export XDG_CACHE_HOME=~/.cache
-export XDG_DATA_HOME=~/.local/share
-export XDG_STATE_HOME=~/.config/zsh
-
-export EDITOR=emacsclient
-export VISUAL=emacsclient
-export TERMINAL=$(which kitty)
-export BROWSER=$(which firefox)
-
-GUIX_PROFILE="$HOME/.config/guix/current" . "$GUIX_PROFILE/etc/profile"
-
-# Loads personal scripts into the PATH
-export PATH="$HOME/.dotfiles/bin:$PATH"
-
-setxkbmap -option ctrl:nocaps
