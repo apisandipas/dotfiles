@@ -36,11 +36,11 @@
             (home-zsh-configuration
              (xdg-flavor? #t)
              (zshenv
-              '((string-append "source " (genenv "HOME") "/dotfiles/guix/home/files/zsh/zshenv")))
+              `((string-append "source " (genenv "HOME") "/dotfiles/guix/home/files/zsh/zshenv")))
              (zprofile
-              '(string-append "source " (genenv "HOME") "/dotfiles/guix/home/files/zsh/zprofile"))
+              `(string-append "source " (genenv "HOME") "/dotfiles/guix/home/files/zsh/zprofile"))
              (zshrc
-              '(string-append "source " (genenv "HOME") "/dotfiles/guix/home/files/zsh/zshrc"))))
+              `(string-append "source " (genenv "HOME") "/dotfiles/guix/home/files/zsh/zshrc"))))
    ;; Files
    (simple-service 'zsh-aliases
                    home-files-service-type
