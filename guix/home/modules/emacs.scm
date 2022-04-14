@@ -85,9 +85,9 @@
        "emacs-multiple-cursors"
        "emacs-phi-search"
        "emacs-ws-butler"
-       "emacs-yasnippet"
-       "emacs-yasnippet-snippets"
-       "emacs-ivy-yasnippet"
+       ;; "emacs-yasnippet"
+       ;; "emacs-yasnippet-snippets"
+       ;; "emacs-ivy-yasnippet"
        "emacs-flyspell-correct"
 
        ;; Org
