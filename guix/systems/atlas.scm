@@ -2,8 +2,6 @@
   #:use-module (systems base-system)
   #:use-module (gnu))
 
-(use-modules (systems base-system))
-
 (operating-system
  (inherit base-operating-system)
  (host-name "atlas")
