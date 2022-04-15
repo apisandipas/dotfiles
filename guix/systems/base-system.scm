@@ -1,4 +1,4 @@
-(define-module (systems base-system)
+(define-module (base-system)
   #:use-module (gnu)
   #:use-module (srfi srfi-1)
   #:use-module (gnu system nss)
