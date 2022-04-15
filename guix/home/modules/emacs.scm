@@ -109,14 +109,14 @@
   (list
    (simple-service 'emacs-init
                    home-files-service-type
-                   `(("config/emacs/early-init.el"
+                   `((".config/emacs/early-init.el"
                       ,(local-file
                         (string-append (getenv "HOME") "/dotfiles/guix/home/files/emacs/early-init.el")))
-                     ("config/emacs/init.el"
+                     (".config/emacs/init.el"
                       ,(local-file (string-append (getenv "HOME") "/dotfiles/guix/home/files/emacs/init.el")))))
    (service home-emacs-service-type
             (home-emacs-configuration
              (package emacs-next)
              (rebuild-elisp-packages? #t)
-             ;; (server-mode? #t)
+             (server-mode? #t)
              (elisp-packages emacs-packages)))))
