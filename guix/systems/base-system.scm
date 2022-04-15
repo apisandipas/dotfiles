@@ -145,23 +145,27 @@ EndSection
 
     ;; Install bare-minimum system packages
     (packages (append (list
-                        git
-                        stow
-                        vim
-                        xterm
-                        bluez
-                        bluez-alsa
-                        pulseaudio
-                        tlp
-                        xf86-input-libinput
-                        nss-certs     ;; for HTTPS access
-                        gvfs)         ;; for user mounts
+                       emacs-native-comp
+                       emacs-exwm
+                       emacs-desktop-environment
+                       git
+                       stow
+                       vim
+                       xterm
+                       bluez
+                       bluez-alsa
+                       pulseaudio
+                       tlp
+                       xf86-input-libinput
+                       nss-certs ;; for HTTPS access
+                       gvfs)         ;; for user mounts
                     %base-packages))
 
     ;; Use the "desktop" services, which include the X11 log-in service,
     ;; networking with NetworkManager, and more
-    (services (cons* (service mate-desktop-service-type)
-	       (service openssh-service-type)
+    (services (cons*
+               ; ;; (service mate-desktop-service-type)
+	           (service openssh-service-type)
                (service tlp-service-type
                         (tlp-configuration
                          (cpu-boost-on-ac? #t)
