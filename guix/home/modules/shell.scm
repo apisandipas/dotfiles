@@ -54,14 +54,14 @@
    (simple-service 'zsh-aliases
                    home-files-service-type
                    (list
-                    `("config/zsh/zsh_aliases"
+                    `(".config/zsh/zsh_aliases"
                       ,(local-file
                         (string-append (getenv "HOME")
                                        "/dotfiles/guix/home/files/zsh/zsh_aliases")))))
    (simple-service 'zsh-functions
                    home-files-service-type
                    (list
-                    `("config/zsh/zsh_functions"
+                    `(".config/zsh/zsh_functions"
                       ,(local-file
                         (string-append (getenv "HOME")
                                        "/dotfiles/guix/home/files/zsh/zsh_functions")))))
