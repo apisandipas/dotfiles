@@ -1,5 +1,5 @@
-(define-module (atlas)
-  #:use-module (base-system)
+(define-module (systems atlas)
+  #:use-module (systems base-system)
   #:use-module (gnu))
 
 (operating-system
