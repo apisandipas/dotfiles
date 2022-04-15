@@ -14,6 +14,7 @@
   #:use-module (gnu packages gtk)
   #:use-module (gnu packages xorg)
   #:use-module (gnu packages emacs)
+  #:use-module (gnu packages emacs-xyz)
   #:use-module (gnu packages file-systems)
   #:use-module (gnu packages gnome)
   #:use-module (gnu packages mtools)
