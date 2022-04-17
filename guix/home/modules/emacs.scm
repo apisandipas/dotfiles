@@ -2,7 +2,7 @@
   #:use-module (guix gexp)
   #:use-module (gnu home)
   #:use-module (gnu packages)
-  #:use-module (gnu packages emacs)
+  #:use-module (flat packages emacs)
   #:use-module (gnu services)
   #:use-module (gnu home services)
   ;; from rde
