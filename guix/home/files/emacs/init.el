@@ -6,6 +6,7 @@
 ;; You know the drill by now
 
 ;;; Code:
+(load-file "~/.config/emacs/desktop.el")
 
 ;; Profile emacs startup
 (add-hook 'emacs-startup-hook
@@ -59,7 +60,7 @@
 
 (require 'use-package)
 
-(when (string= (system-name) "atlas")
+(if (string= (system-name) "atlas")
   ;; We wanna use the Guix-sourced packages on Atlas
   (setq use-package-always-ensure nil)
   ;; Everywhere else, let the magic happen.
@@ -177,7 +178,7 @@
 (add-to-list 'default-frame-alist '(font . "Victor Mono" ))
 (set-face-attribute 'default nil :font "Victor Mono" :height 130)
 (set-face-attribute 'fixed-pitch nil :font "Victor Mono" :height 130)
-(set-face-attribute 'variable-pitch nil :font "DejaVu Sans" :height 130 :weight 'regular)
+(set-face-attribute 'variable-pitch nil :font "Cantarell" :height 130 :weight 'regular)
 
 ;; Open frame in maximized mode.
 (set-frame-parameter (selected-frame) 'fullscreen 'maximized)
@@ -281,19 +282,80 @@
 
 
 (use-package general
-  :after evil
-  :config
-  (general-create-definer bp/leader-keys
-    :keymaps '(normal insert visual emacs)
-    :prefix "SPC"
-    :global-prefix "C-SPC")
+        :after evil
+        :config
+        (general-create-definer bp/leader-keys
+        :keymaps '(normal insert visual emacs)
+        :prefix "SPC"
+        :global-prefix "C-SPC")
 
-  (bp/leader-keys
-    "t"  '(:ignore t :which-key "toggles")
-    "te" '(treemacs :which-key "toggle file explorer")
-    "tt" '(counsel-load-theme :which-key "choose theme")
-    "f"  '(:ignore t :which-key "files")
-    "fc" '(bp/edit-config-file :which-key "edit config")))
+        (defun bp/window-maximize-horizontally ()
+        "Delete all windows to the left and right of the current window."
+        (interactive)
+        (require 'windmove)
+        (save-excursion
+        (while (ignore-errors (windmove-left)) (delete-window))
+        (while (ignore-errors (windmove-right)) (delete-window))))
+
+        (defun bp/window-maximize-vertically ()
+        "Delete all windows above and below the current window."
+        (interactive)
+        (require 'windmove)
+        (save-excursion
+        (while (ignore-errors (windmove-up)) (delete-window))
+        (while (ignore-errors (windmove-down)) (delete-window))))
+
+        (bp/leader-keys
+                ;; Window Bindings
+                "w" '(:ignore t :which-key "windows")
+                "wh" '(windmove-left :which-key "evil-move-left")
+                "wl" '(windmove-right :which-key "evil-move-right")
+                "wj" '(windmove-down :which-key "evil-move-down")
+                "wk" '(windmove-left :which-key "evil-move-up")
+
+                "wH" '(evil-window-move-far-left :which-key "move-window-left")
+                "wL" '(evil-window-move-far-right :which-key "move-window-right")
+                "wJ" '(evil-window-move-very-bottom :which-key "move-window-down")
+                "wK" '(evil-window-move-very-top :which-key "move-window-up")
+
+                ;;Window resizing
+                "wo" '(evil-window-increase-width :which-key "expand-window")
+                "wo" '(evil-window-increase-width :which-key "expand-window")
+                "wc" '(evil-window-delete :which-key "close-window")
+                "wd" '(evil-window-delete :which-key "delete-window")
+
+                ;; window splitting
+                "ws" '(evil-window-split :which-key "split-window-horizonal")
+                "wv" '(evil-window-vsplit :which-key "split-window-vertical")
+
+                ;; window change redo/undo
+                "wu" '(winner-undo :which-key "undo last window change")
+                "wU" '(winner-redo :which-key "redo last window change")
+
+                "w+" '(evil-window-increase-height :which-key "window-increase-height")
+                "w-" '(evil-window-decrease-height :which-key "window-decrease-height")
+                "w=" '(balance-windows :which-key "balance-windows")
+                "w<" '(evil-window-decrease-width :which-key "window-decrease-width")
+                "w>" '(evil-window-increase-width :which-key "window-increase-width")
+
+                "wm" '(:ignore t :which-key "maximize")
+                "wmm" '(delete-other-windows :which-key "delete-other-windows")
+                "wmv" '(bp/window-maximize-vertically :which-key "maximize-window-vertically")
+                "wmh" '(bp/window-maximize-horizontally :which-key "maximize-window-horizonatally")
+
+                ;; Buffer Bindings
+                "b" '(:ignore t :which-key "buffers")
+                "bk" '(kill-this-buffer :which-key "kill-buffer")
+                "bd" '(kill-this-buffer :which-key "delete-buffer")
+                "bs" '(save-buffer :which-key "save-buffer")
+                "be" '(eval-buffer :which-key "eval-buffer")
+                "bw" '(ivy-switch-buffer-other-window :which-key "switch-buffer")
+                "bc" '(clone-indirect-buffer-other-window :which-key "cloneivy-switch-buffer-other-window-buffer")
+                "t"  '(:ignore t :which-key "toggles")
+                "te" '(treemacs :which-key "toggle file explorer")
+                ;; "tt" '(counsel-load-theme :which-key "choose theme")
+                "f"  '(:ignore t :which-key "files")
+                "fc" '(bp/edit-config-file :which-key "edit config")))
 
 
 
@@ -312,18 +374,24 @@
   (customize-set-variable 'evil-respect-visual-line-mode t)
   (customize-set-variable 'evil-undo-system 'undo-tree)
   :config
-  (require 'evil-collection)
+  (use-package evil-collection)
   ;; Use visual line motions even outside of visual-line-mode buffers
   (evil-global-set-key 'motion "j" 'evil-next-visual-line)
   (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
   (evil-collection-init)
-  (evil-mode 1))
+  (evil-mode 1)
   ;; Make sure some mode start in Evil state
   (dolist (mode '(custom-mode
-                    eshell-mode
-                    term-mode))
-  (add-to-list 'evil-emacs-state-modes mode))
+                  eshell-mode
+                  term-mode))
+    (add-to-list 'evil-emacs-state-modes mode))
 
+
+  (define-key evil-visual-state-map (kbd ">") 'bp/shift-right)
+  (define-key evil-visual-state-map (kbd "<") 'bp/shift-left)
+  (define-key evil-visual-state-map [tab] 'bp/shift-right)
+  (define-key evil-visual-state-map [S-tab] 'bp/shift-left)
+  )
 ;;-----------------------------
 ;; Completion
 
@@ -343,7 +411,7 @@
          ("C-k" . ivy-previous-line)
          ("C-d" . ivy-reverse-i-search-kill))
   :config
-  (require 'flx)
+  (use-package flx)
   (ivy-mode 1))
 
 ;; (use-package ivy-prescient
@@ -363,12 +431,15 @@
 
 (use-package counsel
   :diminish
+  :after general
   :bind (("C-M-j" . 'counsel-switch-buffer)
          :map minibuffer-local-map
          ("C-r" . 'counsel-minibuffer-history))
   :custom
   (counsel-linux-app-format-function #'counsel-linux-app-format-function-name-only)
   :config
+  (bp/leader-keys
+     "tt" '(counsel-load-theme :which-key "choose theme"))
   (counsel-mode 1))
 ;;-----------------------------
 ;; Editing
@@ -392,11 +463,6 @@
   (interactive)
   (bp/shift-region -1))
 
-
-(define-key evil-visual-state-map (kbd ">") 'bp/shift-right)
-(define-key evil-visual-state-map (kbd "<") 'bp/shift-left)
-(define-key evil-visual-state-map [tab] 'bp/shift-right)
-(define-key evil-visual-state-map [S-tab] 'bp/shift-left)
 
 (use-package format-all
   :hook (prog-mode . format-all-mode))
@@ -424,68 +490,6 @@
 ;;-----------------------------
 ;; Window / Buffer Settings
 
-(defun bp/window-maximize-horizontally ()
-  "Delete all windows to the left and right of the current window."
-  (interactive)
-  (require 'windmove)
-  (save-excursion
-    (while (ignore-errors (windmove-left)) (delete-window))
-    (while (ignore-errors (windmove-right)) (delete-window))))
-
-(defun bp/window-maximize-vertically ()
-  "Delete all windows above and below the current window."
-  (interactive)
-  (require 'windmove)
-  (save-excursion
-    (while (ignore-errors (windmove-up)) (delete-window))
-    (while (ignore-errors (windmove-down)) (delete-window))))
-
-(bp/leader-keys
-  ;; Window Bindings
-  "w" '(:ignore t :which-key "windows")
-  "wh" '(windmove-left :which-key "evil-move-left")
-  "wl" '(windmove-right :which-key "evil-move-right")
-  "wj" '(windmove-down :which-key "evil-move-down")
-  "wk" '(windmove-left :which-key "evil-move-up")
-
-  "wH" '(evil-window-move-far-left :which-key "move-window-left")
-  "wL" '(evil-window-move-far-right :which-key "move-window-right")
-  "wJ" '(evil-window-move-very-bottom :which-key "move-window-down")
-  "wK" '(evil-window-move-very-top :which-key "move-window-up")
-
-  ;;Window resizing
-  "wo" '(evil-window-increase-width :which-key "expand-window")
-  "wo" '(evil-window-increase-width :which-key "expand-window")
-  "wc" '(evil-window-delete :which-key "close-window")
-  "wd" '(evil-window-delete :which-key "delete-window")
-
-  ;; window splitting
-  "ws" '(evil-window-split :which-key "split-window-horizonal")
-  "wv" '(evil-window-vsplit :which-key "split-window-vertical")
-
-  ;; window change redo/undo
-  "wu" '(winner-undo :which-key "undo last window change")
-  "wU" '(winner-redo :which-key "redo last window change")
-
-  "w+" '(evil-window-increase-height :which-key "window-increase-height")
-  "w-" '(evil-window-decrease-height :which-key "window-decrease-height")
-  "w=" '(balance-windows :which-key "balance-windows")
-  "w<" '(evil-window-decrease-width :which-key "window-decrease-width")
-  "w>" '(evil-window-increase-width :which-key "window-increase-width")
-
-  "wm" '(:ignore t :which-key "maximize")
-  "wmm" '(delete-other-windows :which-key "delete-other-windows")
-  "wmv" '(bp/window-maximize-vertically :which-key "maximize-window-vertically")
-  "wmh" '(bp/window-maximize-horizontally :which-key "maximize-window-horizonatally")
-
-  ;; Buffer Bindings
-  "b" '(:ignore t :which-key "buffers")
-  "bk" '(kill-this-buffer :which-key "kill-buffer")
-  "bd" '(kill-this-buffer :which-key "delete-buffer")
-  "bs" '(save-buffer :which-key "save-buffer")
-  "be" '(eval-buffer :which-key "eval-buffer")
-  "bw" '(ivy-switch-buffer-other-window :which-key "switch-buffer")
-  "bc" '(clone-indirect-buffer-other-window :which-key "cloneivy-switch-buffer-other-window-buffer"))
 
 ;;-----------------------------
 ;; Org Mode

@@ -113,7 +113,10 @@
                       ,(local-file
                         (string-append (getenv "HOME") "/dotfiles/guix/home/files/emacs/early-init.el")))
                      (".config/emacs/init.el"
-                      ,(local-file (string-append (getenv "HOME") "/dotfiles/guix/home/files/emacs/init.el")))))
+                      ,(local-file (string-append (getenv "HOME") "/dotfiles/guix/home/files/emacs/init.el")))
+                     (".config/emacs/desktop.el"
+                      ,(local-file (string-append (getenv "HOME") "/dotfiles/guix/home/files/emacs/desktop.el")))
+                     ))
    ;; (service home-emacs-service-type
    ;;          (home-emacs-configuration
    ;;           (package emacs-native-comp)
