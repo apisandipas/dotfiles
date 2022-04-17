@@ -8,8 +8,9 @@
 
  (swap-devices
   (list (swap-space
-	  (target
-         	(file-system-label "swap_partition")))))
+         (targets '((file-system-label "swap_partition"))))))
+
+
  (file-systems
   (cons* (file-system
           (mount-point "/boot/efi")
