@@ -172,7 +172,7 @@
 (use-package all-the-icons)
 (use-package doom-themes
   :config
-  (load-theme 'doom-one t))
+  (load-theme 'modus-vivendi t))
 
 ;;; Fonts
 (add-to-list 'default-frame-alist '(font . "Victor Mono" ))
