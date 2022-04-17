@@ -109,12 +109,12 @@
   (list
    (simple-service 'emacs-init
                    home-files-service-type
-                   `((".config/emacs/early-init.el"
+                   `((".emacs/early-init.el"
                       ,(local-file
                         (string-append (getenv "HOME") "/dotfiles/guix/home/files/emacs/early-init.el")))
-                     (".config/emacs/init.el"
+                     (".emacs/init.el"
                       ,(local-file (string-append (getenv "HOME") "/dotfiles/guix/home/files/emacs/init.el")))
-                     (".config/emacs/desktop.el"
+                     (".emacs/desktop.el"
                       ,(local-file (string-append (getenv "HOME") "/dotfiles/guix/home/files/emacs/desktop.el")))
                      ))
    ;; (service home-emacs-service-type
