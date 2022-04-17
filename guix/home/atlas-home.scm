@@ -24,7 +24,7 @@
     ,@video-packages
     ,@code-packages
     ,@zsh-packages
-    ,@emacs-packages
+    ;; ,@emacs-packages
     ,@desktop-packages))
  (services
   `(,@xdg-services

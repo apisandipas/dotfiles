@@ -116,4 +116,12 @@
                       ,(local-file (string-append (getenv "HOME") "/dotfiles/guix/home/files/emacs/init.el")))
                      (".emacs.d/desktop.el"
                       ,(local-file (string-append (getenv "HOME") "/dotfiles/guix/home/files/emacs/desktop.el")))
-                     ))))
+                     )))
+   (service home-emacs-service-type
+            (home-emacs-configuration
+             (package emacs-native-comp)
+             (rebuild-elisp-packages? #t)
+             (server-mode? #t)
+             (elisp-packages emacs-packages)))
+  
+)
