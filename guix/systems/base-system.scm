@@ -107,7 +107,7 @@ EndSection
     ;; Partition mounted on /boot/efi.
     (bootloader (bootloader-configuration
                  (bootloader grub-efi-bootloader)
-                 (target "/boot/efi")
+                 (target '("/boot/efi"))
                  (keyboard-layout keyboard-layout)))
 
 
