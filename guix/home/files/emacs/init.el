@@ -6,7 +6,7 @@
 ;; You know the drill by now
 
 ;;; Code:
-(load-file "~/.emacs.d/desktop.el")
+;; (load-file "~/.emacs.d/desktop.el")
 
 ;; Profile emacs startup
 (add-hook 'emacs-startup-hook
@@ -35,7 +35,7 @@
 (customize-set-variable 'large-file-warning-threshold 100000000) ;; change to ~100 MB
 
 ;; Add the modules folder to the load path
-(add-to-list 'load-path (expand-file-name "modules/" user-emacs-directory))
+;; (add-to-list 'load-path (expand-file-name "modules/" user-emacs-directory))
 
 ;; Make GC pauses faster by decreasing the threshold.
 (setq gc-cons-threshold (* 2 1000 1000))

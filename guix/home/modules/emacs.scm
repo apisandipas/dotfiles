@@ -109,18 +109,26 @@
   (list
    (simple-service 'emacs-init
                    home-files-service-type
-                   `((".emacs.d/early-init.el"
+                   `((".exwm"
                       ,(local-file
-                        (string-append (getenv "HOME") "/dotfiles/guix/home/files/emacs/early-init.el")))
-                     (".emacs.d/init.el"
-                      ,(local-file (string-append (getenv "HOME") "/dotfiles/guix/home/files/emacs/init.el")))
-                     (".emacs.d/desktop.el"
-                      ,(local-file (string-append (getenv "HOME") "/dotfiles/guix/home/files/emacs/desktop.el")))
+                        (string-append (getenv "HOME") "/dotfiles/guix/home/files/emacs/desktop.el")))
+                   ;;   (".emacs.d/init.el"
+                   ;;    ,(local-file (string-append (getenv "HOME") "/dotfiles/guix/home/files/emacs/init.el")))
+                   ;;   (".emacs.d/desktop.el"
+                   ;;    ,(local-file (string-append (getenv "HOME") "/dotfiles/guix/home/files/emacs/desktop.el")))
                      ))
    (service home-emacs-service-type
             (home-emacs-configuration
              (package emacs-native-comp)
              (rebuild-elisp-packages? #t)
              (server-mode? #t)
-             (elisp-packages emacs-packages))))
-)
+             (xdg-flavor? #t)
+             (elisp-packages emacs-packages)
+
+             (early-init-el
+              `((load-file ,(local-file \"/home/bryan/dotfiles/guix/home/files/emacs/early-init.el\"))))
+             (init-el
+              `((load-file ,(local-file \"/home/bryan/dotfiles/guix/home/files/emacs/init.el\"))))
+
+
+             ))))
