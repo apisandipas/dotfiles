@@ -125,8 +125,7 @@
   (require 'exwm-randr)
   (exwm-randr-enable)
   (start-process-shell-command "xrandr" nil "xrandr --output eDP-1 --mode 1920x1080  --auto\
-        --output DVI-I-1-1 --rotate right --left-of eDP-1 --mode 1920x1080 --auto \
-        --output DVI-I-2-2 --mode 1920x1080 --left-of DVI-I-1-1  --auto")
+        --output HDMI-1 --left-of eDP-1 --mode 1920x1080 --auto")
 
   ;; This will need to be updated to the name of a display!  You can find
   ;; the names of your displays by looking at arandr or the output of xrandr
