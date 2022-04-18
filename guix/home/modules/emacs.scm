@@ -124,7 +124,6 @@
              (server-mode? #t)
              (xdg-flavor? #t)
              (elisp-packages emacs-packages)
-
              (early-init-el
               `((load-file ,(local-file \"/home/bryan/dotfiles/guix/home/files/emacs/early-init.el\"))))
              (init-el
