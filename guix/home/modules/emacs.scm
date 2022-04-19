@@ -61,7 +61,6 @@
        "emacs-magit"
        "emacs-guix"
        "emacs-vterm"
-       "emacs-mu4e"
        "emacs-elfeed"
        "emacs-elfeed-goodies"
 
