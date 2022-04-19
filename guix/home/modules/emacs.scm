@@ -50,13 +50,12 @@
        "emacs-treemacs"
        "emacs-which-key"
        "emacs-projectile"
-       "emacs-corfu"
-       "emacs-helpful"
-       "emacs-avy"
-       "emacs-embark"
-       "emacs-beacon"
-       "emacs-unkillable-scratch"
-       "emacs-wgrep"
+       ;; "emacs-corfu"
+       ;; "emacs-avy"
+       ;; "emacs-embark"
+       ;; "emacs-beacon"
+       ;; "emacs-unkillable-scratch"
+       ;; "emacs-wgrep"
 
        ;; Tool Modes
        "emacs-magit"
@@ -68,39 +67,35 @@
 
        ;; Specific Editing Modes
        ;; TODO: all these need configured
-       "emacs-markdown-mode"
-       "emacs-ledger-mode"
-       "emacs-clojure-mode"
-       "emacs-cider"
-       "emacs-web-mode"
-       "emacs-js2-mode"
-       "emacs-typescript-mode"
-       "emacs-add-node-modules-path"
-       "emacs-prettier"
+       ;; "emacs-markdown-mode"
+       ;; "emacs-ledger-mode"
+       ;; "emacs-clojure-mode"
+       ;; "emacs-cider"
+       ;; "emacs-web-mode"
+       ;; "emacs-js2-mode"
+       ;; "emacs-typescript-mode"
+       ;; "emacs-add-node-modules-path"
+       ;; "emacs-prettier"
 
        ;; General Editing Modes
        ;; TODO: all these need configured
-       "emacs-sudo-edit"
-       "emacs-expand-region"
-       "emacs-multiple-cursors"
-       "emacs-phi-search"
-       "emacs-ws-butler"
+       ;; "emacs-sudo-edit"
+       ;; "emacs-expand-region"
        ;; "emacs-yasnippet"
        ;; "emacs-yasnippet-snippets"
        ;; "emacs-ivy-yasnippet"
-       "emacs-flyspell-correct"
+       ;; "emacs-flyspell-correct"
 
        ;; Org
-       "emacs-org-superstar"
-       "emacs-visual-fill-column"
-       "emacs-org-roam"
-       "emacs-org-download"
+       ;; "emacs-org-superstar"
+       ;; "emacs-visual-fill-column"
+       ;; "emacs-org-roam"
+       ;; "emacs-org-download"
 
        ;; Appearance
-       "emacs-all-the-icons"
-       "emacs-doom-modeline"
-       "emacs-doom-themes"
-       "emacs-which-key"
+       ;; "emacs-all-the-icons"
+       ;; "emacs-doom-modeline"
+       ;; "emacs-doom-themes"
 
        "emacs-modus-themes"
        "emacs-olivetti")))
