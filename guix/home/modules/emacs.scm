@@ -62,7 +62,6 @@
        "emacs-guix"
        "emacs-vterm"
        "emacs-elfeed"
-       "emacs-elfeed-goodies"
 
        ;; Specific Editing Modes
        ;; TODO: all these need configured
