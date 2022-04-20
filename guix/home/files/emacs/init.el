@@ -7,7 +7,7 @@
 
 (guix-emacs-autoload-packages)
 
-(load-file "~/.emacs.d/desktop.el")
+;; (load-file "~/.emacs.d/desktop.el")
 
 ;; Profile emacs startup
 (add-hook 'emacs-startup-hook
