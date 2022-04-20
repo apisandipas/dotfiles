@@ -8,7 +8,7 @@
   #:use-module (guix build-system copy)
   #:use-module ((guix licenses) #:prefix license:)
   ;; personal modules
-  #:use-module (home modules xdg)
+  ;; #:use-module (home modules xdg)
   #:use-module (home modules browsers)
   #:use-module (home modules code)
   #:use-module (home modules video)
