@@ -17,7 +17,7 @@
 
        ;; ;; Keep it tight
        "emacs-no-littering"
-       "emacs-ws-butler"
+       ;; "emacs-ws-butler"
        "emacs-diminish"
 
        ;; ;; ;; Pkg mgr / configurator
