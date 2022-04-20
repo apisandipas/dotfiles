@@ -100,11 +100,11 @@
 
 (define-public emacs-services
   (list
-   (simple-service 'emacs-init
-                   home-files-service-type
-                   `((".exwm"
-                      ,(local-file
-                        (string-append (getenv "HOME") "/dotfiles/guix/home/files/emacs/desktop.el")))))
+   ;; (simple-service 'emacs-init
+   ;;                 home-files-service-type
+   ;;                 `((".exwm"
+   ;;                    ,(local-file
+   ;;                      (string-append (getenv "HOME") "/dotfiles/guix/home/files/emacs/desktop.el")))))
    (service home-emacs-service-type
             (home-emacs-configuration
              (package emacs-native-comp)
