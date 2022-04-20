@@ -12,13 +12,13 @@
   (map specification->package
        (list
        ;; ;; Emacs: the next batch
-       ;; "emacs-exwm"
+       "emacs-exwm"
        "emacs-desktop-environment"
 
        ;; ;; Keep it tight
-       "emacs-no-littering"
+       ;; "emacs-no-littering"
        ;; "emacs-ws-butler"
-       "emacs-diminish"
+       ;; "emacs-diminish"
 
        ;; ;; ;; Pkg mgr / configurator
        ;; "emacs-use-package"
@@ -37,7 +37,7 @@
 
        ;; ;; ;; Improved Help
        ;; "emacs-elisp-demos"
-       "emacs-helpful"
+       ;; "emacs-helpful"
 
        ;; ;; ;; Be Evil
        ;; "emacs-evil"
@@ -48,7 +48,7 @@
 
        ;; ;; ;; File Explorer
        ;; "emacs-treemacs"
-       "emacs-which-key"
+       ;; "emacs-which-key"
        ;; "emacs-projectile"
        ;; "emacs-corfu"
        ;; "emacs-avy"
