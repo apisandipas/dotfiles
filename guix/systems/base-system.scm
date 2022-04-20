@@ -149,6 +149,7 @@ EndSection
     (packages (append (list
                        ;; emacs-native-comp
                        emacs-exwm
+                       emacs-use-package
                        ;; emacs-desktop-environment
                        git
                        stow
