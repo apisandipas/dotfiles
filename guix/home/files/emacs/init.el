@@ -8,6 +8,7 @@
 ;;; Code:
 ;; (load-file "~/.emacs.d/desktop.el")
 
+(guix-emacs-autoload-packages)
 ;; Profile emacs startup
 (add-hook 'emacs-startup-hook
           (lambda ()
