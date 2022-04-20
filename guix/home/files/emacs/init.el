@@ -44,32 +44,6 @@
 (customize-set-variable 'custom-file
                         (expand-file-name "custom.el" user-emacs-directory))
 
-;----------------------------
-;; Package System Setup
-;; (require 'package)
-
-;; (setq package-archives '(("melpa" . "https://melpa.org/packages/")
-;;                          ("elpa" . "https://elpa.gnu.org/packages/")))
-
-;; (package-initialize)
-;; (unless package-archive-contents
-;;   (package-refresh-contents))
-
-;; ;; Initialize use-package on non-Linux platforms
-;; (unless (package-installed-p 'use-package)
-;;   (package-install 'use-package))
-
-;; (require 'use-package)
-
-;; (if (string= (system-name) "atlas")
-;;   ;; We wanna use the Guix-sourced packages on Atlas
-;;   (setq use-package-always-ensure nil)
-;;   ;; Everywhere else, let the magic happen.
-;;   (setq use-package-always-ensure t))
-
-;;----------------------------------
-
-
 ;;---------------------------
 ;; Emacs Defaults
 ;; General sane defaults

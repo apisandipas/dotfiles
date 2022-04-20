@@ -16,9 +16,9 @@
        "emacs-desktop-environment"
 
        ;; ;; Keep it tight
-       ;; "emacs-no-littering"
-       ;; "emacs-ws-butler"
-       ;; "emacs-diminish"
+       "emacs-no-littering"
+       "emacs-ws-butler"
+       "emacs-diminish"
 
        ;; ;; ;; Pkg mgr / configurator
        ;; "emacs-use-package"
@@ -37,7 +37,7 @@
 
        ;; ;; ;; Improved Help
        ;; "emacs-elisp-demos"
-       ;; "emacs-helpful"
+       "emacs-helpful"
 
        ;; ;; ;; Be Evil
        ;; "emacs-evil"
@@ -48,7 +48,7 @@
 
        ;; ;; ;; File Explorer
        ;; "emacs-treemacs"
-       ;; "emacs-which-key"
+       "emacs-which-key"
        ;; "emacs-projectile"
        ;; "emacs-corfu"
        ;; "emacs-avy"
@@ -86,14 +86,13 @@
 
        ;; ;; Org
        ;; "emacs-org-superstar"
-       ;; "emacs-visual-fill-column"
-       ;; "emacs-org-roam"
-       ;; "emacs-org-download"
+       "emacs-org-roam"
+       "emacs-org-download"
 
        ;; ;; Appearance
-       ;; "emacs-all-the-icons"
-       ;; "emacs-doom-modeline"
-       ;; "emacs-doom-themes"
+       "emacs-all-the-icons"
+       "emacs-doom-modeline"
+       "emacs-doom-themes"
 
        "emacs-modus-themes"
        "emacs-olivetti")))
