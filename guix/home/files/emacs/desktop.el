@@ -1,7 +1,20 @@
 ;; -*- lexical-binding: t; -*-
 ;; Configuration for EXWM and Desktop Environment
-(require 'use-package)
 
+(require 'package)
+
+(setq package-archives '(("melpa" . "https://melpa.org/packages/")
+                         ("elpa" . "https://elpa.gnu.org/packages/")))
+
+(package-initialize)
+(unless package-archive-contents
+  (package-refresh-contents))
+
+;; Initialize use-package on non-Linux platforms
+(unless (package-installed-p 'use-package)
+  (package-install 'use-package))
+
+(require 'use-package)
 (defun bp/run-in-background (command)
   (let ((command-parts (split-string command "[ ]+")))
     (apply #'call-process `(,(car command-parts) nil 0 nil ,@(cdr command-parts)))))
