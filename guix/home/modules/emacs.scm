@@ -86,13 +86,13 @@
 
        ;; ;; Org
        ;; "emacs-org-superstar"
-       "emacs-org-roam"
-       "emacs-org-download"
+       ;; "emacs-org-roam"
+       ;; "emacs-org-download"
 
        ;; ;; Appearance
-       "emacs-all-the-icons"
-       "emacs-doom-modeline"
-       "emacs-doom-themes"
+       ;; "emacs-all-the-icons"
+       ;; "emacs-doom-modeline"
+       ;; "emacs-doom-themes"
 
        "emacs-modus-themes"
        "emacs-olivetti")))
