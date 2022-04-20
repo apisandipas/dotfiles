@@ -59,7 +59,7 @@
 
        ;; ;; Tool Modes
        ;; "emacs-magit"
-       "emacs-guix"
+       ;; "emacs-guix"
        ;; "emacs-vterm"
        ;; "emacs-elfeed"
 
