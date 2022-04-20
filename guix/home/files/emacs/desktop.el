@@ -2,7 +2,6 @@
 ;; Configuration for EXWM and Desktop Environment
 
 (guix-emacs-autoload-packages)
-(require 'use-package)
 
 
 (defun bp/run-in-background (command)
@@ -27,7 +26,7 @@
 (defun bp/start-panel ()
   (interactive)
   (bp/kill-panel)
-  (setq bp/polybar-process (start-process-shell-command "polybar" nil "polybar -c ~/.doom.d/exwm/polybar.config.ini --reload main"))
+  (setq bp/polybar-process (start-process-shell-command "polybar" nil "polybar -c ~/.config/polybar/config --reload main"))
   )
 
 (defun bp/send-polybar-hook (module-name hook-index)
@@ -108,8 +107,7 @@
 ;; (unless (server-running-p "default")
 ;;   (server-start t t))
 
-(use-package exwm
-  :config
+(with-eval-after-load 'exwm
   ;; Set the default number of workspaces
   (setq exwm-workspace-number 10)
   ;; When window "class" updates, use it to set the buffer name
@@ -247,11 +245,8 @@
   ;; (perspective-exwm-mode)
   (exwm-enable))
 
-(use-package desktop-environment
-  :after exwm
-  :config
+(with-eval-after-load 'desktop-environment
   (desktop-environment-mode)
-  :custom
   (desktop-environment-brightness-small-increment "2%+")
   (desktop-environment-brightness-small-decrement "2%-")
   (desktop-environment-brightness-normal-increment "5%+")
