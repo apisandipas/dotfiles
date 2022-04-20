@@ -60,7 +60,7 @@
        (mouse-color . "white")
        (internal-border-width . 24)))
 
-  (doom-mark-buffer-as-real-h)
+  ;; (doom-mark-buffer-as-real-h)
 
   ;; Make workspace 1 be the one where we land at startup
   (exwm-workspace-switch-create 0)
