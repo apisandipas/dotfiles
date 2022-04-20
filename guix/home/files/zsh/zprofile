@@ -1,6 +1,5 @@
 #!/run/current-system/profile/bin/env sh
 
-
 HOME_ENVIRONMENT=$HOME/.guix-home
 . $HOME_ENVIRONMENT/setup-environment
 $HOME_ENVIRONMENT/on-first-login
@@ -15,7 +14,8 @@ export VISUAL=emacsclient
 export TERMINAL=$(which kitty)
 export BROWSER=$(which firefox)
 
-GUIX_PROFILE="$HOME/.config/guix/current" . "$GUIX_PROFILE/etc/profile"
+GUIX_PROFILE="$HOME/.config/guix/current"
+. "$GUIX_PROFILE/etc/profile"
 
 # Loads personal scripts into the PATH
 export PATH="$HOME/.dotfiles/bin:$PATH"

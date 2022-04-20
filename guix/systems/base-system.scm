@@ -148,7 +148,7 @@ EndSection
     ;; Install bare-minimum system packages
     (packages (append (list
                        ;; emacs-native-comp
-                       emacs-exwm
+                       ;; emacs-exwm
                        ;; emacs-desktop-environment
                        git
                        stow
@@ -166,7 +166,7 @@ EndSection
     ;; Use the "desktop" services, which include the X11 log-in service,
     ;; networking with NetworkManager, and more
     (services (cons*
-               ; ;; (service mate-desktop-service-type)
+               (service mate-desktop-service-type)
 	           (service openssh-service-type)
                (service tlp-service-type
                         (tlp-configuration
