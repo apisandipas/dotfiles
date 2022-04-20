@@ -12,7 +12,7 @@
   (map specification->package
        (list
        ;; ;; Emacs: the next batch
-       "emacs-exwm"
+       ;; "emacs-exwm"
        "emacs-desktop-environment"
 
        ;; ;; Keep it tight

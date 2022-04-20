@@ -148,7 +148,7 @@ EndSection
     ;; Install bare-minimum system packages
     (packages (append (list
                        ;; emacs-native-comp
-                       ;; emacs-exwm
+                       emacs-exwm
                        ;; emacs-desktop-environment
                        git
                        stow
