@@ -21,7 +21,7 @@
        ;; "emacs-diminish"
 
        ;; ;; ;; Pkg mgr / configurator
-       "emacs-use-package"
+       ;; "emacs-use-package"
        ;; ;; "emacs-straight"
 
        ;; ;; ;; Completion
