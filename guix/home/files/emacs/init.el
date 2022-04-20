@@ -5,10 +5,7 @@
 
 ;; You know the drill by now
 
-;;; Code:
-;; Load All Guix-sources packages
-(if (string= (system-name) "atlas")
-  (guix-emacs-autoload-packages))
+(guix-emacs-autoload-packages)
 
 (load-file "~/.emacs.d/desktop.el")
 
@@ -123,8 +120,7 @@
 ;; Enable savehist-mode for an command history
 (savehist-mode 1)
 
-(use-package no-littering
-  :config
+(with-eval-after-load 'no-littering
   ;; no-littering doesn't set this by default so we must place
   ;; auto save files in the same path as it uses for sessions
   (setq auto-save-file-name-transforms
@@ -137,8 +133,7 @@
                             user-emacs-directory)))
 
 
-(use-package diminish
-  :config
+(with-eval-after-load 'diminish
   (diminish 'evil-collection-unimpaired-mode)
   (diminish 'eldoc-mode))
 
@@ -146,34 +141,27 @@
 ;; UI Customizations
 
 
-(use-package treemacs
-  :defer t
-  :init
+(with-eval-after-load 'treemacs
   (setq treemacs-follow-after-init t
         treemacs-is-never-other-window t
         treemacs-sorting 'alphabetic-case-insensitive-asc)
   ;;treemacs-persist-file (concat doom-cache-dir "treemacs-persist")
   ;; treemacs-last-error-persist-file (concat doom-cache-dir "treemacs-last-error-persist"))
-  :config
   (setq treemacs-width 25)
   ;; Don't follow the cursor
   (treemacs-follow-mode -1))
 
 
-(use-package treemacs-evil
-  :defer t
-  :after (treemacs)
-  :bind (:map evil-treemacs-state-map
-              ([return] . treemacs-RET-action)
-              ([tab] . treemacs-TAB-action)
-              ("TAB" . treemacs-TAB-action)
-              ("o v" . treemacs-visit-node-horizontal-split)
-              ("o s" . treemacs-visit-node-vertical-split)))
+;; (eval-after-load 'treemacs-evil
+;;   :bind (:map evil-treemacs-state-map
+;;               ([return] . treemacs-RET-action)
+;;               ([tab] . treemacs-TAB-action)
+;;               ("TAB" . treemacs-TAB-action)
+;;               ("o v" . treemacs-visit-node-horizontal-split)
+;;               ("o s" . treemacs-visit-node-vertical-split)))
 
-(use-package all-the-icons)
-(use-package doom-themes
-  :config
-  (load-theme 'modus-vivendi t))
+(require 'all-the-icons)
+(load-theme 'modus-vivendi) t
 
 ;;; Fonts
 (add-to-list 'default-frame-alist '(font . "Victor Mono" ))
@@ -189,8 +177,7 @@
 
 
 ;;;; Modeline
-(use-package doom-modeline
-  :init
+(with-eval-after-load 'doom-modeline
   ;; Start up the modeline after initialization is finished
   (add-hook 'after-init-hook 'doom-modeline-init)
   (customize-set-variable 'doom-modeline-height 32)
@@ -201,13 +188,12 @@
   ;;  '(font-lock-comment-face :slant italic)
   ;;  '(font-lock-keyword-face :slant italic))
   (customize-set-variable 'doom-modeline-buffer-file-name-style 'truncate-except-project)
-  :hook (after-init . doom-modeline-mode))
+  (doom-modeline-mode 1))
 
 ;;;; Help Buffers
 
 ;; Make `describe-*' screens more helpful
-(use-package helpful
-  :config
+(with-eval-after-load 'helpful
   (define-key helpful-mode-map [remap revert-buffer] #'helpful-update)
   (global-set-key [remap describe-command] #'helpful-command)
   (global-set-key [remap describe-function] #'helpful-callable)
@@ -221,8 +207,7 @@
 (global-set-key (kbd "C-h K") #'describe-keymap)
 
 ;; also add some examples
-(use-package elisp-demos
-  :config
+(with-eval-after-load 'elisp-demos
   (advice-add 'helpful-update :after #'elisp-demos-advice-helpful-update))
 
 ;;;; TODO Line Numbers
@@ -243,10 +228,7 @@
 
 
 ;;; Help Me Obi-wan Which-Key. You're my only hope.
-(use-package which-key
-  :defer 0
-  :diminish which-key-mode
-  :init
+(with-eval-after-load 'which-key
   (setq which-key-sort-order #'which-key-key-order-alpha
         which-key-sort-uppercase-first nil
         which-key-add-column-padding 1
@@ -254,7 +236,6 @@
         which-key-min-display-lines 6
         which-key-side-window-slot -10
         which-key-idle-delay 0.3)
-  :config
   (put 'which-key-replacement-alist 'initial-value which-key-replacement-alist)
   ;;(add-hook! 'doom-before-reload-hook
   ;;(defun doom-reset-which-key-replacements-h ()
@@ -282,9 +263,7 @@
     (message "'Edit Config' not yet implemented"))
 
 
-(use-package general
-        :after evil
-        :config
+(with-eval-after-load 'general
         (general-create-definer bp/leader-keys
         :keymaps '(normal insert visual emacs)
         :prefix "SPC"
@@ -361,12 +340,10 @@
 
 
 ;;; Code:
-(use-package undo-tree
-  :diminish
-  :config
+(with-eval-after-load 'undo-tree
   (global-undo-tree-mode))
 
-(use-package evil
+(with-eval-after-load 'evil
   :init
   (customize-set-variable 'evil-want-integration t)
   (customize-set-variable 'evil-want-keybinding nil)
@@ -375,7 +352,7 @@
   (customize-set-variable 'evil-respect-visual-line-mode t)
   (customize-set-variable 'evil-undo-system 'undo-tree)
   :config
-  (use-package evil-collection)
+  (require 'eval-collection)
   ;; Use visual line motions even outside of visual-line-mode buffers
   (evil-global-set-key 'motion "j" 'evil-next-visual-line)
   (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
@@ -396,51 +373,26 @@
 ;;-----------------------------
 ;; Completion
 
-(use-package ivy
-  :diminish
-  :bind (("C-s" . swiper)
-         :map ivy-minibuffer-map
-         ("TAB" . ivy-alt-done)
-         ("C-l" . ivy-alt-done)
-         ("C-j" . ivy-next-line)
-         ("C-k" . ivy-previous-line)
-         :map ivy-switch-buffer-map
-         ("C-k" . ivy-previous-line)
-         ("C-l" . ivy-done)
-         ("C-d" . ivy-switch-buffer-kill)
-         :map ivy-reverse-i-search-map
-         ("C-k" . ivy-previous-line)
-         ("C-d" . ivy-reverse-i-search-kill))
-  :config
-  (use-package flx)
-  (ivy-mode 1))
+(with-eval-after-load 'ivy
+  (require 'flx)
+  (ivy-mode 1)
+  (require 'ivy-posframe)
+  (ivy-posframe-mode 1)
+  (require 'ivy-rich)
+  (ivy-rich-mode 1)
+  )
 
-;; (use-package ivy-prescient
-;;   :after ivy
-;;   :config
-;;   (ivy-prescient-mode 1))
 
-(use-package ivy-posframe
-  :after ivy
-  :config
-  (ivy-posframe-mode 1))
-
-(use-package ivy-rich
-  :after ivy
-  :init
-  (ivy-rich-mode 1))
-
-(use-package counsel
-  :diminish
-  :after general
-  :bind (("C-M-j" . 'counsel-switch-buffer)
-         :map minibuffer-local-map
-         ("C-r" . 'counsel-minibuffer-history))
-  :custom
+(with-eval-after-load 'counsel
+  ;; :diminish
+  ;; :after general
+  ;; :bind (("C-M-j" . 'counsel-switch-buffer)
+  ;;        :map minibuffer-local-map
+  ;;        ("C-r" . 'counsel-minibuffer-history))
+  ;; :custom
   (counsel-linux-app-format-function #'counsel-linux-app-format-function-name-only)
-  :config
   (bp/leader-keys
-     "tt" '(counsel-load-theme :which-key "choose theme"))
+   "tt" '(counsel-load-theme :which-key "choose theme"))
   (counsel-mode 1))
 ;;-----------------------------
 ;; Editing
@@ -465,23 +417,23 @@
   (bp/shift-region -1))
 
 
-(use-package format-all
-  :hook (prog-mode . format-all-mode))
+;; (use-package format-all
+;;   :hook (prog-mode . format-all-mode))
 
-(use-package ws-butler
-  :diminish
-  :hook ((text-mode . ws-butler-mode)
-         (prod-mode . ws-butler-mode)))
+;; (use-package ws-butler
+;;   :diminish
+;;   :hook ((text-mode . ws-butler-mode)
+;;          (prod-mode . ws-butler-mode)))
 
-(use-package evil-nerd-commenter
-  ;; Set a global binding for better line commenting/uncommenting
-  :config
-  (bp/leader-keys
-    "tj" '(evilnc-comment-or-uncomment-lines :which-key "toggle comments")))
+;; (use-package evil-nerd-commenter
+;;   ;; Set a global binding for better line commenting/uncommenting
+;;   :config
+;;   (bp/leader-keys
+;;     "tj" '(evilnc-comment-or-uncomment-lines :which-key "toggle comments")))
 
-;; Set up ws-butler for trimming whitespace and line endings
-(add-hook 'text-mode-hook 'ws-butler-mode)
-(add-hook 'prog-mode-hook 'ws-butler-mode)
+;; ;; Set up ws-butler for trimming whitespace and line endings
+;; (add-hook 'text-mode-hook 'ws-butler-mode)
+;; (add-hook 'prog-mode-hook 'ws-butler-mode)
 
 
 ;; parentheses
@@ -531,15 +483,15 @@
 
 (add-hook 'org-mode-hook #'bp/org-prettify-symbols)
 
-(use-package visual-fill-column
-  :hook ((org-mode text-mode) . visual-fill-column-mode)
-  :config
-  (setq-default visual-fill-column-center-text t
-                visual-fill-column-width 120))
+;; (use-package visual-fill-column
+;;   :hook ((org-mode text-mode) . visual-fill-column-mode)
+;;   :config
+;;   (setq-default visual-fill-column-center-text t
+;;                 visual-fill-column-width 120))
 
-(use-package org-superstar
-  :after org
-  :hook (org-mode . org-superstar-mode))
+;; (use-package org-superstar
+;;   :after org
+;;   :hook (org-mode . org-superstar-mode))
 
 
 
