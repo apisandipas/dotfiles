@@ -22,37 +22,37 @@
      (simple-service 'nyxt-config
                     home-files-service-type
                     (list
-                     `("config/nyxt/init.lisp"
+                     `(".config/nyxt/init.lisp"
                        ,(local-file
                          (string-append (getenv "HOME")
                                         "/dotfiles/guix/home/files/nyxt/init.lisp")))
 
-                     `("config/nyxt/keybinding.lisp"
+                     `(".config/nyxt/keybinding.lisp"
                        ,(local-file
                          (string-append (getenv "HOME")
                                         "/dotfiles/guix/home/files/nyxt/keybindings.lisp")))
 
-                     `("config/nyxt/minimal-theme.lisp"
+                     `(".config/nyxt/minimal-theme.lisp"
                        ,(local-file
                          (string-append (getenv "HOME")
                                         "/dotfiles/guix/home/files/nyxt/minimal-theme.lisp")))
 
-                     `("config/nyxt/slynk.lisp"
+                     `(".config/nyxt/slynk.lisp"
                        ,(local-file
                          (string-append (getenv "HOME")
                                         "/dotfiles/guix/home/files/nyxt/slynk.lisp")))
 
-                     `("config/nyxt/search.lisp"
+                     `(".config/nyxt/search.lisp"
                        ,(local-file
                          (string-append (getenv "HOME")
                                         "/dotfiles/guix/home/files/nyxt/search.lisp")))
 
-                     `("config/nyxt/utils.lisp"
+                     `(".config/nyxt/utils.lisp"
                        ,(local-file
                          (string-append (getenv "HOME")
                                         "/dotfiles/guix/home/files/nyxt/utils.lisp")))
 
-                     `("config/nyxt/video.lisp"
+                     `(".config/nyxt/video.lisp"
                        ,(local-file
                          (string-append (getenv "HOME")
                                         "/dotfiles/guix/home/files/nyxt/video.lisp")))
