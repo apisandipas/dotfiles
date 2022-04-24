@@ -104,8 +104,8 @@
   (message "Display config: %s"
            (string-trim (shell-command-to-string "autorandr --current"))))
 
-;; (unless (server-running-p "default")
-;;   (server-start t t))
+;; (unless (server-running-p)
+;;   (server-start))
 
 (with-eval-after-load 'exwm
   ;; Set the default number of workspaces
