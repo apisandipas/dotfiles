@@ -1,19 +1,19 @@
 (in-package :nyxt-user)
 (use-package :spinneret)
 
-(let (
-      (white "#FFFFFF")
+(let ((white "#FFFFFF")
       (dark-gray "#21242B")
-      (mlbg "#272A33")
-      (ml-highlight-bg "#3F4350")
-      (mlfg "#5F656B")
-      (green "#749362")
-      (cursor "#eeeee8")
+      (dark-gray-2 "#272A33")
+      (medium-gray "#3F4350")
+      (gray "#5F656B")
+      (light-gray "#eeeee8")
+      (orange "#D19A66" )
+      (red "##E68185")
+      (magenta "#AE7BBF")
       (blue "#619ECA")
-      (mb-separator "#AE7BBF")
-      (btn-hover "#AE7BBF")
-      (mono-font "VictorMono Nerd Font")
-      )
+      (cyan "#64C0CD")
+      (green "#98C379")
+      (mono-font "VictorMono Nerd Font"))
 
   ;; minibuffer (bg and fg colors)
   (define-configuration prompt-buffer
@@ -23,29 +23,49 @@
          (cl-css:css
           `(
             ("@font-face"
-            :font-family "VictoMono Nerd Font"
+            :font-family "VictorMono Nerd Font"
             :src "local('VictorMono Nerd Font')")
             (body
-             :border-top ,(str:concat "1px solid" mb-separator)
              :background-color ,dark-gray
              :font-family ,mono-font
+             :font-size "18px"
              :color white)
             ("#input"
              :background-color ,dark-gray
              :color white
-             :border-bottom ,(str:concat "solid 1px " mb-separator))
-            ("#cursor"
-             :background-color ,cursor
+             :border ,(str:concat "solid 0px " magenta))
+            ("#light-gray"
+             :background-color ,magenta
              :color white)
+            ("#prompt-area, #prompt-extra"
+             :background-color ,dark-gray
+             :font-weight "bold"
+             :font-size "16px"
+             :color ,blue)
             ("#prompt"
+             :border 0
+             :background-color ,dark-gray
+             :font-weight "bold"
+             :font-size "16px"
+             :color ,blue)
+            ("#prompt-modes"
+             :background-color ,dark-gray
+             :font-weight "bold"
+             :font-size "16px"
              :color ,blue)
             (".source-content"
+             :font-size "16px"
              :background-color ,dark-gray)
             (".source-content th"
              :background-color ,dark-gray)
             ("#selection"
-             :background-color ,mlbg
-             :color ,mlfg)
+             :background-color ,dark-gray-2
+             :color ,cyan)
+            (".source-name"
+             :font-size "18px"
+             :font-weight "bold"
+             :color ,orange
+             :background-color ,dark-gray)
             (.marked
              :background-color "grey40"
              :color "black")
@@ -63,31 +83,33 @@
          %slot-default%
          (cl-css:css
           `(("@font-face"
-            :font-family "VictoMono Nerd Font"
+            :font-family "VictorMono Nerd Font"
             :src "local('VictorMono Nerd Font')")
             (body
              :font-family ,(override mono-font)
-             :background-color ,(override white)
-             :color ,(override fg))
+             :background-color ,(override dark-gray)
+             :color ,(override blue))
             (hr
              :background-color ,(override white)
-             :color ,(override cursor))
+             :color ,(override light-gray))
             (.button
-             :cursor ,(override "pointer")
+             :light-gray ,(override "pointer")
              :min-width ,(override "120px")
+             :font-weight ,(override "bold")
+             :font-size ,(override "24px")
              :text-align ,(override "center")
              :background-color ,(override green)
              :padding ,(override "1.25rem")
              :margin-bottom ,(override "1rem")
              :color ,(override white))
             (".button:hover"
-             :color ,(override ml-highlight-bg)
-             :background-color ,(override btn-hover))
+             :color ,(override medium-gray)
+             :background-color ,(override magenta))
             (".button:active"
-             :color ,(override ml-highlight-bg)
+             :color ,(override medium-gray)
              :background-color ,(override blue))
             (".button:visited"
-             :color ,(override ml-highlight-bg)
+             :color ,(override medium-gray)
              :background-color ,(override blue))
             (a
              :color ,(override green))
@@ -140,8 +162,8 @@
          %slot-default%
          (cl-css:css
           `((body
-             :background-color ,(override white)
-             :color ,(override fg)
+             :background-color ,(override dark-gray)
+             :color ,(override blue)
              )
             (a :color , (override "blue"))
             ))))
@@ -170,16 +192,17 @@
                   ("*"
                    :font-family "VictorMono Nerd Font")
                   ("body"
+                   :background-color ,dark-gray
                    :font-size ,(override "18px")
                    :font-weight ,(override "bold")
                    :line-height ,(override "36px"))
                   ("#container"
                    :height ,(override "36px")
                    :grid-template-columns ,(override "2fr 3fr")
-                   :background-color ,(override mlbg))
+                   :background-color ,(override dark-gray-2))
                   ("#container-vi"
                    :grid-template-columns ,(override "100px 2fr 3fr")
-                   :background-color ,(override mlbg))
+                   :background-color ,(override dark-gray-2))
                   ("#vi-mode"
                    :padding-right ,(override "1rem"))
                   ("#vi-mode a"
@@ -187,11 +210,11 @@
                   (".vi-normal-mode"
                    :background-color ,(override blue))
                   (".vi-insert-mode"
-                   :background-color ,(override mb-separator))
+                   :background-color ,(override magenta))
                   ("#url"
-                   :background-color ,(override mlbg))
+                   :background-color ,(override dark-gray-2))
                   ("#tabs"
-                   :background-color ,(override mlbg)
+                   :background-color ,(override dark-gray-2)
                    :color ,(override blue))
                   ("a"
                    :color ,(override blue))
