@@ -10,7 +10,7 @@
 ;; (guix-emacs-autoload-packages)
 
 ;; Ideally we'd load this conditionally, but IDK it will hur tto call it in all cases.
-(load-file "~/.config/emacs/desktop.el")
+;; (load-file "~/.config/emacs/desktop.el")
 
 (let ((gc-cons-percentage .6)
       (gc-cons-threshold most-positive-fixnum)
