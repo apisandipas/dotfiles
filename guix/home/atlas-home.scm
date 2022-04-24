@@ -13,7 +13,7 @@
   #:use-module (home modules code)
   #:use-module (home modules video)
   #:use-module (home modules music)
-  #:use-module (home modules emacs)
+  ;;#:use-module (home modules emacs)
   #:use-module (home modules desktop)
   #:use-module (home modules shell))
 
@@ -30,5 +30,5 @@
   `(,@browser-services
     ;; ,@xdg-services
     ,@zsh-services
-    ,@emacs-services
+    ;;,@emacs-services
     ,@desktop-services)))

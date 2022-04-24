@@ -8,7 +8,7 @@ alias upgrade="guix package -u"
 alias hreconfig="guix home reconfigure ~/dotfiles/guix/home/atlas-home.scm"
 
 # ~ Source Zsh Configuration ~ #
-alias zsrc="source ~/dotfiles/guix/home/modules/files/zsh/zshrc"
+alias zsrc="source ~/dotfiles/guix/home/files/zsh/zshrc"
 
 # ~ Aliases ~ #
 alias cat="bat"

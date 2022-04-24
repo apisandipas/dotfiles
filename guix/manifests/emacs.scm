@@ -1,17 +1,9 @@
-(define-module (home modules emacs)
-  #:use-module (guix gexp)
-  #:use-module (gnu home)
-  #:use-module (gnu packages)
-  #:use-module (flat packages emacs)
-  #:use-module (gnu services)
-  #:use-module (gnu home services)
-  ;; from rde
-  #:use-module (gnu home-services emacs))
+;; Emacs
 
-(define-public emacs-packages
-  (map specification->package
-       (list
+(specifications->manifest
+ '(
        ;; ;; Emacs: the next batch
+
        "emacs-exwm"
        "emacs-desktop-environment"
 
@@ -95,23 +87,5 @@
        ;; "emacs-doom-themes"
 
        "emacs-modus-themes"
-       "emacs-olivetti")))
-
-(define-public emacs-services
-  (list
-   (simple-service 'emacs-init
-                   home-files-service-type
-                   `((".exwm"
-                      ,(local-file
-                        (string-append (getenv "HOME") "/dotfiles/guix/home/files/emacs/desktop.el")))))
-   (service home-emacs-service-type
-            (home-emacs-configuration
-             (package emacs-native-comp)
-             (rebuild-elisp-packages? #t)
-             (server-mode? #t)
-             (xdg-flavor? #t)
-             (elisp-packages emacs-packages)
-             (early-init-el
-              `((load-file ,(local-file "/home/bryan/dotfiles/guix/home/files/emacs/early-init.el"))))
-             (init-el
-              `((load-file ,(local-file "/home/bryan/dotfiles/guix/home/files/emacs/init.el"))))))))
+       "emacs-olivetti"
+))
