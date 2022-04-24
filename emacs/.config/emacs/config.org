@@ -1,5 +1,335 @@
 #+title: Butterscotch Emacs
 
+* Lexically Explicit
+#+begin_src
+;;; -*- lexical-binding: t; -*-
+#+end_src
+
+* Directory Configs
+I like to run a tight ship, so lets prevent emacs from littering our config directory with auto saves, history, backups and all that filth. Remeber kids: Captain Planet sais Don't pollute working directories.
+
 #+begin_src emacs-lisp
-(message "its working!")
+(defvar user-temporary-file-directory
+  (concat temporary-file-directory user-login-name "/"))
+(make-directory user-temporary-file-directory t)
+(setq backup-by-copying t)
+(setq backup-directory-alist
+      `(("." . ,user-temporary-file-directory)
+        (,tramp-file-name-regexp nil)))
+(setq auto-save-list-file-prefix
+      (concat user-temporary-file-directory ".auto-saves-"))
+(setq auto-save-file-name-transforms
+      `((".*" ,user-temporary-file-directory t)))
+#+end_src
+
+Reloate eln-cache folder
+#+begin_src emacs-lisp
+(when (boundp 'native-comp-eln-load-path)
+  (setcar native-comp-eln-load-path
+          (expand-file-name (convert-standard-filename ".local/temp/cache/eln-cache/")
+                            user-emacs-directory)))
+#+end_src
+
+In that same spirit, lets not have Emacs pollute our config files with its Customize output. Lets give it it's own dumping grounds.
+
+#+begin_src emacs-lisp
+(customize-set-variable 'custom-file
+                        (expand-file-name "custom.el" user-emacs-directory))
+#+end_src
+
+* Sane Defaults
+Lets start from a place where I won't be pulling my non-existant hair out.
+
+#+begin_src emacs-lisp
+(set-default-coding-systems 'utf-8)
+#+end_src
+
+Silence is golden.
+#+begin_src emacs-lisp
+(customize-set-variable 'visible-bell 1)
+#+end_src
+
+Speed up GC by lowering the threshold
+#+begin_src emacs-lisp
+(setq gc-cons-threshold (* 2 1000 1000))
+#+end_src
+
+Lets use y/n instead of typing out yes / no. This required Emacs 28+. Welcome to the modern age.
+#+begin_src emacs-lisp
+(if (boundp 'use-short-answers)
+    (setq use-short-answers t)
+  (advice-add 'yes-or-no-p :override #'y-or-n-p))
+#+end_src
+ Auto revert buffers and Dired
+ #+begin_src emacs-lisp
+; Revert Dired and other buffers
+(customize-set-variable 'global-auto-revert-non-file-buffers t)
+(global-auto-revert-mode 1)
+ #+end_src
+
+ Dont use GUI for prompts and dialogs
+#+begin_src emacs-lisp
+(setq use-dialog-box nil)
+#+end_src
+
+Use spaces instead of tabs. This only runs where there isnt already a mode-specific setting.
+#+begin_src emacs-lisp
+(setq-default indent-tabs-mode nil)
+#+end_src
+
+Make scrolling less stuttered
+#+begin_src emacs-lisp
+(setq auto-window-vscroll nil)
+(customize-set-variable 'fast-but-imprecise-scrolling t)
+(customize-set-variable 'scroll-conservatively 101)
+(customize-set-variable 'scroll-margin 0)
+(customize-set-variable 'scroll-preserve-screen-position t)
+#+end_src
+
+Better support for files with long lines
+#+begin_src emacs-lisp
+(setq-default bidi-paragraph-direction 'left-to-right)
+(setq-default bidi-inhibit-bpa t)
+(global-so-long-mode 1)
+#+end_src
+
+Make shebang (#!) file executable when saved
+#+begin_src emacs-lisp
+(add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
+#+end_src
+
+Enable savehist-mode for an command history
+#+begin_src emacs-lisp
+(savehist-mode 1)
+#+end_src
+
+* User Info
+#+begin_src emacs-lisp
+(setq user-full-name "Bryan Paronto"
+      user-mail-address "bryan@cablcar.digital")
+#+end_src
+
+* UI Customizations
+** File Explorer
+#+begin_src emacs-lisp
+(use-package treemacs
+  :config
+  (setq treemacs-follow-after-init t
+        treemacs-is-never-other-window t
+        treemacs-sorting 'alphanumeric-case-insensitive-asc
+        treemacs-width 33
+        treemacs-follow-mode 1))
+#+end_src
+
+TODO consider adding =treemacs-evil=
+
+** I-Candy & Themes
+#+begin_src emacs-lisp
+(use-package all-the-icons)
+(load-theme 'modus-vivendi t)
+#+end_src
+
+** Typography
+#+begin_src emacs-lisp
+(add-to-list 'default-frame-alist '(font . "Victor Mono" ))
+(set-face-attribute 'default nil :font "Victor Mono-18" :height 230)
+(set-face-attribute 'fixed-pitch nil :font "Victor Mono" :height 230)
+(set-face-attribute 'variable-pitch nil :font "Cantarell" :height 230 :weight 'regular)
+#+end_src
+
+** Modeline
+#+begin_src emacs-lisp
+(use-package doom-modeline
+  :config
+  (add-hook 'after-init-hook 'doom-modeline-init)
+  (customize-set-variable 'doom-modeline-height 32)
+  (customize-set-variable 'doom-modeline-bar-width 6)
+  (customize-set-variable 'doom-modeline-minor-modes nil)
+  (customize-set-variable 'doom-modeline-buffer-file-name-style 'truncate-except-project)
+  :init
+  (doom-modeline-mode 1))
+#+end_src
+
+** Misc UI Stuff
+#+begin_src emacs-lisp
+(set-frame-parameter (selected-frame) 'fullscreen 'maximized)
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
+(set-frame-parameter (selected-frame) 'alpha '(85 . 80))
+(set-frame-parameter (selected-frame) 'internal-border-width 24)
+(setq fill-column 120)
+(column-number-mode)
+(global-display-line-numbers-mode t)
+(setq display-line-numbers-type 'relative)
+#+end_src
+
+** Which Key?
+
+#+begin_src emacs-lisp
+;;; Help Me Obi-wan Which-Key. You're my only hope.
+(use-package which-key
+  :config
+  (setq which-key-sort-order #'which-key-key-order-alpha
+        which-key-sort-uppercase-first nil
+        which-key-add-column-padding 1
+        which-key-max-display-columns nil
+        which-key-min-display-lines 6
+        which-key-side-window-slot -10
+        which-key-idle-delay 0.3)
+  (put 'which-key-replacement-alist 'initial-value which-key-replacement-alist)
+  ;;(add-hook! 'doom-before-reload-hook
+  ;;(defun doom-reset-which-key-replacements-h ()
+  ;;(setq which-key-replacement-alist (get 'which-key-replacement-alist 'initial-value))))
+
+  ;; general improvements to which-key readability
+  (which-key-setup-side-window-bottom)
+  ;;(setq-hook! 'which-key-init-buffer-hook line-spacing 3)
+
+  (which-key-add-key-based-replacements (kbd "SPC") "<leader>")
+  (which-key-add-key-based-replacements (kbd "SPC-;") "<localleader>")
+
+  (which-key-mode))
+#+end_src
+
+
+* Evil Keybindings
+** Leader Keybindings
+#+begin_src emacs-lisp
+
+(use-package general
+  :config
+    (general-create-definer bp/leader-keys
+        :keymaps '(normal insert visual emacs)
+        :prefix "SPC"
+        :global-prefix "C-SPC")
+
+    (defun bp/edit-config-file ()
+        "Function to open the config file"
+        (interactive)
+        (message "'Edit Config' not yet implemented")
+        (find-file "~/.config/emacs/config.org"))
+
+    (defun bp/window-maximize-horizontally ()
+        "Delete all windows to the left and right of the current window."
+        (interactive)
+        (require 'windmove)
+        (save-excursion
+        (while (ignore-errors (windmove-left)) (delete-window))
+        (while (ignore-errors (windmove-right)) (delete-window))))
+
+    (defun bp/window-maximize-vertically ()
+        "Delete all windows above and below the current window."
+        (interactive)
+        (require 'windmove)
+        (save-excursion
+        (while (ignore-errors (windmove-up)) (delete-window))
+        (while (ignore-errors (windmove-down)) (delete-window))))
+
+    (bp/leader-keys
+            ;; Window Bindings
+            "w" '(:ignore t :which-key "windows")
+            "wh" '(windmove-left :which-key "evil-move-left")
+            "wl" '(windmove-right :which-key "evil-move-right")
+            "wj" '(windmove-down :which-key "evil-move-down")
+            "wk" '(windmove-left :which-key "evil-move-up")
+
+            "wH" '(evil-window-move-far-left :which-key "move-window-left")
+            "wL" '(evil-window-move-far-right :which-key "move-window-right")
+            "wJ" '(evil-window-move-very-bottom :which-key "move-window-down")
+            "wK" '(evil-window-move-very-top :which-key "move-window-up")
+
+            ;;Window resizing
+            "wo" '(evil-window-increase-width :which-key "expand-window")
+            "wo" '(evil-window-increase-width :which-key "expand-window")
+            "wc" '(evil-window-delete :which-key "close-window")
+            "wd" '(evil-window-delete :which-key "delete-window")
+
+            ;; window splitting
+            "ws" '(evil-window-split :which-key "split-window-horizonal")
+            "wv" '(evil-window-vsplit :which-key "split-window-vertical")
+
+            ;; window change redo/undo
+            "wu" '(winner-undo :which-key "undo last window change")
+            "wU" '(winner-redo :which-key "redo last window change")
+
+            "w+" '(evil-window-increase-height :which-key "window-increase-height")
+            "w-" '(evil-window-decrease-height :which-key "window-decrease-height")
+            "w=" '(balance-windows :which-key "balance-windows")
+            "w<" '(evil-window-decrease-width :which-key "window-decrease-width")
+            "w>" '(evil-window-increase-width :which-key "window-increase-width")
+
+            "wm" '(:ignore t :which-key "maximize")
+            "wmm" '(delete-other-windows :which-key "delete-other-windows")
+            "wmv" '(bp/window-maximize-vertically :which-key "maximize-window-vertically")
+            "wmh" '(bp/window-maximize-horizontally :which-key "maximize-window-horizonatally")
+
+            ;; Buffer Bindings
+            "b" '(:ignore t :which-key "buffers")
+            "bk" '(kill-this-buffer :which-key "kill-buffer")
+            "bd" '(kill-this-buffer :which-key "delete-buffer")
+            "bs" '(save-buffer :which-key "save-buffer")
+            "be" '(eval-buffer :which-key "eval-buffer")
+            "bw" '(ivy-switch-buffer-other-window :which-key "switch-buffer")
+            "bc" '(clone-indirect-buffer-other-window :which-key "cloneivy-switch-buffer-other-window-buffer")
+            "t"  '(:ignore t :which-key "toggles")
+            "te" '(treemacs :which-key "toggle file explorer")
+            ;; "tt" '(counsel-load-theme :which-key "choose theme")
+            "f"  '(:ignore t :which-key "files")
+            "fc" '(bp/edit-config-file :which-key "edit config")))
+
+#+end_src
+
+** Evil Editing Bindings
+#+begin_src emacs-lisp
+
+(use-package undo-tree
+  :config
+  (global-undo-tree-mode))
+
+(use-package evil
+  :init
+  (customize-set-variable 'evil-want-integration t)
+  (customize-set-variable 'evil-want-keybinding nil)
+  (customize-set-variable 'evil-want-C-u-scroll t)
+  (customize-set-variable 'evil-want-C-i-jump nil)
+  (customize-set-variable 'evil-respect-visual-line-mode t)
+  (customize-set-variable 'evil-undo-system 'undo-tree)
+  :config
+  (require 'evil-collection)
+  ;; Use visual line motions even outside of visual-line-mode buffers
+  (evil-global-set-key 'motion "j" 'evil-next-visual-line)
+  (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
+  (evil-collection-init)
+  (evil-mode 1)
+  ;; Make sure some mode start in Evil state
+  (dolist (mode '(custom-mode
+                  eshell-mode
+                  term-mode))
+    (add-to-list 'evil-emacs-state-modes mode))
+
+
+        (defun bp/shift-region (distance)
+                (let ((mark (mark)))
+                (save-excursion
+                (indent-rigidly (region-beginning) (region-end) distance)
+                (push-mark mark t t)
+                ;; Tell the command loop not to deactivate the mark
+                ;; for transient mark mode
+                (setq deactivate-mark nil))))
+
+        (defun bp/shift-right ()
+                (interactive)
+                (bp/shift-region 1))
+
+        (defun bp/shift-left ()
+                (interactive)
+                (bp/shift-region -1))
+
+        (define-key evil-visual-state-map (kbd ">") 'bp/shift-right)
+        (define-key evil-visual-state-map (kbd "<") 'bp/shift-left)
+        (define-key evil-visual-state-map [tab] 'bp/shift-right)
+        (define-key evil-visual-state-map [S-tab] 'bp/shift-left)
+
+  )
+
+
 #+end_src
