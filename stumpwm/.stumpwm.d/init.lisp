@@ -125,6 +125,7 @@ Press ^2Ctrl+z ? ^7for Help. ^4 Happy Hacking!^n
 (run-shell-command "picom -b --config ~/.stumpwm.d/misc/picom.conf")
 ;; ;; (run-shell-command "polybar -c ~/.stumpwm.d/misc/polybar.ini main")
 
+
 (run-shell-command "xrandr --output DP-2 --mode 1920x1080  --auto\
         --output DP-1 --rotate right --left-of DP-2 --mode 1920x1080 --auto")
 (refresh-heads)
@@ -296,7 +297,7 @@ Press ^2Ctrl+z ? ^7for Help. ^4 Happy Hacking!^n
 ;; ;; run or raise firefox
 (defcommand firefox () ()
   "Start Forefox or switch to it, if it is already running"
-  (run-or-raise "firefox" '(:class "Firefox")))
+  (run-or-raise "firefox" '(:class "firefox")))
 
 (define-key *root-map* (kbd "b") "firefox")
 

@@ -3,3 +3,5 @@ stumpwm/.stumpwm/modules
 zsh/.config/zsh/.zsh_history
 stumpwm/.stumpwm.d/modules
 guix/home/files/stumpwm/.stumpwm.d/modules/
+emacs/.config/emacs/elpa
+emacs/.config/emacs/straight
