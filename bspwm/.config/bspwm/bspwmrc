@@ -36,18 +36,12 @@ bspc config remove_disabled_monitors true
 bspc config remove_unplugged_monitors true
 bspc config merge_overlapping_monitors true
 
-xrandr --output eDP-1 --mode 1920x1080 --auto \
-	--output DVI-I-1-1 --left-of eDP-1 --rotate right --mode 1920x1080 --auto \
-	--output DVI-I-2-2 --mode 1920x1080 --left-of DVI-I-1-1 --auto
+xrandr --output DP-2 --mode 1920x1080 --auto \
+	--output DP-1 --left-of DP-2 --rotate right --mode 1920x1080 --auto
 
-if [[ $(xrandr -q | grep "DVI-I-2-2 connected") ]]; then
-	bspc monitor DVI-I-1-1 -d I II III
-	bspc monitor DVI-I-2-2 -d IV V VI VII
-	bspc monitor eDP-1 -d VIII IX X
-else
-	xrandr --output eDP-1 --mode 1920x1080
-	bspc monitor eDP-1 -d I II III IV V VI VII VIII IX X
-fi
+bspc monitor DP-1 -d I II III
+bspc monitor DP-2 -d IV V VI VII VIII IX X
+
 
 # bspc rule -a Emacs state=tiled desktop='^1'
 bspc rule -a kitty desktop='^2'
@@ -89,8 +83,8 @@ emacs --daemon --with-profile default &
 bash $HOME/.fehbg
 
 # Start Agenda Server
-killport 8989
-serve ~/org/brain/bins/agenda -p 8989 &
+# killport 8989
+# serve ~/org/brain/bins/agenda -p 8989 &
 
 # Lauch notification daemon
 dunst \

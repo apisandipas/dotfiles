@@ -73,10 +73,10 @@
 (defun update-color-map (screen)
   "Read *colors* and cache their pixel colors for use when rendering colored text."
   (labels ((map-colors (amt)
-	     (loop for c in *colors*
-		   as color = (lookup-color screen c)
-		   do (adjust-color color amt)
-		   collect (alloc-color screen color))))
+       (loop for c in *colors*
+       as color = (lookup-color screen c)
+       do (adjust-color color amt)
+       collect (alloc-color screen color))))
     (setf (screen-color-map-normal screen) (apply #'vector (map-colors 0.00)))))
 
 (update-color-map (current-screen))
@@ -125,9 +125,8 @@ Press ^2Ctrl+z ? ^7for Help. ^4 Happy Hacking!^n
 (run-shell-command "picom -b --config ~/.stumpwm.d/misc/picom.conf")
 ;; ;; (run-shell-command "polybar -c ~/.stumpwm.d/misc/polybar.ini main")
 
-(run-shell-command "xrandr --output eDP-1 --mode 1920x1080  --auto\
-        --output DVI-I-1-1 --rotate right --left-of eDP-1 --mode 1920x1080 --auto \
-        --output DVI-I-2-2 --mode 1920x1080 --left-of DVI-I-1-1  --auto")
+(run-shell-command "xrandr --output DP-2 --mode 1920x1080  --auto\
+        --output DP-1 --rotate right --left-of DP-2 --mode 1920x1080 --auto")
 (refresh-heads)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -247,13 +246,13 @@ Press ^2Ctrl+z ? ^7for Help. ^4 Happy Hacking!^n
 
 (setf *screen-mode-line-format*
       (list
-       "[%n] "                           ; groups
+       "%n"                           ; groups
        " %W "                             ; windows
        "^>"                             ; align right
        " %S "                             ; slynk status
        ;; " [MEM: %M%] "                   ; Memory
-       " [BAT: %B] "                    ; Battere
-       "%d"))                           ; Date / Time
+       ;; "%d"
+       ))                           ; Date / Time
 
 (defun enable-mode-line-everywhere ()
   (loop for screen in *screen-list* do
