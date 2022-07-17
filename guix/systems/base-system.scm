@@ -28,7 +28,8 @@
   #:use-module (flat packages emacs)
   #:use-module (nongnu packages linux)
   #:use-module (nongnu packages mozilla)
-  #:use-module (nongnu system linux-initrd))
+  #:use-module (nongnu system linux-initrd)
+  )
 
 (use-service-modules nix)
 (use-service-modules ssh)

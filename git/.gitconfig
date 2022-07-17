@@ -1,9 +1,9 @@
 [init]
   defaultBranch = main
 [user]
-	email = bryan@cablecar.digtal
+	email = bryan@cablecar.digital
 	name = Bryan Paronto
-	signingKey = null
+	signingkey = 1447CBC3E2E68A6A
 [push]
 	default = simple
 [core]
@@ -22,8 +22,8 @@
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 [gpg]
-	program = null
+	program = /usr/bin/gpg
 [commit]
-	gpgSign = false
+	gpgsign = true
 [tag]
 	forceSignAnnotated = false

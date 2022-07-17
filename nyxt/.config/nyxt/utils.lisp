@@ -20,3 +20,19 @@
   (echo "Testing emacs integration...")
   (eval-in-emacs
    `(message "hello from Nyxt!")))
+
+
+
+(define-command-global bp/org-capture ()
+  "Org-capture current page."
+  (eval-in-emacs
+   `(org-link-set-parameters
+     "nyxt"
+     :store (lambda ()
+              (org-link-store-props
+               :type "nyxt"
+               :link ,(quri:render-uri (url (current-buffer)))
+               :description ,(title (current-buffer)))))
+   `(org-capture nil "w"))
+  (echo "Note stored!"))
+

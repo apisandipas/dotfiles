@@ -13,7 +13,7 @@
       (blue "#619ECA")
       (cyan "#64C0CD")
       (green "#98C379")
-      (mono-font "VictorMono Nerd Font"))
+      (mono-font "Iosevka"))
 
   ;; minibuffer (bg and fg colors)
   (define-configuration prompt-buffer
@@ -23,8 +23,8 @@
          (cl-css:css
           `(
             ("@font-face"
-            :font-family "VictorMono Nerd Font"
-            :src "local('VictorMono Nerd Font')")
+            :font-family "Iosevka"
+            :src "local('Iosevka')")
             (body
              :background-color ,dark-gray
              :font-family ,mono-font
@@ -83,12 +83,12 @@
          %slot-default%
          (cl-css:css
           `(("@font-face"
-            :font-family "VictorMono Nerd Font"
-            :src "local('VictorMono Nerd Font')")
+             :font-family ,(override mono-font)
+            :src "local('Iosevka')")
             (body
              :font-family ,(override mono-font)
              :background-color ,(override dark-gray)
-             :color ,(override blue))
+             :color ,(override white))
             (hr
              :background-color ,(override white)
              :color ,(override light-gray))
@@ -113,24 +113,24 @@
              :background-color ,(override blue))
             (a
              :color ,(override green))
-            (blue
+            (h1
              :font-family ,(override mono-font)
-             :color ,(override blue))
+             :color ,(override green))
             (h2
              :font-family ,(override mono-font)
-             :color ,(override blue))
+             :color ,(override magenta))
             (h3
              :font-family ,(override mono-font)
-             :color ,(override blue))
+             :color ,(override orange))
             (h4
              :font-family ,(override mono-font)
-             :color ,(override blue))
+             :color ,(override cyan))
             (h5
              :font-family ,(override mono-font)
-             :color ,(override blue))
+             :color ,(override red))
             (h6
              :font-family ,(override mono-font)
-             :color ,(override blue))))))))
+             :color ,(override green))))))))
 
   ;; status bar
 
@@ -187,10 +187,10 @@
                (cl-css:css
                 `(
                   ("@font-face"
-                   :font-family "VictoMono Nerd Font"
-                   :src "local('VictorMono Nerd Font')")
+                   :font-family ,(override mono-font)
+                   :src "local('Iosevka')")
                   ("*"
-                   :font-family "VictorMono Nerd Font")
+                   :font-family ,(override mono-font))
                   ("body"
                    :background-color ,dark-gray
                    :font-size ,(override "18px")

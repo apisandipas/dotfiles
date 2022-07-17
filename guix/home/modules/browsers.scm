@@ -11,7 +11,6 @@
     (list
     ;; TODO: Add qutebrowser config
     "qutebrowser"
-    ;; TODO: add Nyxt config
     "nyxt"
     "firefox"
     "ungoogled-chromium"

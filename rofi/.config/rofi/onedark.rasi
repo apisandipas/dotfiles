@@ -26,18 +26,18 @@
   spacing: 10px;
   background-color: transparent;
 
-  font: "VictorMono Nerd Font 18";
+  font: "Iosevka 18";
   text-color: @text;
 }
 
 window {
   transparency: "real";
-  fullscreen: true;
+  fullscreen: false;
   background-color: #282c34dd;
 }
 
 mainbox {
-  padding: 25% 25%;
+  padding: 24px 24px;
 }
 
 inputbar {

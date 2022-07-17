@@ -56,7 +56,7 @@
   margin-left        = 1
   module-margin-left = 0
 
-  font-0 = Victor Mono:style=Medium,Regular
+  font-0 = Iosevka:style=Medium,Regular
   font-1 = FontAwesome:style=Regular
   font-2 = Material Icons:style=Regular
 
@@ -118,7 +118,7 @@ click-left = ~/.config/rofi/scripts/powermenu.sh &
   format-padding = 2.5
 
 [module/xwindow]
-	y-offset      = 10
+	y-offset      = 16
 	type          = internal/xwindow
 	format        = <label>
 	label         = %title:0:30:%
@@ -206,7 +206,7 @@ click-left = ~/.config/rofi/scripts/powermenu.sh &
   format-margin  = 1
   label-foreground = ${colors.yellow}
 
-  label = %gb_used%/%gb_total%
+  label = %percentage_used%%
 
   ramp-used-0 = 
   ramp-used-0-foreground = ${colors.green}

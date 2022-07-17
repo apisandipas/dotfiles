@@ -13,12 +13,15 @@
  (file-systems
   (cons* (file-system
           (mount-point "/boot/efi")
-          (device (file-system-label "efi_part"))
+          (device
+           (file-system-label "efi_part")
+           )
           (type "vfat"))
          (file-system
           (mount-point "/")
           (device
-           (file-system-label "root_partition"))
+           (file-system-label "root_partition")
+           )
           (type "ext4"))
          (file-system
           (mount-point "/home")

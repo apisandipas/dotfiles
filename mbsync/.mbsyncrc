@@ -53,11 +53,7 @@ Channel bparonto@gmail-drafts
 IMAPAccount bryan@cablecar
 Host imap.gmail.com
 User bryan@cablecar.digital
-<<<<<<< HEAD
-PassCmd "gpg --quiet --for-your-eyes-only --no-tty --decrypt \~/.ssh\/.mbsync-pw-bryan@cablecar.gpg"
-=======
 PassCmd "gpg --quiet --for-your-eyes-only --no-tty --decrypt \~/.ssh\/mbsync-pw-bryan@cablecar.gpg"
->>>>>>> 0adece0 (adds exwm config to guix)
 AuthMechs LOGIN
 SSLType IMAPS
 CertificateFile ~/.ssh/mu4e.crt

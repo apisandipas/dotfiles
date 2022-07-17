@@ -1,0 +1,94 @@
+(undo-tree-save-format-version . 1)
+"bf76ed80a36fcd2d92de14cd1feb7360832b5894"
+[nil nil nil nil (25260 63840 912733 196000) 0 nil]
+([nil nil ((1838 . 2081) (#("
+" 0 1 (fontified nil)) . -1838) (1759 . 1839) (#(" " 0 1 (fontified nil)) . 1759) (1486 . 1760) (t 25260 63325 33056 388000)) nil (25260 63840 912727 896000) 0 nil])
+([nil nil ((1841 . 2080) (#("(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )" 0 239 (fontified nil)) . -1841) (1838 . 1840) (#("
+" 0 1 (fontified nil)) . -1838) (1759 . 1839) (#(" " 0 1 (fontified nil)) . 1759) (1486 . 1760) (#("(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(evil undo-tree general which-key all-the-icons treemacs use-package exwm)))" 0 354 (fontified nil)) . -1486) (t 25260 63840 909735 957000)) nil (25260 63914 673910 633000) 0 nil])
+([nil nil ((1163 . 1164) (t 25260 63914 673071 133000)) nil (25260 63938 496278 606000) 0 nil])
+([nil nil ((#("-" 0 1 (fontified t)) . -1155) (undo-tree-id0 . -1) (undo-tree-id1 . -1) (#("d" 0 1 (fontified t)) . -1156) (undo-tree-id2 . -1) (undo-tree-id3 . -1) (#("e" 0 1 (fontified t)) . -1157) (undo-tree-id4 . -1) (undo-tree-id5 . -1) (#("f" 0 1 (fontified t)) . -1158) (undo-tree-id6 . -1) (undo-tree-id7 . -1) (#("a" 0 1 (fontified t)) . -1159) (undo-tree-id8 . -1) (undo-tree-id9 . -1) (#("u" 0 1 (fontified t)) . -1160) (undo-tree-id10 . -1) (undo-tree-id11 . -1) (#("l" 0 1 (fontified t)) . -1161) (undo-tree-id12 . -1) (undo-tree-id13 . -1) (#("t" 0 1 (face font-lock-keyword-face fontified t)) . -1162) (undo-tree-id14 . -1) (undo-tree-id15 . -1) (#("i" 0 1 (fontified t)) . -1163) (undo-tree-id16 . -1) 1164) nil (25260 63938 496276 506000) 0 nil])
+([nil nil ((#("
+" 0 1 (fontified t)) . -1155) (undo-tree-id17 . -1) (undo-tree-id18 . -1) (undo-tree-id19 . -1) (#(" " 0 1 (fontified t)) . -1156) (undo-tree-id20 . -1) (undo-tree-id21 . -1) (#(" " 0 1 (fontified t)) . -1157) (undo-tree-id22 . -1) (undo-tree-id23 . -1) 1158 (t 25260 63938 493071 729000)) nil (25260 63956 752465 30000) 0 nil])
+([nil nil ((1830 . 2069) (#("(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )" 0 239 (fontified nil)) . -1830) (1827 . 1829) (#("
+" 0 1 (fontified nil)) . -1827) (1748 . 1828) (#(" " 0 1 (fontified nil)) . 1748) (1475 . 1749) (#("(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(evil undo-tree general which-key all-the-icons treemacs use-package exwm)))" 0 354 (fontified nil)) . -1475) (t 25260 63956 749738 853000)) nil (25260 64083 130212 859000) 0 nil])
+([nil nil ((1187 . 1189) (#("  " 0 2 (fontified nil)) . 1186) (undo-tree-id13 . -2) (1186 . 1189) (#("  " 0 2 (fontified nil)) . 1185) (1185 . 1187) (1185 . 1186) (t 25260 64083 129742 14000)) nil (25260 64345 221493 315000) 0 nil])
+([nil nil ((nil rear-nonsticky nil 1701 . 1702) (nil fontified nil 1189 . 1702) (1189 . 1702)) nil (25260 64345 221492 155000) 0 nil])
+([nil nil ((610 . 612)) nil (25260 64345 221491 755000) 0 nil])
+([nil nil ((#("xV  (require 'package)
+  (setq-default
+   load-prefer-newer t
+   package-enable-at-startup nil)
+  (add-to-list 'package-archives '(\"melpa\" . \"http://melpa.org/packages/\") t)
+  (add-to-list 'package-archives '(\"org\" . \"http://orgmode.org/elpa/\") t)
+  (package-initialize)
+
+  ;; Install use-package if for some reason it isnt found on start up,
+  ;; this will prevent emacs from buggin out if for some reason guix is buggin out
+  (unless (package-installed-p 'use-package)
+    (package-refresh-contents)
+    (package-install 'use-package t))
+  (setq use-package-always-ensure t)
+" 0 2 (fontified t) 2 5 (fontified t) 5 12 (face font-lock-keyword-face fontified t) 12 14 (fontified t) 14 21 (face font-lock-constant-face fontified t) 21 23 (fontified t) 23 26 (fontified t) 26 38 (face font-lock-keyword-face fontified t) 38 131 (fontified t) 131 138 (face font-lock-string-face fontified t) 138 141 (fontified t) 141 169 (face font-lock-string-face fontified t) 169 209 (fontified t) 209 214 (face font-lock-string-face fontified t) 214 217 (fontified t) 217 243 (face font-lock-string-face fontified t) 243 274 (fontified t) 274 277 (face font-lock-comment-delimiter-face fontified t) 277 343 (face font-lock-comment-face fontified t) 343 345 (fontified t) 345 348 (face font-lock-comment-delimiter-face fontified t) 348 426 (face font-lock-comment-face fontified t) 426 429 (fontified t) 429 435 (face font-lock-keyword-face fontified t) 435 543 (fontified t) 543 547 (face font-lock-keyword-face fontified t) 547 577 (fontified t)) . 610) (undo-tree-id5 . -577) (undo-tree-id6 . -577) (undo-tree-id7 . -577) (undo-tree-id8 . -577) (undo-tree-id9 . -577) (undo-tree-id10 . -577) (undo-tree-id11 . -577) (undo-tree-id12 . -577)) nil (25260 64345 221491 295000) 0 nil])
+([nil nil ((#("
+" 0 1 (fontified t)) . 610) (#("
+" 0 1 (fontified t)) . 610)) nil (25260 64345 221487 435000) 0 nil])
+([nil nil ((#("  ;; Set repositories" 0 2 (fontified t) 2 5 (face font-lock-comment-delimiter-face fontified t) 5 21 (face font-lock-comment-face fontified t)) . 588) (undo-tree-id2 . -21) (undo-tree-id3 . -21) (undo-tree-id4 . -21)) nil (25260 64345 221486 885000) 0 nil])
+([nil nil ((nil rear-nonsticky nil 669 . 670) (nil fontified nil 588 . 670) (588 . 670)) nil (25260 64345 221484 465000) 0 nil])
+([nil nil ((587 . 590)) nil (25260 64345 221484 35000) 0 nil])
+([nil nil ((676 . 678) (637 . 639) (673 . 674)) nil (25260 64345 221483 555000) 0 nil])
+([nil nil ((#(" " 0 1 (fontified t)) . -637) (undo-tree-id0 . -1) (#(" " 0 1 (fontified t)) . -638) (undo-tree-id1 . -1) 639) nil (25260 64345 221481 115000) 0 nil])
+([nil nil ((nil rear-nonsticky nil 1302 . 1303) (nil fontified nil 1245 . 1303) (1245 . 1303) (t 25260 64345 219748 567000)) nil (25260 64417 856912 456000) 0 nil])
+([nil nil ((#(" " 0 1 (fontified t)) . -1243) (undo-tree-id26 . -1) (undo-tree-id27 . -1) (undo-tree-id28 . -1) (undo-tree-id29 . -1) (#(" " 0 1 (fontified t)) . -1244) (undo-tree-id30 . -1) (undo-tree-id31 . -1) (undo-tree-id32 . -1) (undo-tree-id33 . -1) 1245) nil (25260 64417 856911 766000) 0 nil])
+([nil nil ((#(";;(load-file \"~/.config/emacs/exwm/desktop.el\") " 0 2 (face font-lock-comment-delimiter-face fontified t) 2 48 (face font-lock-comment-face fontified t)) . 1193) (undo-tree-id23 . -48) (undo-tree-id24 . -48) (undo-tree-id25 . -48)) nil (25260 64417 856908 646000) 0 nil])
+([nil nil ((#("
+" 0 1 (fontified t)) . 1193)) nil (25260 64417 856906 896000) 0 nil])
+([nil nil ((1252 . 1253)) nil (25260 64417 856906 676000) 0 nil])
+([nil nil ((#(";; 
+
+;; I'm not positive we need to call this manually
+;; (guix-emacs-autoload-packages)" 0 3 (face font-lock-comment-delimiter-face fontified t) 3 4 (face font-lock-comment-face fontified t) 4 5 (fontified t) 5 8 (face font-lock-comment-delimiter-face fontified t) 8 55 (face font-lock-comment-face fontified t) 55 58 (face font-lock-comment-delimiter-face fontified t) 58 88 (face font-lock-comment-face fontified t)) . 83) (undo-tree-id20 . -88) (undo-tree-id21 . -88) (undo-tree-id22 . -88)) nil (25260 64417 856906 256000) 0 nil])
+([nil nil ((#("
+" 0 1 (fontified t)) . 83)) nil (25260 64417 856904 166000) 0 nil])
+([nil nil ((82 . 86)) nil (25260 64417 856903 956000) 0 nil])
+([nil nil ((#(" " 0 1 (fontified t)) . -1273) (undo-tree-id16 . -1) (undo-tree-id17 . -1) (#(" " 0 1 (fontified t)) . -1274) (undo-tree-id18 . -1) (undo-tree-id19 . -1) 1275) nil (25260 64417 856903 426000) 0 nil])
+([nil nil ((#(" " 0 1 (fontified t)) . -1328) (undo-tree-id14 . -1) (#(" " 0 1 (fontified t)) . -1329) (undo-tree-id15 . -1) 1330) nil (25260 64417 856899 646000) 0 nil])
+([nil nil ((nil rear-nonsticky nil 1301 . 1302) (nil fontified nil 1168 . 1302) (1168 . 1302) (t 25260 64417 856417 51000)) nil (25260 64497 543459 418000) 0 nil])
+([nil nil ((1167 . 1168)) nil (25260 64497 543458 958000) 0 nil])
+([nil nil ((#("           " 0 11 (fontified nil)) . -1248) (1303 . 1304)) nil (25260 64497 543456 28000) 0 nil])
+([nil current ((1985 . 2224) (#("(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )" 0 239 (fontified nil)) . -1985) (1982 . 1984) (#("
+" 0 1 (fontified nil)) . -1982) (1903 . 1983) (#(" " 0 1 (fontified nil)) . 1903) (1873 . 1904) (#("
+" 0 1 (fontified nil)) . -1873) (1792 . 1874) (#(" " 0 1 (fontified nil)) . 1792) (1526 . 1793) (#("(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(evil undo-tree general which-key all-the-icons treemacs use-package exwm)))" 0 354 (fontified nil)) . -1526) (t 25260 64497 543085 711000)) nil (25262 64805 991985 79000) 0 nil])
+nil

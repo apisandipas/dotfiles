@@ -1,7 +1,11 @@
 
-(("custom" . ((user-emacs-directory . "~/.emacs.default")
+(("custom" . ((user-emacs-directory . "~/.dotfiles/emacs/.config/emacs")
               (server-name . "custom")))
+ ("nano" . ((user-emacs-directory . "~/.emacs.nano")
+            (server-name . "nano")))
  ("default" . ((user-emacs-directory . "~/.emacs.doom")
                (server-name . "default")))
+ ("rational" . ((user-emacs-directory . "~/.emacs.rational")
+               (server-name . "rational")))
  ("atlas" . ((user-emacs-directory . "~/.dotfiles/guix/home/files/emacs")
              (server-name . "atlas"))))

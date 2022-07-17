@@ -1,5 +1,5 @@
 configuration {
-	font:							"VictorMono Nerd Font 10";
+	font:							"Iosekva Mono";
   show-icons:                     true;
 	icon-theme: 					"Papirus";
   display-drun: 					"";

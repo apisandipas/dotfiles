@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+emacsclient -s default -e '(run-or-raise-or-dismiss "spotify" "Spotify")' &

@@ -24,7 +24,7 @@ bspc config focused_border_color "$GREEN"
 # bspc config normal_border_color "$BACKGROUND"
 bspc config active_border_color "$MAGENTA"
 bspc config presel_feedback_color "$YELLOW"
-bspc config border_width 4
+bspc config border_width 8
 bspc config border_radius 24
 bspc config window_gap 36
 bspc config window_border_radius 30
@@ -37,21 +37,22 @@ bspc config remove_unplugged_monitors true
 bspc config merge_overlapping_monitors true
 
 xrandr --output DP-2 --mode 1920x1080 --auto \
-	--output DP-1 --left-of DP-2 --rotate right --mode 1920x1080 --auto
+	--output DP-1 --left-of DP-2 --rotate right --mode 1920x1080 --auto \
+	--output HDMI-1 --right-of DP-2 --rotate left --mode 1920x1080 --auto
 
 bspc monitor DP-1 -d I II III
-bspc monitor DP-2 -d IV V VI VII VIII IX X
+bspc monitor DP-2 -d IV V VI VII
+bspc monitor HDMI-1 -d VIII IX X
 
-
-bspc rule -a Emacs state=tiled desktop='^5'
+bspc rule -a Emacs state=tiled desktop='^4'
 bspc rule -a kitty desktop='^2'
 # bspc rule -a obsidian desktop='^3'
 bspc rule -a Thunderbird desktop='^4'
 bspc rule -a Slack desktop='^4'
 bspc rule -a Zoom desktop='^7'
-bspc rule -a obs desktop='^3'
+bspc rule -a obs desktop='^1'
 bspc rule -a Brave-browser desktop='^6'
-bspc rule -a firefox desktop='^0'
+bspc rule -a firefox desktop='^6'
 bspc rule -a GitKraken desktop='^7'
 bspc rule -a spotify desktop='^8'
 bspc rule -a dropbox state=floating manage=off
@@ -64,7 +65,10 @@ killall polybar dropbox
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 # Fire up on start/restart
 dropbox &
+
+pgrep -x obs >/dev/null || obs &
 pgrep -x sxhkd >/dev/null || sxhkd &
+# pgrep -x companion >/dev/null || companion &
 pgrep -x kitty >/dev/null || kitty &
 pgrep -x firefox >/dev/null || firefox &
 pgrep -x pasystray >/dev/null || pasystray &
@@ -76,8 +80,8 @@ pgrep -x fix-touchscreen >/dev/null || fix-touchscreen &
 pgrep -x fix_xcursor >/dev/null || fix_xcursor &
 
 # pgrep -x emacs >/dev/null ||
-killall emacs
-emacs --daemon --with-profile default &
+#killall emacs
+#emacs --daemon --with-profile default &
 # pgrep -c emacsclient >/dev/null || emacsclient -c -s default -a emacs &
 
 # Restore wallpaper

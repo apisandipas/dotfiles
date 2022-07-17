@@ -1,7 +1,7 @@
 [global]
     frame_color = "#545862"
     separator_color = "#abb2bf"
-    font = "VictorMono Nerd Font 14"
+    font = "Iosevka 14"
     width = 420
     min_icon_size = 84
 

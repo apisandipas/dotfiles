@@ -45,7 +45,7 @@
     ((session-restore-prompt :never-restore)
      (external-editor-program
       (list "emacsclient" "-cn" "-a" "" "-F"
-            "((font . \"Victor Mono\") (vertical-scroll-bars)(tool-bar-lines) (menu-bar-lines))"))))
+            "((font . \"Iosevka\") (vertical-scroll-bars)(tool-bar-lines) (menu-bar-lines))"))))
 
 ;; Define a custom key map for our own function bindings.
 ;; (defvar *bp-keymap* (make-keymap "bp-map"))

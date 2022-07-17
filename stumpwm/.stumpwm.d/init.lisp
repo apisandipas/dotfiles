@@ -29,7 +29,7 @@
 
 ;; ;; Set fonts
 (xft:cache-fonts)
-(set-font (make-instance 'xft:font :family "VictorMono Nerd Font" :subfamily "Bold" :size 18))
+(set-font (make-instance 'xft:font :family "Iosevka Nerd Font" :subfamily "Bold" :size 18))
 
 ;; ;; Change the prefix key to Super-d
 (set-prefix-key (kbd "C-z"))
@@ -108,8 +108,8 @@
 (setf *message-window-padding* 6)
 ;;; Gaps
 ;; ;;; This Tends to crash everything. Lets learn to live without it.
-(setf swm-gaps:*outer-gaps-size* 16
-      swm-gaps:*inner-gaps-size* 16
+(setf swm-gaps:*outer-gaps-size* 32
+      swm-gaps:*inner-gaps-size* 32
       swm-gaps:*head-gaps-size* 0)
 
 (when *initializing*
@@ -127,7 +127,8 @@ Press ^2Ctrl+z ? ^7for Help. ^4 Happy Hacking!^n
 
 
 (run-shell-command "xrandr --output DP-2 --mode 1920x1080  --auto\
-        --output DP-1 --rotate right --left-of DP-2 --mode 1920x1080 --auto")
+        --output DP-1 --rotate right --left-of DP-2 --mode 1920x1080 --auto\
+        --output HDMI-1 --rotate left --right-of DP-2 --mode 1920x1080 --auto")
 (refresh-heads)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

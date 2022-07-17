@@ -26,8 +26,6 @@
           (expand-file-name (convert-standard-filename ".local/temp/cache/eln-cache/")
                             user-emacs-directory)))
 
-;; Don't use package.el, we'll use straight.el instead
-(setq package-enable-at-startup nil)
 
 ;; Remove some unneeded UI elements (the user can turn back on anything they wish)
 (setq inhibit-startup-message t)
