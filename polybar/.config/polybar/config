@@ -13,7 +13,7 @@
 
 
 [colors]
-  bg = #272A39
+  bg = ${xrdb:background:#22252E}
   fg = ${xrdb:foreground}
   transparent = #aa292D3E
   red =${xrdb:color1:#f7768e}
@@ -56,14 +56,15 @@
   margin-left        = 1
   module-margin-left = 0
 
-  font-0 = Iosevka:style=Medium,Regular
-  font-1 = FontAwesome:style=Regular
-  font-2 = Material Icons:style=Regular
+  font-0 = Iosevka Term:style=Medium,Regular
+  font-1 = Roboto Mono Nerd Font:style=Medium,Regular
+  font-2 = FontAwesome:style=Regular
+  font-3 = Material Icons:style=Regular
 
   modules-left  = sysmenu workspaces
   ;; xwindow
   modules-center = xwindow
-  modules-right = cpu memory battery date
+  modules-right = cpu-temp cpu memory battery date
 
   fixed-center = true
 
@@ -81,6 +82,16 @@ content-foreground = ${colors.cyan}
 click-left = ~/.config/rofi/scripts/powermenu.sh &
 
 
+[module/cpu-temp]
+  type = custom/script
+  exec = ~/.dotfiles/bin/get-cpu-temp
+  interval = 1
+  format = <label>
+  ; format-background = #999
+  format-foreground = ${colors.cyan}
+	format-underline = ${colors.cyan}
+  format-margin = 2
+  label =    %output%
 
 [module/workspaces]
   type = internal/bspwm

@@ -5,7 +5,7 @@
       (dark-gray "#21242B")
       (dark-gray-2 "#272A33")
       (medium-gray "#3F4350")
-      (gray "#5F656B")
+      (gray "#5F6565")
       (light-gray "#eeeee8")
       (orange "#D19A66" )
       (red "##E68185")

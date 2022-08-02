@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+curl -Ss wttr.in/Chicago?format="%c+%f" | sed -e "s/\s+/\ /g"

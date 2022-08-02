@@ -1,5 +1,6 @@
 (in-package :nyxt-user)
 
+
 (defvar *my-buffer-keymap* (make-keymap "*my-buffer-keymap*"))
 (define-key *my-buffer-keymap*
   "k" 'delete-current-buffer
@@ -32,6 +33,7 @@
   "L" 'set-url-new-buffer
   "n" 'make-buffer-focus
   )
+
 
 (defvar *my-follow-keymap* (make-keymap "*my-follow-keymap*"))
 (define-key *my-follow-keymap*
@@ -98,4 +100,3 @@
 
 (define-configuration (buffer web-buffer)
   ((default-modes (append '(my-global-mode my-states-mode vi-normal-mode) %slot-default%))))
-

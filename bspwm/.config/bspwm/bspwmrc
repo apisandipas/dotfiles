@@ -36,13 +36,13 @@ bspc config remove_disabled_monitors true
 bspc config remove_unplugged_monitors true
 bspc config merge_overlapping_monitors true
 
-xrandr --output DP-2 --mode 1920x1080 --auto \
-	--output DP-1 --left-of DP-2 --rotate right --mode 1920x1080 --auto \
-	--output HDMI-1 --right-of DP-2 --rotate left --mode 1920x1080 --auto
+xrandr --output DP-3 --mode 1920x1080 --auto \
+	--output DP-1 --left-of DP-3 --rotate right --mode 1920x1080 --auto \
+	--output DP-2 --right-of DP-3 --rotate left --mode 1920x1080 --auto
 
 bspc monitor DP-1 -d I II III
-bspc monitor DP-2 -d IV V VI VII
-bspc monitor HDMI-1 -d VIII IX X
+bspc monitor DP-3 -d IV V VI VII
+bspc monitor DP-2 -d VIII IX X
 
 bspc rule -a Emacs state=tiled desktop='^4'
 bspc rule -a kitty desktop='^2'
@@ -81,7 +81,7 @@ pgrep -x fix_xcursor >/dev/null || fix_xcursor &
 
 # pgrep -x emacs >/dev/null ||
 #killall emacs
-#emacs --daemon --with-profile default &
+emacs --daemon --with-profile default &
 # pgrep -c emacsclient >/dev/null || emacsclient -c -s default -a emacs &
 
 # Restore wallpaper
@@ -93,7 +93,7 @@ bash $HOME/.fehbg
 
 # Lauch notification daemon
 dunst \
-	-geom "380x50-10+38" -frame_width "1" -font "Victor Mono Medium 14" \
+	-geom "380x50-10+38" -frame_width "1" -font "Iosevka Term Medium 14" \
 	-lb "$BACKGROUND" -lf "$FOREGROUND" -lfr "$BLUE" \
 	-nb "$BACKGROUND" -nf "$FOREGROUND" -nfr "$BLUE" \
 	-cb "$BACKGROUND" -cf "$RED" -cfr "$RED" &

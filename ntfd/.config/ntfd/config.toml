@@ -1,0 +1,33 @@
+# OpenWeatherMap configuration
+[openweathermap]
+# Enable / disable OpenWeatherMap integration
+enabled = false
+# Register at https://openweathermap.org to get your API key
+# Use one of the following forms to set your API key:
+# api_key = "file:~/your_folder/some-key.txt"   # Read from a file
+# api_key = "env:OWM_API_KEY"                   # Read from an environment variable
+# api_key = "PLAINTEXT_VALUE"                   # Read the value directly
+api_key = "file:~/.config/ntfd/openweathermap.txt"
+# This is for Montreal, find your city at https://openweathermap.org
+# The id will be the last part of the URL
+city_id = "6077243"
+# How long weather notifications should stay up (in seconds)
+notification_timeout = 10
+# When notifications are sent, the notification title comes from OpenWeatherMap
+# You can customize the message body, or use "" to leave it blank
+notification_body = "Expected within the next 3 hours"
+# How often should we fetch weather data (in seconds)
+# Will default to 10 min for values under 10 min (600 seconds)
+sync_frequency = 1800 # 30 minutes
+# Output format, using Handlebars syntax, meaning variables should be used like {{ this }}
+# Available tokens are:
+# - temp_celsius
+# - temp_kelvin
+# - temp_fahrenheit
+# - temp_icon
+# - trend
+# - forecast_celsius
+# - forecast_kelvin
+# - forecast_fahrenheit
+# - forecast_icon
+display = "{{ temp_icon }} {{ temp_celsius }}°C {{ trend }} {{ forecast_icon }} {{ forecast_celsius }}°C"

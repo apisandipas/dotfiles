@@ -25,7 +25,7 @@ zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
 # fi
 
 if type_exists "tmux"; then
-	if [ "$TMUX" = "" ]; then tmux; fi
+	if [ "$TMUX" = "" ]; then tmux attach -t 0 || tmux new; fi
 fi
 
 ## History file configuration

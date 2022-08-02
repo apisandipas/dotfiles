@@ -1,5 +1,6 @@
 ;; ;;; -*-  mode: lisp; -*-
 (in-package :stumpwm)
+
 (load "~/quicklisp/setup.lisp")
 ;; ;;  Set contrib module directory
 (set-module-dir "~/.stumpwm.d/modules/")
@@ -82,7 +83,8 @@
 (update-color-map (current-screen))
 
 ;; ;;; General Settings
-(setf *window-format* "[%m] %n %s%35t"
+(setf *window-format* "%n %s%35t"
+      *window-name-source* :class
       *mode-line-timeout* 4
       *mode-line-pad-y* 8
       *message-window-gravity* :center
@@ -106,8 +108,8 @@
 ;; ;; message/input bar settings
 (set-msg-border-width 3)
 (setf *message-window-padding* 6)
+;;;
 ;;; Gaps
-;; ;;; This Tends to crash everything. Lets learn to live without it.
 (setf swm-gaps:*outer-gaps-size* 32
       swm-gaps:*inner-gaps-size* 32
       swm-gaps:*head-gaps-size* 0)
@@ -126,9 +128,9 @@ Press ^2Ctrl+z ? ^7for Help. ^4 Happy Hacking!^n
 ;; ;; (run-shell-command "polybar -c ~/.stumpwm.d/misc/polybar.ini main")
 
 
-(run-shell-command "xrandr --output DP-2 --mode 1920x1080  --auto\
-        --output DP-1 --rotate right --left-of DP-2 --mode 1920x1080 --auto\
-        --output HDMI-1 --rotate left --right-of DP-2 --mode 1920x1080 --auto")
+(run-shell-command "xrandr --output DP-3 --mode 1920x1080  --auto\
+        --output DP-1 --rotate right --left-of DP-3 --mode 1920x1080 --auto\
+        --output DP-2 --rotate left --right-of DP-3 --mode 1920x1080 --auto")
 (refresh-heads)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -136,24 +138,24 @@ Press ^2Ctrl+z ? ^7for Help. ^4 Happy Hacking!^n
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Brightness
-(when *initializing*
-  (defconstant backlightfile "/sys/class/backlight/intel_backlight/brightness"))
+;; (when *initializing*
+;;   (defconstant backlightfile "/sys/class/backlight/intel_backlight/brightness"))
 
 ;; Xbacklight broak so I made this
-(defcommand brighten (val) ((:number "Change brightness by: "))
-  (with-open-file (fp backlightfile
-                      :if-exists :overwrite
-                      :direction :io)
-                      (write-sequence (write-to-string (+ (parse-integer (read-line fp nil)) val))
-                                      fp)))
+;; (defcommand brighten (val) ((:number "Change brightness by: "))
+;;   (with-open-file (fp backlightfile
+;;                       :if-exists :overwrite
+;;                       :direction :io)
+;;                       (write-sequence (write-to-string (+ (parse-integer (read-line fp nil)) val))
+;;                                       fp)))
 
-(let ((bdown "brighten -1000")
-      (bup   "brighten  1000")
-      (m *top-map*))
-  (define-key m (kbd "s-C-s")                 bdown)
-  (define-key m (kbd "XF86MonBrightnessDown") bdown)
-  (define-key m (kbd "s-C-d")                 bup)
-  (define-key m (kbd "XF86MonBrightnessUp")   bup))
+;; (let ((bdown "brighten -1000")
+;;       (bup   "brighten  1000")
+;;       (m *top-map*))
+;;   (define-key m (kbd "s-C-s")                 bdown)
+;;   (define-key m (kbd "XF86MonBrightnessDown") bdown)
+;;   (define-key m (kbd "s-C-d")                 bup)
+;;   (define-key m (kbd "XF86MonBrightnessUp")   bup))
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ;;; Slynk settings                                                          ;;;
@@ -192,7 +194,7 @@ Press ^2Ctrl+z ? ^7for Help. ^4 Happy Hacking!^n
 
 (toggle-slynk-server)
 
-(define-key *top-map* (kbd "s-s") "toggle-slynk")
+(define-key *top-map* (kbd "s-s") "toggle-slynk-server")
 
 ;; modeline status
 (defun get-slynk-status ()
@@ -252,8 +254,8 @@ Press ^2Ctrl+z ? ^7for Help. ^4 Happy Hacking!^n
        " %W "                             ; windows
        "^>"                             ; align right
        " %S "                             ; slynk status
-       ;; " [MEM: %M%] "                   ; Memory
-       ;; "%d"
+       ;; " [MEM: %M%] "t                  ; Memory
+       "%d"
        ))                           ; Date / Time
 
 (defun enable-mode-line-everywhere ()
@@ -297,7 +299,7 @@ Press ^2Ctrl+z ? ^7for Help. ^4 Happy Hacking!^n
 ;; ;;others
 ;; ;; run or raise firefox
 (defcommand firefox () ()
-  "Start Forefox or switch to it, if it is already running"
+  "Start Firefox or switch to it, if it is already running"
   (run-or-raise "firefox" '(:class "firefox")))
 
 (define-key *root-map* (kbd "b") "firefox")
@@ -386,15 +388,43 @@ running in the current group"
           (eval mv))
         (eval mv))))
 
-(defcommand bp/move (dir) ((:direction "Enter direction: "))
+(defcommand bp/move-focus (dir) ((:direction "Enter direction: "))
   (when dir
     (better-move-focus (string-upcase dir))))
 
-(define-key *top-map* (kbd "s-h") "bp/move left")
-(define-key *top-map* (kbd "s-j") "bp/move down")
-(define-key *top-map* (kbd "s-k") "bp/move up")
-(define-key *top-map* (kbd "s-l") "bp/move right")
+(define-key *top-map* (kbd "s-h") "bp/move-focus left")
+(define-key *top-map* (kbd "s-j") "bp/move-focus down")
+(define-key *top-map* (kbd "s-k") "bp/move-focus up")
+(define-key *top-map* (kbd "s-l") "bp/move-focus right")
 
+(define-key *top-map* (kbd "s-C-h") "move-window left")
+(define-key *top-map* (kbd "s-C-l") "move-window right")
+(define-key *top-map* (kbd "s-C-j") "move-window down")
+(define-key *top-map* (kbd "s-C-k") "move-window up")
+
+(define-key *top-map* (kbd "s-1") "gselect dev")
+(define-key *top-map* (kbd "s-2") "gselect term")
+(define-key *top-map* (kbd "s-3") "gselect chat")
+(define-key *top-map* (kbd "s-4") "gselect mail")
+(define-key *top-map* (kbd "s-5") "gselect data")
+(define-key *top-map* (kbd "s-6") "gselect web")
+(define-key *top-map* (kbd "s-7") "gselect vcs")
+(define-key *top-map* (kbd "s-8") "gselect music")
+(define-key *top-map* (kbd "s-9") "gselect files")
+(define-key *top-map* (kbd "s-0") "gselect video")
+
+(define-key *top-map* (kbd "C-s-1") "gmove dev")
+(define-key *top-map* (kbd "C-s-2") "gmove term")
+(define-key *top-map* (kbd "C-s-3") "gmove chat")
+(define-key *top-map* (kbd "C-s-4") "gmove mail")
+(define-key *top-map* (kbd "C-s-5") "gmove data")
+(define-key *top-map* (kbd "C-s-6") "gmove web")
+(define-key *top-map* (kbd "C-s-7") "gmove vcs")
+(define-key *top-map* (kbd "C-s-8") "gmove music")
+(define-key *top-map* (kbd "C-s-9") "gmove files")
+(define-key *top-map* (kbd "C-s-0") "gmove video")
+
+(define-key *top-map* (kbd "s-SPC") "run-shell-command emacsclient -s default -e \"(call-interactively #'emacs-run-launcher)\"")
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ;;; Debugging                                                               ;;;
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
