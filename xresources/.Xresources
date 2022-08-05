@@ -1,47 +1,47 @@
-! Copyright (c) 2016-present Arctic Ice Studio <development@arcticicestudio.com>
-! Copyright (c) 2016-present Sven Greb <code@svengreb.de>
+! Copyright (c) 2022 Bryan Paronto <bryan@cablecar.digital>
 
-! Project:    Nord XResources
+! Project:    Moonlight XResources
 ! Version:    0.1.0
-! Repository: https://github.com/arcticicestudio/nord-xresources
+! Repository: https://github.com/cablecardigital/moonlight-xresources
 ! License:    MIT
 
-#define nord0 #2E3440
-#define nord1 #3B4252
-#define nord2 #434C5E
-#define nord3 #4C566A
-#define nord4 #D8DEE9
-#define nord5 #E5E9F0
-#define nord6 #ECEFF4
-#define nord7 #8FBCBB
-#define nord8 #88C0D0
-#define nord9 #81A1C1
-#define nord10 #5E81AC
-#define nord11 #BF616A
-#define nord12 #D08770
-#define nord13 #EBCB8B
-#define nord14 #A3BE8C
-#define nord15 #B48EAD
+#define moonlight0 #161a2a
+#define moonlight1 #191a2a
+#define moonlight2 #1e2030
+#define moonlight3 #222436
+#define moonlight4 #282e5c
+#define moonlight5 #c8d3f5
+#define moonlight6 #b4c2f0
+#define moonlight7 #4fd6be
+#define moonlight8 #7af8ca
+#define moonlight9 #82aaff
+#define moonlight10 #4976eb
+#define moonlight11 #ff5370
+#define moonlight12 #ff995e
+#define moonlight13 #ffc777
+#define moonlight14 #c3e88d
+#define moonlight15 #c099ff
 
-*.foreground:   nord4
-*.background:   nord0
-*.cursorColor:  nord4
+
+*.foreground:   moonlight4
+*.background:   moonlight0
+*.cursorColor:  moonlight4
 *fading: 35
-*fadeColor: nord3
+*fadeColor: moonlight3
 
-*.color0: nord1
-*.color1: nord11
-*.color2: nord14
-*.color3: nord13
-*.color4: nord9
-*.color5: nord15
-*.color6: nord8
-*.color7: nord5
-*.color8: nord3
-*.color9: nord11
-*.color10: nord14
-*.color11: nord13
-*.color12: nord9
-*.color13: nord15
-*.color14: nord7
-*.color15: nord6
+*.color0: moonlight1
+*.color1: moonlight11
+*.color2: moonlight14
+*.color3: moonlight13
+*.color4: moonlight9
+*.color5: moonlight15
+*.color6: moonlight8
+*.color7: moonlight5
+*.color8: moonlight3
+*.color9: moonlight11
+*.color10: moonlight14
+*.color11: moonlight13
+*.color12: moonlight9
+*.color13: moonlight15
+*.color14: moonlight7
+*.color15: moonlight6

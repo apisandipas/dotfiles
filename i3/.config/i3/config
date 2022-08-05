@@ -3,7 +3,7 @@
 
 # Fonts
 # font pango:Fira Code Nerd Font
-font pango:Operator Mono Lig
+font pango:Iosecka Term
 font pango:Font Awesome 5 Free
 
 # Rounded Corners!
@@ -37,9 +37,9 @@ bindsym $mod+Return exec kitty
 bindsym $mod+Shift+q kill
 
 # start program launcher
-bindsym $mod+d exec rofi -show run -theme base16-google-dark
-bindsym $mod+Shift+f exec rofi -show window -theme base16-google-dark
-bindsym $mod+Shift+Return exec rofimoji --skin-tone="medium-light" --rofi-args="-theme base16-google-dark"
+bindsym $mod+d exec rofi -show drun -theme launcher
+bindsym $mod+Shift+f exec rofi -show window -theme onedark
+bindsym $mod+Shift+Return exec rofimoji --skin-tone="medium-light" --rofi-args="-theme onedark"
 bindsym $mod+Shift+Ctrl+Return exec rofi-pass
 
 # launch categorized menu
@@ -62,8 +62,8 @@ bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up
 bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
 
 # Start Applications
-bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
-bindsym $mod+F2 exec google-chrome-stable
+# bindsym $mod+Ctrl+b exec terminal -e 'rofi -modi drun'
+bindsym $mod+F2 exec firefox
 bindsym $mod+F3 exec pcmanfm
 # bindsym $mod+F3 exec ranger
 bindsym $mod+Shift+F3 exec pcmanfm_pkexec
@@ -296,8 +296,8 @@ bindsym XF86AudioNext exec "playerctl next"
 # Lock screen
 #bindsym $mod+9 exec --no-startup-id betterlockscreen -l dim
 # xrandr config
-exec --no-startup-id xrandr --output eDP-1 --mode 1920x1080
-# --left-of DP-2 --output DP-1 --left-of eDP-1
+exec --no-startup-id xrandr --output DP-1 --mode 1920x1080 \
+  --left-of DP-2 --output DP-1 --left-of DP-1
 
 # Autostart applications
 exec --no-startup-id kitty
@@ -317,11 +317,9 @@ exec --no-startup-id pamac-tray
 exec --no-startup-id clipit
 exec --no-startup-id blueman-applet
 exec --no-startup-id xautolock -time 120 -locker 'betterlockscreen -l dim'
-exec_always --no-startup-id ff-theme-util
-exec_always --no-startup-id ~/.config/polybar/launch.sh
-exec_always --no-startup-id fix_xcursor
-exec_always --no-startup-id ~/.dotfiles/config/fehbg &
-exec_always --no-startup-id picom -b --config ~/.config/picom/picom.conf
+exec_always --no-startup-id ~/.dotfiles/bin/launch-polybar
+# exec_always --no-startup-id ~/.dotfiles/config/fehbg &
+exec_always --no-startup-id ~/.dotfiles/bin/picom-defaults
 
 
 # You can use these variables anywhere in the i3 configuration file.

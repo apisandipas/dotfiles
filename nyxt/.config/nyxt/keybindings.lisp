@@ -84,9 +84,7 @@
 
 (defvar *my-global-keymap* (make-keymap "*my-global-keymap*"))
 (define-key *my-global-keymap*
-
   "M-x"   'execute-command
-
   "C-c r" 'bp/reload-config
   "C-d" 'quit)
 

@@ -2,6 +2,7 @@
 local awful     = require("awful")
 -- Theme handling library
 local beautiful = require("beautiful")
+local tags = ("main.tags")
 
 local _M = {}
 
@@ -74,7 +75,7 @@ function _M.get(clientkeys, clientbuttons)
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
     { rule = { class = "Firefox" },
-      properties = { screen = 3, tag = "6" } },
+      properties = { screen = 3, tag = RC.tags[6] } },
 
   }
 

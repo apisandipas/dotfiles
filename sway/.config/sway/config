@@ -16,7 +16,7 @@ set $uifont "Iosevka 16"
 set $highlight #3daee9
 set $prompt #18b218
 set $menu bemenu-run --fn $uifont -b -p "▶" --tf "$prompt" --hf "$highlight" --sf "$highlight" --scf "$highlight" | xargs swaymsg exec
-set $wallpaper ~/Pictures/DzNT32SVAAU2o1D.jpg
+set $wallpaper ~/.dotfiles/etc/wallpaper/topomap.jpg
 set $lock swaylock -f -i $wallpaper -s fill
 
 ### Output configuration
@@ -29,7 +29,9 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 #   output HDMI-A-1 resolution 1920x1080 position 1920,0
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
-    output DP-1 resolution 1920x1080 position 0,0 background $wallpaper fill
+    output DP-1 resolution 1920x1080 transform 90  position 0,0 background $wallpaper fill
+    output DP-2 resolution 1920x1080 transform 270 position 3000,0 background $wallpaper fill
+    output DP-3 resolution 1920x1080 position 1080,500 background $wallpaper fill
 
 ### Idle configuration
 #
@@ -38,7 +40,7 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 # exec swayidle -w \
 #          timeout 300 'swaylock -f -c 000000' \
 #          timeout 600 'swaymsg "output * dpms off"' \
-#               resume 'swaymsg "output * dpms on"' \
+ # 'swaymsg "output * dpms on"' \
 #          before-sleep 'swaylock -f -c 000000'
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
@@ -74,7 +76,12 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
     bindsym Mod1+F4 kill
 
     # start your launcher
-    bindsym $mod+d exec $menu
+    # bindsym $mod+d exec $menu
+
+    bindsym $mod+d exec rofi -show drun -theme launcher
+    bindsym $mod+Shift+f exec rofi -show window -theme onedark
+    bindsym $mod+Shift+Return exec rofimoji --skin-tone="medium-light" --rofi-args="-theme onedark"
+    bindsym $mod+Shift+Ctrl+Return exec rofi-pass
     #bindcode 133 exec $menu
 
     # Drag floating windows by holding down $mod and left mouse button.
@@ -153,30 +160,69 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 #
 # Workspaces:
 #
-    # switch to workspace
-    bindsym $mod+1 workspace 1
-    bindsym $mod+2 workspace 2
-    bindsym $mod+3 workspace 3
-    bindsym $mod+4 workspace 4
-    bindsym $mod+5 workspace 5
-    bindsym $mod+6 workspace 6
-    bindsym $mod+7 workspace 7
-    bindsym $mod+8 workspace 8
-    bindsym $mod+9 workspace 9
-    bindsym $mod+0 workspace 10
-    # move focused container to workspace
-    bindsym $mod+Shift+1 move container to workspace 1
-    bindsym $mod+Shift+2 move container to workspace 2
-    bindsym $mod+Shift+3 move container to workspace 3
-    bindsym $mod+Shift+4 move container to workspace 4
-    bindsym $mod+Shift+5 move container to workspace 5
-    bindsym $mod+Shift+6 move container to workspace 6
-    bindsym $mod+Shift+7 move container to workspace 7
-    bindsym $mod+Shift+8 move container to workspace 8
-    bindsym $mod+Shift+9 move container to workspace 9
-    bindsym $mod+Shift+0 move container to workspace 10
-    # Note: workspaces can have any name you want, not just numbers.
-    # We just use 1-10 as the default.
+set $ws1 1:
+set $ws2 2:
+set $ws3 3:
+set $ws4 4:
+set $ws5 5:
+set $ws6 6:爵
+set $ws7 7:
+set $ws8 8:
+
+# switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+
+# Move focused container to workspace
+bindsym $mod+Ctrl+1 move container to workspace $ws1
+bindsym $mod+Ctrl+2 move container to workspace $ws2
+bindsym $mod+Ctrl+3 move container to workspace $ws3
+bindsym $mod+Ctrl+4 move container to workspace $ws4
+bindsym $mod+Ctrl+5 move container to workspace $ws5
+bindsym $mod+Ctrl+6 move container to workspace $ws6
+bindsym $mod+Ctrl+7 move container to workspace $ws7
+bindsym $mod+Ctrl+8 move container to workspace $ws8
+
+# Move to workspace with focused container
+bindsym $mod+Shift+1 move container to workspace $ws1; workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2; workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3; workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4; workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5; workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6; workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7; workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
+
+    # # switch to workspace
+    # bindsym $mod+1 workspace 1
+    # bindsym $mod+2 workspace 2
+    # bindsym $mod+3 workspace 3
+    # bindsym $mod+4 workspace 4
+    # bindsym $mod+5 workspace 5
+    # bindsym $mod+6 workspace 6
+    # bindsym $mod+7 workspace 7
+    # bindsym $mod+8 workspace 8
+    # bindsym $mod+9 workspace 9
+    # bindsym $mod+0 workspace 10
+    # # move focused container to workspace
+    # bindsym $mod+Shift+1 move container to workspace 1
+    # bindsym $mod+Shift+2 move container to workspace 2
+    # bindsym $mod+Shift+3 move container to workspace 3
+    # bindsym $mod+Shift+4 move container to workspace 4
+    # bindsym $mod+Shift+5 move container to workspace 5
+    # bindsym $mod+Shift+6 move container to workspace 6
+    # bindsym $mod+Shift+7 move container to workspace 7
+    # bindsym $mod+Shift+8 move container to workspace 8
+    # bindsym $mod+Shift+9 move container to workspace 9
+    # bindsym $mod+Shift+0 move container to workspace 10
+    # # Note: workspaces can have any name you want, not just numbers.
+    # # We just use 1-10 as the default.
 #
 # Layout stuff:
 #
@@ -263,6 +309,10 @@ bar {
 default_border pixel
 default_floating_border pixel
 hide_edge_borders smart
+
+gaps outer 36
+gaps inner 18
+
 #
 # Colors #93cee9
 #

@@ -51,6 +51,7 @@
                                                           (get-current-time))))))
              "s")
           url)))
+
 (define-command-global bp/org-roam-capture ()
       "Org-capture current page."
       (let ((quote (%copy))

@@ -5,7 +5,7 @@ pcall(require, "luarocks.loader")
 -- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
-
+require("awful.autofocus")
 -- Theme handling library
 local beautiful = require("beautiful")
 
@@ -27,8 +27,11 @@ beautiful.wallpaper = RC.vars.wallpaper
 
 modkey = RC.vars.modkey
 
+local layouts = require("main.layouts")
+RC.layouts = layouts()
+
 local main = {
-  layouts = require("main.layouts"),
+  layouts = RC.layouts,
   tags    = require("main.tags"),
   menu    = require("main.menu"),
   rules   = require("main.rules"),
@@ -47,7 +50,6 @@ local binding = {
 -- Table of layouts to cover with awful.layout.inc, order matters.
 -- a variable needed in main.tags, and statusbar
 -- awful.layout.layouts = { ... }
-RC.layouts = main.layouts()
 -- }}}
 
 -- {{{ Tags
