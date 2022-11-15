@@ -36,13 +36,13 @@ bspc config remove_disabled_monitors true
 bspc config remove_unplugged_monitors true
 bspc config merge_overlapping_monitors true
 
-xrandr --output DP-3 --mode 1920x1080 --auto \
-	--output DP-1 --left-of DP-3 --rotate right --mode 1920x1080 --auto \
-	--output DP-2 --right-of DP-3 --rotate left --mode 1920x1080 --auto
+xrandr --output DisplayPort-2 --mode 1920x1080 --auto \
+	--output DisplayPort-1 --left-of DisplayPort-2 --rotate left --mode 1920x1080 --auto \
+	--output DisplayPort-0 --right-of DisplayPort-2 --rotate right --mode 1920x1080 --auto
 
-bspc monitor DP-1 -d I II III
-bspc monitor DP-3 -d IV V VI VII
-bspc monitor DP-2 -d VIII IX X
+bspc monitor DisplayPort-0 -d I II III
+bspc monitor DisplayPort-2 -d IV V VI VII
+bspc monitor DisplayPort-1 -d VIII IX X
 
 bspc rule -a Emacs state=tiled desktop='^4'
 bspc rule -a kitty desktop='^2'

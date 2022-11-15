@@ -56,10 +56,10 @@
   margin-left        = 1
   module-margin-left = 0
 
-  font-0 = Iosevka Term:style=Medium,Regular
-  font-1 = Roboto Mono Nerd Font:style=Medium,Regular
-  font-2 = FontAwesome:style=Regular
-  font-3 = Material Icons:style=Regular
+  font-0 = "Iosevka Term:style=Medium,Regular"
+  font-1 = "Roboto Mono Nerd Font:style=Medium,Regular:size=24;1"
+  font-2 = "FontAwesome:style=Regular:size=24;1"
+  font-3 = "Material Icons:style=Regular:size=24;1"
 
   modules-left  = sysmenu workspaces
   ;; xwindow

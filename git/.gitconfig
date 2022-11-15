@@ -1,7 +1,7 @@
 [init]
   defaultBranch = main
 [user]
-	email = bryan@cablecar.digital
+	email = bryan@kindsys.us
 	name = Bryan Paronto
 	signingkey = 1447CBC3E2E68A6A
 [push]
@@ -27,3 +27,5 @@
 	gpgsign = true
 [tag]
 	forceSignAnnotated = false
+[credential]
+	helper = cache --timeout=600

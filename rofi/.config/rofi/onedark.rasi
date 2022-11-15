@@ -15,7 +15,7 @@
   green:      #95ee8f;
   yellow:     #f8c456;
   blue:       #6eaafb;
-  mangenta:   #d886f3;
+  magenta:   #d886f3;
   cyan:       #6cdcf7;
   emphasis:   #50536b;
   text:       #dfdfdf;
@@ -87,7 +87,7 @@ element urgent, element selected urgent {
 }
 
 element active, element selected active {
-  text-color: @purple;
+  text-color: @magenta;
 }
 
 message {

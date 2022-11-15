@@ -23,7 +23,7 @@
 #define moonlight15 #c099ff
 
 
-*.foreground:   moonlight4
+*.foreground:   moonlight5
 *.background:   moonlight0
 *.cursorColor:  moonlight4
 *fading: 35
