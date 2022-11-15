@@ -9,7 +9,7 @@
  (swap-devices
   (list (swap-space
 	  (target
-         	(file-system-label "swap_partition")))))
+         	(file-system-label "swap-partition")))))
  (file-systems
   (cons* (file-system
           (mount-point "/boot/efi")
@@ -20,12 +20,12 @@
          (file-system
           (mount-point "/")
           (device
-           (file-system-label "root_partition")
+           (file-system-label "root-partition")
            )
           (type "ext4"))
          (file-system
           (mount-point "/home")
           (device
-           (file-system-label "home_partition"))
+           (file-system-label "home-partition"))
           (type "ext4"))
          %base-file-systems)))
