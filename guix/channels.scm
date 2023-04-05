@@ -11,6 +11,18 @@
         (openpgp-fingerprint
             "2841 9AC6 5038 7440 C7E9  2FFA 2208 D209 58C1 DEB0"))))
   (channel
+  (name 'flat)
+  (url "https://github.com/flatwhatson/guix-channel.git")
+  (branch "master")
+  (commit
+   "657da22f0229b978b7bf4e4d476f59f17f6a175f")
+  (introduction
+   (make-channel-introduction
+    "b62ba3214ed0f781e2d6015044ae8a4a1bd5c7d7"
+    (openpgp-fingerprint
+     "736A C00E 1254 378B A982  7AF6 9DBE 8265 81B6 4490"))))
+
+  (channel
     (name 'nonguix)
     (url "https://gitlab.com/nonguix/nonguix"))
   (channel
