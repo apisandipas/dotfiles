@@ -5,7 +5,7 @@
 ! Repository: https://github.com/cablecardigital/moonlight-xresources
 ! License:    MIT
 
-#define moonlight0 #161a2a
+#define moonlight0 #11111b
 #define moonlight1 #191a2a
 #define moonlight2 #1e2030
 #define moonlight3 #222436

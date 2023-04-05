@@ -38,7 +38,7 @@ bspc config merge_overlapping_monitors true
 
 xrandr --output DisplayPort-2 --mode 1920x1080 --auto \
 	--output DisplayPort-1 --left-of DisplayPort-2 --rotate left --mode 1920x1080 --auto \
-	--output DisplayPort-0 --right-of DisplayPort-2 --rotate right --mode 1920x1080 --auto
+	--output DisplayPort-0 --right-of DisplayPort-2  --mode 1920x1080 --auto
 
 bspc monitor DisplayPort-0 -d I II III
 bspc monitor DisplayPort-2 -d IV V VI VII

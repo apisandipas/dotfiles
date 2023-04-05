@@ -15,7 +15,8 @@ set $term kitty
 set $uifont "Iosevka 16"
 set $highlight #3daee9
 set $prompt #18b218
-set $menu bemenu-run --fn $uifont -b -p "▶" --tf "$prompt" --hf "$highlight" --sf "$highlight" --scf "$highlight" | xargs swaymsg exec
+# set $menu bemenu-run --fn $uifont -b -p "▶" --tf "$prompt" --hf "$highlight" --sf "$highlight" --scf "$highlight" | xargs swaymsg exec
+set $menu wofi --show drun
 set $wallpaper ~/.dotfiles/etc/wallpaper/topomap.jpg
 set $lock swaylock -f -i $wallpaper -s fill
 
@@ -29,9 +30,10 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 #   output HDMI-A-1 resolution 1920x1080 position 1920,0
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
-    output DP-1 resolution 1920x1080 transform 90  position 0,0 background $wallpaper fill
-    output DP-2 resolution 1920x1080 transform 270 position 3000,0 background $wallpaper fill
-    output DP-3 resolution 1920x1080 position 1080,500 background $wallpaper fill
+    output DP-1 resolution 1920x1080 position 3000,0 background $wallpaper fill
+    output DP-2 resolution 1920x1080 transform 270 position 0,0 background $wallpaper fill
+    output DP-3 resolution 1920x1080 position 1080,300 background $wallpaper fill
+
 
 ### Idle configuration
 #
@@ -76,12 +78,12 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
     bindsym Mod1+F4 kill
 
     # start your launcher
-    # bindsym $mod+d exec $menu
+    bindsym $mod+d exec $menu
 
-    bindsym $mod+d exec rofi -show drun -theme launcher
-    bindsym $mod+Shift+f exec rofi -show window -theme onedark
-    bindsym $mod+Shift+Return exec rofimoji --skin-tone="medium-light" --rofi-args="-theme onedark"
-    bindsym $mod+Shift+Ctrl+Return exec rofi-pass
+    # bindsym $mod+d exec rofi -show drun -theme launcher
+    # bindsym $mod+Shift+f exec rofi -show window -theme onedark
+    # bindsym $mod+Shift+Return exec rofimoji --skin-tone="medium-light" --rofi-args="-theme onedark"
+    # bindsym $mod+Shift+Ctrl+Return exec rofi-pass
     #bindcode 133 exec $menu
 
     # Drag floating windows by holding down $mod and left mouse button.
@@ -168,6 +170,23 @@ set $ws5 5:
 set $ws6 6:爵
 set $ws7 7:
 set $ws8 8:
+set $ws9 9:
+set $ws10 10:
+
+set $left-output DP-2
+set $center-output DP-3
+set $right-output DP-1
+
+workspace $ws1 output $left-output
+workspace $ws2 output $left-output
+workspace $ws3 output $left-output
+workspace $ws4 output $center-output
+workspace $ws5 output $center-output
+workspace $ws6 output $center-output
+workspace $ws7 output $center-output
+workspace $ws8 output $right-output
+workspace $ws9 output $right-output
+workspace $ws10 output $right-output
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -178,6 +197,8 @@ bindsym $mod+5 workspace $ws5
 bindsym $mod+6 workspace $ws6
 bindsym $mod+7 workspace $ws7
 bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
 
 # Move focused container to workspace
 bindsym $mod+Ctrl+1 move container to workspace $ws1
@@ -188,6 +209,8 @@ bindsym $mod+Ctrl+5 move container to workspace $ws5
 bindsym $mod+Ctrl+6 move container to workspace $ws6
 bindsym $mod+Ctrl+7 move container to workspace $ws7
 bindsym $mod+Ctrl+8 move container to workspace $ws8
+bindsym $mod+Ctrl+9 move container to workspace $ws9
+bindsym $mod+Ctrl+0 move container to workspace $ws10
 
 # Move to workspace with focused container
 bindsym $mod+Shift+1 move container to workspace $ws1; workspace $ws1
@@ -198,6 +221,8 @@ bindsym $mod+Shift+5 move container to workspace $ws5; workspace $ws5
 bindsym $mod+Shift+6 move container to workspace $ws6; workspace $ws6
 bindsym $mod+Shift+7 move container to workspace $ws7; workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9; workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10; workspace $ws10
 
     # # switch to workspace
     # bindsym $mod+1 workspace 1
@@ -284,25 +309,27 @@ bindsym $mod+r mode "resize"
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
-bar {
-    mode hide
-    hidden_state hide
-    modifier $mod
-    font $uifont
+# bar {V
+# bar swaybar_command waybar
+#     mode hide
+#     hidden_state hide
+#     modifier $mod
+#     font $uifont
 
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-    status_command while date +'%-d.%-m.%Y. %H:%M:%S %p'; do sleep 1; done
+#     # When the status_command prints a new line to stdout, swaybar updates.
+#     # The default just shows the current date and time.
+#     status_command while date +'%-d.%-m.%Y. %H:%M:%S %p'; do sleep 1; done
 
-    colors {
-        statusline #ffffff
-        background #121212
-        #background #00000000
-        focused_workspace #121212 #18b218 #232627
-        active_workspace #121212 $highlight #232627
-        inactive_workspace #121212 #7f8c8d #232627
-    }
-}
+#     colors {
+#         statusline #ffffff
+#         background #121212
+#         #background #00000000
+#         focused_workspace #121212 #18b218 #232627
+#         active_workspace #121212 $highlight #232627
+#         inactive_workspace #121212 #7f8c8d #232627
+#     }
+# }
+ bar swaybar_command waybar
 #
 # Titlebars
 #
