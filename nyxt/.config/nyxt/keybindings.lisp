@@ -1,5 +1,9 @@
 (in-package :nyxt-user)
 
+(define-command-global bp/reload-config ()
+  "Reload the Nyxt configuration file."
+  (load-config-file)
+  (echo "Configuration reloaded!"))
 
 (defvar *my-buffer-keymap* (make-keymap "*my-buffer-keymap*"))
 (define-key *my-buffer-keymap*
@@ -10,10 +14,10 @@
 
 (defvar *my-history-keymap* (make-keymap "*my-history-keymap*"))
 (define-key *my-history-keymap*
-  "f" 'nyxt/web-mode:history-forwards
-  "b" 'nyxt/web-mode:history-backwards
-  "F" 'nyxt/web-mode:history-forwards-query
-  "B" 'nyxt/web-mode:history-backwards-query)
+  "f" 'nyxt/mode/history:history-forwards
+  "b" 'nyxt/mode/history:history-backwards
+  "F" 'nyxt/mode/history:history-forwards-query
+  "B" 'nyxt/mode/history:history-backwards-query)
 
 (defvar *my-help-keymap* (make-keymap "*my-help-keymap*"))
 (define-key *my-help-keymap*
@@ -24,29 +28,25 @@
   "f" 'describe-function
   "v" 'describe-variable
   "C" 'describe-class
-  "s" 'describe-slot
-  )
+  "s" 'describe-slot)
 
 (defvar *my-open-keymap* (make-keymap "*my-open-keymap*"))
 (define-key *my-open-keymap*
   "l" 'set-url
   "L" 'set-url-new-buffer
-  "n" 'make-buffer-focus
-  )
+  "n" 'make-buffer-focus)
 
 
 (defvar *my-follow-keymap* (make-keymap "*my-follow-keymap*"))
 (define-key *my-follow-keymap*
-  "l" 'nyxt/web-mode:follow-hint
-  "L" 'nyxt/web-mode:follow-hint-new-buffer-focus
-  "b" 'nyxt/web-mode:follow-hint-new-buffer
-  )
+  "l" 'nyxt/mode/hint:follow-hint
+  "L" 'nyxt/mode/hint:follow-hint-new-buffer-focus
+  "b" 'nyxt/mode/hint:follow-hint-new-buffer)
 
 (defvar *my-media-keymap* (make-keymap "*my-media-keymap*"))
 (define-key *my-media-keymap*
   "p" 'bp/play-video-in-current-page
-  "d" 'bp/yt-download-video-in-current-page
-  )
+  "d" 'bp/yt-download-video-in-current-page)
 
 (defvar *my-leader-keymap* (make-keymap "*my-leader-keymap*"))
 (define-key *my-leader-keymap*
@@ -59,28 +59,26 @@
 
 (defvar *my-normal-keymap* (make-keymap "*my-normal-keymap*"))
 (define-key *my-normal-keymap*
-  "/" 'nyxt/web-mode:search-buffers
-  "\\" 'nyxt/web-mode:search-buffer
+  "/" 'nyxt/mode/search-buffer:search-buffers
+  "\\" 'nyxt/mode/search-buffer:search-buffer
 
-  "space" *my-leader-keymap*)
+  "space " *my-leader-keymap*)
+
 
 (defvar *my-insert-keymap* (make-keymap "*my-insert-keymap*"))
 (define-key *my-insert-keymap*
-  "C-[" 'nyxt/vi-mode:vi-normal-mode
-  "C-w" 'nyxt/input-edit-mode:delete-backwards-word
-  "C-f" 'nyxt/input-edit-mode:cursor-forwards
-  "C-b" 'nyxt/input-edit-mode:cursor-backwards)
+  "C-[" 'nyxt/mode/vi:vi-normal-mode
+  "C-w" 'nyxt/mode/input-edit:delete-backwards-word
+  "C-f" 'nyxt/mode/input-edit:cursor-forwards
+  "C-b" 'nyxt/mode/input-edit:cursor-backwards)
 
-;; (defvar *my-minibuffer-keymap* (make-keymap "*my-minibuffer-keymap*"))
-;; (define-key *my-minibuffer-keymap*
-;;   "C-w" 'nyxt/minibuffer-mode:delete-backwards-word)
-
-(define-mode my-states-mode ()
-  "Mode to add custom keybindings"
-  ((keymap-scheme :initform (keymap:make-scheme
-                             scheme:vi-normal *my-normal-keymap*
-                             scheme:emacs *my-insert-keymap*
-                             scheme:vi-insert *my-insert-keymap*))))
+(define-mode my-states-mode
+    nil
+  "Dummy mode for the custom key bindings in *my-insert-keymap*."
+  ((keyscheme-map
+    (nkeymaps/core:make-keyscheme-map nyxt/keyscheme:emacs *my-insert-keymap*
+                                      nyxt/keyscheme:vi-insert *my-insert-keymap*
+                                      nyxt/keyscheme:vi-normal *my-normal-keymap*))))
 
 (defvar *my-global-keymap* (make-keymap "*my-global-keymap*"))
 (define-key *my-global-keymap*
@@ -88,13 +86,23 @@
   "C-c r" 'bp/reload-config
   "C-d" 'quit)
 
-(define-mode my-global-mode ()
-  "Mode to add custom keybindings"
-  ((keymap-scheme :initform (keymap:make-scheme
-                             scheme:emacs *my-global-keymap*
-                             scheme:vi-normal *my-global-keymap*
-                             scheme:vi-insert *my-global-keymap*))))
 
+(define-mode my-global-mode
+    nil
+  "My neumonic SPC-leader map"
+  ((keyscheme-map
+    (nkeymaps/core:make-keyscheme-map nyxt/keyscheme:emacs *my-global-keymap*
+                                      nyxt/keyscheme:vi-insert *my-global-keymap*
+                                      nyxt/keyscheme:vi-normal *my-global-keymap*))))
 
-(define-configuration (buffer web-buffer)
-  ((default-modes (append '(my-global-mode my-states-mode vi-normal-mode) %slot-default%))))
+(define-configuration web-buffer
+  "Enable this mode by default. "
+  ((default-modes  '(my-global-mode my-states-mode vi-normal-mode))))
+
+(define-configuration buffer
+  "Enable this mode by default. "
+  ((default-modes  '(my-global-mode my-states-mode vi-normal-mode))))
+
+(define-configuration prompt-buffer
+  "Enable this mode by default. "
+  ((default-modes (append '(vi-insert-mode) %slot-value%))))

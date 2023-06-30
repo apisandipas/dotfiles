@@ -44,7 +44,7 @@ bspc monitor DisplayPort-0 -d I II III
 bspc monitor DisplayPort-2 -d IV V VI VII
 bspc monitor DisplayPort-1 -d VIII IX X
 
-bspc rule -a Emacs state=tiled desktop='^4'
+bspc rule -a Emacs state=tiled desktop='^7'
 bspc rule -a kitty desktop='^2'
 # bspc rule -a obsidian desktop='^3'
 bspc rule -a Thunderbird desktop='^4'
@@ -53,7 +53,7 @@ bspc rule -a Zoom desktop='^7'
 bspc rule -a obs desktop='^1'
 bspc rule -a Brave-browser desktop='^6'
 bspc rule -a firefox desktop='^6'
-bspc rule -a GitKraken desktop='^7'
+bspc rule -a GitKraken desktop='^4'
 bspc rule -a spotify desktop='^8'
 bspc rule -a dropbox state=floating manage=off
 

@@ -2,7 +2,11 @@
 export ZDOTDIR="$HOME/.config/zsh"
 
 # Loads personal scripts into the PATH
-export PATH="$HOME/.dotfiles/bin:$PATH"
+export PATH="$PATH:$HOME/.dotfiles/bin"
+export PATH="$PATH:$GEM_HOME/bin"
+export PATH="$PATH:$(yarn global bin)"
+export PATH="$PATH:$HOME/.cargo/bin"
+export PATH=/home/bryan/.local/bin:$PATH
 
 # Fixes TMUX colors, i think?
 if [[ "$TERM" == screen ]]; then
@@ -22,4 +26,4 @@ setxkbmap -option ctrl:nocaps
 
 export SBCL_HOME=/usr/lib/sbcl/
 export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
-export PATH="$PATH:$GEM_HOME/bin"
+. "$HOME/.cargo/env"

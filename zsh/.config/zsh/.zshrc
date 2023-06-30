@@ -24,9 +24,9 @@ zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
 #   tmux attach -t TMUX || tmux new -s TMUX
 # fi
 
-if type_exists "tmux"; then
-	if [ "$TMUX" = "" ]; then tmux attach -t 0 || tmux new; fi
-fi
+# if type_exists "tmux"; then
+# 	if [ "$TMUX" = "" ]; then tmux attach -t 0 || tmux new; fi
+# fi
 
 ## History file configuration
 [ -z "$HISTFILE" ] && HISTFILE="$ZDOTDIR/.zsh_history"
@@ -90,5 +90,5 @@ if type_exists "zoxide"; then
 fi
 
 if type_exists "ufetch"; then
-	ufetch
+	nitch
 fi

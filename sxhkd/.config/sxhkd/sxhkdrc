@@ -3,8 +3,8 @@
 #
 
 # Key Map Popup
-super + shift + ctrl + h
-  showkeys
+# super + shift + ctrl + h
+  # showkeys
 
 # terminal emulator
 super + Return
@@ -19,8 +19,8 @@ super + @space
   ~/.config/rofi/scripts/launch.sh
 
 # emoji picker
-super + shift + Return
-  ~/.config/rofi/scripts/emoji-picker.sh
+# super + shift + Return
+  # ~/.config/rofi/scripts/emoji-picker.sh
 
 # Window Selector
 super + shift + f
@@ -67,7 +67,7 @@ XF86AudioMute
 
 # Launch Apps
 super + shift + {b,w}
-	{pcmanfm,firefox}
+	{thunar,firefox}
 
 super + shift + e
 	emacsclient
