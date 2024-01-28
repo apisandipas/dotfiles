@@ -4,7 +4,6 @@ export ZDOTDIR="$HOME/.config/zsh"
 # Loads personal scripts into the PATH
 export PATH="$PATH:$HOME/.dotfiles/bin"
 export PATH="$PATH:$GEM_HOME/bin"
-export PATH="$PATH:$(yarn global bin)"
 export PATH="$PATH:$HOME/.cargo/bin"
 export PATH=/home/bryan/.local/bin:$PATH
 

@@ -1,4 +1,6 @@
 #!/usr/bin/env zsh
 
 # Disabled CapsLock
-setxkbmap -option ctrl:nocaps
+if [ "$XDG_SESSION_TYPE" = "x11" ]; then
+  setxkbmap -option ctrl:nocaps
+fi

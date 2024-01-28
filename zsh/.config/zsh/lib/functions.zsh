@@ -5,7 +5,7 @@
 # Clear and display system profile
 function cl() {
 	clear;
-	nitch;
+	nerdfetch;
 }
 
 # Make a directory and immediate change into it
