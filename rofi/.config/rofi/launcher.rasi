@@ -1,5 +1,5 @@
 configuration {
-	font:							"Iosekva term";
+	font:							"Iosevka Term";
   show-icons:                     true;
 	icon-theme: 					"Papirus";
   display-drun: 					"";
