@@ -1,6 +1,7 @@
 zsh/.config/zsh/lib/plugins/*
 stumpwm/.stumpwm/modules
 zsh/.config/zsh/.zsh_history
+zsh/.config/zsh/.zcompdump
 stumpwm/.stumpwm.d/modules
 guix/home/files/stumpwm/.stumpwm.d/modules/
 emacs/.config/emacs/elpa
