@@ -1,5 +1,5 @@
 local function augroup(name)
-  return vim.api.nvim_create_augroup("rafi_" .. name, {})
+  return vim.api.nvim_create_augroup("bryan_" .. name, {})
 end
 
 -- Check if we need to reload the file when it changed

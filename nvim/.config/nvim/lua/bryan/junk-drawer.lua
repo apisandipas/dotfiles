@@ -3,7 +3,7 @@ local M = {
   "christoomey/vim-tmux-navigator", -- tmux & split window navigation
   "folke/zen-mode.nvim",
 
-  "rcarriga/nvim-notify",
+  { "lukas-reineke/indent-blankline.nvim", main = "ibl", config = true },
 }
 
 return M

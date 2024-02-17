@@ -7,6 +7,7 @@ local M = {
 }
 
 M.servers = {
+  "eslint",
   "lua_ls",
   "cssls",
   "html",
