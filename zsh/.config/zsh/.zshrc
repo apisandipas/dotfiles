@@ -45,10 +45,10 @@ alias ...="cd ../../"
 alias ....="cd ../../../"
 
 # ls replacements
-alias ls="exa --icons"
-alias ll="exa -lh --icons"
-alias lll="exa -alh --icons"
-alias lt="exa -T --icons --git-ignore"
+alias ls="eza --icons"
+alias ll="eza -lh --icons"
+alias lll="eza -alh --icons"
+alias lt="eza -T --icons --git-ignore"
 
 alias open="xdg-open"
 
@@ -82,7 +82,7 @@ if type_exists "zoxide"; then
 fi
 
 if type_exists "ufetch"; then
-	nitch
+	ufetch
 fi
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
@@ -92,3 +92,5 @@ export PATH="$PATH:$HOME/.rvm/bin"
 [ -s "/home/bryan/.bun/_bun" ] && source "/home/bryan/.bun/_bun"
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+source /usr/share/nvm/init-nvm.sh

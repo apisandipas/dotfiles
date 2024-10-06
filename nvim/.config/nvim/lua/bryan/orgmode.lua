@@ -10,7 +10,7 @@ local M = {
 
 M.config = function()
   -- Load treesitter grammar for org
-  require("orgmode").setup_ts_grammar()
+  -- require("orgmode").setup_ts_grammar()
   --
   -- Setup orgmode
   require("orgmode").setup({
