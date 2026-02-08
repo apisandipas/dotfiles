@@ -49,7 +49,6 @@ Deploy a package: `stow <package>`
 | `rofi` | App launcher and theme picker |
 | `zsh` | Shell config with custom plugin loader (`lib/utils.zsh`) and plugins (autosuggestions, syntax-highlighting) |
 | `tmux` | Tmux config |
-| `git` | Git config (GPG-signed commits, rebase on pull, LFS) |
 | `starship` | Starship prompt |
 | `fastfetch` | System info display |
 | `foot` | Foot terminal (Wayland-native) |
@@ -62,19 +61,14 @@ These configs are from previous setups and are not part of the current Hyprland 
 |---|---|
 | `awesome` | AwesomeWM (X11) - modular Lua config |
 | `bspwm` | bspwm (X11) |
-| `i3` | i3 (X11) |
 | `sway` | Sway (Wayland) |
 | `stumpwm` | StumpWM (X11, Common Lisp) |
 | `sxhkd` | Hotkey daemon (used with bspwm) |
 | `polybar` | Status bar (X11) |
 | `picom` | Compositor (X11) |
-| `dunst` | Notification daemon (X11) |
 | `feh` | Image viewer / wallpaper setter (X11) |
 | `kitty` | Kitty terminal |
-| `xresources` | X resources |
-| `autorandr` | Monitor profile manager (X11) |
 | `mbsync` | Email sync (isync/mbsync) |
-| `ntfd` | Notification daemon |
 
 ### Non-Stow Directories
 
@@ -82,4 +76,4 @@ These configs are from previous setups and are not part of the current Hyprland 
 |---|---|
 | `themes/` | Theme switcher system (scripts + theme definitions) |
 | `bin/` | Utility scripts (screenshots, lockscreen, etc.) |
-| `etc/` | Static assets (wallpapers, stream placards) |
+| `etc/` | Static assets (wallpapers) |
