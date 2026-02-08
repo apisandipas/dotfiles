@@ -1,0 +1,10 @@
+/* Catppuccin Mocha - colors for rofi */
+
+* {
+  al:   #00000000;
+  bg:   #1e1e2eFF;
+  bga:  #313244FF;
+  fga:  #cdd6f4FF;
+  fg:   #cdd6f4FF;
+  ac:   #cba6f7FF;
+}

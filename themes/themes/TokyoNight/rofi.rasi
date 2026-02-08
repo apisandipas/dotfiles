@@ -1,0 +1,10 @@
+/* Tokyo Night (Storm) - colors for rofi */
+
+* {
+  al:   #00000000;
+  bg:   #24283bFF;
+  bga:  #1f2335FF;
+  fga:  #c0caf5FF;
+  fg:   #c0caf5FF;
+  ac:   #7aa2f7FF;
+}

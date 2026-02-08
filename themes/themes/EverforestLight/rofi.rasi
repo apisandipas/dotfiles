@@ -1,0 +1,10 @@
+/* Everforest Light - colors for rofi */
+
+* {
+  al:  #00000000;
+  bg:  #fdf6e3FF;
+  bga: #f4f0d9FF;
+  fga: #5c6a72FF;
+  fg:  #5c6a72FF;
+  ac:  #8da101FF;
+}

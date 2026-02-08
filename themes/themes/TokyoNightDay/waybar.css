@@ -1,4 +1,4 @@
-/* Floating Islands - Nord */
+/* Floating Islands - Tokyo Night Day */
 
 * {
     border: none;
@@ -11,37 +11,37 @@
 
 window#waybar {
     background: transparent;
-    color: #d8dee9;
+    color: #3760bf;
 }
 
 tooltip {
-    background: #2e3440;
+    background: #e1e2e7;
     border-radius: 4px;
-    border: 2px solid #3b4252;
+    border: 2px solid #c4c8da;
 }
 
 tooltip label {
-    color: #d8dee9;
+    color: #3760bf;
     padding: 4px;
 }
 
 /* === WORKSPACES === */
 #workspaces {
-    background: linear-gradient(135deg, #2e3440 0%, #3b4252 100%);
+    background: linear-gradient(135deg, #e1e2e7 0%, #d0d5e3 100%);
     margin: 8px 0 8px 16px;
     padding: 0;
     border-radius: 4px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 #workspaces button {
-    color: #4c566a;
+    color: #848cb5;
     background: transparent;
     padding: 8px 14px;
     margin: 0;
     border-radius: 0;
     border-bottom: 3px solid transparent;
-    border-left: 1px solid #3b4252;
+    border-left: 1px solid #c4c8da;
 }
 
 #workspaces button:first-child {
@@ -56,36 +56,36 @@ tooltip label {
 }
 
 #workspaces button.active {
-    color: #88c0d0;
+    color: #2e7de9;
     background: transparent;
-    border-bottom: 3px solid #88c0d0;
+    border-bottom: 3px solid #2e7de9;
 }
 
 #workspaces button.urgent {
-    color: #bf616a;
+    color: #f52a65;
     background: transparent;
-    border-bottom: 3px solid #bf616a;
+    border-bottom: 3px solid #f52a65;
 }
 
 #workspaces button:hover {
-    color: #d8dee9;
-    background: rgba(255, 255, 255, 0.08);
-    border-bottom: 3px solid #434c5e;
+    color: #3760bf;
+    background: rgba(0, 0, 0, 0.06);
+    border-bottom: 3px solid #c4c8da;
 }
 
 /* === CENTER ISLAND (cava + center) === */
 #custom-cava,
 #custom-center {
-    background: linear-gradient(135deg, #2e3440 0%, #3b4252 100%);
+    background: linear-gradient(135deg, #e1e2e7 0%, #d0d5e3 100%);
     padding: 8px 14px;
     margin: 8px 0;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 /* Cava — left side of island */
 #custom-cava {
     border-radius: 4px 0 0 4px;
-    color: #88c0d0;
+    color: #2e7de9;
     opacity: 0.7;
     font-size: 12px;
     padding-left: 16px;
@@ -97,7 +97,7 @@ tooltip label {
 #custom-center {
     border-radius: 0 4px 4px 0;
     padding-right: 24px;
-    border-left: 1px solid #3b4252;
+    border-left: 1px solid #c4c8da;
     font-size: 14px;
     font-weight: 600;
     letter-spacing: 1px;
@@ -115,7 +115,7 @@ tooltip label {
 
 /* Clock mode — center gets full rounding (cava collapses) */
 #custom-center.clock {
-    color: #d8dee9;
+    color: #3760bf;
     border-radius: 4px;
     border-left: none;
     padding-left: 24px;
@@ -123,19 +123,19 @@ tooltip label {
 
 /* Media playing — accent */
 #custom-center.media-playing {
-    color: #88c0d0;
+    color: #2e7de9;
     padding-left: 14px;
 }
 
 /* Media paused — dimmed */
 #custom-center.media-paused {
-    color: #4c566a;
+    color: #848cb5;
     padding-left: 14px;
 }
 
 /* Media idle — italic gray */
 #custom-center.media-idle {
-    color: #4c566a;
+    color: #848cb5;
     font-style: italic;
     border-radius: 4px;
     border-left: none;
@@ -151,66 +151,66 @@ tooltip label {
 #custom-updates,
 #custom-notification,
 #tray {
-    background: linear-gradient(135deg, #2e3440 0%, #3b4252 100%);
+    background: linear-gradient(135deg, #e1e2e7 0%, #d0d5e3 100%);
     padding: 8px 14px;
     margin: 8px 0;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 /* Weather - First item (left rounded) */
 #custom-weather {
     border-radius: 4px 0 0 4px;
     margin-left: 0;
-    color: #88c0d0;
+    color: #007197;
     padding-left: 16px;
 }
 
 /* CPU */
 #cpu {
-    color: #b48ead;
-    border-left: 1px solid #3b4252;
+    color: #9854f1;
+    border-left: 1px solid #c4c8da;
 }
 
 /* CPU Temp */
 #custom-cpu-temp {
-    color: #d08770;
-    border-left: 1px solid #3b4252;
+    color: #b15c00;
+    border-left: 1px solid #c4c8da;
 }
 
 /* Memory */
 #memory {
-    color: #81a1c1;
-    border-left: 1px solid #3b4252;
+    color: #7847bd;
+    border-left: 1px solid #c4c8da;
 }
 
 /* Battery */
 #battery {
-    color: #a3be8c;
-    border-left: 1px solid #3b4252;
+    color: #587539;
+    border-left: 1px solid #c4c8da;
 }
 
 #battery.warning {
-    color: #ebcb8b;
+    color: #8c6c3e;
 }
 
 #battery.critical {
-    color: #bf616a;
+    color: #f52a65;
 }
 
 #battery.charging {
-    color: #8fbcbb;
+    color: #387068;
 }
 
 /* Updates */
 #custom-updates {
-    color: #5e81ac;
-    border-left: 1px solid #3b4252;
+    color: #2e7de9;
+    border-left: 1px solid #c4c8da;
 }
 
 /* Notifications */
 #custom-notification {
-    color: #d08770;
-    border-left: 1px solid #3b4252;
+    color: #b15c00;
+    border-left: 1px solid #c4c8da;
 }
 
 /* Tray - Last item (right rounded) */
@@ -218,7 +218,7 @@ tooltip label {
     border-radius: 0 4px 4px 0;
     margin-right: 12px;
     padding-right: 16px;
-    border-left: 1px solid #3b4252;
+    border-left: 1px solid #c4c8da;
 }
 
 #tray > .passive {

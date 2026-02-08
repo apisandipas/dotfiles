@@ -1,0 +1,10 @@
+/* Dracula - colors for rofi */
+
+* {
+  al:   #00000000;
+  bg:   #282a36FF;
+  bga:  #44475aFF;
+  fga:  #f8f8f2FF;
+  fg:   #f8f8f2FF;
+  ac:   #bd93f9FF;
+}

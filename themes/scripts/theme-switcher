@@ -1,0 +1,277 @@
+#!/usr/bin/env bash
+#
+# Theme Switcher
+# Switches between themes for alacritty, waybar, rofi, swaync, tmux, neovim, and wallpaper
+#
+
+set -euo pipefail
+
+THEMES_DIR="$HOME/.dotfiles/themes/themes"
+CURRENT_THEME_FILE="$HOME/.dotfiles/themes/.current-theme"
+
+# Config locations
+ALACRITTY_CONFIG="$HOME/.config/alacritty/alacritty.toml"
+ALACRITTY_BASE="$HOME/.dotfiles/themes/alacritty-base.toml"
+WAYBAR_STYLE="$HOME/.config/waybar/style.css"
+ROFI_COLORS="$HOME/.config/rofi/colors.rasi"
+TMUX_THEME="$HOME/.tmux-theme.conf"
+NVIM_COLORSCHEME="$HOME/.config/nvim/.colorscheme"
+SWAYNC_STYLE="$HOME/.config/swaync/style.css"
+
+list_themes() {
+    local current_theme=""
+    if [[ -f "$CURRENT_THEME_FILE" ]]; then
+        current_theme=$(cat "$CURRENT_THEME_FILE")
+    fi
+    echo "Available themes:"
+    for theme_dir in "$THEMES_DIR"/*/; do
+        local theme_name
+        theme_name=$(basename "$theme_dir")
+        if [[ "$theme_name" == "$current_theme" ]]; then
+            echo "  * $theme_name (current)"
+        else
+            echo "    $theme_name"
+        fi
+    done
+}
+
+get_current_theme() {
+    if [[ -f "$CURRENT_THEME_FILE" ]]; then
+        cat "$CURRENT_THEME_FILE"
+    else
+        echo "none"
+    fi
+}
+
+# Ensure swww daemon is running, polling for readiness
+ensure_swww_daemon() {
+    if ! pgrep -x swww-daemon &>/dev/null; then
+        swww-daemon &>/dev/null &
+        disown
+        local i
+        for i in $(seq 1 50); do
+            swww query &>/dev/null && return 0
+            sleep 0.1
+        done
+        echo "  ! swww daemon failed to start" >&2
+        return 1
+    fi
+}
+
+# Set wallpaper from a theme directory
+# Usage: set_wallpaper <theme_path> [transition_type]
+set_wallpaper() {
+    local theme_path="$1"
+    local transition_type="${2:-wipe}"
+    local wallpaper=""
+
+    for ext in png jpg jpeg webp; do
+        if [[ -f "$theme_path/wallpaper.$ext" ]]; then
+            wallpaper="$theme_path/wallpaper.$ext"
+            break
+        fi
+    done
+
+    if [[ -z "$wallpaper" ]]; then
+        return 0
+    fi
+
+    if ! command -v swww &>/dev/null; then
+        echo "  ! swww not found, skipping wallpaper" >&2
+        return 0
+    fi
+
+    ensure_swww_daemon || return 0
+
+    if [[ "$transition_type" == "wipe" ]]; then
+        swww img "$wallpaper" --transition-type wipe --transition-angle 45 --transition-duration 1
+    else
+        swww img "$wallpaper" --transition-type none
+    fi
+    echo "  ✓ Wallpaper set"
+}
+
+apply_theme() {
+    local theme_name="$1"
+    local theme_path="$THEMES_DIR/$theme_name"
+
+    if [[ ! -d "$theme_path" ]]; then
+        echo "Error: Theme '$theme_name' not found in $THEMES_DIR" >&2
+        list_themes
+        exit 1
+    fi
+
+    echo "Applying theme: $theme_name"
+
+    # Alacritty - merge base config with theme colors (auto-reloads)
+    # Write to temp file and atomically move to avoid partial-read on live reload
+    if [[ -f "$theme_path/alacritty-colors.toml" ]]; then
+        local tmpfile
+        tmpfile=$(mktemp "${ALACRITTY_CONFIG}.XXXXXX")
+        cat "$ALACRITTY_BASE" "$theme_path/alacritty-colors.toml" > "$tmpfile"
+        mv "$tmpfile" "$ALACRITTY_CONFIG"
+        echo "  ✓ Alacritty theme applied (live reload)"
+    fi
+
+    # Waybar
+    if [[ -f "$theme_path/waybar.css" ]]; then
+        cp "$theme_path/waybar.css" "$WAYBAR_STYLE"
+        echo "  ✓ Waybar style updated"
+        if pgrep -x waybar &>/dev/null; then
+            pkill -SIGUSR2 waybar 2>/dev/null || true
+            echo "  ✓ Waybar reloaded"
+        fi
+    fi
+
+    # Rofi
+    if [[ -f "$theme_path/rofi.rasi" ]]; then
+        cp "$theme_path/rofi.rasi" "$ROFI_COLORS"
+        echo "  ✓ Rofi colors updated"
+    fi
+
+    # Swaync
+    if [[ -f "$theme_path/swaync.css" ]]; then
+        cp "$theme_path/swaync.css" "$SWAYNC_STYLE"
+        echo "  ✓ Swaync style updated"
+        if command -v swaync-client &>/dev/null; then
+            swaync-client -rs 2>/dev/null || true
+            echo "  ✓ Swaync reloaded"
+        fi
+    fi
+
+    # Wallpaper
+    set_wallpaper "$theme_path" wipe
+
+    # Tmux
+    if [[ -f "$theme_path/tmux.conf" ]]; then
+        cp "$theme_path/tmux.conf" "$TMUX_THEME"
+        echo "  ✓ Tmux theme updated"
+        if command -v tmux &>/dev/null && tmux list-sessions &>/dev/null; then
+            tmux source-file "$TMUX_THEME" 2>/dev/null || true
+            echo "  ✓ Tmux reloaded"
+        fi
+    fi
+
+    # Neovim
+    if [[ -f "$theme_path/nvim.txt" ]]; then
+        cp "$theme_path/nvim.txt" "$NVIM_COLORSCHEME"
+        echo "  ✓ Neovim colorscheme updated"
+        if command -v nvr &>/dev/null; then
+            local colorscheme
+            colorscheme=$(cat "$theme_path/nvim.txt")
+            # Validate colorscheme name to prevent command injection
+            if [[ ! "$colorscheme" =~ ^[a-zA-Z0-9_-]+$ ]]; then
+                echo "  ! Invalid colorscheme name in nvim.txt, skipping" >&2
+                return
+            fi
+            # Capture server list once to avoid race conditions
+            local servers
+            servers=$(nvr --serverlist 2>/dev/null) || true
+            if [[ -z "$servers" ]]; then
+                echo "  i No running Neovim instances found"
+            else
+                case "$colorscheme" in
+                    rose-pine-*)
+                        echo "$servers" | xargs -I {} nvr --servername {} -c "lua require('rose-pine').setup({ variant = '${colorscheme#rose-pine-}', styles = { transparency = true } })" 2>/dev/null || true
+                        echo "$servers" | xargs -I {} nvr --servername {} -c "colorscheme rose-pine" 2>/dev/null || true
+                        ;;
+                    solarized-light)
+                        echo "$servers" | xargs -I {} nvr --servername {} -c "set background=light" 2>/dev/null || true
+                        echo "$servers" | xargs -I {} nvr --servername {} -c "let g:solarized_termtrans=1" 2>/dev/null || true
+                        echo "$servers" | xargs -I {} nvr --servername {} -c "colorscheme solarized" 2>/dev/null || true
+                        ;;
+                    gruvbox-light)
+                        echo "$servers" | xargs -I {} nvr --servername {} -c "set background=light" 2>/dev/null || true
+                        echo "$servers" | xargs -I {} nvr --servername {} -c "lua require('gruvbox').setup({ transparent_mode = true })" 2>/dev/null || true
+                        echo "$servers" | xargs -I {} nvr --servername {} -c "colorscheme gruvbox" 2>/dev/null || true
+                        ;;
+                    nord-light)
+                        echo "$servers" | xargs -I {} nvr --servername {} -c "set background=light" 2>/dev/null || true
+                        echo "$servers" | xargs -I {} nvr --servername {} -c "colorscheme nord" 2>/dev/null || true
+                        ;;
+                    catppuccin-latte)
+                        echo "$servers" | xargs -I {} nvr --servername {} -c "lua require('catppuccin').setup({ flavour = 'latte', transparent_background = true })" 2>/dev/null || true
+                        echo "$servers" | xargs -I {} nvr --servername {} -c "colorscheme catppuccin" 2>/dev/null || true
+                        ;;
+                    catppuccin-mocha)
+                        echo "$servers" | xargs -I {} nvr --servername {} -c "lua require('catppuccin').setup({ flavour = 'mocha', transparent_background = true })" 2>/dev/null || true
+                        echo "$servers" | xargs -I {} nvr --servername {} -c "colorscheme catppuccin" 2>/dev/null || true
+                        ;;
+                    everforest-light)
+                        echo "$servers" | xargs -I {} nvr --servername {} -c "set background=light" 2>/dev/null || true
+                        echo "$servers" | xargs -I {} nvr --servername {} -c "colorscheme everforest" 2>/dev/null || true
+                        ;;
+                    everforest|gruvbox|nord)
+                        echo "$servers" | xargs -I {} nvr --servername {} -c "set background=dark" 2>/dev/null || true
+                        echo "$servers" | xargs -I {} nvr --servername {} -c "colorscheme $colorscheme" 2>/dev/null || true
+                        ;;
+                    *)
+                        echo "$servers" | xargs -I {} nvr --servername {} -c "colorscheme $colorscheme" 2>/dev/null || true
+                        ;;
+                esac
+                echo "  ✓ Neovim instances updated"
+            fi
+        else
+            echo "  i Restart Neovim to apply colorscheme"
+        fi
+    fi
+
+    # Save current theme
+    echo "$theme_name" > "$CURRENT_THEME_FILE"
+    echo ""
+    echo "Theme '$theme_name' applied successfully!"
+}
+
+show_help() {
+    echo "Usage: $(basename "$0") [COMMAND] [THEME]"
+    echo ""
+    echo "Commands:"
+    echo "  apply <theme>      Apply the specified theme"
+    echo "  list               List available themes"
+    echo "  current            Show current theme"
+    echo "  restore-wallpaper  Restore wallpaper from current theme"
+    echo "  help               Show this help message"
+    echo ""
+    echo "Examples:"
+    echo "  $(basename "$0") apply Original"
+    echo "  $(basename "$0") apply CatppuccinLatte"
+    echo "  $(basename "$0") list"
+}
+
+# Main
+case "${1:-help}" in
+    apply)
+        if [[ -z "${2:-}" ]]; then
+            echo "Error: Please specify a theme name" >&2
+            list_themes
+            exit 1
+        fi
+        apply_theme "$2"
+        ;;
+    list)
+        list_themes
+        ;;
+    current)
+        echo "Current theme: $(get_current_theme)"
+        ;;
+    restore-wallpaper)
+        current_theme=$(get_current_theme)
+        if [[ "$current_theme" == "none" ]]; then
+            echo "No theme set, skipping wallpaper restore"
+            exit 0
+        fi
+        set_wallpaper "$THEMES_DIR/$current_theme" none
+        ;;
+    help|--help|-h)
+        show_help
+        ;;
+    *)
+        if [[ -d "$THEMES_DIR/$1" ]]; then
+            apply_theme "$1"
+        else
+            echo "Unknown command: $1" >&2
+            show_help
+            exit 1
+        fi
+        ;;
+esac

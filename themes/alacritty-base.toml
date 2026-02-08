@@ -1,0 +1,19 @@
+[general]
+live_config_reload = true
+
+[window]
+decorations = "None"
+opacity = 0.8
+padding = { x = 16, y = 16 }
+
+[font]
+normal = { family = "VictorMono Nerd Font", style = "Regular" }
+bold = { family = "VictorMono Nerd Font", style = "Bold" }
+italic = { family = "VictorMono Nerd Font", style = "Italic" }
+size = 14.0
+
+[[keyboard.bindings]]
+key = "Return"
+mods = "Shift"
+chars = "\u001b\r"
+

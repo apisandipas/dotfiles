@@ -1,0 +1,10 @@
+/* Tokyo Night Day - colors for rofi */
+
+* {
+  al:  #00000000;
+  bg:  #e1e2e7FF;
+  bga: #d0d5e3FF;
+  fga: #3760bfFF;
+  fg:  #6172b0FF;
+  ac:  #2e7de9FF;
+}

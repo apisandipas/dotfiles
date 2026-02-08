@@ -1,0 +1,10 @@
+/* Catppuccin Latte - colors for rofi */
+
+* {
+  al:   #00000000;
+  bg:   #eff1f5FF;
+  bga:  #ccd0daFF;
+  fga:  #4c4f69FF;
+  fg:   #4c4f69FF;
+  ac:   #8839efFF;
+}

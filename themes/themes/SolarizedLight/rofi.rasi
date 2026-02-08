@@ -1,0 +1,8 @@
+* {
+    al:  #00000000;
+    bg:  #fdf6e3ff;
+    bga: #eee8d5ff;
+    fga: #657b83ff;
+    fg:  #586e75ff;
+    ac:  #268bd2ff;
+}

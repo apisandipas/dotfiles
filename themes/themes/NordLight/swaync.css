@@ -1,0 +1,289 @@
+/*
+ * vim: ft=less
+ */
+
+/* --- Color definitions --- */
+@define-color noti-bg #eceff4;
+@define-color noti-bg-alt #e5e9f0;
+@define-color cc-bg alpha(@noti-bg, 0.95);
+@define-color noti-border-color #d8dee9;
+@define-color noti-bg-hover #5e81ac;
+@define-color bg-selected #81a1c1;
+@define-color noti-fg #2e3440;
+@define-color noti-fg-dim alpha(@noti-fg, 0.7);
+@define-color noti-close-bg alpha(black, 0.06);
+@define-color noti-close-bg-hover alpha(black, 0.12);
+@define-color critical #bf616a;
+
+/* --- Base --- */
+
+* {
+  font-family: "Victor Mono Nerd Font", monospace;
+}
+
+.blank-window {
+  background: alpha(black, 0.15);
+}
+
+/* --- Control Center Panel --- */
+
+.control-center {
+  background: @cc-bg;
+  border-radius: 16px;
+  border: 1px solid @noti-border-color;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  margin: 8px;
+  padding: 12px;
+}
+
+.control-center-list {
+  background: transparent;
+}
+
+.floating-notifications {
+  background: transparent;
+}
+
+/* --- Notification rows --- */
+
+.notification-row {
+  background: transparent;
+  margin: 4px 0;
+  border-radius: 12px;
+  transition: all 0.2s ease-in-out;
+}
+
+.notification-row:focus,
+.notification-row:hover {
+  outline: none;
+  background: alpha(@noti-bg-hover, 0.06);
+}
+
+.notification {
+  box-shadow: none;
+  outline: none;
+  padding: 0;
+  margin: 0;
+}
+
+.notification-content {
+  outline: none;
+  margin: 0;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid @noti-border-color;
+  background: @noti-bg-alt;
+}
+
+/* --- Urgency --- */
+
+.critical .summary {
+  color: @critical;
+}
+
+.critical .notification-content {
+  border-color: alpha(@critical, 0.4);
+}
+
+/* --- Close button --- */
+
+.close-button {
+  background: @noti-close-bg;
+  color: @noti-fg;
+  text-shadow: none;
+  padding: 0;
+  margin-top: 12px;
+  margin-right: 12px;
+  box-shadow: none;
+  border: none;
+  border-radius: 100%;
+  min-width: 26px;
+  min-height: 26px;
+}
+
+.close-button:hover {
+  box-shadow: none;
+  background: @noti-close-bg-hover;
+  transition: all 0.15s ease-in-out;
+  border: none;
+}
+
+.control-center .close-button {
+  margin-top: 6px;
+  margin-right: 6px;
+}
+
+/* --- Actions --- */
+
+.notification-default-action,
+.notification-action {
+  padding: 0;
+  margin: 0;
+  box-shadow: none;
+  color: @noti-fg;
+  outline: none;
+  background: transparent;
+  border: none;
+}
+
+.notification-default-action:hover,
+.notification-action:hover {
+  -gtk-icon-effect: none;
+  background: alpha(@noti-bg-hover, 0.06);
+  border-radius: 12px;
+}
+
+/* --- Images --- */
+
+.image {
+  border-radius: 100%;
+  margin: 4px;
+}
+
+.body-image {
+  border-radius: 12px;
+  margin-top: 8px;
+}
+
+/* --- Typography --- */
+
+.summary {
+  font-size: 14px;
+  font-weight: bold;
+  background: transparent;
+  color: @noti-fg;
+  text-shadow: none;
+}
+
+.time {
+  font-size: 12px;
+  background: transparent;
+  color: @noti-fg-dim;
+  text-shadow: none;
+  margin-right: 8px;
+}
+
+.body {
+  font-size: 13px;
+  font-weight: normal;
+  background: transparent;
+  color: @noti-fg-dim;
+  text-shadow: none;
+}
+
+/* --- Header --- */
+
+.top-action-title {
+  color: @noti-fg;
+  text-shadow: none;
+  font-weight: bold;
+}
+
+/* --- Widgets --- */
+
+.widget-title {
+  margin: 4px 0 8px 0;
+  font-size: 1.2rem;
+  color: @noti-fg;
+}
+
+.widget-title > button {
+  font-size: 0.85rem;
+  color: @noti-fg-dim;
+  text-shadow: none;
+  background: @noti-bg-alt;
+  border: 1px solid @noti-border-color;
+  box-shadow: none;
+  border-radius: 10px;
+  padding: 4px 12px;
+  transition: all 0.15s ease-in-out;
+}
+
+.widget-title > button:hover {
+  background: alpha(@noti-bg-hover, 0.15);
+  color: @noti-fg;
+}
+
+/* DND widget */
+.widget-dnd {
+  margin: 4px 0;
+  font-size: 0.9rem;
+  color: @noti-fg-dim;
+}
+
+.widget-dnd > switch {
+  font-size: initial;
+  border-radius: 10px;
+  background: @noti-bg-alt;
+  border: 1px solid @noti-border-color;
+  box-shadow: none;
+  transition: all 0.15s ease-in-out;
+}
+
+.widget-dnd > switch:checked {
+  background: alpha(@bg-selected, 0.4);
+  border-color: @bg-selected;
+}
+
+.widget-dnd > switch slider {
+  background: @noti-fg-dim;
+  border-radius: 10px;
+  min-width: 14px;
+  min-height: 14px;
+}
+
+/* Label widget */
+.widget-label {
+  margin: 4px 0;
+}
+
+.widget-label > label {
+  font-size: 1rem;
+  color: @noti-fg-dim;
+}
+
+/* Inhibitors widget */
+.widget-inhibitors {
+  margin: 4px 0;
+  font-size: 0.9rem;
+  color: @noti-fg-dim;
+}
+
+.widget-inhibitors > button {
+  font-size: 0.85rem;
+  color: @noti-fg-dim;
+  background: @noti-bg-alt;
+  border: 1px solid @noti-border-color;
+  border-radius: 10px;
+  padding: 4px 12px;
+  box-shadow: none;
+  transition: all 0.15s ease-in-out;
+}
+
+.widget-inhibitors > button:hover {
+  background: alpha(@noti-bg-hover, 0.15);
+  color: @noti-fg;
+}
+
+/* Mpris widget */
+.widget-mpris {
+}
+
+.widget-mpris-player {
+  padding: 8px;
+  margin: 4px 0;
+  background: @noti-bg-alt;
+  border: 1px solid @noti-border-color;
+  border-radius: 12px;
+}
+
+.widget-mpris-title {
+  font-weight: bold;
+  font-size: 0.95rem;
+  color: @noti-fg;
+}
+
+.widget-mpris-subtitle {
+  font-size: 0.85rem;
+  color: @noti-fg-dim;
+}

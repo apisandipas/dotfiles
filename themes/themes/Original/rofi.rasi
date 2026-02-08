@@ -1,0 +1,10 @@
+/* Rosé Pine Moon - colors for rofi */
+
+* {
+  al:   #00000000;
+  bg:   #232136FF;
+  bga:  #393552FF;
+  fga:  #e0def4FF;
+  fg:   #e0def4FF;
+  ac:   #3e8fb0FF;
+}

@@ -1,0 +1,10 @@
+/* Gruvbox Dark - colors for rofi */
+
+* {
+  al:   #00000000;
+  bg:   #282828FF;
+  bga:  #3c3836FF;
+  fga:  #ebdbb2FF;
+  fg:   #ebdbb2FF;
+  ac:   #b8bb26FF;
+}

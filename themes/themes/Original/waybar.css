@@ -1,4 +1,4 @@
-/* Floating Islands - Nord */
+/* Floating Islands - Sunset Palette */
 
 * {
     border: none;
@@ -11,23 +11,23 @@
 
 window#waybar {
     background: transparent;
-    color: #d8dee9;
+    color: #e0def4;
 }
 
 tooltip {
-    background: #2e3440;
+    background: #1e1e2e;
     border-radius: 4px;
-    border: 2px solid #3b4252;
+    border: 2px solid #313244;
 }
 
 tooltip label {
-    color: #d8dee9;
+    color: #cdd6f4;
     padding: 4px;
 }
 
 /* === WORKSPACES === */
 #workspaces {
-    background: linear-gradient(135deg, #2e3440 0%, #3b4252 100%);
+    background: linear-gradient(135deg, #1e1e2e 0%, #181825 100%);
     margin: 8px 0 8px 16px;
     padding: 0;
     border-radius: 4px;
@@ -35,13 +35,13 @@ tooltip label {
 }
 
 #workspaces button {
-    color: #4c566a;
+    color: #6c7086;
     background: transparent;
     padding: 8px 14px;
     margin: 0;
     border-radius: 0;
     border-bottom: 3px solid transparent;
-    border-left: 1px solid #3b4252;
+    border-left: 1px solid #313244;
 }
 
 #workspaces button:first-child {
@@ -56,27 +56,27 @@ tooltip label {
 }
 
 #workspaces button.active {
-    color: #88c0d0;
+    color: #89dceb;
     background: transparent;
-    border-bottom: 3px solid #88c0d0;
+    border-bottom: 3px solid #89dceb;
 }
 
 #workspaces button.urgent {
-    color: #bf616a;
+    color: #f9e2af;
     background: transparent;
-    border-bottom: 3px solid #bf616a;
+    border-bottom: 3px solid #f9e2af;
 }
 
 #workspaces button:hover {
-    color: #d8dee9;
+    color: #cdd6f4;
     background: rgba(255, 255, 255, 0.08);
-    border-bottom: 3px solid #434c5e;
+    border-bottom: 3px solid #45475a;
 }
 
 /* === CENTER ISLAND (cava + center) === */
 #custom-cava,
 #custom-center {
-    background: linear-gradient(135deg, #2e3440 0%, #3b4252 100%);
+    background: linear-gradient(135deg, #1e1e2e 0%, #181825 100%);
     padding: 8px 14px;
     margin: 8px 0;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
@@ -85,7 +85,7 @@ tooltip label {
 /* Cava — left side of island */
 #custom-cava {
     border-radius: 4px 0 0 4px;
-    color: #88c0d0;
+    color: #89dceb;
     opacity: 0.7;
     font-size: 12px;
     padding-left: 16px;
@@ -97,7 +97,7 @@ tooltip label {
 #custom-center {
     border-radius: 0 4px 4px 0;
     padding-right: 24px;
-    border-left: 1px solid #3b4252;
+    border-left: 1px solid #313244;
     font-size: 14px;
     font-weight: 600;
     letter-spacing: 1px;
@@ -115,7 +115,7 @@ tooltip label {
 
 /* Clock mode — center gets full rounding (cava collapses) */
 #custom-center.clock {
-    color: #d8dee9;
+    color: #cdd6f4;
     border-radius: 4px;
     border-left: none;
     padding-left: 24px;
@@ -123,19 +123,19 @@ tooltip label {
 
 /* Media playing — accent */
 #custom-center.media-playing {
-    color: #88c0d0;
+    color: #89dceb;
     padding-left: 14px;
 }
 
 /* Media paused — dimmed */
 #custom-center.media-paused {
-    color: #4c566a;
+    color: #6c7086;
     padding-left: 14px;
 }
 
 /* Media idle — italic gray */
 #custom-center.media-idle {
-    color: #4c566a;
+    color: #6c7086;
     font-style: italic;
     border-radius: 4px;
     border-left: none;
@@ -151,7 +151,7 @@ tooltip label {
 #custom-updates,
 #custom-notification,
 #tray {
-    background: linear-gradient(135deg, #2e3440 0%, #3b4252 100%);
+    background: linear-gradient(135deg, #1e1e2e 0%, #181825 100%);
     padding: 8px 14px;
     margin: 8px 0;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
@@ -161,56 +161,56 @@ tooltip label {
 #custom-weather {
     border-radius: 4px 0 0 4px;
     margin-left: 0;
-    color: #88c0d0;
+    color: #89dceb;
     padding-left: 16px;
 }
 
 /* CPU */
 #cpu {
-    color: #b48ead;
-    border-left: 1px solid #3b4252;
+    color: #f5c2e7;
+    border-left: 1px solid #313244;
 }
 
 /* CPU Temp */
 #custom-cpu-temp {
-    color: #d08770;
-    border-left: 1px solid #3b4252;
+    color: #fab387;
+    border-left: 1px solid #313244;
 }
 
 /* Memory */
 #memory {
-    color: #81a1c1;
-    border-left: 1px solid #3b4252;
+    color: #cba6f7;
+    border-left: 1px solid #313244;
 }
 
 /* Battery */
 #battery {
-    color: #a3be8c;
-    border-left: 1px solid #3b4252;
+    color: #a6e3a1;
+    border-left: 1px solid #313244;
 }
 
 #battery.warning {
-    color: #ebcb8b;
+    color: #f9e2af;
 }
 
 #battery.critical {
-    color: #bf616a;
+    color: #f38ba8;
 }
 
 #battery.charging {
-    color: #8fbcbb;
+    color: #94e2d5;
 }
 
 /* Updates */
 #custom-updates {
-    color: #5e81ac;
-    border-left: 1px solid #3b4252;
+    color: #89b4fa;
+    border-left: 1px solid #313244;
 }
 
 /* Notifications */
 #custom-notification {
-    color: #d08770;
-    border-left: 1px solid #3b4252;
+    color: #f5a97f;
+    border-left: 1px solid #313244;
 }
 
 /* Tray - Last item (right rounded) */
@@ -218,7 +218,7 @@ tooltip label {
     border-radius: 0 4px 4px 0;
     margin-right: 12px;
     padding-right: 16px;
-    border-left: 1px solid #3b4252;
+    border-left: 1px solid #313244;
 }
 
 #tray > .passive {
