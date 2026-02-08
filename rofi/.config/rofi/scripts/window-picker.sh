@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-rofi -show window -theme onedark -matching fuzzy
+rofi -show window -theme launcher -matching fuzzy

@@ -2,6 +2,7 @@
 
 ## Reset Everything -------------------------------#
 bspc rule -r "*"
+xsetroot -cursor_name left_ptr
 
 ## Get colors from .Xresources -------------------------------#
 xrdb ~/.Xresources
@@ -36,13 +37,13 @@ bspc config remove_disabled_monitors true
 bspc config remove_unplugged_monitors true
 bspc config merge_overlapping_monitors true
 
-xrandr --output DisplayPort-2 --mode 1920x1080 --auto \
-	--output DisplayPort-1 --left-of DisplayPort-2 --rotate left --mode 1920x1080 --auto \
-	--output DisplayPort-0 --right-of DisplayPort-2  --mode 1920x1080 --auto
+xrandr --output eDP --mode 1920x1080 --auto
 
-bspc monitor DisplayPort-0 -d I II III
-bspc monitor DisplayPort-2 -d IV V VI VII
-bspc monitor DisplayPort-1 -d VIII IX X
+bspc monitor eDP -d I II II IV V VI VII VIII IX X
+
+# bspc monitor DisplayPort-0 -d I II III
+# bspc monitor DisplayPort-2 -d IV V VI VII
+# bspc monitor DisplayPort-1 -d VIII IX X
 
 bspc rule -a Emacs state=tiled desktop='^7'
 bspc rule -a kitty desktop='^2'
@@ -53,6 +54,7 @@ bspc rule -a Zoom desktop='^7'
 bspc rule -a obs desktop='^1'
 bspc rule -a Brave-browser desktop='^6'
 bspc rule -a firefox desktop='^6'
+bspc rule -a zen-browser desktop='^6'
 bspc rule -a GitKraken desktop='^4'
 bspc rule -a spotify desktop='^8'
 bspc rule -a dropbox state=floating manage=off
@@ -66,7 +68,7 @@ killall polybar dropbox
 # Fire up on start/restart
 dropbox &
 
-pgrep -x obs >/dev/null || obs &
+# pgrep -x obs >/dev/null || obs &
 pgrep -x sxhkd >/dev/null || sxhkd &
 # pgrep -x companion >/dev/null || companion &
 pgrep -x kitty >/dev/null || kitty &
@@ -77,15 +79,15 @@ pgrep -x blueman-applet >/dev/null || blueman-applet &
 ~/.dotfiles/bin/launch-polybar .sh &
 pgrep -x lockscreen-setup >/dev/null || lockscreen-setup &
 pgrep -x fix-touchscreen >/dev/null || fix-touchscreen &
-pgrep -x fix_xcursor >/dev/null || fix_xcursor &
+# pgrep -x fix_xcursor >/dev/null || fix_xcursor &
 
 # pgrep -x emacs >/dev/null ||
 #killall emacs
-emacs --daemon --with-profile default &
+emacs --daemon --with-profile doom &
 # pgrep -c emacsclient >/dev/null || emacsclient -c -s default -a emacs &
 
 # Restore wallpaper
-bash $HOME/.fehbg
+bash $HOME/.config/bspwm/fehbg
 
 # Start Agenda Server
 # killport 8989

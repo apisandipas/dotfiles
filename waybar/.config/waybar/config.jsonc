@@ -3,28 +3,25 @@
   "position": "top",
   "mod": "dock",
   "exclusive": true,
-  "passtrough": false,
+  "passthrough": false,
   "gtk-layer-shell": true,
   "height": 0,
   "modules-left": [
-    "hyprland/workspaces",
-    "hyprland/window"
+    "hyprland/workspaces"
   ],
-  "modules-center": [],
+  "modules-center": [
+    "custom/clock"
+  ],
   "modules-right": [
-    //"custom/pipewire",
-    "custom/updates",
     "custom/weather",
     "cpu",
     "custom/cpu-temp",
     "memory",
     "battery",
-    "clock",
+    "custom/updates",
+    "custom/notification",
     "tray"
   ],
-  "hyprland/window": {
-    "format": "{}"
-  },
   "hyprland/workspaces": {
     "on-scroll-up": "hyprctl dispatch workspace e+1",
     "on-scroll-down": "hyprctl dispatch workspace e-1",
@@ -32,87 +29,98 @@
     "on-click": "activate",
     "format": "{icon}",
     "format-icons": {
-      "1": "  Video",
-      "2": "  Term",
-      "3": "  Chat",
-      "4": "  Dev",
-      "5": "  Mail",
-      "6": "  Web",
-      "7": "  VCS",
-      "8": "  Music",
-      "9": "  Files",
-      "10": "  Streaming"
+      "1": "V Video",
+      "2": " Term",
+      "3": "󰻞 Chat",
+      "4": " Dev",
+      "5": "󰇮 Mail",
+      "6": "󰖟 Web",
+      "7": " VCS",
+      "8": "󰎈 Music",
+      "9": "󰉋 Files",
+      "10": "󰑋 Stream"
     }
   },
   "battery": {
-    "bat": "BAT0",
-    "interval": 60,
-    "states": {
-      "warning": 30,
-      "critical": 15
-    },
-    "format": "{capacity}% {icon}",
+    "format": "{icon}  {capacity}%",
     "format-icons": [
-      "",
-      "",
-      "",
-      "",
-      ""
+      "󰁺",
+      "󰁻",
+      "󰁼",
+      "󰁽",
+      "󰁾",
+      "󰁿",
+      "󰂀",
+      "󰂁",
+      "󰂂",
+      "󰁹"
     ],
-    "max-length": 25
+    "format-time": "{H}h{M}m",
+    "format-charging": "󰂄  {capacity}%",
+    "format-full": "󰁹",
+    "interval": 30,
+    "states": {
+      "warning": 25,
+      "critical": 10
+    },
+    "tooltip": true,
+    "tooltip-format": "{timeTo}"
   },
   "cpu": {
     "interval": 10,
-    "format": "  {}%",
-    "max-length": 10,
-    "on-click": ""
+    "format": "  {usage}%",
+    "max-length": 10
   },
   "memory": {
     "interval": 30,
-    "format": " {}%",
-    "format-alt": " {used:0.1f}G",
+    "format": "󰧑  {}%",
+    "format-alt": "󰧑  {used:0.1f}G",
     "max-length": 10
   },
   "custom/updates": {
-    "exec": "(paru -Qua) | wc -l",
+    "exec": "(yay -Qua 2>/dev/null) | wc -l",
     "interval": 7200,
-    "format": " {}"
+    "format": "󰇚  {}"
   },
   "custom/cpu-temp": {
     "exec": "~/.dotfiles/bin/get-cpu-temp",
     "interval": 3000,
-    "format": " {}"
+    "format": "   {}°"
   },
   "custom/weather": {
-    "tooltip": true,
     "format": "{}",
-    "restart-interval": 300,
-    "exec": "~/.config/waybar/scripts/waybar-wttr.py",
+    "tooltip": true,
+    "interval": 3600,
+    "exec": "wttrbar --fahrenheit --nerd",
     "return-type": "json"
   },
   "tray": {
-    "icon-size": 13,
+    "icon-size": 14,
     "tooltip": false,
-    "spacing": 10
+    "spacing": 8
   },
-  "clock": {
-    "format": "{: %R   %d/%m}",
-    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+  "custom/clock": {
+    "exec": "date +'󰥔  %a %d %b   %H:%M'",
+    "interval": 5
   },
-  "custom/pipewire": {
-    "format": "{icon}",
-    "return-type": "json",
-    "signal": 8,
-    "interval": "once",
+  "custom/notification": {
+    "tooltip": false,
+    "format": "{icon} {text}",
     "format-icons": {
-      "mute": "",
-      "default": [
-        "",
-        "",
-        "",
-        ""
-      ]
+      "notification": "<span foreground='#f5a97f'>󰂚</span>",
+      "none": "󰂜",
+      "dnd-notification": "<span foreground='#f5a97f'>󰂛</span>",
+      "dnd-none": "󰂛",
+      "inhibited-notification": "<span foreground='#f5a97f'>󰂚</span>",
+      "inhibited-none": "󰂜",
+      "dnd-inhibited-notification": "<span foreground='#f5a97f'>󰂛</span>",
+      "dnd-inhibited-none": "󰂛"
     },
-    "exec": "pw-volume status"
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true
   }
 }

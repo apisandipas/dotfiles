@@ -81,16 +81,26 @@ if type_exists "zoxide"; then
 	eval "$(zoxide init zsh)"
 fi
 
-if type_exists "ufetch"; then
-	ufetch
+if type_exists "fastfetch"; then
+	fastfetch
 fi
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
+source ~/.rvm/scripts/rvm
 
 # bun completions
 [ -s "/home/bryan/.bun/_bun" ] && source "/home/bryan/.bun/_bun"
 export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
 
 source /usr/share/nvm/init-nvm.sh
+#eval "$(~/.local/bin/mise activate bash)"
+
+# pnpm
+export PNPM_HOME="/home/bryan/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+

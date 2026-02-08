@@ -1,5 +1,9 @@
 @import "default"
 
+configuration {
+			  show-icons: true;
+}
+
 * {
 	bg: #232136;
 	cur: #2a273f;
@@ -12,7 +16,7 @@
 	red: #eb6f92;
 	yel: #f6c177;
 
-	font: "Cartograph CF 12";
+	font: "Iosevka Term 14";
 
 	foreground: @fgd;
 	background: @bg;
@@ -55,7 +59,7 @@
 }
 #element {
 	border:  0;
-	padding: 1px ;
+	padding: 8px ;
 }
 #element.normal.normal {
 	background-color: @background;
@@ -125,11 +129,11 @@
 	text-color: @grn;
 }
 #inputbar {
-	children:   [ prompt,textbox-prompt-colon,entry,case-indicator ];
+	children:   [textbox-prompt-colon,entry,case-indicator ];
 }
 #textbox-prompt-colon {
 	expand:     false;
-	str:        ":";
+	str:        "->";
 	margin:     0px 0.3em 0em 0em;
 	text-color: @grn;
 }

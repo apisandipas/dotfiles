@@ -19,8 +19,8 @@ super + @space
   ~/.config/rofi/scripts/launch.sh
 
 # emoji picker
-# super + shift + Return
-  # ~/.config/rofi/scripts/emoji-picker.sh
+super + shift + Return
+ rofimoji --selector-args='-theme ~/.config/rofi/onedark.rasi'  --no-frecency --max-recent=0 
 
 # Window Selector
 super + shift + f
@@ -67,7 +67,7 @@ XF86AudioMute
 
 # Launch Apps
 super + shift + {b,w}
-	{thunar,firefox}
+	{thunar,zen-browser}
 
 super + shift + e
 	emacsclient

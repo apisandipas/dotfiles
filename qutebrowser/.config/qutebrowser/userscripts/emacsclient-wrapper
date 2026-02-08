@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+emacsclient -e "(let ((qute-fifo \"$QUTE_FIFO\") (qutebrowser-command-backend 'qutebrowser-fifo-send)) $@)"

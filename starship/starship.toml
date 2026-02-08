@@ -1,5 +1,3 @@
-empty_line = false
-
 format = """\
   $battery\
   $username\

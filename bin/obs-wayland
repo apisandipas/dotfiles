@@ -1,2 +1,2 @@
 #!/usr/bin/env sh
-QT_QPA_PLATFORM=xcb obs 
+QT_QPA_PLATFORM=wayland obs 

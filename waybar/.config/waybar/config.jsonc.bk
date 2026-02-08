@@ -1,0 +1,133 @@
+{
+  "layer": "top",
+  "position": "top",
+  "mod": "dock",
+  "exclusive": true,
+  "passtrough": false,
+  "gtk-layer-shell": true,
+  "height": 0,
+  "modules-left": ["hyprland/workspaces", "hyprland/window"],
+  "modules-center": [],
+  "modules-right": [
+    //"custom/pipewire",
+    "custom/updates",
+    "custom/weather",
+    "cpu",
+    "custom/cpu-temp",
+    "memory",
+    "battery",
+    "custom/clock",
+    "custom/notification",
+    "tray"
+  ],
+  "hyprland/window": {
+    "format": "{}"
+  },
+  "hyprland/workspaces": {
+    "on-scroll-up": "hyprctl dispatch workspace e+1",
+    "on-scroll-down": "hyprctl dispatch workspace e-1",
+    "all-outputs": false,
+    "on-click": "activate",
+    "format": "{icon}",
+    "format-icons": {
+      "1": "  Video",
+      "2": "  Term",
+      "3": "  Chat",
+      "4": "  Dev",
+      "5": "  Mail",
+      "6": "  Web",
+      "7": "  VCS",
+      "8": "  Music",
+      "9": "  Files",
+      "10": "  Streaming"
+    }
+  },
+  "battery": {
+    "format": "{icon} {capacity}%",
+    "format-icons": ["", "", "", "", ""],
+    "format-time": "{H}h{M}m",
+    "format-charging": " {icon} {capacity}% - {time}",
+    "format-full": "{icon}",
+    "interval": 30,
+    "states": {
+        "warning": 25,
+        "critical": 10
+    },
+    "tooltip": false,
+    "on-click": "2"
+  },
+  "cpu": {
+    "interval": 10,
+    "format": "  {}%",
+    "max-length": 10,
+    "on-click": ""
+  },
+  "memory": {
+    "interval": 30,
+    "format": "󰧑 {}%",
+    "format-alt": " {used:0.1f}G",
+    "max-length": 10
+  },
+  "custom/updates": {
+    "exec": "(paru -Qua) | wc -l",
+    "interval": 7200,
+    "format": "󰇚 {}"
+  },
+  "custom/cpu-temp": {
+    "exec": "~/.dotfiles/bin/get-cpu-temp",
+    "interval": 3000,
+    "format": " {}°C"
+  },
+  "custom/weather": {
+    "format": "{}°",
+    "tooltip": true,
+    "interval": 3600,
+    "exec": "wttrbar --fahrenheit --nerd",
+    "return-type": "json"
+  },
+  "tray": {
+    "icon-size": 13,
+    "tooltip": false,
+    "spacing": 10
+  },
+  "clock": {
+    "interval": 60000,
+    "format": "{: %R   %d/%m}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+  },
+  "custom/pipewire": {
+    "format": "{icon}",
+    "return-type": "json",
+    "signal": 8,
+    "interval": "once",
+    "format-icons": {
+      "mute": "",
+      "default": ["", "", "", ""]
+    },
+    "exec": "pw-volume status"
+  },
+  "custom/clock": {
+    "exec": "echo '  '$(date +'%H:%M')'  '",
+    "interval": 5
+  },
+  "custom/notification": {
+    "tooltip": false,
+    "format": "{icon}",
+    "format-icons": {
+      "notification": "<span foreground='red'><sup></sup></span>",
+      "none": "",
+      "dnd-notification": "<span foreground='red'><sup></sup></span>",
+      "dnd-none": "",
+      "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+      "inhibited-none": "",
+      "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+      "dnd-inhibited-none": ""
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true
+  }
+}

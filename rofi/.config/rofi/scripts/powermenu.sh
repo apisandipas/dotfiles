@@ -8,14 +8,14 @@
 dir="~/.config/rofi"
 uptime=$(uptime -p | sed -e 's/up //g')
 
-rofi_command="rofi -theme $dir/onedark.rasi"
+rofi_command="rofi -theme $dir/launcher.rasi"
 
 # Options
-shutdown=" Shutdown"
-reboot=" Restart"
-lock=" Lock"
-suspend=" Sleep"
-logout=" Logout"
+shutdown="  Shutdown"
+reboot="  Restart"
+lock="  Lock"
+suspend="󰒲  Sleep"
+logout="󰍃  Logout"
 
 # Confirmation
 confirm_exit() {
@@ -24,12 +24,12 @@ confirm_exit() {
     -matching fuzzy\
 		-no-fixed-num-lines\
 		-p "Are You Sure? : "\
-		-theme $dir/onedark.rasi
+		-theme $dir/launcher.rasi
 }
 
 # Message
 msg() {
-	rofi -theme "$dir/onedark.rasi" -e "Available Options  -  yes / y / no / n"
+	rofi -theme "$dir/launcher.rasi" -e "Available Options  -  yes / y / no / n"
 }
 
 # Variable passed to rofi

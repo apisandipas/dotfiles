@@ -1,5 +1,5 @@
 configuration {
-	font:							"Iosevka Term";
+	font:							"VictorMono Nerd Font 12";
   show-icons:                     true;
 	icon-theme: 					"Papirus";
   display-drun: 					"";
@@ -30,7 +30,7 @@ prompt {
 	padding: 						2px 0px 0px 4px;
 	background-color: 				@al;
 	text-color: 					@fg;
-	font:							"Iosevka 12";
+	font:							"VictorMono Nerd Font 12";
 }
 
 entry {

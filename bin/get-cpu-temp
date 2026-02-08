@@ -1,3 +1,4 @@
 #!/bin/sh
 
-sensors | grep "AMD" | cut -d" " -f6 | tr -d "+" | sed "s/\.0//g"
+#sensors | grep "AMD" | cut -d" " -f6 | tr -d "+" | sed "s/\.0//g"
+expr $(cat /sys/devices/virtual/thermal/thermal_zone0/temp) / 1000

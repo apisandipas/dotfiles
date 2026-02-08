@@ -441,3 +441,18 @@ config.bind(
     ",sl",
     'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/solarized-light/solarized-light-all-sites.css ""',
 )
+
+
+# EXWM INtegration
+c.tabs.tabs_are_windows = True
+c.tabs.show = 'multiple'
+c.window.title_format = '{audio}{private}{current_title}{title_sep}{current_url}'
+# Emacs THeme Sync
+config.source("emacs_theme.py")
+
+config.bind("o", "spawn --userscript emacsclient-wrapper '(qutebrowser-launcher)'")
+config.bind("O", "spawn --userscript emacsclient-wrapper '(qutebrowser-launcher-tab)'")
+config.bind("wo", "spawn --userscript emacsclient-wrapper '(qutebrowser-launcher-window)'")
+config.bind("W", "spawn --userscript emacsclient-wrapper '(qutebrowser-launcher-private)'")
+config.bind("go", "spawn --userscript emacsclient-wrapper '(qutebrowser-launcher \"{url:pretty}\")'")
+config.bind("gO", "spawn --userscript emacsclient-wrapper '(qutebrowser-launcher-tab \"{url:pretty}\")'")
