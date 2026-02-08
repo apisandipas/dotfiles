@@ -73,17 +73,73 @@ tooltip label {
     border-bottom: 3px solid #4f585e;
 }
 
-/* === CENTER CLOCK === */
-#custom-clock {
+/* === CENTER ISLAND (cava + center) === */
+#custom-cava,
+#custom-center {
     background: linear-gradient(135deg, #2d353b 0%, #232a2e 100%);
-    color: #d3c6aa;
-    border-radius: 4px;
-    padding: 8px 24px;
+    padding: 8px 14px;
     margin: 8px 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Cava — left side of island */
+#custom-cava {
+    border-radius: 4px 0 0 4px;
+    color: #a7c080;
+    opacity: 0.7;
+    font-size: 12px;
+    padding-left: 16px;
+    padding-right: 8px;
+    letter-spacing: 1px;
+}
+
+/* Center — right side of island */
+#custom-center {
+    border-radius: 0 4px 4px 0;
+    padding-right: 24px;
+    border-left: 1px solid #475258;
     font-size: 14px;
     font-weight: 600;
     letter-spacing: 1px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Cava hidden in clock mode — collapse completely */
+#custom-cava.hidden {
+    padding: 0;
+    margin: 0;
+    min-width: 0;
+    background: none;
+    box-shadow: none;
+    border: none;
+}
+
+/* Clock mode — center gets full rounding (cava collapses) */
+#custom-center.clock {
+    color: #d3c6aa;
+    border-radius: 4px;
+    border-left: none;
+    padding-left: 24px;
+}
+
+/* Media playing — accent */
+#custom-center.media-playing {
+    color: #a7c080;
+    padding-left: 14px;
+}
+
+/* Media paused — dimmed */
+#custom-center.media-paused {
+    color: #859289;
+    padding-left: 14px;
+}
+
+/* Media idle — italic gray */
+#custom-center.media-idle {
+    color: #859289;
+    font-style: italic;
+    border-radius: 4px;
+    border-left: none;
+    padding-left: 24px;
 }
 
 /* === RIGHT MODULES GROUP === */

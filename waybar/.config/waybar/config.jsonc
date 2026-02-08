@@ -10,7 +10,8 @@
     "hyprland/workspaces"
   ],
   "modules-center": [
-    "custom/clock"
+    "custom/cava",
+    "custom/center"
   ],
   "modules-right": [
     "custom/weather",
@@ -99,9 +100,19 @@
     "tooltip": false,
     "spacing": 8
   },
-  "custom/clock": {
-    "exec": "date +'󰥔  %a %d %b   %H:%M'",
-    "interval": 5
+  "custom/center": {
+    "exec": "~/.config/waybar/scripts/waybar-center.sh",
+    "on-click": "~/.config/waybar/scripts/waybar-center-toggle.sh",
+    "on-click-right": "mpc toggle",
+    "return-type": "json",
+    "interval": 2,
+    "signal": 10
+  },
+  "custom/cava": {
+    "exec": "~/.config/waybar/scripts/waybar-cava.sh",
+    "return-type": "json",
+    "restart-interval": 5,
+    "tooltip": false
   },
   "custom/notification": {
     "tooltip": false,
