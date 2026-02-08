@@ -7,3 +7,5 @@ guix/home/files/stumpwm/.stumpwm.d/modules/
 emacs/.config/emacs/elpa
 emacs/.config/emacs/straight
 themes/.current-theme
+zsh/.config/zsh/.secrets-do-not-commit
+security-report.md

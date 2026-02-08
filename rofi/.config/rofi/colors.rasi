@@ -1,10 +1,10 @@
-/* Nord - colors for rofi */
+/* Everforest Dark - colors for rofi */
 
 * {
   al:   #00000000;
-  bg:   #2e3440FF;
-  bga:  #3b4252FF;
-  fga:  #d8dee9FF;
-  fg:   #d8dee9FF;
-  ac:   #88c0d0FF;
+  bg:   #2d353bFF;
+  bga:  #343f44FF;
+  fga:  #d3c6aaFF;
+  fg:   #d3c6aaFF;
+  ac:   #a7c080FF;
 }
