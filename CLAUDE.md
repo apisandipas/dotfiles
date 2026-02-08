@@ -26,7 +26,6 @@ The `.stow-local-ignore` excludes `.git`, `.gitignore`, `bin/`, `config/`, and `
 - **`bin/`** - Standalone utility scripts (screenshots, lockscreen, polybar launcher, etc.). Not stowed — referenced directly via `~/.dotfiles/bin/` in PATH or from other configs.
 - **`etc/`** - Static assets (wallpapers, stream placards). Not stowed.
 - **`stumpwm/`** - StumpWM (Common Lisp WM) config with init.lisp entry point.
-- **`emacs/`** - Emacs config with packages managed via elpa/straight.el. Uses chemacs2 (see `chemacs/`) for profile switching (e.g., Doom Emacs via `emacs --with-profile doom`).
 
 ## AwesomeWM Lua Style
 
