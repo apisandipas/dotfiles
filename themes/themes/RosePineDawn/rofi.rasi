@@ -1,0 +1,10 @@
+/* Rosé Pine Dawn - colors for rofi */
+
+* {
+  al:   #00000000;
+  bg:   #faf4edFF;
+  bga:  #f2e9e1FF;
+  fga:  #575279FF;
+  fg:   #575279FF;
+  ac:   #286983FF;
+}

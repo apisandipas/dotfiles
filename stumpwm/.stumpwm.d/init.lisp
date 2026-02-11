@@ -30,7 +30,7 @@
 
 ;; ;; Set fonts
 (xft:cache-fonts)
-(set-font (make-instance 'xft:font :family "Iosevka Nerd Font" :subfamily "Bold" :size 18))
+(set-font (make-instance 'xft:font :family "VictorMono NF" :subfamily "Bold" :size 18))
 
 ;; ;; Change the prefix key to Super-d
 (set-prefix-key (kbd "C-z"))
@@ -128,9 +128,7 @@ Press ^2Ctrl+z ? ^7for Help. ^4 Happy Hacking!^n
 ;; ;; (run-shell-command "polybar -c ~/.stumpwm.d/misc/polybar.ini main")
 
 
-(run-shell-command "xrandr --output DP-3 --mode 1920x1080  --auto\
-        --output DP-1 --rotate right --left-of DP-3 --mode 1920x1080 --auto\
-        --output DP-2 --rotate left --right-of DP-3 --mode 1920x1080 --auto")
+(run-shell-command "xrandr --output eDP-1 --mode 1920x1080")
 (refresh-heads)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -167,7 +165,7 @@ Press ^2Ctrl+z ? ^7for Help. ^4 Happy Hacking!^n
 
 (defparameter *server-port* 4007)
 
-(defcommand stop-slynk ()
+(defcommand stop-slynk () ()
   "Stops the slynk server instance"
   (slynk:stop-server *server-port*)
   (setf *server-running-p* nil)
@@ -429,7 +427,7 @@ running in the current group"
 ;; ;;; Debugging                                                               ;;;
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; (redirect-all-output (data-dir-file "debug-output" "txt"))
-;; (setf stumpwm:*debug-level* 10)
+(redirect-all-output (data-dir-file "debug-output" "txt"))
+(setf stumpwm:*debug-level* 10)
 ;;
 ;;

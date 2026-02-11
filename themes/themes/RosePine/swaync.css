@@ -3,11 +3,11 @@
  */
 
 /* --- Color definitions --- */
-@define-color noti-bg #232136;
-@define-color noti-bg-alt #2a273f;
+@define-color noti-bg #191724;
+@define-color noti-bg-alt #1f1d2e;
 @define-color cc-bg alpha(@noti-bg, 0.95);
-@define-color noti-border-color #393552;
-@define-color noti-bg-hover #3e8fb0;
+@define-color noti-border-color #26233a;
+@define-color noti-bg-hover #31748f;
 @define-color bg-selected #c4a7e7;
 @define-color noti-fg #e0def4;
 @define-color noti-fg-dim alpha(@noti-fg, 0.7);
